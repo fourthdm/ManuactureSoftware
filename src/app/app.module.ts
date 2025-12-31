@@ -21,6 +21,10 @@ import { AdmindashboardComponent } from './pages/admindashboard/admindashboard.c
 import { DeliverychallanComponent } from './pages/deliverychallan/deliverychallan.component';
 import { RequirementComponent } from './pages/requirement/requirement.component';
 import { QuatationComponent } from './pages/quatation/quatation.component';
+import { EmployeeComponent } from './pages/employee/employee.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -42,11 +46,15 @@ import { QuatationComponent } from './pages/quatation/quatation.component';
     AdmindashboardComponent,
     DeliverychallanComponent,
     RequirementComponent,
-    QuatationComponent
+    QuatationComponent,
+    EmployeeComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

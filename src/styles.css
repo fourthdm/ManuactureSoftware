@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    font-family: Electrolize,sans-serif
+}
+
+.custom-table {
+    background-color: #433558!important
+}
+
+.custom-table th {
+    background-color: #433558
+}
+
+.custom-table thead,.custom-table tbody,.custom-table td,.custom-table tr {
+    background-color: #31355a
+}
+
+.custom-table tbody {
+    background-color: #433558!important
+}

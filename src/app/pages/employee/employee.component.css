@@ -1,0 +1,16 @@
+label{
+    color: black;
+}
+
+.form-check {
+    margin-left: 5%;
+}
+
+.form-check-input {
+    width: 5%;
+    background-color: aliceblue;
+}
+
+/* .form-check-label {
+    margin-left: 12px;
+} */
