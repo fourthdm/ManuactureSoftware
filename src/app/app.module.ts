@@ -3,10 +3,46 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NavbarComponent } from './common/navbar/navbar.component';
+import { SidebarComponent } from './common/sidebar/sidebar.component';
+import { FooterComponent } from './common/footer/footer.component';
+import { LoginComponent } from './common/login/login.component';
+import { HomeComponent } from './pages/home/home.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { MaterialComponent } from './pages/material/material.component';
+import { MachineComponent } from './pages/machine/machine.component';
+import { PurchaseorderComponent } from './pages/purchaseorder/purchaseorder.component';
+import { WorkorderComponent } from './pages/workorder/workorder.component';
+import { WorkcloseComponent } from './pages/workclose/workclose.component';
+import { MangerdashboardComponent } from './pages/mangerdashboard/mangerdashboard.component';
+import { EmployeedashboardComponent } from './pages/employeedashboard/employeedashboard.component';
+import { AccountantdashboardComponent } from './pages/accountantdashboard/accountantdashboard.component';
+import { AdmindashboardComponent } from './pages/admindashboard/admindashboard.component';
+import { DeliverychallanComponent } from './pages/deliverychallan/deliverychallan.component';
+import { RequirementComponent } from './pages/requirement/requirement.component';
+import { QuatationComponent } from './pages/quatation/quatation.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent,
+    SidebarComponent,
+    FooterComponent,
+    LoginComponent,
+    HomeComponent,
+    DashboardComponent,
+    MaterialComponent,
+    MachineComponent,
+    PurchaseorderComponent,
+    WorkorderComponent,
+    WorkcloseComponent,
+    MangerdashboardComponent,
+    EmployeedashboardComponent,
+    AccountantdashboardComponent,
+    AdmindashboardComponent,
+    DeliverychallanComponent,
+    RequirementComponent,
+    QuatationComponent
   ],
   imports: [
     BrowserModule,
