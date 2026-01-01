@@ -12,16 +12,25 @@ export class StateService {
 
   constructor(private _router : Router) { }
 
-  decodetoken (){
-    this.report = jwtDecode(this.token);
-    return this.report;
+  decodetoken(token: string): any {
+  try {
+    const payload = token.split('.')[1];
+    return JSON.parse(atob(payload));
+  } catch (e) {
+    return null;
   }
+}
+
+  // decodetoken (){
+  //   this.report = jwtDecode(this.token);
+  //   return this.report;
+  // }
 
   checktoken(){
     const token = localStorage.getItem('token');
     if(token){
       this.token = token;
-      this.decodetoken();
+      this.decodetoken(token);
     }else{
       this._router.navigate(['/login']);
     }

@@ -25,6 +25,8 @@ import { EmployeeComponent } from './pages/employee/employee.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
+import { QcdashboardComponent } from './pages/qcdashboard/qcdashboard.component';
+import { DispatchdashboardComponent } from './pages/dispatchdashboard/dispatchdashboard.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { HttpClientModule } from '@angular/common/http';
     DeliverychallanComponent,
     RequirementComponent,
     QuatationComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    QcdashboardComponent,
+    DispatchdashboardComponent
   ],
   imports: [
     BrowserModule,

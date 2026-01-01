@@ -12,7 +12,7 @@ export class RestService {
   constructor(private _http: HttpClient, private _State: StateService) { }
 
   Login(data: any){
-    return this._http.post(this.ApiUrl + '/AdminLogin', data);
+    return this._http.post(this.ApiUrl + '/Adminlogin', data);
   }
 
   AddAdmin(data:any){

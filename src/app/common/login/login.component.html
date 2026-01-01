@@ -8,7 +8,7 @@
                             <div class="card-body">
                                 <div class="row">
 
-                                    <form >
+                                    <form [formGroup]="Loginform" (ngSubmit)="login()">
                                         <br>
                                         <div class="text-center">
                                             <p class="logins">LOGIN </p>
@@ -16,9 +16,7 @@
                                         <br>
                                         <div class="col-md-12">
                                             <label for="Username"> Username :</label>
-                                            <input type="text"
-                                         
-                                                class="form-control" id="Username" autocomplete="username"
+                                            <input type="text" class="form-control" id="Username" autocomplete="username"
                                                 formControlName="Username" value="" placeholder="Enter Username"
                                                 required>
                                             <div class="valid-feedback">
@@ -34,7 +32,7 @@
                                                     formControlName="Password" placeholder="Enter Password" required>
                                                 <button class="btn btn-light" type="button" [ngClass]="{
                                                         'fa-eye-slash': !liked,
-                                                        'fa-eye': liked }" id="button-addon2"><i
+                                                        'fa-eye': liked }" (click)="Show()" id="button-addon2"><i
                                                           class="fa-solid fa-eye-slash"></i>
                                                 </button>   
                                             </div>
@@ -50,7 +48,7 @@
                                         </button> -->
                                         <br>
                                         <div class="text-center">
-                                            <button class="btn btn-outline-light btn-lg" type="submit"> Log in</button>
+                                            <button type="submit" class="btn btn-outline-light btn-lg" > Log in</button>
                                         </div>
                                     </form>
                                 </div>

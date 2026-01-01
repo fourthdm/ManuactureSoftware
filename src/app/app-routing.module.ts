@@ -11,28 +11,48 @@ import { DeliverychallanComponent } from './pages/deliverychallan/deliverychalla
 import { PurchaseorderComponent } from './pages/purchaseorder/purchaseorder.component';
 import { WorkorderComponent } from './pages/workorder/workorder.component';
 import { QuatationComponent } from './pages/quatation/quatation.component';
+import { MangerdashboardComponent } from './pages/mangerdashboard/mangerdashboard.component';
+import { AccountantdashboardComponent } from './pages/accountantdashboard/accountantdashboard.component';
+import { QcdashboardComponent } from './pages/qcdashboard/qcdashboard.component';
+import { DispatchdashboardComponent } from './pages/dispatchdashboard/dispatchdashboard.component';
 
 const routes: Routes = [
-  { path: ' ', redirectTo: 'Dashboard', pathMatch: "full" },
-  { path: 'Dashboard', component: DashboardComponent },
-  // { path: 'login', component: LoginComponent },
-  {
-    path: 'login', component: LoginComponent, children: [
-      { path: '', redirectTo: 'Home', pathMatch: 'full' },
-      // { path: 'dashboard', component: DashboardComponent },
-      { path: 'Admin', component: AdmindashboardComponent, title: 'Admin pages' },
-      { path: 'Employee', component: EmployeedashboardComponent },
-      { path: 'Machine', component: MachineComponent },
-      { path: 'Material', component: MaterialComponent },
-      { path: 'DeliveryChallan', component: DeliverychallanComponent },
-      { path: 'Quatation', component: QuatationComponent },
-      { path: 'WorkOrder', component: WorkorderComponent },
-      { path: 'PurchaseOrder', component: PurchaseorderComponent },
-      { path: '**', redirectTo: 'Home' }
-    ]
-  },
-  // { path: '**', redirectTo: 'login' },
-  { path: '**', redirectTo: 'Dashboard' }
+
+  { path: '', component: DashboardComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'AdminDashboard', component: AdmindashboardComponent, title: 'Admin pages' },
+  { path: 'EmployeeDashboard', component: EmployeedashboardComponent },
+  { path: 'QCDashboard', component: QcdashboardComponent },
+  { path: 'AccountantDashboard', component: AccountantdashboardComponent },
+  { path: 'ManagerDashboard', component: MangerdashboardComponent },
+  { path: 'DispatchDashboard', component: DispatchdashboardComponent },
+  { path: 'Machine', component: MachineComponent },
+  { path: 'Material', component: MaterialComponent },
+  { path: 'DeliveryChallan', component: DeliverychallanComponent },
+  { path: 'Quatation', component: QuatationComponent },
+  { path: 'WorkOrder', component: WorkorderComponent },
+  { path: 'PurchaseOrder', component: PurchaseorderComponent },
+  { path: '**', redirectTo: '' }
+
+  // { path: ' ', redirectTo: 'Dashboard', pathMatch: "full" },
+  // { path: 'Dashboard', component: DashboardComponent },
+  // // { path: 'login', component: LoginComponent },
+  // { path: 'login', component: LoginComponent, children: [
+  //     { path: '', redirectTo: 'Home', pathMatch: 'full' },
+  //     // { path: 'dashboard', component: DashboardComponent },
+  //     { path: 'Admin', component: AdmindashboardComponent, title: 'Admin pages' },
+  //     { path: 'Employee', component: EmployeedashboardComponent },
+  //     { path: 'Machine', component: MachineComponent },
+  //     { path: 'Material', component: MaterialComponent },
+  //     { path: 'DeliveryChallan', component: DeliverychallanComponent },
+  //     { path: 'Quatation', component: QuatationComponent },
+  //     { path: 'WorkOrder', component: WorkorderComponent },
+  //     { path: 'PurchaseOrder', component: PurchaseorderComponent },
+  //     { path: '**', redirectTo: 'Home' }
+  //   ]
+  // },
+  // // { path: '**', redirectTo: 'login' },
+  // { path: '**', redirectTo: 'Dashboard' }
 ];
 
 @NgModule({

@@ -1,1 +1,170 @@
-<p>sidebar works!</p>
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <!-- <a href="index3.html" class="brand-link">
+        <img src="assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+            style="opacity: .8">
+        <span class="brand-text font-weight-light">Admin Panel</span>
+    </a> -->
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 text-center ">
+            <div class="image">
+                <img src="assets/logo.png" class="img elevation-2" alt="User Image">
+            </div> <br> <br>
+            <div class="info">
+                <a href="#" class="d-block"><i class="bi bi-columns-gap"></i> Dashboard</a>
+            </div>
+        </div>
+
+
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column " data-widget="treeview" role="menu"
+                data-accordion="false">
+                <!-- Add icons to the links using the .nav-icon class
+                   with font-awesome or any other icon font library -->
+
+                <li class="nav-item menu-open" >
+                    <a href="#" class="nav-link" routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/Home/Admin']">
+                        <i class="fa-solid fa-user-shield fa-xl"></i>
+                        <p>
+                            Admin's
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item menu-open" >
+                    <a href="#" class="nav-link" routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/Home/Company']">
+                <i class="fa-solid fa-industry fa-xl"></i>
+                        <p>
+                            Companies
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item menu-open" >
+                    <a href="#" class="nav-link" routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/Home/Customer']">
+                    <i class="fa-solid fa-people-carry-box fa-xl"></i>
+                        <p>
+                            Customers
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item menu-open" >
+                    <a href="#" class="nav-link" routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/Home/PurchaseOrder']">
+                    <i class="fa-solid fa-hand-holding-hand fa-xl"></i>
+                        <p>
+                            Purchase Order
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item menu-open" >
+                    <a href="#" class="nav-link" routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/Home/DeliveryChallan']">
+                  <i class="fa-solid fa-file-signature fa-xl"></i>
+                        <p>
+                            Delivery Challan
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item menu-open" >
+                    <a href="#" class="nav-link" routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/Home/Vendors']">
+                    <i class="fa-solid fa-house-signal fa-xl"></i>
+                        <p>
+                            Vendors
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item menu-open" >
+                    <a href="#" class="nav-link" routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/Home/Employee']">
+                        <i class="fa-solid fa-user-group fa-xl"></i>
+                        <p>
+                            Employee's
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item menu-open" >
+                    <a href="#" class="nav-link" routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/Home/Machine']">
+                        <i class="fa-solid fa-tachograph-digital fa-xl"></i>
+                        <p>
+                            Machine's
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item menu-open" >
+                    <a href="#" class="nav-link" routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/Home/Material']">
+                        <i class="fa-solid fa-bowling-ball fa-xl"></i>
+                        <p>
+                            Material's
+                        </p>
+                    </a>
+                </li>
+                
+                <li class="nav-item menu-open" >
+                    <a href="#" class="nav-link" routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/Home/VendorJobWorkChallan']">
+                        <i class="fa-solid fa-file-pen fa-xl"></i>
+                        <p>
+                          JobWorkChallan's
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item menu-open">
+                    <a href="#" class="nav-link" routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/Home/AssignJob']">
+                      <i class="fa-regular fa-id-card fa-xl"></i>
+                        <p>
+                            Asssign Job's
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item menu-open">
+                    <a href="#" class="nav-link" routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/Home/Jobss']">
+               <i class="fa-solid fa-person-booth fa-xl"></i>
+                        <p>
+                            Job
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item menu-open">
+                    <a href="#" class="nav-link" routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/Home/DesingerJob']">
+                      <i class="fa-solid fa-chalkboard-user fa-xl"></i>
+                        <p>
+                            Design Job's
+                        </p>
+                    </a>
+                </li>
+
+                <!-- <li class="nav-item menu-open fixed-bottom">
+                    <a href="#" class="nav-link" (click)="Logout()">
+                        <i class="fa-solid fa-power-off fa-xl"></i>
+                        <p>
+                            Logout
+                        </p>
+                    </a>
+                </li> -->
+
+            </ul>
+        </nav>
+    </div>
+</aside>
