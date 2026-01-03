@@ -1,1 +1,98 @@
-<p>requirement works!</p>
+<br><br>
+<div class="container-fluid"><br>
+    <div class="text-center">
+        <h2>All Requirement</h2>
+        <br>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                       <form [formGroup]="Requirementform" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+                                     <div class="">
+                                        <label>Client Name</label>
+                                        <input formControlName="Client_Name" class="form-control" /> <br>
+                                    </div>
+
+                                    <div class="">
+                                    <label>Product Name</label>
+                                        <textarea formControlName="Product_Name" class="form-control" ></textarea> <br>
+                                    </div>                                
+                                  
+                                    <div class="">
+                                        <label>Client Address</label>
+                                      <textarea name="Client_Address" id="" formControlName="Client_Address" class="form-control"></textarea>
+                                    <br>
+                                    </div>
+                                     <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Client Email</label>
+                                        <input formControlName="Client_Email" class="form-control" /> <br>      
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>Client PhoneNo </label>
+                                        <input formControlName="Client_PhoneNo" class="form-control" /> <br>
+                                    </div>
+                                </div>
+                                    <div class="row">
+                                        <div class="col-6"> 
+                                        <label>Product Quantity</label>
+                                        <input formControlName="Product_Quantity" class="form-control" /> <br>
+                                        </div>
+                                        <div class="col-6">
+                                             <label>Status</label>  
+                                                 <select class="form-select form-select-sm" formControlName="Status" aria-label="select example">
+                                                    <option value="Created">Created</option>
+                                                    <option value="In Progress">In Progress</option>
+                                                    <option value="Completed">Completed</option>
+                                                    <option value="Cancelled">Cancelled</option>
+                                                 </select>
+                                                <br>
+                                        </div>
+                              
+                                    </div>
+                                 
+                                <div class=" ">
+                                        <label>Design File</label>
+                                        <input type="file" (change)="onFileSelected($event)" class="form-control" />
+                                    </div>
+                           
+                                <br><br>
+                                <div class="text-center">
+                                    <button type="submit" class="btn text-light btt">Add Requirement</button>
+                                </div>
+               </form>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="col-7">
+        <div class="row">
+            <div class="col-md-6" *ngFor="let a of AllRequirementData, let i = index">
+                <div class="card">
+                    <div class="card-body">
+                        <!-- <td >
+                         <a type="button" (click)="editAdmin(a.Id)" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal1" title="Edit a Admin">
+                                <i class="fa-solid fa-pen-to-square fa-lg"></i>
+                        </a>
+                        <span><a (click)="DeleteAdmin(a.Id)" title="Delete a Admin"> <i class="fa-solid fa-trash-can"></i></a></span></td> -->
+                        <p title="View Requirement Details" ><a href="" [routerLink]="['/AdminDashboard/RequirementDetails', a.Req_id]">{{a.Req_id}}</a></p>
+                        <p>Client Name :  {{a.Client_Name}}</p>
+                        <p>Product Name :  {{a.Product_Name}}</p>
+                        <p>Phone No :  {{a.Client_PhoneNo}}</p>
+                        <p>Email :  {{a.Client_Email}}</p>
+                        <p>Product Quantity :  {{a.Product_Quantity}}</p>
+                        <p>Client Address :  {{a.Client_Address}}</p>
+                        <p>Status :  {{a.Status}}</p>
+                        <p>Added Date :  {{a.Added_Date | date}} <br>
+                           <span>Added Time : {{a.Added_Date | date :'hh:mm:ss'}}</span> </p>
+                        <p>Updated Date : {{a.Updated_Date | date}} <br> 
+                            <span>Updated Time : </span> {{a.Updated_Date | date :'hh:mm:ss'}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>

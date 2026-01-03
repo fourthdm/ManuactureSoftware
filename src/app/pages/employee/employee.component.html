@@ -5,9 +5,9 @@
 
 <div class="row">
     <div class="col-5">
-     <div class="card">
+     <div class="card" style="position: fixed; width: 30%;">
         <div class="card-body">
-            <form [formGroup]="AddDataForm" (submit)="AddAdmins()">
+            <form [formGroup]="AddDataForm" (submit)="AddAdmins()" >
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Employee Name : </label>
                 <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
@@ -53,7 +53,7 @@
             </div>
 
             <div class="mb-3">
-           <button type="submit" class="btn btn-success">Add Employee</button>
+            <button type="submit" class="btn btn-success">Add Employee</button>
             </div>
         </form>
         </div>
@@ -65,13 +65,14 @@
     
     <div class="col-7">
         <div class="row">
-            <div class="col-md-12" *ngFor="let a of AllData, let i = index">
+            <div class="col-md-6" *ngFor="let a of AllData, let i = index">
                 <div class="card">
                     <div class="card-body">
-                        <td > <a type="button" (click)="editAdmin(a.Id)" data-bs-toggle="modal"
+                        <td >
+                         <a type="button" (click)="editAdmin(a.Id)" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal1" title="Edit a Admin">
                                 <i class="fa-solid fa-pen-to-square fa-lg"></i>
-                            </a>
+                        </a>
                         <span><a (click)="DeleteAdmin(a.Id)" title="Delete a Admin"> <i class="fa-solid fa-trash-can"></i></a></span></td>
                         <p>Code :  {{a.Code}}</p>
                         <p>Name :  {{a.Name}}</p>
@@ -80,8 +81,9 @@
                         <p>Address :  {{a.Address}}</p>
                         <p>Role :  {{a.Role}}</p>
                         <p>Added Date :  {{a.Added_Date | date}} <br>
-                            <span>Added Time : {{a.Added_Date | date :'hh:mm:ss'}}</span> </p>
-                        <p>Updated Date : {{a.Updated_Date | date}} <br> <span>Updated Time : </span> {{a.Updated_Date | date :'hh:mm:ss'}}</p>
+                           <span>Added Time : {{a.Added_Date | date :'hh:mm:ss'}}</span> </p>
+                        <p>Updated Date : {{a.Updated_Date | date}} <br> 
+                            <span>Updated Time : </span> {{a.Updated_Date | date :'hh:mm:ss'}}</p>
                     </div>
                 </div>
             </div>

@@ -27,6 +27,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { QcdashboardComponent } from './pages/qcdashboard/qcdashboard.component';
 import { DispatchdashboardComponent } from './pages/dispatchdashboard/dispatchdashboard.component';
+import { SafeurlpipePipe } from './safeurlpipe.pipe';
+import { ViewrequirementComponent } from './pages/viewrequirement/viewrequirement.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { DispatchdashboardComponent } from './pages/dispatchdashboard/dispatchda
     QuatationComponent,
     EmployeeComponent,
     QcdashboardComponent,
-    DispatchdashboardComponent
+    DispatchdashboardComponent,
+    SafeurlpipePipe,
+    ViewrequirementComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 label {
-    color: black;
+    color: white;
 }
 
 .form-check {
@@ -16,8 +16,8 @@ label {
 } */
 
 .card {
-    background-color: #c4c1cfab;
-    color: black;
+    background-color: #2E3257;
+    color: white;
 }
 
 .modal-content {

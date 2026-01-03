@@ -1,0 +1,20 @@
+select{
+    height: 35px;
+}
+
+.btt{
+    background-color: #219655;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.card{
+    background-color: #c4c1cfab;
+    color: black;
+}
+
+a{
+    color: black;
+}

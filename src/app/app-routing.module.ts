@@ -15,22 +15,70 @@ import { MangerdashboardComponent } from './pages/mangerdashboard/mangerdashboar
 import { AccountantdashboardComponent } from './pages/accountantdashboard/accountantdashboard.component';
 import { QcdashboardComponent } from './pages/qcdashboard/qcdashboard.component';
 import { DispatchdashboardComponent } from './pages/dispatchdashboard/dispatchdashboard.component';
+import { EmployeeComponent } from './pages/employee/employee.component';
+import { WorkcloseComponent } from './pages/workclose/workclose.component';
+import { RequirementComponent } from './pages/requirement/requirement.component';
+import { ViewrequirementComponent } from './pages/viewrequirement/viewrequirement.component';
 
 const routes: Routes = [
 
   { path: '', component: DashboardComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'AdminDashboard', component: AdmindashboardComponent, title: 'Admin pages' },
-  { path: 'EmployeeDashboard', component: EmployeedashboardComponent },
-  { path: 'QCDashboard', component: QcdashboardComponent },
-  { path: 'AccountantDashboard', component: AccountantdashboardComponent },
-  { path: 'ManagerDashboard', component: MangerdashboardComponent },
+  {
+    path: 'AdminDashboard', component: AdmindashboardComponent, title: 'Admin pages', children: [
+      { path: '', redirectTo: 'AdminDashboard', pathMatch: 'full' },
+      { path: 'Employee', component: EmployeeComponent },
+      { path: 'Machine', component: MachineComponent },
+      { path: 'Material', component: MaterialComponent },
+      { path: 'DeliveryChallan', component: DeliverychallanComponent },
+      { path: 'Quatation', component: QuatationComponent },
+      { path: 'WorkOrder', component: WorkorderComponent },
+      { path: 'WorkOrderClose', component: WorkcloseComponent },
+      { path: 'PurchaseOrder', component: PurchaseorderComponent },
+      { path: 'Requirement', component: RequirementComponent },
+      { path: 'RequirementDetails/:Req_id', component: ViewrequirementComponent },
+      { path: '**', redirectTo: 'AdminDashboard' }
+    ]
+  },
+  {
+    path: 'EmployeeDashboard', component: EmployeedashboardComponent, children: [
+      { path: 'WorkOrder', component: WorkorderComponent },
+      { path: 'WorkOrderClose', component: WorkcloseComponent },
+    ]
+  },
+  {
+    path: 'QCDashboard', component: QcdashboardComponent, children: [
+      { path: 'WorkOrder', component: WorkorderComponent },
+      { path: 'WorkOrderClose', component: WorkcloseComponent },
+    ]
+  },
+  {
+    path: 'AccountantDashboard', component: AccountantdashboardComponent, children: [
+      { path: 'DeliveryChallan', component: DeliverychallanComponent },
+      { path: 'Quatation', component: QuatationComponent },
+      { path: 'WorkOrder', component: WorkorderComponent },
+      { path: 'WorkOrderClose', component: WorkcloseComponent },
+      { path: 'PurchaseOrder', component: PurchaseorderComponent },
+    ]
+  },
+  {
+    path: 'ManagerDashboard', component: MangerdashboardComponent, children: [
+      { path: 'Machine', component: MachineComponent },
+      { path: 'Material', component: MaterialComponent },
+      { path: 'DeliveryChallan', component: DeliverychallanComponent },
+      { path: 'Quatation', component: QuatationComponent },
+      { path: 'WorkOrder', component: WorkorderComponent },
+      { path: 'WorkOrderClose', component: WorkcloseComponent },
+      { path: 'PurchaseOrder', component: PurchaseorderComponent },
+    ]
+  },
   { path: 'DispatchDashboard', component: DispatchdashboardComponent },
   { path: 'Machine', component: MachineComponent },
   { path: 'Material', component: MaterialComponent },
   { path: 'DeliveryChallan', component: DeliverychallanComponent },
   { path: 'Quatation', component: QuatationComponent },
   { path: 'WorkOrder', component: WorkorderComponent },
+  { path: 'WorkOrderClose', component: WorkcloseComponent },
   { path: 'PurchaseOrder', component: PurchaseorderComponent },
   { path: '**', redirectTo: '' }
 
