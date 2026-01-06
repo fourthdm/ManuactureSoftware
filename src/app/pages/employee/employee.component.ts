@@ -89,7 +89,7 @@ export class EmployeeComponent implements OnInit {
   }
 
   DeleteAdmin(Id: any) {
-    if (!confirm("Are you sure to delete this Admin?")) {
+    if (confirm("Are you sure to delete this Admin?")) {
       this._rest.DeleteAdmin(Id).subscribe((res: any) => {
         alert(res.message);
         this.GetAllAdmin();

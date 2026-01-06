@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { StateService } from './state.service';
+import { tick } from '@angular/core/testing';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,18 @@ export class RestService {
     return this._http.delete(this.ApiUrl + '/DeleteAdmin/' + Id);
   }
 
+  Managerdata() {
+    return this._http.get(this.ApiUrl + '/AllManagerData');
+  }
+
+  Engineerdata() {
+    return this._http.get(this.ApiUrl + '/AllEngineerData');
+  }
+
+  QCData() {
+    return this._http.get(this.ApiUrl + '/AllQCData');
+  }
+
   //All Purchase Order Data
   AllPurchaseOrder() {
     return this._http.get(this.ApiUrl + '/AllPurchaseOrder');
@@ -40,6 +53,14 @@ export class RestService {
     return this._http.post(this.ApiUrl + '/AddPurchaseOrder', data);
   }
 
+  EditPurchaseOrder(data: any) {
+    return this._http.put(this.ApiUrl + '/UpdatePurchaseOrder/' + data.Id, data);
+  }
+
+  DeletePurchaseOrder(Id: number) {
+    return this._http.delete(this.ApiUrl + '/DeletePurchaseOrder/' + Id);
+  }
+  //AllPurchase Order Api Ends
 
   //AllREquirement Data
   AllRequirement() {
@@ -53,4 +74,91 @@ export class RestService {
   Requirementdetails(Req_id: number) {
     return this._http.get(this.ApiUrl + '/Requirementdetails/' + Req_id);
   }
+
+  DeleteRequirement(Req_id: number) {
+    return this._http.delete(this.ApiUrl + '/DeleteREquirement/'+ Req_id);
+  }
+
+  //Machine Api Start
+  AddMachine(data: any) {
+    return this._http.post(this.ApiUrl + '/AddMachine', data);
+  }
+
+  AllMachine() {
+    return this._http.get(this.ApiUrl + '/AllMachines');
+  }
+
+  UpdateMachine(data: any) {
+    return this._http.put(this.ApiUrl + '/UpdateMachine/' + data.Machine_id, data);
+  }
+
+  DeleteMachine(Machine_id: any) {
+    return this._http.delete(this.ApiUrl + '/DeleteMachine/' + Machine_id);
+  }
+
+  MachineById(Machine_id: any) {
+    return this._http.get(this.ApiUrl + '/GetMachine/' + Machine_id);
+  }
+
+  AvailbleMachine() {
+    return this._http.get(this.ApiUrl + '/AvailableMachines');
+  }
+  //Machine Api End
+
+  //Material API Start
+
+  AddMAterialS(data: any) {
+    return this._http.post(this.ApiUrl + '/AddMaterial', data);
+  }
+
+  UpdateMaterial(data: any) {
+    return this._http.put(this.ApiUrl + '/UpdateMaterial/' + data.Material_id, data);
+  }
+
+  AllMaterials() {
+    return this._http.get(this.ApiUrl + '/ALLMaterial');
+  }
+
+  AllMaterialTypes() {
+    return this._http.get(this.ApiUrl + '/Materialbygroup');
+  }
+
+  MaterialByid(Material_id: any) {
+    return this._http.get(this.ApiUrl + '/MaterialbyId/' + Material_id);
+  }
+
+  MaterialByWeights(data: any) {
+    return this._http.post(this.ApiUrl + '/MaterialByWeight', data);
+  }
+
+  MaterialByName(data: any) {
+    return this._http.post(this.ApiUrl + '/MaterialbyMaterialName', data);
+  }
+
+  MaterialBySize(data: any) {
+    return this._http.post(this.ApiUrl + '/MaterialByMaterialsize', data);
+  }
+
+  MaterialByType(data: any) {
+    return this._http.post(this.ApiUrl + '/MaterialByMaterialtype', data);
+  }
+
+  DeleteMaterial(Material_id: number) {
+    return this._http.delete(this.ApiUrl + '/DeleteMaterial/' + Material_id);
+  }
+  // Material API Ends
+
+  //Work Order API Start
+
+  AddWorkOrder(data: any) {
+    return this._http.post(this.ApiUrl + '/AddWorkorder', data);
+  }
+
+  AllWorkOrder() {
+    return this._http.get(this.ApiUrl + '/AllWorkOrder');
+  }
+
+  //Work Order API Ends
+
+
 }

@@ -96,4 +96,15 @@ export class RequirementComponent implements OnInit {
     });
   }
 
+  DeleteRequirement(Req_id: any) {
+    if (confirm('Are You Want to Delete this Requirement.')) {
+      this._rest.DeleteRequirement(Req_id).subscribe((data: any) => {
+        console.log(data);
+        this.ngOnInit();
+      }, (err: any) => {
+        console.log(err);
+      });
+    }
+  }
+
 }

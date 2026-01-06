@@ -78,26 +78,36 @@ export class PurchaseorderComponent implements OnInit {
   }
 
 
-  EditPurchaseOrder(Id: number) {
-    // this._rest.EditPurchaseOrder(this.EditpurchaseorderForm.value).subscribe((data: any) => {
-    //   alert(data.message);
-    //   this.AllPurchaseOrder();
-    //   this.EditpurchaseorderForm.reset();
-    // }, (err: any) => {
-    //   console.log(err);
-    //   alert('Error while editing Purchase Order');
-    // });
+  EditPurchaseOrder(Id: any) {
+    const selectpurchaseorder = this.AllPurchaseOrderData.find(purchaseorder => purchaseorder.Id === Id)
+    if (selectpurchaseorder) {
+      this.SelectedPurchaseOrderData = 1;
+      this.EditpurchaseorderForm.patchValue(selectpurchaseorder);
+    } else {
+      console.log(`Purchase Order with ID ${Id} not found.`);
+    }
   }
 
-  UpdatePurchaseOrder() { }
+  UpdatePurchaseOrder() {
+    this._rest.EditPurchaseOrder(this.EditpurchaseorderForm.value).subscribe((data: any) => {
+      alert(data.message);
+      this.AllPurchaseOrder();
+    }, (err: any) => {
+      console.log(err);
+      alert('Error while updating Purchase Order');
+    });
+  }
 
   DeletePurchaseOrder(Id: number) {
-    // this._rest.DeletePurchaseOrder(Id).subscribe((data: any) => {
-    //   alert(data.message);
-    //   this.AllPurchaseOrder();
-    // }, (err: any) => {
-    //   console.log(err);
-    //   alert('Error while deleting Purchase Order');
-    // });
+    if (confirm("Are you sure to delete this Purchase Order?")) {
+      this._rest.DeletePurchaseOrder(Id).subscribe((data: any) => {
+        alert(data.message);
+        this.AllPurchaseOrder();
+      }, (err: any) => {
+        console.log(err);
+        alert('Error while deleting Purchase Order');
+      });
+    }
   }
+
 }

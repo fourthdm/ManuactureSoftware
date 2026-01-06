@@ -1,3 +1,7 @@
+.container-fluid{
+    padding: 2%;
+}
+
 label {
     color: black;
 }
@@ -21,5 +25,11 @@ label {
 }
 
 .modal-content {
-    background-color: #2E3257;
+    background-color: #c4c1cfab;
+    color: #000;
+}
+
+.card-title{
+    color: black;
+    text-align: center !important;
 }

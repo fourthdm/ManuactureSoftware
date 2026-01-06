@@ -1,3 +1,7 @@
+.container-fluid{
+    padding-left: 2%;
+}
+
 select{
     height: 35px;
 }
@@ -17,4 +21,9 @@ select{
 
 a{
     color: black;
+}
+
+.modal-content {
+    background-color: #c4c1cfab;
+    color: #000;
 }

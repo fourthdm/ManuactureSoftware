@@ -1,12 +1,13 @@
-<div class="container-fluid">
-    <h3 class="text-center">Add Employee</h3>
+<div class="container-fluid"> <br><br>
+    <h5 class="text-center" style="position: fixed;">All Employee</h5>
 <br>
 <br>
 
 <div class="row">
     <div class="col-5">
      <div class="card" style="position: fixed; width: 30%;">
-        <div class="card-body">
+         <div class="card-header">Add Employee</div>
+        <div class="card-body">      
             <form [formGroup]="AddDataForm" (submit)="AddAdmins()" >
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Employee Name : </label>
@@ -49,7 +50,6 @@
                                 <option value="QC">QC </option>
                                 <option value="Dispatch Manager">Dispatch Manager </option>
                 </select>
-                <br>
             </div>
 
             <div class="mb-3">
@@ -73,7 +73,7 @@
                                 data-bs-target="#exampleModal1" title="Edit a Admin">
                                 <i class="fa-solid fa-pen-to-square fa-lg"></i>
                         </a>
-                        <span><a (click)="DeleteAdmin(a.Id)" title="Delete a Admin"> <i class="fa-solid fa-trash-can"></i></a></span></td>
+                        <span  style="margin-left:15px;cursor: pointer;"+.><a (click)="DeleteAdmin(a.Id)" title="Delete a Admin"> <i class="fa-solid fa-trash-can"></i></a></span></td>
                         <p>Code :  {{a.Code}}</p>
                         <p>Name :  {{a.Name}}</p>
                         <p>Phone No :  {{a.PhoneNo}}</p>
@@ -89,7 +89,6 @@
             </div>
         </div>
     </div>
-
 
  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -160,4 +159,7 @@
     </div>
 
 </div>
+
+<br><br>    
+
 </div>

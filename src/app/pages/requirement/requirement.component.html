@@ -2,11 +2,12 @@
 <div class="container-fluid"><br>
     <div class="text-center">
         <h2>All Requirement</h2>
-        <br>
+   
     </div>
     <div class="row">
         <div class="col-4">
             <div class="card">
+                   <div class="card-header">Add New Requirement</div>
                 <div class="card-body">
                        <form [formGroup]="Requirementform" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
                                      <div class="">
@@ -56,8 +57,7 @@
                                         <label>Design File</label>
                                         <input type="file" (change)="onFileSelected($event)" class="form-control" />
                                     </div>
-                           
-                                <br><br>
+                           <br>
                                 <div class="text-center">
                                     <button type="submit" class="btn text-light btt">Add Requirement</button>
                                 </div>
@@ -71,13 +71,14 @@
             <div class="col-md-6" *ngFor="let a of AllRequirementData, let i = index">
                 <div class="card">
                     <div class="card-body">
-                        <!-- <td >
-                         <a type="button" (click)="editAdmin(a.Id)" data-bs-toggle="modal"
+                        <td >
+                         <!-- <a type="button" (click)="editAdmin(a.Id)" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal1" title="Edit a Admin">
                                 <i class="fa-solid fa-pen-to-square fa-lg"></i>
-                        </a>
-                        <span><a (click)="DeleteAdmin(a.Id)" title="Delete a Admin"> <i class="fa-solid fa-trash-can"></i></a></span></td> -->
-                        <p title="View Requirement Details" ><a href="" [routerLink]="['/AdminDashboard/RequirementDetails', a.Req_id]">{{a.Req_id}}</a></p>
+                        </a> -->
+                        <span><a (click)="DeleteRequirement(a.Req_id)" title="Delete a Requirement"> <i class="fa-solid fa-trash-can"></i></a></span></td>
+                        <p title="View Requirement Details" >Requirement Id : <a href="" [routerLink]="['/AdminDashboard/RequirementDetails', a.Req_id]">{{a.Req_id}}</a></p>
+                        <p>Requirement Number : {{a.Requirement_No}}</p>
                         <p>Client Name :  {{a.Client_Name}}</p>
                         <p>Product Name :  {{a.Product_Name}}</p>
                         <p>Phone No :  {{a.Client_PhoneNo}}</p>
@@ -95,4 +96,5 @@
         </div>
     </div>
     </div>
+    <br>
 </div>
