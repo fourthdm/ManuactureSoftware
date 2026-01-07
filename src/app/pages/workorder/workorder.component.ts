@@ -120,7 +120,7 @@ export class WorkorderComponent implements OnInit {
   AddWorkOrderData() {
     this._rest.AddWorkOrder(this.AddWorkorderForm.value).subscribe((data: any) => {
       alert(data.message);
-      this.AllPurchaseOrder();
+      this.AllWorkOrder();
       this.AddWorkorderForm.reset();
     }, (err: any) => {
       console.log(err);
@@ -128,31 +128,31 @@ export class WorkorderComponent implements OnInit {
     });
   }
 
-  EditPurchaseOrder(Id: any) {
-    const selectpurchaseorder = this.AllWorkOrderData.find(purchaseorder => purchaseorder.Id === Id)
-    if (selectpurchaseorder) {
+  EditPurchaseOrder(Workorder_Id: any) {
+    const selectworkorder = this.AllWorkOrderData.find(purchaseorder => purchaseorder.Workorder_Id === Workorder_Id)
+    if (selectworkorder) {
       this.SelectedWorkOrderData = 1;
-      this.EditWorkorderForm.patchValue(selectpurchaseorder);
+      this.EditWorkorderForm.patchValue(selectworkorder);
     } else {
-      console.log(`Purchase Order with ID ${Id} not found.`);
+      console.log(`Purchase Order with ID ${Workorder_Id} not found.`);
     }
   }
 
   UpdatePurchaseOrder() {
-    this._rest.EditPurchaseOrder(this.EditWorkorderForm.value).subscribe((data: any) => {
+    this._rest.UpdateWorkorder(this.EditWorkorderForm.value).subscribe((data: any) => {
       alert(data.message);
-      this.AllPurchaseOrder();
+      this.AllWorkOrder();
     }, (err: any) => {
       console.log(err);
       alert('Error while updating Purchase Order');
     });
   }
 
-  DeletePurchaseOrder(Id: number) {
-    if (confirm("Are you sure to delete this Purchase Order?")) {
-      this._rest.DeletePurchaseOrder(Id).subscribe((data: any) => {
+  DeletePurchaseOrder(Workorder_Id: number) {
+    if (confirm("Are you sure to delete this Work Order?")) {
+      this._rest.DeleteWorkorder(Workorder_Id).subscribe((data: any) => {
         alert(data.message);
-        this.AllPurchaseOrder();
+        this.ngOnInit();
       }, (err: any) => {
         console.log(err);
         alert('Error while deleting Purchase Order');

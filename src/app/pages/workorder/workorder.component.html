@@ -55,17 +55,29 @@
                          </div>
                     </div>
                 </div>
-                
+
                 <div class="row">
-                    <div class="col-6">
-                                <div class="mb-3">
+                          
                                      <label for="exampleInputEmail1" class="form-label">Client Name : </label>
                                         <br>
                                     <select formControlName="Client_Name" class="">
                                         <option *ngFor="let mat of AllRequirementData" [value]="mat.Client_Name">{{mat.Client_Name}}({{mat.Requirement_No}})</option>
                                     </select>  <br>
-                                </div>
+                
+                </div>
+                <br>
+                <div class="row">
+                 
+                      <div class="col-6">
+                          <div class="mb-3">
+                             <label for="Material_Type">Material Type</label>
+                            <br>
+                                 <select formControlName="Material_Type" class="Se">
+                                      <option *ngFor="let mat of AllPurchaseOrderData" [value]="mat.Material_Type_Used">{{mat.Material_Type_Used}}({{mat.Requirement_No}})</option>
+                                 </select>  <br>
+                         </div>
                     </div>
+
                     <div class="col-6">                     
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Manager Name : </label>
@@ -100,15 +112,7 @@
 
                 </div>
     
-                   <div class="col-6">
-                          <div class="mb-3">
-                             <label for="Material_Type">Material Type</label>
-                            <br>
-                                 <select formControlName="Material_Type" class="Se">
-                                      <option *ngFor="let mat of AllPurchaseOrderData" [value]="mat.Material_Type_Used">{{mat.Material_Type_Used}}({{mat.Requirement_No}})</option>
-                                 </select>  <br>
-                         </div>
-                    </div>
+                 
             
                  <div class="row">
             <div class="col-6"> 
@@ -156,11 +160,11 @@
                     <div class="card-body">
                       
                      <div class="text-end"> 
-                         <a type="button" (click)="EditPurchaseOrder(a.Id)" data-bs-toggle="modal"
+                         <a type="button" (click)="EditPurchaseOrder(a.Workorder_Id)" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal1" title="Edit a Waiting for Approval">
                                 <i class="fa-solid fa-pen-to-square fa-lg"></i>
                         </a>
-                        <span style="margin-left:15px;cursor: pointer;"><a (click)="DeletePurchaseOrder(a.Id)" title="Delete a Purchase Order"> <i class="fa-solid fa-trash-can"></i></a></span>
+                        <span style="margin-left:15px;cursor: pointer;"><a (click)="DeletePurchaseOrder(a.Workorder_Id)" title="Delete a Purchase Order"> <i class="fa-solid fa-trash-can"></i></a></span>
                      </div>
                      <br>
                         <p>Work Order Number : {{a.WO_Number}}</p>

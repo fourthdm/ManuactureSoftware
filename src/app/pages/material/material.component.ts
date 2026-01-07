@@ -71,7 +71,7 @@ export class MaterialComponent {
   AddMaterial() {
     this._rest.AddMAterialS(this.MaterialAddForms.value).subscribe((data: any) => {
       console.log(data);
-      this.AllMAterials = data.data;
+      this.ngOnInit();
       this.MaterialAddForms.reset();
     }, (err: any) => {
       console.log(err);

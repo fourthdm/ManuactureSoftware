@@ -76,7 +76,7 @@ export class RestService {
   }
 
   DeleteRequirement(Req_id: number) {
-    return this._http.delete(this.ApiUrl + '/DeleteREquirement/'+ Req_id);
+    return this._http.delete(this.ApiUrl + '/DeleteREquirement/' + Req_id);
   }
 
   //Machine Api Start
@@ -149,13 +149,24 @@ export class RestService {
   // Material API Ends
 
   //Work Order API Start
-
   AddWorkOrder(data: any) {
     return this._http.post(this.ApiUrl + '/AddWorkorder', data);
   }
 
   AllWorkOrder() {
     return this._http.get(this.ApiUrl + '/AllWorkOrder');
+  }
+
+  Allworkorderbyid(Workorder_Id: number) {
+    return this._http.get(this.ApiUrl + '/WorkOrderbyid/' + Workorder_Id);
+  }
+
+  UpdateWorkorder(data: any){
+    return this._http.put(this.ApiUrl + '/UpdateWorkOrder/' + data.Workorder_Id, data);
+  }
+  
+  DeleteWorkorder(Workorder_Id: number) {
+    return this._http.delete(this.ApiUrl + '/DeleteWorkOrder/' + Workorder_Id);
   }
 
   //Work Order API Ends

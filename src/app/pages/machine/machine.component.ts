@@ -98,10 +98,11 @@ pro: any;
     });
   }
 
-  DeleteMachine(Machine_id: any) {
+  DeleteMachine(Machine_id: number) {
     this._rest.DeleteMachine(Machine_id).subscribe((data: any) => {
       console.log(data);
-      this.ALLMachine = data.data;
+      this.ngOnInit();
+      // this.ALLMachine = data.data;
     }, (err: any) => {
       console.log(err);
     });
