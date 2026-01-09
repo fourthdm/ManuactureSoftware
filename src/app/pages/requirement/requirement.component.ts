@@ -13,7 +13,9 @@ export class RequirementComponent implements OnInit {
   AllRequirementData: any[] = [];
   Requirementform: FormGroup;
   EditRequirementform: FormGroup;
+
   SelectedRequirementData: any;
+
   selectedFile: File | null = null;
 
   constructor(private _rest: RestService, private _router: Router, private fb: FormBuilder) {
@@ -29,6 +31,7 @@ export class RequirementComponent implements OnInit {
     });
 
     this.EditRequirementform = this.fb.group({
+      Req_id: new FormControl(''),
       Product_Name: new FormControl('', [Validators.required]),
       Client_Name: new FormControl('', [Validators.required]),
       Client_Address: new FormControl('', [Validators.required]),
@@ -105,6 +108,38 @@ export class RequirementComponent implements OnInit {
         console.log(err);
       });
     }
+  }
+
+  editRequirement(Req_id: number) {
+    const requirements = this.AllRequirementData.find(R => R.Req_id === Req_id);
+    if (requirements) {
+      this.SelectedRequirementData = 1;
+      this.EditRequirementform.patchValue(requirements);
+    }
+  }
+
+  onFileChange(event: any, fieldName: string): void {
+    const file = event.target.files[0];
+    if (file) {
+      this.EditRequirementform.patchValue({ [fieldName]: file });
+    }
+  }
+
+  UpdateRequirements() {
+    const formData = new FormData();
+    Object.keys(this.EditRequirementform.controls).forEach(key => {
+      formData.append(key, this.EditRequirementform.get(key)?.value);
+    });
+    // Update form data 
+    this._rest.UpdateRequirementss(this.EditRequirementform.value.Req_id, formData).subscribe(
+      response => {
+        console.log('Update success', response);
+        this.EditRequirementform.reset();
+        this.ngOnInit();
+      },
+      error => {
+        console.error('Update error', error);
+      });
   }
 
 }

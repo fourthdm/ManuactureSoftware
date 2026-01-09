@@ -1,0 +1,31 @@
+.card{
+    background-color: #c4c1cfab;
+    color: black;
+}
+
+select{
+    background-color: hsla(264, 9%, 89%, 0.671);
+    width: 100%;
+}
+
+label{
+    color: black;
+}
+
+.container-fluid{
+    padding-left: 2%;
+}
+
+.Se{
+    height: 50% !important;
+}
+
+.card-header{
+    color: black;
+    font-size: larger;
+}
+
+.modal-content {
+    background-color: #c4c1cfab;
+    color: #000;
+}

@@ -43,6 +43,28 @@ export class RestService {
   QCData() {
     return this._http.get(this.ApiUrl + '/AllQCData');
   }
+  //AdminAPi Ends
+
+  // Quotation API Start
+
+  AddedQuotation(data: any) {
+    return this._http.post(this.ApiUrl + '/Addquotation', data);
+  }
+
+  AllQuotation() {
+    return this._http.get(this.ApiUrl + '/AllQuotation');
+  }
+
+  Updatequotation(data: any) {
+    return this._http.put(this.ApiUrl + '/UpdateQuotation/' + data.Quotation_Id, data);
+  }
+
+  DeleteQuotation(Quotation_Id: number) {
+    return this._http.delete(this.ApiUrl + '/DeleteQuotation/' + Quotation_Id);
+  }
+
+  // Quotation API Ends
+
 
   //All Purchase Order Data
   AllPurchaseOrder() {
@@ -73,6 +95,10 @@ export class RestService {
 
   Requirementdetails(Req_id: number) {
     return this._http.get(this.ApiUrl + '/Requirementdetails/' + Req_id);
+  }
+
+  UpdateRequirementss(Req_id: number, formData: any) {
+    return this._http.put(this.ApiUrl + '/UpdateRequirement/' + Req_id, formData);
   }
 
   DeleteRequirement(Req_id: number) {
@@ -161,10 +187,10 @@ export class RestService {
     return this._http.get(this.ApiUrl + '/WorkOrderbyid/' + Workorder_Id);
   }
 
-  UpdateWorkorder(data: any){
+  UpdateWorkorder(data: any) {
     return this._http.put(this.ApiUrl + '/UpdateWorkOrder/' + data.Workorder_Id, data);
   }
-  
+
   DeleteWorkorder(Workorder_Id: number) {
     return this._http.delete(this.ApiUrl + '/DeleteWorkOrder/' + Workorder_Id);
   }
