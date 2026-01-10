@@ -9,7 +9,7 @@ import { jwtDecode } from 'jwt-decode';
 })
 export class SidebarComponent {
   isAdmin: boolean = false;
-  isDesigner: boolean = false;
+  isDispatchManager: boolean = false;
   isEmployee: boolean = false;
   isQC: boolean = false;
   isManager: boolean = false;
@@ -19,10 +19,10 @@ export class SidebarComponent {
 
   ngOnInit() {
     this.getadmintoken();
-    this.getDesigner();
+    this.getDispatchManger();
     this.getEmployee();
     this.getQC();
-    this.getInventoryManager();
+    this.getInventoryManager()
   }
 
   Logout() {
@@ -54,14 +54,14 @@ export class SidebarComponent {
     }
   }
 
-  getDesigner() {
+  getDispatchManger() {
     const token = localStorage.getItem('token');
     if (token) {
       const decoded: any = jwtDecode(token);
-      if (decoded.Role === 'Designer') {
-        this.isDesigner = true;
+      if (decoded.Role === 'Dispatch Manager') {
+        this.isDispatchManager = true;
       } else {
-        this.isDesigner = false;
+        this.isDispatchManager = false;
       }
     }
   }
