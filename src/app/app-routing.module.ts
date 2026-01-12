@@ -42,27 +42,34 @@ const routes: Routes = [
   },
   {
     path: 'EmployeeDashboard', component: EmployeedashboardComponent, children: [
+      { path: '', redirectTo: 'EmployeeDashboard', pathMatch: 'full' },
       { path: 'WorkOrder', component: WorkorderComponent },
       { path: 'WorkOrderClose', component: WorkcloseComponent },
+      { path: '**', redirectTo: 'EmployeeDashboard' }
     ]
   },
   {
     path: 'QCDashboard', component: QcdashboardComponent, children: [
+      { path: '', redirectTo: 'QCDashboard', pathMatch: 'full' },
       { path: 'WorkOrder', component: WorkorderComponent },
       { path: 'WorkOrderClose', component: WorkcloseComponent },
+      { path: '**', redirectTo: 'QCDashboard' }
     ]
   },
   {
     path: 'AccountantDashboard', component: AccountantdashboardComponent, children: [
+      { path: '', redirectTo: 'AccountantDashboard', pathMatch: 'full' },
       { path: 'DeliveryChallan', component: DeliverychallanComponent },
       { path: 'Quatation', component: QuatationComponent },
       { path: 'WorkOrder', component: WorkorderComponent },
       { path: 'WorkOrderClose', component: WorkcloseComponent },
       { path: 'PurchaseOrder', component: PurchaseorderComponent },
+      { path: '**', redirectTo: 'AccountantDashboard' }
     ]
   },
   {
     path: 'ManagerDashboard', component: MangerdashboardComponent, children: [
+      { path: '', redirectTo: 'ManagerDashboard', pathMatch: 'full' },
       { path: 'Machine', component: MachineComponent },
       { path: 'Material', component: MaterialComponent },
       { path: 'DeliveryChallan', component: DeliverychallanComponent },
@@ -70,16 +77,29 @@ const routes: Routes = [
       { path: 'WorkOrder', component: WorkorderComponent },
       { path: 'WorkOrderClose', component: WorkcloseComponent },
       { path: 'PurchaseOrder', component: PurchaseorderComponent },
+      { path: '**', redirectTo: 'ManagerDashboard' }
     ]
   },
-  { path: 'DispatchDashboard', component: DispatchdashboardComponent },
-  { path: 'Machine', component: MachineComponent },
-  { path: 'Material', component: MaterialComponent },
-  { path: 'DeliveryChallan', component: DeliverychallanComponent },
-  { path: 'Quatation', component: QuatationComponent },
-  { path: 'WorkOrder', component: WorkorderComponent },
-  { path: 'WorkOrderClose', component: WorkcloseComponent },
-  { path: 'PurchaseOrder', component: PurchaseorderComponent },
+  { path: 'DispatchDashboard', component: DispatchdashboardComponent,  children: [
+      { path: '', redirectTo: 'DispatchDashboard', pathMatch: 'full' },
+      { path: 'Machine', component: MachineComponent },
+      { path: 'Material', component: MaterialComponent },
+      { path: 'DeliveryChallan', component: DeliverychallanComponent },
+      // { path: 'Quatation', component: QuatationComponent },
+      { path: 'WorkOrder', component: WorkorderComponent },
+      { path: 'WorkOrderClose', component: WorkcloseComponent },
+      // { path: 'PurchaseOrder', component: PurchaseorderComponent },
+      { path: '**', redirectTo: 'DispatchDashboard' }
+    ] },
+
+
+  // { path: 'Machine', component: MachineComponent },
+  // { path: 'Material', component: MaterialComponent },
+  // { path: 'DeliveryChallan', component: DeliverychallanComponent },
+  // { path: 'Quatation', component: QuatationComponent },
+  // { path: 'WorkOrder', component: WorkorderComponent },
+  // { path: 'WorkOrderClose', component: WorkcloseComponent },
+  // { path: 'PurchaseOrder', component: PurchaseorderComponent },
   { path: '**', redirectTo: '' }
 
   // { path: ' ', redirectTo: 'Dashboard', pathMatch: "full" },

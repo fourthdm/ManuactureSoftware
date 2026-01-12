@@ -197,5 +197,28 @@ export class RestService {
 
   //Work Order API Ends
 
+  //WorkorderClose API Start
+  AddWorkorderclose(data:any){
+    return this._http.post(this.ApiUrl + '/AddWorkorderClose', data);
+  }
+
+  Updateworkorderclose(data:any){
+    return this._http.put(this.ApiUrl + '/UpdateWorkorderClose/' + data.WorkClose_Id, data);
+  }
+
+  Allworkorderclose(){
+    return this._http.get(this.ApiUrl + '/AllWorkorderClose');
+  }
+
+  AllUpdateWorkOrderClosebyid(WorkClose_Id: any){
+    return this._http.get(this.ApiUrl + '/Allworkorderclose/'+ WorkClose_Id);
+  }
+
+  DeleteWorkorderClose(WorkClose_Id: any){
+    return this._http.delete(this.ApiUrl + '/DeleteWorkorderclose/'+ WorkClose_Id);
+  }
+
+  //WorkorderClose API Ends 
+
 
 }
