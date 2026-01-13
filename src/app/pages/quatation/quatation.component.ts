@@ -21,6 +21,7 @@ export class QuatationComponent implements OnInit {
   constructor(private _rest: RestService, private fb: FormBuilder, private _router: Router) {
     this.AddQuotationform = new FormGroup({
       Requirement_No: new FormControl('', [Validators.required]),
+      Material_Type: new FormControl('', [Validators.required]),
       Client_Name: new FormControl('', [Validators.required]),
       Product_Name: new FormControl('', [Validators.required]),
       Product_Quantity: new FormControl('', [Validators.required]),
@@ -31,14 +32,17 @@ export class QuatationComponent implements OnInit {
       Discount_Amount: new FormControl('', [Validators.required]),
       Payment_term: new FormControl('', [Validators.required]),
       Shipping_Method: new FormControl('', [Validators.required]),
-      Address: new FormControl('', [Validators.required]),
+      HSN_Code: new FormControl('', [Validators.required]),
+      Client_Address: new FormControl('', [Validators.required]),
       Validity_Date: new FormControl(''),
       Quotation_Status: new FormControl('', [Validators.required])
     });
+
     this.EditquotationForm = new FormGroup({
-      Quotation_Id : new FormControl(''),
+      Quotation_Id: new FormControl(''),
       Quotation_Number: new FormControl(''),
       Requirement_No: new FormControl('', [Validators.required]),
+      Material_Type: new FormControl('', [Validators.required]),
       Client_Name: new FormControl('', [Validators.required]),
       Product_Name: new FormControl('', [Validators.required]),
       Product_Quantity: new FormControl('', [Validators.required]),
@@ -49,6 +53,7 @@ export class QuatationComponent implements OnInit {
       Discount_Amount: new FormControl('', [Validators.required]),
       Payment_term: new FormControl('', [Validators.required]),
       Shipping_Method: new FormControl('', [Validators.required]),
+      HSN_Code: new FormControl('', [Validators.required]),
       Address: new FormControl('', [Validators.required]),
       Validity_Date: new FormControl(''),
       Quotation_Status: new FormControl('', [Validators.required])
@@ -58,6 +63,32 @@ export class QuatationComponent implements OnInit {
   ngOnInit(): void {
     this.Allrequirements();
     this.ALLQuotation();
+    this.AddQuotationform.get('Requirement_No')?.valueChanges
+      .subscribe(reqNo => {
+        if (reqNo) {
+          this.autoFillByRequirement(reqNo);
+        }
+      });
+  }
+
+  autoFillByRequirement(reqNo: string) {
+    const req = this.AllRequirementData.find(
+      (r: any) => r.Requirement_No === reqNo
+    );
+
+    if (!req) return;
+
+    this.AddQuotationform.patchValue({
+      Material_Type: req.Material_Type,
+      Client_Name: req.Client_Name,
+      Product_Name: req.Product_Name,
+      Product_Quantity: req.Product_Quantity,
+      Client_Address: req.Client_Address,
+      Manufacturing_Cost: req.Manufacturing_Cost,
+      Material_Cost: req.Material_Cost,
+      Dispatch_Cost: req.Dispatch_Cost,
+      Rate: req.Rate
+    });
   }
 
   Allrequirements() {

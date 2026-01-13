@@ -6,7 +6,7 @@
 <div class="row">
     <div class="col-5">
      <div class="card" >
-         <div class="card-header">Add New Work Order</div>
+         <div class="card-header">Add New Quotation</div>
         <div class="card-body">
             <form [formGroup]="AddQuotationform" (submit)="AddQuotations()" >
 
@@ -20,6 +20,12 @@
                          </select>  <br>
                          </div>
                     </div>
+
+                    <input class="form-control" formControlName="Material_Type" readonly>
+                    <input class="form-control" formControlName="Client_Name" readonly>
+                    <input class="form-control" formControlName="Product_Name" readonly>
+                    <input class="form-control" formControlName="Product_Quantity" readonly>
+                    <input class="form-control" formControlName="Client_Address" readonly>
 
                     <div class="col-6">
                          <div class="mb-3">
@@ -112,9 +118,9 @@
                 <div class="row">
 
                        <div class="mb-3">
-                         <label for="Address">Address</label>
+                         <label for="Client_Address">Address</label>
                             <br>
-                         <select formControlName="Address" class="Se">
+                         <select formControlName="Client_Address" class="Se">
                             <option *ngFor="let mat of AllRequirementData" [value]="mat.Client_Address">{{mat.Client_Address}}({{mat.Requirement_No}})</option>
                          </select>  <br>
                         </div>

@@ -5,40 +5,47 @@
    
     </div>
     <div class="row">
-        <div class="col-4">
+        <div class="col-6">
             <div class="card">
                    <div class="card-header">Add New Requirement</div>
                 <div class="card-body">
                        <form [formGroup]="Requirementform" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
                                      <div class="">
                                         <label>Client Name</label>
-                                        <input formControlName="Client_Name" class="form-control" /> <br>
+                                        <input formControlName="Client_Name" class="form-control" placeholder="Enter Client Name" /> <br>
                                     </div>
 
+                                     <div class="">
+                                        <label>Material Type</label>
+                                         <select formControlName="Material_Type" class="Se">
+                                           <option *ngFor="let mat of AllMaterials" [value]="mat.Material_Type">{{mat.Material_Type}} ({{mat.Material_Name}})</option>
+                                         </select>  <br>
+                                    </div>
+                                    <br>
                                     <div class="">
                                     <label>Product Name</label>
-                                        <textarea formControlName="Product_Name" class="form-control" ></textarea> <br>
+                                        <textarea formControlName="Product_Name" class="form-control" placeholder="Enter Product Name"></textarea> <br>
                                     </div>                                
                                   
                                     <div class="">
                                         <label>Client Address</label>
-                                      <textarea name="Client_Address" id="" formControlName="Client_Address" class="form-control"></textarea>
+                                      <textarea name="Client_Address" id="" formControlName="Client_Address" class="form-control" placeholder="Enter Client Address"></textarea>
                                     <br>
                                     </div>
                                      <div class="row">
                                     <div class="col-md-6">
                                         <label>Client Email</label>
-                                        <input formControlName="Client_Email" class="form-control" /> <br>      
+                                        <input formControlName="Client_Email" class="form-control" placeholder="Enter Client Email Address" /> <br>      
                                     </div>
                                     <div class="col-md-6">
                                         <label>Client PhoneNo </label>
-                                        <input formControlName="Client_PhoneNo" class="form-control" /> <br>
+                                        <input formControlName="Client_PhoneNo" class="form-control" placeholder="Enter Client Phone Number"/> <br>
                                     </div>
                                 </div>
                                     <div class="row">
                                         <div class="col-6"> 
                                         <label>Product Quantity</label>
-                                        <input formControlName="Product_Quantity" class="form-control" /> <br>
+                                        <input formControlName="Product_Quantity" class="form-control" placeholder="Enter Product Quantity"/> <br>
                                         </div>
                                         <div class="col-6">
                                              <label>Status</label>  
@@ -55,7 +62,12 @@
                                  
                                 <div class=" ">
                                         <label>Design File</label>
-                                        <input type="file" (change)="onFileSelected($event)" class="form-control" />
+                                        <input type="file" (change)="onFileselectDesignfile($event)" class="form-control" />
+                                    </div>
+                                <br>
+                                <div class=" ">
+                                        <label>PDF Design File</label>
+                                        <input type="file" (change)="onFileselectPDFfile($event)" class="form-control" />
                                     </div>
                            <br>
                                 <div class="text-center">
@@ -66,7 +78,7 @@
             </div>
         </div>
         <br>
-        <div class="col-7">
+        <div class="col-6">
         <div class="row">
             <div class="col-md-6" *ngFor="let a of AllRequirementData, let i = index">
                 <div class="card">
@@ -83,6 +95,7 @@
                         <p>Requirement Number : {{a.Requirement_No}}</p>
                         <p>Client Name :  {{a.Client_Name}}</p>
                         <p>Product Name :  {{a.Product_Name}}</p>
+                        <p>Material Type:  {{a.Material_Type}}</p>
                         <p>Phone No :  {{a.Client_PhoneNo}}</p>
                         <p>Email :  {{a.Client_Email}}</p>
                         <p>Product Quantity :  {{a.Product_Quantity}}</p>
@@ -158,6 +171,10 @@
                                     <div class=" ">
                                         <label>Design File</label>
                                         <input type="file" (change)="onFileChange($event,'Design_File')" class="form-control" />
+                                    </div>
+                                    <div class=" ">
+                                        <label> PDF Design File</label>
+                                        <input type="file" (change)="onFileChange($event,'PDFDesignfile')" class="form-control" />
                                     </div>
                                         <br>
                                 <div class="text-center">
