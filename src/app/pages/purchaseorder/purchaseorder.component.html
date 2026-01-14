@@ -5,56 +5,138 @@
 
 <div class="row">
     <div class="col-5">
-     <div class="card" style="position: fixed; width: 30%;">
+     <div class="card" >
          <div class="card-header">Add New Purchase Order</div>
         <div class="card-body">
             <form [formGroup]="AddpurchaseorderForm" (submit)="AddPurchaseOrder()" >
-                
-            <div class="mb-3">
+                 <div class="row">
+                    <div class="col-6">
+                            <div class="mb-3">
                <label for="Requirement_No">Requirement No</label>
                <br>
                 <select formControlName="Requirement_No" class="Se">
-                    <option *ngFor="let mat of AllRequirementData" [value]="mat.Requirement_No">{{mat.Requirement_No}}</option>
+                    <option *ngFor="let mat of Quotations" [value]="mat.Requirement_No">{{mat.Requirement_No}}</option>
                 </select>  <br>
             </div>
+                    </div>
+                   
+                    <div class="col-6">
+                            <div class="mb-3">
+                             <label for="Product_Name">Product Name </label>
+                                <br>
+                            <select formControlName="Product_Name" class="Se">
+                                <option *ngFor="let mat of AllRequirementData" [value]="mat.Product_Name">{{mat.Product_Name}} ({{mat.Requirement_No}})</option>
+                            </select>  <br>
+                            </div>
+                    </div>
 
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Client Name : </label>
-              <br>
-                <select formControlName="Client_Name" class="">
-                    <option *ngFor="let mat of AllRequirementData" [value]="mat.Client_Name">{{mat.Client_Name}}</option>
-                </select>  <br>
-            </div>
+                    <div class="col-6">
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label"> Material Type : </label>
+                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                      formControlName="Material_Type" placeholder="Enter Material Type ">
+                            </div>
+                    </div>
+                   
+                    <div class="col-6">
+                          <div class="mb-3">
+                              <label for="exampleInputEmail1" class="form-label">Client Name : </label>
+                                        <br>
+                                               <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                                formControlName="Client_Name" placeholder="Enter ClientName">
+                                    <!-- <select formControlName="Client_Name" class="">
+                                        <option *ngFor="let mat of AllRequirementData" [value]="mat.Client_Name">{{mat.Client_Name}}({{mat.Requirement_No}})</option>
+                                    </select>  <br> -->
+                         </div>
+                    </div>  
 
+                    <div class="col-6">
+                          <div class="mb-3">
+                              <label for="exampleInputEmail1" class="form-label">Product Quantity : </label>
+                                        <br>
+                                               <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                                formControlName="Product_Quantity" placeholder="Enter Quantity">
+                              
+                         </div>
+                    </div>   
+
+                    <div class="col-6">
+                          <div class="mb-3">
+                              <label for="exampleInputEmail1" class="form-label">Rate : </label>
+                                        <br>
+                                               <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                                formControlName="Rate" placeholder="Enter Rate">
+                         </div>
+                    </div>     
+                    
+                    <div class="col-6">
+                          <div class="mb-3">
+                              <label for="exampleInputEmail1" class="form-label">Sub Total : </label>
+                                        <br>
+                                               <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                                formControlName="Subtotal" placeholder="Enter Rate">
+                         </div>
+                    </div>     
+
+                    <div class="col-6">
+                          <div class="mb-3">
+                              <label for="exampleInputEmail1" class="form-label">CGST Amount : </label>
+                                        <br>
+                                               <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                                formControlName="CGST_amount" placeholder="Enter CGST Amount">
+                         </div>
+                    </div>     
+
+                    <div class="col-6">
+                          <div class="mb-3">
+                              <label for="exampleInputEmail1" class="form-label">SGST Amount : </label>
+                                        <br>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                        formControlName="SGST_amount" placeholder="Enter SGST Amount">
+                         </div>
+                    </div>     
+
+                    <div class="col-6">
+                          <div class="mb-3">
+                              <label for="exampleInputEmail1" class="form-label">Total Amount : </label>
+                                        <br>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                        formControlName="Total_Amount" placeholder="Enter total Amount">
+                         </div>
+                    </div>     
+                    <div class="col-6">
+                          <div class="mb-3">
+                              <label for="exampleInputEmail1" class="form-label">Discount Amount : </label>
+                                        <br>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                        formControlName="Discount_Amount" placeholder="Enter discount Amount">
+                         </div>
+                    </div>     
+                    <div class="col-6">
+                          <div class="mb-3">
+                             
+                                  <label for="Payment_term">Payment Term  : </label>
+                                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                        formControlName="Payment_term" placeholder="Enter Payment term">
+
+                         </div>
+                    </div>     
+
+                </div>      
+
+          
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Purchase Address : </label>
+                <label for="exampleInputEmail1" class="form-label">Clent  Address : </label>
                 <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    formControlName="Purchase_Address" placeholder="Enter Purchase Address ">
-            </div>
-
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label"> Material Type Used : </label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    formControlName="Material_Type_Used" placeholder="Enter  Material Type Used">
-            </div>
-
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label"> Quantity : </label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    formControlName="Quantity" placeholder="Enter Quantity in Number">
+                    formControlName="Client_Address" placeholder="Enter Purchase Address ">
             </div>
 
          <div class="row">
-            <div class="col-6"> 
+            <div class="col-12"> 
             <div class="mb-3">
-                <label for="Payment_Method">Payment Method  : </label>
-                <select class="form-select form-select-sm" formControlName="Payment_Method" aria-label="select example">
-                                <option value="Cash Payment">Cash Payment </option>
-                                <option value="UPI Payment">UPI Payment </option>
-                                <option value="Credit Card">Credit Card </option>
-                                <option value="Debit Card">Debit Card </option>
-                                <option value="Bank Transfer">Bank Transfer </option>
-                </select>
+                  <label for="exampleInputEmail1" class="form-label">Purchase Address : </label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    formControlName="Purchase_Address" placeholder="Enter Purchase Address ">
             </div>
             </div>
         
@@ -72,6 +154,12 @@
                                 <option value="Completed">Completed </option>
                                 <option value="Close">Close </option>
                 </select>
+            </div>
+            </div>
+            <div class="col-6">
+            <div class="mb-3">
+                <label for="Status">Delivery Date : </label>
+                 <input type="date" formControlName="Delivery_Date">
             </div>
             </div>
          </div>
@@ -97,16 +185,21 @@
                                 <i class="fa-solid fa-pen-to-square fa-lg"></i>
                         </a>
                         <span style="margin-left:15px;cursor: pointer;"><a (click)="DeletePurchaseOrder(a.Id)" title="Delete a Purchase Order"> <i class="fa-solid fa-trash-can"></i></a></span>
-                     </div>
+                    <a (click)="printPdf(a.Id)" title="Print a Receipt"> <span  style="margin-left:15px;cursor: pointer;"><i class="fa-solid fa-print"></i></span></a>
+                  
+                    </div>
                      <br>
+                       <p title="View Purchase Order Details" >Purchase Order Id : <a href="" [routerLink]="['/AdminDashboard/PurchaseOrderDetails', a.Id]">{{a.Id}}</a></p>
                         <p>Purchase Order Number : {{a.Purchase_Number}}</p>
                         <p>Requirement Number :  {{a.Requirement_No}}</p>
                         <p>Client Name :  {{a.Client_Name}}</p>
-                        <p>Quantity No :  {{a.Quantity}}</p>
-                        <p>Material Type Used	 :  {{a.Material_Type_Used	}}</p>
+                        <p>Product_Quantity No :  {{a.Product_Quantity}}</p>
+                        <p>Material Type :  {{a.Material_Type}}</p>
                         <p>Address :  {{a.Purchase_Address}}</p>
-                        <p>Payment Method :  {{a.Payment_Method}}</p>
+                        <p>Payment Term :  {{a.Payment_term}}</p>
                         <p>Status :  {{a.Status}}</p>
+                        <p>Order Delivery Date :  {{a.Delivery_Date | date}} <br>
+                           <span>Delivery Time : {{a.Delivery_Date | date :'hh:mm:ss'}}</span> </p>
                         <p>Added Date :  {{a.Added_Date | date}} <br>
                            <span>Added Time : {{a.Added_Date | date :'hh:mm:ss'}}</span> </p>
                         <p>Updated Date : {{a.Updated_Date | date}} <br> 
@@ -134,7 +227,7 @@
                <label for="Requirement_No">Requirement No</label>
                <br>
                 <select formControlName="Requirement_No" style="height: 35%;" class="">
-                    <option *ngFor="let mat of AllRequirementData" [value]="mat.Requirement_No">{{mat.Requirement_No}}</option>
+                    <option *ngFor="let mat of Quotations" [value]="mat.Requirement_No">{{mat.Requirement_No}}</option>
                 </select>  <br>
             </div>
 
@@ -142,7 +235,7 @@
                 <label for="exampleInputEmail1" class="form-label">Client Name : </label>
               <br>
                 <select formControlName="Client_Name" style="height: 35%;" class="">
-                    <option *ngFor="let mat of AllRequirementData" [value]="mat.Client_Name">{{mat.Client_Name}}</option>
+                    <option *ngFor="let mat of Quotations" [value]="mat.Client_Name">{{mat.Client_Name}}</option>
                 </select>  <br>
             </div>
 
@@ -155,20 +248,20 @@
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label"> Material Type Used : </label>
                 <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    formControlName="Material_Type_Used" placeholder="Enter  Material_Type_Used">
+                    formControlName="Material_Type" placeholder="Enter  Material_Type">
             </div>
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label"> Quantity : </label>
+                <label for="exampleInputEmail1" class="form-label"> Product_Quantity : </label>
                 <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    formControlName="Quantity" placeholder="Enter Quantity in number">
+                    formControlName="Product_Quantity" placeholder="Enter Product_Quantity in number">
             </div>
 
          <div class="row">
              
         <div class="col-6"> 
                    <div class="mb-3">
-                <label for="Payment_Method">Payment Method  : </label>
-                <select class="form-select form-select-sm" formControlName="Payment_Method" aria-label="select example">
+                <label for="Payment_term">Payment Method  : </label>
+                <select class="form-select form-select-sm" formControlName="Payment_term" aria-label="select example">
                                 <option value="Cash Payment">Cash Payment </option>
                                 <option value="UPI Payment">UPI Payment </option>
                                 <option value="Credit Card">Credit Card </option>

@@ -55,6 +55,10 @@ export class RestService {
     return this._http.get(this.ApiUrl + '/AllQuotation');
   }
 
+  ByidAllQuotation(Quotation_Id: any) {
+    return this._http.get(this.ApiUrl + '/AllquotationbByid/' + Quotation_Id);
+  }
+
   Updatequotation(data: any) {
     return this._http.put(this.ApiUrl + '/UpdateQuotation/' + data.Quotation_Id, data);
   }
@@ -62,6 +66,13 @@ export class RestService {
   DeleteQuotation(Quotation_Id: number) {
     return this._http.delete(this.ApiUrl + '/DeleteQuotation/' + Quotation_Id);
   }
+
+  GenerateQuotation(Quotation_Id: any) {
+    return this._http.get(`${this.ApiUrl}/GetQuotationPDF/${Quotation_Id}`, {
+      responseType: 'blob'
+    });
+  }
+
 
   // Quotation API Ends
 
@@ -75,6 +86,10 @@ export class RestService {
     return this._http.post(this.ApiUrl + '/AddPurchaseOrder', data);
   }
 
+  Purchaseorderbyid(Id: any) {
+    return this._http.get(this.ApiUrl + '/PurchaseOrderbyid/' + Id);
+  }
+
   EditPurchaseOrder(data: any) {
     return this._http.put(this.ApiUrl + '/UpdatePurchaseOrder/' + data.Id, data);
   }
@@ -82,6 +97,14 @@ export class RestService {
   DeletePurchaseOrder(Id: number) {
     return this._http.delete(this.ApiUrl + '/DeletePurchaseOrder/' + Id);
   }
+
+  GeneratePurchaseOrder(Id: any) {
+    return this._http.get(`${this.ApiUrl}/GetPurchaseOrderPDF/${Id}`, {
+      responseType: 'blob'
+    });
+  }
+
+
   //AllPurchase Order Api Ends
 
   //AllREquirement Data
@@ -198,24 +221,24 @@ export class RestService {
   //Work Order API Ends
 
   //WorkorderClose API Start
-  AddWorkorderclose(data:any){
+  AddWorkorderclose(data: any) {
     return this._http.post(this.ApiUrl + '/AddWorkorderClose', data);
   }
 
-  Updateworkorderclose(data:any){
+  Updateworkorderclose(data: any) {
     return this._http.put(this.ApiUrl + '/UpdateWorkorderClose/' + data.WorkClose_Id, data);
   }
 
-  Allworkorderclose(){
+  Allworkorderclose() {
     return this._http.get(this.ApiUrl + '/AllWorkorderClose');
   }
 
-  AllUpdateWorkOrderClosebyid(WorkClose_Id: any){
-    return this._http.get(this.ApiUrl + '/Allworkorderclose/'+ WorkClose_Id);
+  AllUpdateWorkOrderClosebyid(WorkClose_Id: any) {
+    return this._http.get(this.ApiUrl + '/Allworkorderclose/' + WorkClose_Id);
   }
 
-  DeleteWorkorderClose(WorkClose_Id: any){
-    return this._http.delete(this.ApiUrl + '/DeleteWorkorderclose/'+ WorkClose_Id);
+  DeleteWorkorderClose(WorkClose_Id: any) {
+    return this._http.delete(this.ApiUrl + '/DeleteWorkorderclose/' + WorkClose_Id);
   }
 
   //WorkorderClose API Ends 

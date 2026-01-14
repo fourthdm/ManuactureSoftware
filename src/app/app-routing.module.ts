@@ -19,6 +19,8 @@ import { EmployeeComponent } from './pages/employee/employee.component';
 import { WorkcloseComponent } from './pages/workclose/workclose.component';
 import { RequirementComponent } from './pages/requirement/requirement.component';
 import { ViewrequirementComponent } from './pages/viewrequirement/viewrequirement.component';
+import { ViewpurchaseorderComponent } from './pages/viewpurchaseorder/viewpurchaseorder.component';
+import { ViewquotationComponent } from './pages/viewquotation/viewquotation.component';
 
 const routes: Routes = [
 
@@ -37,6 +39,8 @@ const routes: Routes = [
       { path: 'PurchaseOrder', component: PurchaseorderComponent },
       { path: 'Requirement', component: RequirementComponent },
       { path: 'RequirementDetails/:Req_id', component: ViewrequirementComponent },
+      { path: 'QuotationDetails/:Quotation_Id', component: ViewquotationComponent },
+      { path: 'PurchaseOrderDetails/:Id', component: ViewpurchaseorderComponent },
       { path: '**', redirectTo: 'AdminDashboard' }
     ]
   },

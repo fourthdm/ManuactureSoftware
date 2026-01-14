@@ -13,6 +13,8 @@ export class PurchaseorderComponent implements OnInit {
   AllPurchaseOrderData: any[] = [];
   AllRequirementData: any[] = [];
 
+  Quotations: any[] = [];
+
   AddpurchaseorderForm: FormGroup;
   EditpurchaseorderForm: FormGroup;
 
@@ -22,22 +24,39 @@ export class PurchaseorderComponent implements OnInit {
     this.AddpurchaseorderForm = new FormGroup({
       Requirement_No: new FormControl('', [Validators.required]),
       Client_Name: new FormControl('', [Validators.required]),
-      Material_Type_Used: new FormControl('', [Validators.required]),
-      Quantity: new FormControl('', [Validators.required]),
+      Material_Type: new FormControl('', [Validators.required]),
+      Payment_term: new FormControl('', [Validators.required]),
+      Product_Name: new FormControl('', [Validators.required]),
+      Product_Quantity: new FormControl('', [Validators.required]),
+      Rate: new FormControl('', [Validators.required]),
+      Subtotal: new FormControl('', [Validators.required]),
+      CGST_amount: new FormControl('', [Validators.required]),
+      SGST_amount: new FormControl('', [Validators.required]),
+      Total_Amount: new FormControl('', [Validators.required]),
+      Discount_Amount: new FormControl('', [Validators.required]),
+      Client_Address: new FormControl('', [Validators.required]),
       Purchase_Address: new FormControl('', [Validators.required]),
-      Payment_Method: new FormControl('', [Validators.required]),
+      Delivery_Date: new FormControl(''),
       Status: new FormControl('', [Validators.required]),
-
     });
 
     this.EditpurchaseorderForm = new FormGroup({
       Id: new FormControl(''),
       Requirement_No: new FormControl('', [Validators.required]),
       Client_Name: new FormControl('', [Validators.required]),
-      Material_Type_Used: new FormControl('', [Validators.required]),
-      Quantity: new FormControl('', [Validators.required]),
+      Material_Type: new FormControl('', [Validators.required]),
+      Payment_term: new FormControl('', [Validators.required]),
+      Product_Name: new FormControl('', [Validators.required]),
+      Product_Quantity: new FormControl('', [Validators.required]),
+      Rate: new FormControl('', [Validators.required]),
+      Subtotal: new FormControl('', [Validators.required]),
+      CGST_amount: new FormControl('', [Validators.required]),
+      SGST_amount: new FormControl('', [Validators.required]),
+      Total_Amount: new FormControl('', [Validators.required]),
+      Discount_Amount: new FormControl('', [Validators.required]),
+      Client_Address: new FormControl('', [Validators.required]),
       Purchase_Address: new FormControl('', [Validators.required]),
-      Payment_Method: new FormControl('', [Validators.required]),
+      Delivery_Date: new FormControl(''),
       Status: new FormControl('', [Validators.required]),
     });
   }
@@ -45,7 +64,45 @@ export class PurchaseorderComponent implements OnInit {
   ngOnInit(): void {
     this.Allrequirements();
     this.AllPurchaseOrder();
+    this.ALLQuotation();
+    this.AddpurchaseorderForm.get('Requirement_No')?.valueChanges
+      .subscribe(reqNo => {
+        if (reqNo) {
+          this.autoFillByRequirement(reqNo);
+        }
+      });
+  }
 
+  autoFillByRequirement(reqNo: string) {
+    const req = this.Quotations.find(
+      (r: any) => r.Requirement_No === reqNo
+    );
+
+    if (!req) return;
+
+    this.AddpurchaseorderForm.patchValue({
+      Material_Type: req.Material_Type,
+      Client_Name: req.Client_Name,
+      Product_Name: req.Product_Name,
+      Product_Quantity: req.Product_Quantity,
+      Client_Address: req.Client_Address,
+      Rate: req.Rate,
+      Subtotal: req.Subtotal,
+      CGST_amount: req.CGST_amount,
+      SGST_amount: req.SGST_amount,
+      Total_Amount: req.Total_Amount,
+      Discount_Amount: req.Discount_Amount,
+      Payment_term: req.Payment_term
+    });
+
+  }
+  ALLQuotation() {
+    this._rest.AllQuotation().subscribe((data: any) => {
+      console.log(data);
+      this.Quotations = data.data;
+    }, (err: any) => {
+      console.log(err);
+    });
   }
 
   Allrequirements() {
@@ -108,6 +165,27 @@ export class PurchaseorderComponent implements OnInit {
         alert('Error while deleting Purchase Order');
       });
     }
+  }
+
+
+   printPdf(Id: any) {
+    this._rest.GeneratePurchaseOrder(Id)
+      .subscribe((file: Blob) => {
+        const url = window.URL.createObjectURL(file);
+        const win = window.open('', '_blank');
+
+        if (win) {
+          win.document.write(
+            `<iframe src="${url}" style="width:100%;height:100%;border:none;"></iframe>`
+          );
+
+          setTimeout(() => {
+            win.print();
+          }, 800);
+
+          URL.revokeObjectURL(url);
+        }
+      });
   }
 
 }

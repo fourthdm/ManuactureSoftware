@@ -21,11 +21,11 @@
                          </div>
                     </div>
 
-                    <input class="form-control" formControlName="Material_Type" readonly>
+                    <!-- <input class="form-control" formControlName="Material_Type" readonly>
                     <input class="form-control" formControlName="Client_Name" readonly>
                     <input class="form-control" formControlName="Product_Name" readonly>
                     <input class="form-control" formControlName="Product_Quantity" readonly>
-                    <input class="form-control" formControlName="Client_Address" readonly>
+                    <input class="form-control" formControlName="Client_Address" readonly> -->
 
                     <div class="col-6">
                          <div class="mb-3">
@@ -39,26 +39,10 @@
                                 </select>
                          </div>
                     </div>
-                    
-                    <div class="col-6">
-                          <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label"> Rate: </label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    formControlName="Rate" placeholder="Enter Rate">
-                     </div> 
-                    </div>
-
-                    <div class="col-6">
-                          <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label"> Discount Amount: </label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    formControlName="Discount_Amount" placeholder="Enter Discount Amount">
-                     </div> 
-                    </div>
-
+                                        
                 </div>
                 
-                <div class="row">
+                <div class="row">   
                     <div class="col-6">
                             <div class="mb-3">
                              <label for="Product_Name">Product Name </label>
@@ -78,9 +62,40 @@
                                     </select>  <br>
                          </div>
                     </div>
+                   
+                    <div class="col-6">
+                          <div class="mb-3">
+                              <label for="exampleInputEmail1" class="form-label">Material Type : </label>
+                                        <br>
+                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    formControlName="Material_Type" placeholder="Enter Material Type ">
+
+                               
+                                        <!-- <select formControlName="Material_Type" class="">
+                                        <option *ngFor="let mat of AllRequirementData" [value]="mat.Material_Type">{{mat.Material_Type}}({{mat.Requirement_No}})</option>
+                                    </select>  <br> -->
+                         </div>
+                    </div>
                 </div>
 
                 <div class="row">
+
+                    <div class="col-6">
+                          <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label"> Rate: </label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    formControlName="Rate" placeholder="Enter Rate">
+                     </div> 
+                    </div>
+
+                    <div class="col-6">
+                          <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label"> Discount Amount: </label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    formControlName="Discount_Amount" placeholder="Enter Discount Amount">
+                     </div> 
+                    </div>
+
                     <div class="col-md-6">
                         <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label"> Manufacturing Cost : </label>
@@ -176,7 +191,7 @@
     <br><br>    
     <div class="col-7">
         <div class="row">
-            <div class="col-md-12" *ngFor="let q of Quotations, let i = index">
+            <div class="col-md-6" *ngFor="let q of Quotations, let i = index">
                 <div class="card">
                     <div class="card-body">
                       
@@ -190,13 +205,17 @@
                             <i class="fa-solid fa-trash-can"></i>
                             </a>
                         </span>
+                            <a (click)="printPdf(q.Quotation_Id)" title="Print a Receipt"> <span style="color: white;">🖨</span></a>
                      </div>
                      <br>
                     <div class="row">
                         <div class="col-6">
-                             <p>Quotation Number : {{q.Quotation_Number}} <br>
+                               <p title="View Quotation Details" >Quotation Id : <a href="" [routerLink]="['/AdminDashboard/QuotationDetails',q.Quotation_Id]">{{q.Quotation_Id}}</a></p>
+                             <p>
+                                Quotation Number : {{q.Quotation_Number}} <br>
                                 Client Name :  {{q.Client_Name}} <br> 
-                                Manufacturing Cost : &#8377; {{q.Manufacturing_Cost}} <br>
+                                Material Name :  {{q.Material_Type}} <br> 
+                                Manufacturing Cost : &#8377; {{q.Manufacturing_Cost}} <br>  
                                 Material Cost : &#8377; {{q.Material_Cost}}  <br>
                                 Dispatch Cost :  &#8377; {{q.Dispatch_Cost}}  <br>
                                 Payment Term :  {{q.Payment_term}}  <br>

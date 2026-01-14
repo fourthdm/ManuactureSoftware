@@ -1,0 +1,32 @@
+<div class="container"> <br><br><br>
+    <div class="row">
+
+        <div class="text-center">
+            <h2>Quotation Details</h2>
+            <br>
+
+        </div>
+        <div class="card" *ngFor="let a of Quotations, let i= index">
+            <div class="text-end">
+                <p> <b>Added Date : </b> {{ a.Added_Date | date }} <br> {{a.Added_Date | date:'h:mm a' }}</p>
+            </div>
+            <div class="row">
+                <div class="col-5"> 
+                        <p>Client Name :  {{a.Client_Name}}</p>
+                        <p>Product Name :  {{a.Product_Name}}</p>
+                        <p>Product Quantity :  {{a.Product_Quantity}}</p>
+                        <p>Client Address :  {{a.Client_Address}}</p>
+                        <p>Quotation Status :  {{a.Quotation_Status}}</p>
+                        <p>Added Date :  {{a.Added_Date | date}} <br>
+                           <span>Added Time : {{a.Added_Date | date :'hh:mm:ss'}}</span> </p>
+                        <p>Validity Date :  {{a.Validity_Date | date}} <br>
+                           <span>Validity Time : {{a.Validity_Date | date :'hh:mm:ss'}}</span> </p>
+                        <p>Updated Date : {{a.Updated_Date | date}} <br> 
+                            <span>Updated Time : </span> {{a.Updated_Date | date :'hh:mm:ss'}}</p>
+                </div><br>
+
+            </div>
+
+        </div>
+    </div>
+</div>
