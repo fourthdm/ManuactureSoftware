@@ -13,6 +13,8 @@ export class PurchaseorderComponent implements OnInit {
   AllPurchaseOrderData: any[] = [];
   AllRequirementData: any[] = [];
 
+  pro: any;
+  
   Quotations: any[] = [];
 
   AddpurchaseorderForm: FormGroup;

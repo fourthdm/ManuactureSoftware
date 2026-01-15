@@ -13,6 +13,8 @@ export class QuatationComponent implements OnInit {
   AllRequirementData: any[] = [];
   Quotations: any[] = [];
 
+  pro: any;
+
   AddQuotationform: FormGroup;
   EditquotationForm: FormGroup;
 

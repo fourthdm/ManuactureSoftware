@@ -13,6 +13,8 @@ export class RequirementComponent implements OnInit {
   AllRequirementData: any[] = [];
   AllMaterials: any[] = [];
 
+  pro: any;
+
   Requirementform: FormGroup;
   EditRequirementform: FormGroup;
 
@@ -90,7 +92,7 @@ export class RequirementComponent implements OnInit {
       formData.append('Design_File', this.DesignFile);
     }
 
-    if(this.PDFDesignFile){
+    if (this.PDFDesignFile) {
       formData.append('PDFDesignfile', this.PDFDesignFile);
     }
 
@@ -155,27 +157,27 @@ export class RequirementComponent implements OnInit {
   }
 
   UpdateRequirements() {
-  const formData = new FormData();
+    const formData = new FormData();
 
-  Object.keys(this.EditRequirementform.controls).forEach(key => {
-    const value = this.EditRequirementform.get(key)?.value;
+    Object.keys(this.EditRequirementform.controls).forEach(key => {
+      const value = this.EditRequirementform.get(key)?.value;
 
-    if (value !== null && value !== undefined) {
-      formData.append(key, value);
-    }
-  });
+      if (value !== null && value !== undefined) {
+        formData.append(key, value);
+      }
+    });
 
-  this._rest
-    .UpdateRequirementss(this.EditRequirementform.value.Req_id, formData)
-    .subscribe(
-      res => {
-        console.log('Update success', res);
-        this.EditRequirementform.reset();
-        this.ngOnInit();
-      },
-      err => console.error(err)
-    );
-}
+    this._rest
+      .UpdateRequirementss(this.EditRequirementform.value.Req_id, formData)
+      .subscribe(
+        res => {
+          console.log('Update success', res);
+          this.EditRequirementform.reset();
+          this.ngOnInit();
+        },
+        err => console.error(err)
+      );
+  }
 
   // UpdateRequirements() {
   //   const formData = new FormData();

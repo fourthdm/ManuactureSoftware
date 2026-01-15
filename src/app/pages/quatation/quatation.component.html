@@ -68,12 +68,16 @@
                               <label for="exampleInputEmail1" class="form-label">Material Type : </label>
                                         <br>
                                 <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    formControlName="Material_Type" placeholder="Enter Material Type ">
+                            formControlName="Material_Type" placeholder="Enter Material Type ">
+                         </div>
+                    </div>
 
-                               
-                                        <!-- <select formControlName="Material_Type" class="">
-                                        <option *ngFor="let mat of AllRequirementData" [value]="mat.Material_Type">{{mat.Material_Type}}({{mat.Requirement_No}})</option>
-                                    </select>  <br> -->
+                    <div class="col-6">
+                          <div class="mb-3">
+                              <label for="exampleInputEmail1" class="form-label"> HSN Code : </label>
+                                        <br>
+                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            formControlName="HSN_Code" placeholder="Enter HSN Code">
                          </div>
                     </div>
                 </div>
@@ -191,8 +195,48 @@
     <br><br>    
     <div class="col-7">
         <div class="row">
-            <div class="col-md-6" *ngFor="let q of Quotations, let i = index">
-                <div class="card">
+            <div class="col-md-12">
+                <table class="table" >
+                    <thead>
+                        <tr>
+                            <td>Sr No.</td>
+                            <th>Quotation No</th>
+                            <th>Client Name</th>
+                            <th>Action</th>
+                        
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr   *ngFor="let q of Quotations  | paginate :{itemsPerPage :10 ,currentPage:pro},let i = index">
+                           <td >{{q.Quotation_Id}}</td>
+                          <td><p title="View Quotation Details" ><a href="" [routerLink]="['/AdminDashboard/QuotationDetails', q.Quotation_Id]">{{q.Quotation_Number}}</a></p></td>
+                            
+                            <td>{{q.Client_Name}}</td>
+                            <td>
+                            <p class="">
+                                        <a type="button" (click)="editQuotation(q.Quotation_Id)" data-bs-toggle="modal"
+                                               data-bs-target="#exampleModal1" title="Edit a Quotations">
+                                             <i class="fa-solid fa-pen-to-square fa-lg"></i>
+                                        </a>
+                            <span style="margin-left:15px;cursor: pointer;">
+                                <a (click)="DeleteQuotation(q.Quotation_Id)" title="Delete Quotation"> 
+                                <i class="fa-solid fa-trash-can"></i>
+                                </a>
+                            </span>
+                           <a (click)="printPdf(q.Quotation_Id)" title="Print a Receipt"> <span  style="margin-left:15px;cursor: pointer;"><i class="fa-solid fa-print"></i></span></a>
+                            </p>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+
+                  <div class="text-center">
+                <pagination-controls (pageChange)=" pro = $event "
+                    style="background-color: #252847 !important; z-index: -2 !important;"></pagination-controls>
+                </div>
+
+<!--       <div class="card">
                     <div class="card-body">
                       
                      <div class="text-end"> 
@@ -243,7 +287,7 @@
                     </div>  
                                             
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -419,6 +463,6 @@
     </div> 
 
 </div>
-
+<br><br>
 
 </div>

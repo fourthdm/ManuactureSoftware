@@ -29,13 +29,13 @@ designFileUrl!: SafeResourceUrl;
     this._RestService.Requirementdetails(Req_id).subscribe((res: any) => {
       this.AllRequirementData = res.data;
 
-      if (this.AllRequirementData.length > 0) {
-        const pdfUrl = this.AllRequirementData[0].PDFDesignfile;
+      // if (this.AllRequirementData.length > 0) {
+      //   const pdfUrl = this.AllRequirementData[0].PDFDesignfile;
 
-        if (pdfUrl) {
-          this.designFileUrl = this.getsafeUrl(pdfUrl);
-        }
-      }
+      //   if (pdfUrl) {
+      //     this.designFileUrl = this.getsafeUrl(pdfUrl);
+      //   }
+      // }
     });
   });
 

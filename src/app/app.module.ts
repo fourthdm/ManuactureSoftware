@@ -31,6 +31,7 @@ import { SafeurlpipePipe } from './safeurlpipe.pipe';
 import { ViewrequirementComponent } from './pages/viewrequirement/viewrequirement.component';
 import { ViewpurchaseorderComponent } from './pages/viewpurchaseorder/viewpurchaseorder.component';
 import { ViewquotationComponent } from './pages/viewquotation/viewquotation.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { ViewquotationComponent } from './pages/viewquotation/viewquotation.comp
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

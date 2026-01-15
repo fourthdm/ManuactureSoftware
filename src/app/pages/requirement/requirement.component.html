@@ -80,8 +80,48 @@
         <br>
         <div class="col-6">
         <div class="row">
-            <div class="col-md-6" *ngFor="let a of AllRequirementData, let i = index">
-                <div class="card">
+            <div class="col-md-12">
+
+                <table class="table" >
+                    <thead>
+                        <tr>
+                            <td>Sr No.</td>
+                            <th>Requirement No</th>
+                            <th>Client Name</th>
+                            <th>Action</th>
+                        
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr  *ngFor="let a of AllRequirementData | paginate :{itemsPerPage :10 ,currentPage:pro}, let i = index">
+                           <td >{{a.Req_id}}</td>
+                          <td><p title="View Requirement Details" ><a href="" [routerLink]="['/AdminDashboard/RequirementDetails', a.Req_id]">{{a.Requirement_No}}</a></p></td>
+                            
+                            <td>{{a.Client_Name}}</td>
+                            <td>
+                            <p class="">
+                                    <a type="button" (click)="editRequirement(a.Req_id)" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal1" title="Edit a Requirement">
+                                            <i class="fa-solid fa-pen-to-square fa-lg"></i>
+                                    </a>
+                                 <span style="margin-left: 5%;">
+                                    <a  type="button" (click)="DeleteRequirement(a.Req_id)" title="Delete a Requirement"> 
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </a>
+                                </span>
+                            </p>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+    
+                <div class="text-center">
+                <pagination-controls (pageChange)=" pro = $event "
+                    style="background-color: #252847 !important; z-index: -2 !important;"></pagination-controls>
+                </div>
+
+                <!-- <div class="card">
                     <div class="card-body">
                     <p class="text-end">
                          <a type="button" (click)="editRequirement(a.Req_id)" data-bs-toggle="modal"
@@ -106,7 +146,7 @@
                         <p>Updated Date : {{a.Updated_Date | date}} <br> 
                             <span>Updated Time : </span> {{a.Updated_Date | date :'hh:mm:ss'}}</p>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
