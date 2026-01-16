@@ -33,3 +33,12 @@ label{
 a{
     color: #000;
 }
+
+td,th{
+    background-color:  #c4c1cfab;
+    color: black;
+}
+
+th{
+    font-weight: bold;  
+}

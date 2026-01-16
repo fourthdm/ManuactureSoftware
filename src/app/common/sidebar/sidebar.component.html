@@ -198,6 +198,59 @@
                     </a> -->
                 </li>
 
+                <li class="nav-item menu-open">
+                    <a *ngIf="isAdmin"
+                        href="#"
+                        class="nav-link"
+                        routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{ exact: true }"
+                        [routerLink]="['/AdminDashboard/Bill']"
+                    >
+                        <i class="fa-solid fa-industry fa-xl"></i>
+                        <p>
+                            Bill
+                        </p>
+                    </a>
+
+                    <a *ngIf="isAccountant"
+                        href="#"
+                        class="nav-link"
+                        routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{ exact: true }"
+                        [routerLink]="['/AccountantDashboard/Bill']"
+                    >
+                        <i class="fa-solid fa-industry fa-xl"></i>
+                        <p>
+                           Bill
+                        </p>
+                    </a>
+
+                    <!-- <a
+                        href="#"
+                        class="nav-link"
+                        routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{ exact: true }"
+                        [routerLink]="['/AdminDashboard/WorkOrder']"
+                    >
+                        <i class="fa-solid fa-industry fa-xl"></i>
+                        <p>
+                            Work Order
+                        </p>
+                    </a> -->
+                    <!-- <a
+                        href="#"
+                        class="nav-link"
+                        routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{ exact: true }"
+                        [routerLink]="['/AdminDashboard/WorkOrder']"
+                    >
+                        <i class="fa-solid fa-industry fa-xl"></i>
+                        <p>
+                            Work Order
+                        </p>
+                    </a> -->
+                </li>
+
          
                 <li class="nav-item menu-open">
                     <a

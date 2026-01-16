@@ -21,6 +21,7 @@ import { RequirementComponent } from './pages/requirement/requirement.component'
 import { ViewrequirementComponent } from './pages/viewrequirement/viewrequirement.component';
 import { ViewpurchaseorderComponent } from './pages/viewpurchaseorder/viewpurchaseorder.component';
 import { ViewquotationComponent } from './pages/viewquotation/viewquotation.component';
+import { BillComponent } from './pages/bill/bill.component';
 
 const routes: Routes = [
 
@@ -35,12 +36,14 @@ const routes: Routes = [
       { path: 'DeliveryChallan', component: DeliverychallanComponent },
       { path: 'Quatation', component: QuatationComponent },
       { path: 'WorkOrder', component: WorkorderComponent },
+      { path: 'Bill', component: BillComponent },
       { path: 'WorkOrderClose', component: WorkcloseComponent },
       { path: 'PurchaseOrder', component: PurchaseorderComponent },
       { path: 'Requirement', component: RequirementComponent },
       { path: 'RequirementDetails/:Req_id', component: ViewrequirementComponent },
       { path: 'QuotationDetails/:Quotation_Id', component: ViewquotationComponent },
       { path: 'PurchaseOrderDetails/:Id', component: ViewpurchaseorderComponent },
+      { path: 'BillDetails/:Bill_Id', component: ViewpurchaseorderComponent },
       { path: '**', redirectTo: 'AdminDashboard' }
     ]
   },
@@ -66,6 +69,7 @@ const routes: Routes = [
       { path: 'DeliveryChallan', component: DeliverychallanComponent },
       { path: 'Quatation', component: QuatationComponent },
       { path: 'WorkOrder', component: WorkorderComponent },
+      { path: 'Bill', component: BillComponent },
       { path: 'WorkOrderClose', component: WorkcloseComponent },
       { path: 'PurchaseOrder', component: PurchaseorderComponent },
       { path: '**', redirectTo: 'AccountantDashboard' }
@@ -84,7 +88,8 @@ const routes: Routes = [
       { path: '**', redirectTo: 'ManagerDashboard' }
     ]
   },
-  { path: 'DispatchDashboard', component: DispatchdashboardComponent,  children: [
+  {
+    path: 'DispatchDashboard', component: DispatchdashboardComponent, children: [
       { path: '', redirectTo: 'DispatchDashboard', pathMatch: 'full' },
       { path: 'Machine', component: MachineComponent },
       { path: 'Material', component: MaterialComponent },
@@ -94,7 +99,8 @@ const routes: Routes = [
       { path: 'WorkOrderClose', component: WorkcloseComponent },
       // { path: 'PurchaseOrder', component: PurchaseorderComponent },
       { path: '**', redirectTo: 'DispatchDashboard' }
-    ] },
+    ]
+  },
 
 
   // { path: 'Machine', component: MachineComponent },

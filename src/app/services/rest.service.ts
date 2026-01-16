@@ -72,10 +72,24 @@ export class RestService {
       responseType: 'blob'
     });
   }
-
-
   // Quotation API Ends
+  
+  //Bill API Start
+  AddBill(data: any) {
+    return this._http.post(this.ApiUrl + '/AddBill', data);
+  }
 
+  GenerateBill(Bill_Id: any) {
+    return this._http.get(`${this.ApiUrl}/GetBillPDF/${Bill_Id}`, {
+      responseType: 'blob'
+    });
+  }
+
+  AllBill(){
+    return this._http.get(this.ApiUrl + '/AllBills');
+  }
+
+  //Bill API End
 
   //All Purchase Order Data
   AllPurchaseOrder() {
@@ -103,8 +117,6 @@ export class RestService {
       responseType: 'blob'
     });
   }
-
-
   //AllPurchase Order Api Ends
 
   //AllREquirement Data
@@ -240,7 +252,6 @@ export class RestService {
   DeleteWorkorderClose(WorkClose_Id: any) {
     return this._http.delete(this.ApiUrl + '/DeleteWorkorderclose/' + WorkClose_Id);
   }
-
   //WorkorderClose API Ends 
 
 

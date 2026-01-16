@@ -32,6 +32,8 @@ import { ViewrequirementComponent } from './pages/viewrequirement/viewrequiremen
 import { ViewpurchaseorderComponent } from './pages/viewpurchaseorder/viewpurchaseorder.component';
 import { ViewquotationComponent } from './pages/viewquotation/viewquotation.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { BillComponent } from './pages/bill/bill.component';
+import { ViewbillComponent } from './pages/viewbill/viewbill.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     SafeurlpipePipe,
     ViewrequirementComponent,
     ViewpurchaseorderComponent,
-    ViewquotationComponent
+    ViewquotationComponent,
+    BillComponent,
+    ViewbillComponent
   ],
   imports: [
     BrowserModule,
