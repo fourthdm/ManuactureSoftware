@@ -182,21 +182,24 @@
     <div class="col-7">
         <div class="row">
             <div class="" >
-
-                      <table class="table" >
+                <table class="table" >
                     <thead>
                         <tr>
                             <th>Sr No.</th>
                             <th>Bill Number</th>
                             <th>Client Name</th>
                             <th>Action</th>
-                        
                         </tr>
                     </thead>
                     <tbody>
                         <tr   *ngFor="let a of AllBill | paginate :{itemsPerPage :10 ,currentPage:pro},let i = index">
-                           <td >{{a.Bill_Id}}</td>
-                          <td><p title="View Bill Details" ><a href="" [routerLink]="['/AdminDashboard/BillDetails', a.Bill_Id]">{{a.Bill_Number}}</a></p></td>
+                            <td >{{a.Bill_Id}}</td>
+                             <td>
+                                <p title="View Bill Details">
+                                <a *ngIf="isAdmin" href="" [routerLink]="['/AdminDashboard/BillDetails', a.Bill_Id]">{{a.Bill_Number}}</a>
+                                <a *ngIf="isAccountant" href="" [routerLink]="['/AccountantDashboard/BillDetails', a.Bill_Id]">{{a.Bill_Number}}</a>
+                                </p>
+                             </td>
                             
                             <td>{{a.Client_Name}}</td>
                             <td>
@@ -252,8 +255,7 @@
             </div>
         </div>
     </div>
-
-
+    
  <!-- <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">

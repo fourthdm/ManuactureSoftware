@@ -34,6 +34,7 @@ th {
     background-color: #c4c1cfab !important;
     color: black;
     font-family: 'newcustomfnts';
+        font-weight: bold;
 }
 
 td {
@@ -44,4 +45,8 @@ td {
 
 .btt {
     border: 1px solid white;
+}
+
+h2{
+    color: #000;
 }

@@ -35,6 +35,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { BillComponent } from './pages/bill/bill.component';
 import { ViewbillComponent } from './pages/viewbill/viewbill.component';
 import { ViewworkorderComponent } from './pages/viewworkorder/viewworkorder.component';
+import { MangerworkorderComponent } from './workorders/mangerworkorder/mangerworkorder.component';
+import { EngineerworkorderComponent } from './workorders/engineerworkorder/engineerworkorder.component';
+import { QcworkorderComponent } from './workorders/qcworkorder/qcworkorder.component';
+import { DispatchmanagerworkorderComponent } from './workorders/dispatchmanagerworkorder/dispatchmanagerworkorder.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +70,11 @@ import { ViewworkorderComponent } from './pages/viewworkorder/viewworkorder.comp
     ViewquotationComponent,
     BillComponent,
     ViewbillComponent,
-    ViewworkorderComponent
+    ViewworkorderComponent,
+    MangerworkorderComponent,
+    EngineerworkorderComponent,
+    QcworkorderComponent,
+    DispatchmanagerworkorderComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { jwtDecode } from 'jwt-decode';
 import { RestService } from 'src/app/services/rest.service';
 
 @Component({
@@ -8,6 +9,13 @@ import { RestService } from 'src/app/services/rest.service';
   styleUrls: ['./bill.component.css']
 })
 export class BillComponent implements OnInit {
+
+  isAdmin: boolean = false;
+  isDispatchManager: boolean = false;
+  isEmployee: boolean = false;
+  isQC: boolean = false;
+  isManager: boolean = false;
+  isAccountant: boolean = false;
 
   pro: any;
 
@@ -64,6 +72,14 @@ export class BillComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.getadmintoken();
+    this.getDispatchManger();
+    this.getEmployee();
+    this.getQC();
+    this.getInventoryManager();
+    this.getAccountant();
+
     this.Bills();
     this.AllPurchaseOrder();
     this.Addbillform.get('Purchase_Number')?.valueChanges
@@ -75,6 +91,77 @@ export class BillComponent implements OnInit {
   }
 
 
+    getadmintoken() {
+      const token = localStorage.getItem('token');
+      if (token) {
+        const decoded: any = jwtDecode(token);
+        if (decoded.Role === 'SuperAdmin') {
+          this.isAdmin = true;
+        } else {
+          this.isAdmin = false;
+        }
+      }
+    }
+  
+    getEmployee() {
+      const token = localStorage.getItem('token');
+      if (token) {
+        const decoded: any = jwtDecode(token);
+        if (decoded.Role === 'Employee') {
+          this.isEmployee = true;
+        } else {
+          this.isEmployee = false;
+        }
+      }
+    }
+  
+    getDispatchManger() {
+      const token = localStorage.getItem('token');
+      if (token) {
+        const decoded: any = jwtDecode(token);
+        if (decoded.Role === 'Dispatch Manager') {
+          this.isDispatchManager = true;
+        } else {
+          this.isDispatchManager = false;
+        }
+      }
+    }
+  
+    getQC() {
+      const token = localStorage.getItem('token');
+      if (token) {
+        const decoded: any = jwtDecode(token);
+        if (decoded.Role === 'QC') {
+          this.isQC = true;
+        } else {
+          this.isQC = false;
+        }
+      }
+    }
+  
+    getAccountant() {
+      const token = localStorage.getItem('token');
+      if (token) {
+        const decoded: any = jwtDecode(token);
+        if (decoded.Role === 'Accountant') {
+          this.isAccountant = true;
+        } else {
+          this.isAccountant = false;
+        }
+      }
+    }
+  
+    getInventoryManager() {
+      const token = localStorage.getItem('token');
+      if (token) {
+        const decoded: any = jwtDecode(token);
+        if (decoded.Role === 'Manager') {
+          this.isManager = true;
+        } else {
+          this.isManager = false;
+        }
+      }
+    }
 
   autoFillByRequirement(billNo: string) {
     const req = this.AllPurchaseOrderData.find(

@@ -23,6 +23,11 @@ import { ViewpurchaseorderComponent } from './pages/viewpurchaseorder/viewpurcha
 import { ViewquotationComponent } from './pages/viewquotation/viewquotation.component';
 import { BillComponent } from './pages/bill/bill.component';
 import { ViewworkorderComponent } from './pages/viewworkorder/viewworkorder.component';
+import { ViewbillComponent } from './pages/viewbill/viewbill.component';
+import { MangerworkorderComponent } from './workorders/mangerworkorder/mangerworkorder.component';
+import { DispatchmanagerworkorderComponent } from './workorders/dispatchmanagerworkorder/dispatchmanagerworkorder.component';
+import { QcworkorderComponent } from './workorders/qcworkorder/qcworkorder.component';
+import { EngineerworkorderComponent } from './workorders/engineerworkorder/engineerworkorder.component';
 
 const routes: Routes = [
 
@@ -44,15 +49,15 @@ const routes: Routes = [
       { path: 'RequirementDetails/:Req_id', component: ViewrequirementComponent },
       { path: 'QuotationDetails/:Quotation_Id', component: ViewquotationComponent },
       { path: 'PurchaseOrderDetails/:Id', component: ViewpurchaseorderComponent },
-      { path: 'WorkorderDetails/:Workorder_Id', component: ViewworkorderComponent},
-      { path: 'BillDetails/:Bill_Id', component: ViewpurchaseorderComponent },
+      { path: 'WorkorderDetails/:Workorder_Id', component: ViewworkorderComponent },
+      { path: 'BillDetails/:Bill_Id', component: ViewbillComponent },
       { path: '**', redirectTo: 'AdminDashboard' }
     ]
   },
   {
     path: 'EmployeeDashboard', component: EmployeedashboardComponent, children: [
       { path: '', redirectTo: 'EmployeeDashboard', pathMatch: 'full' },
-      { path: 'WorkOrder', component: WorkorderComponent },
+      { path: 'WorkOrder', component: EngineerworkorderComponent },
       { path: 'WorkOrderClose', component: WorkcloseComponent },
       { path: '**', redirectTo: 'EmployeeDashboard' }
     ]
@@ -60,7 +65,7 @@ const routes: Routes = [
   {
     path: 'QCDashboard', component: QcdashboardComponent, children: [
       { path: '', redirectTo: 'QCDashboard', pathMatch: 'full' },
-      { path: 'WorkOrder', component: WorkorderComponent },
+      { path: 'WorkOrder', component: QcworkorderComponent },
       { path: 'WorkOrderClose', component: WorkcloseComponent },
       { path: '**', redirectTo: 'QCDashboard' }
     ]
@@ -68,10 +73,13 @@ const routes: Routes = [
   {
     path: 'AccountantDashboard', component: AccountantdashboardComponent, children: [
       { path: '', redirectTo: 'AccountantDashboard', pathMatch: 'full' },
+      { path: 'Machine', component: MachineComponent },
+      { path: 'Material', component: MaterialComponent },
       { path: 'DeliveryChallan', component: DeliverychallanComponent },
       { path: 'Quatation', component: QuatationComponent },
       { path: 'WorkOrder', component: WorkorderComponent },
       { path: 'Bill', component: BillComponent },
+      { path: 'BillDetails/:Bill_Id', component: ViewbillComponent },
       { path: 'WorkOrderClose', component: WorkcloseComponent },
       { path: 'PurchaseOrder', component: PurchaseorderComponent },
       { path: '**', redirectTo: 'AccountantDashboard' }
@@ -84,7 +92,8 @@ const routes: Routes = [
       { path: 'Material', component: MaterialComponent },
       { path: 'DeliveryChallan', component: DeliverychallanComponent },
       { path: 'Quatation', component: QuatationComponent },
-      { path: 'WorkOrder', component: WorkorderComponent },
+      { path: 'WorkOrder', component: MangerworkorderComponent },
+      { path: 'WorkorderDetails/:Workorder_Id', component: ViewworkorderComponent },
       { path: 'WorkOrderClose', component: WorkcloseComponent },
       { path: 'PurchaseOrder', component: PurchaseorderComponent },
       { path: '**', redirectTo: 'ManagerDashboard' }
@@ -97,7 +106,7 @@ const routes: Routes = [
       { path: 'Material', component: MaterialComponent },
       { path: 'DeliveryChallan', component: DeliverychallanComponent },
       // { path: 'Quatation', component: QuatationComponent },
-      { path: 'WorkOrder', component: WorkorderComponent },
+      { path: 'WorkOrder', component: DispatchmanagerworkorderComponent },
       { path: 'WorkOrderClose', component: WorkcloseComponent },
       // { path: 'PurchaseOrder', component: PurchaseorderComponent },
       { path: '**', redirectTo: 'DispatchDashboard' }
