@@ -1,29 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { jwtDecode } from 'jwt-decode';
 import { RestService } from 'src/app/services/rest.service';
 import { StateService } from 'src/app/services/state.service';
 
 @Component({
-  selector: 'app-workorder',
-  templateUrl: './workorder.component.html',
-  styleUrls: ['./workorder.component.css']
+  selector: 'app-mangerworkorder',
+  templateUrl: './mangerworkorder.component.html',
+  styleUrls: ['./mangerworkorder.component.css']
 })
-export class WorkorderComponent implements OnInit {
+export class MangerworkorderComponent implements OnInit {
 
-  isAdmin: boolean = false;
-  isDispatchManager: boolean = false;
-  isEmployee: boolean = false;
-  isQC: boolean = false;
-  isManager: boolean = false;
-  isAccountant: boolean = false;
+  AllManagerorders: any[] = [];
+
+  pro: any;
+
 
   AllWorkOrderData: any[] = [];
   AllPurchaseOrderData: any[] = [];
   AllRequirementData: any[] = [];
-
-  pro:any;
 
   AllManagerdata: any[] = [];
   AllEngineerdata: any[] = [];
@@ -35,48 +29,44 @@ export class WorkorderComponent implements OnInit {
   SelectedWorkOrderData: any;
 
   constructor(private _rest: RestService, private _state: StateService) {
-    this.AddWorkorderForm = new FormGroup({
-      Requirement_No: new FormControl('', [Validators.required]),
-      Purchase_Number: new FormControl('', [Validators.required]),
-      Payment_term: new FormControl('', [Validators.required]),
-      Product_Name: new FormControl('', [Validators.required]),
-      Product_Quantity: new FormControl('', [Validators.required]),
-      Material_Type: new FormControl('', [Validators.required]),
-      Manager_Name: new FormControl('', [Validators.required]),
-      Engineer_Name: new FormControl(''),
-      QC_Name: new FormControl(''),
-      DispatchManager_Name: new FormControl(''),
-      Client_Name: new FormControl('', [Validators.required]),
-      WorkOrder_Status: new FormControl('', [Validators.required]),
-      Due_Date: new FormControl('')
-    });
 
-    this.EditWorkorderForm = new FormGroup({
-      Workorder_Id: new FormControl(''),
-      Requirement_No: new FormControl('', [Validators.required]),
-      Purchase_Number: new FormControl('', [Validators.required]),
-      Payment_term: new FormControl('', [Validators.required]),
-      Product_Name: new FormControl('', [Validators.required]),
-      Product_Quantity: new FormControl('', [Validators.required]),
-      Material_Type: new FormControl('', [Validators.required]),
-      Manager_Name: new FormControl('', [Validators.required]),
-      Engineer_Name: new FormControl(''),
-      QC_Name: new FormControl(''),
-      DispatchManager_Name: new FormControl(''),
-      Client_Name: new FormControl('', [Validators.required]),
-      WorkOrder_Status: new FormControl('', [Validators.required]),
-      Due_Date: new FormControl('')
-    });
-  }
+       this.AddWorkorderForm = new FormGroup({
+          Requirement_No: new FormControl('', [Validators.required]),
+          Purchase_Number: new FormControl('', [Validators.required]),
+          Payment_term: new FormControl('', [Validators.required]),
+          Product_Name: new FormControl('', [Validators.required]),
+          Product_Quantity: new FormControl('', [Validators.required]),
+          Material_Type: new FormControl('', [Validators.required]),
+          Manager_Name: new FormControl('', [Validators.required]),
+          Engineer_Name: new FormControl(''),
+          QC_Name: new FormControl(''),
+          DispatchManager_Name: new FormControl(''),
+          Client_Name: new FormControl('', [Validators.required]),
+          WorkOrder_Status: new FormControl('', [Validators.required]),
+          Due_Date: new FormControl('')
+        });
+    
+        this.EditWorkorderForm = new FormGroup({
+          Workorder_Id: new FormControl(''),
+          Requirement_No: new FormControl('', [Validators.required]),
+          Purchase_Number: new FormControl('', [Validators.required]),
+          Payment_term: new FormControl('', [Validators.required]),
+          Product_Name: new FormControl('', [Validators.required]),
+          Product_Quantity: new FormControl('', [Validators.required]),
+          Material_Type: new FormControl('', [Validators.required]),
+          Manager_Name: new FormControl('', [Validators.required]),
+          Manager_Status: new FormControl(''),
+          Engineer_Name: new FormControl(''),
+          QC_Name: new FormControl(''),
+          DispatchManager_Name: new FormControl(''),
+          Client_Name: new FormControl('', [Validators.required]),
+          WorkOrder_Status: new FormControl('', [Validators.required]),
+          Due_Date: new FormControl('')
+        });
+   }
 
   ngOnInit(): void {
-
-    this.getadmintoken();
-    this.getDispatchManger();
-    this.getEmployee();
-    this.getQC();
-    this.getInventoryManager();
-    this.getAccountant();
+    this.Allworkorderss();
 
     this.Allrequirements();
     this.AllPurchaseOrder();
@@ -93,79 +83,16 @@ export class WorkorderComponent implements OnInit {
       });
   }
 
+  Allworkorderss() {
+    this._rest.WorkorderforManager().subscribe((data: any) => {
+      console.log(data);
+      this.AllManagerorders = data.data;
+    }, (err: any) => {
+      console.log(err);
+    });
+  }
 
-    getadmintoken() {
-      const token = localStorage.getItem('token');
-      if (token) {
-        const decoded: any = jwtDecode(token);
-        if (decoded.Role === 'SuperAdmin') {
-          this.isAdmin = true;
-        } else {
-          this.isAdmin = false;
-        }
-      }
-    }
-  
-    getEmployee() {
-      const token = localStorage.getItem('token');
-      if (token) {
-        const decoded: any = jwtDecode(token);
-        if (decoded.Role === 'Employee') {
-          this.isEmployee = true;
-        } else {
-          this.isEmployee = false;
-        }
-      }
-    }
-  
-    getDispatchManger() {
-      const token = localStorage.getItem('token');
-      if (token) {
-        const decoded: any = jwtDecode(token);
-        if (decoded.Role === 'Dispatch Manager') {
-          this.isDispatchManager = true;
-        } else {
-          this.isDispatchManager = false;
-        }
-      }
-    }
-  
-    getQC() {
-      const token = localStorage.getItem('token');
-      if (token) {
-        const decoded: any = jwtDecode(token);
-        if (decoded.Role === 'QC') {
-          this.isQC = true;
-        } else {
-          this.isQC = false;
-        }
-      }
-    }
-  
-    getAccountant() {
-      const token = localStorage.getItem('token');
-      if (token) {
-        const decoded: any = jwtDecode(token);
-        if (decoded.Role === 'Accountant') {
-          this.isAccountant = true;
-        } else {
-          this.isAccountant = false;
-        }
-      }
-    }
-  
-    getInventoryManager() {
-      const token = localStorage.getItem('token');
-      if (token) {
-        const decoded: any = jwtDecode(token);
-        if (decoded.Role === 'Manager') {
-          this.isManager = true;
-        } else {
-          this.isManager = false;
-        }
-      }
-    }
-   
+
   autoFillByRequirement(reqNo: string) {
     const req = this.AllPurchaseOrderData.find(
       (r: any) => r.Requirement_No === reqNo
@@ -265,7 +192,7 @@ export class WorkorderComponent implements OnInit {
   }
 
   UpdatePurchaseOrder() {
-    this._rest.UpdateWorkorder(this.EditWorkorderForm.value).subscribe((data: any) => {
+    this._rest.UpdateWorkorderbymanager(this.EditWorkorderForm.value).subscribe((data: any) => {
       alert(data.message);
       this.AllWorkOrder();
     }, (err: any) => {

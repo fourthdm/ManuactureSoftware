@@ -22,7 +22,8 @@ export class SidebarComponent {
     this.getDispatchManger();
     this.getEmployee();
     this.getQC();
-    this.getInventoryManager()
+    this.getInventoryManager();
+    this.getAccountant();
   }
 
   Logout() {

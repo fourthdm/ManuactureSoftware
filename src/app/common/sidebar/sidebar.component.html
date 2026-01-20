@@ -126,7 +126,7 @@
                         class="nav-link"
                         routerLinkActive="active-link"
                         [routerLinkActiveOptions]="{ exact: true }"
-                        [routerLink]="['/AdminDashboard/WorkOrder']"
+                        [routerLink]="['/AccountantDashboard/WorkOrder']"
                     >
                         <i class="fa-solid fa-industry fa-xl"></i>
                         <p>
@@ -171,30 +171,6 @@
                             Work Order
                         </p>
                     </a>
-                    <!-- <a
-                        href="#"
-                        class="nav-link"
-                        routerLinkActive="active-link"
-                        [routerLinkActiveOptions]="{ exact: true }"
-                        [routerLink]="['/AdminDashboard/WorkOrder']"
-                    >
-                        <i class="fa-solid fa-industry fa-xl"></i>
-                        <p>
-                            Work Order
-                        </p>
-                    </a> -->
-                    <!-- <a
-                        href="#"
-                        class="nav-link"
-                        routerLinkActive="active-link"
-                        [routerLinkActiveOptions]="{ exact: true }"
-                        [routerLink]="['/AdminDashboard/WorkOrder']"
-                    >
-                        <i class="fa-solid fa-industry fa-xl"></i>
-                        <p>
-                            Work Order
-                        </p>
-                    </a> -->
                 </li>
 
                 <li class="nav-item menu-open">
@@ -223,41 +199,37 @@
                            Bill
                         </p>
                     </a>
-
-                    <!-- <a
-                        href="#"
-                        class="nav-link"
-                        routerLinkActive="active-link"
-                        [routerLinkActiveOptions]="{ exact: true }"
-                        [routerLink]="['/AdminDashboard/WorkOrder']"
-                    >
-                        <i class="fa-solid fa-industry fa-xl"></i>
-                        <p>
-                            Work Order
-                        </p>
-                    </a> -->
-                    <!-- <a
-                        href="#"
-                        class="nav-link"
-                        routerLinkActive="active-link"
-                        [routerLinkActiveOptions]="{ exact: true }"
-                        [routerLink]="['/AdminDashboard/WorkOrder']"
-                    >
-                        <i class="fa-solid fa-industry fa-xl"></i>
-                        <p>
-                            Work Order
-                        </p>
-                    </a> -->
                 </li>
-
          
                 <li class="nav-item menu-open">
-                    <a
+                    <a *ngIf="isAdmin"
                         href="#"
                         class="nav-link"
                         routerLinkActive="active-link"
                         [routerLinkActiveOptions]="{ exact: true }"
                         [routerLink]="['/AdminDashboard/WorkOrderClose']" >
+                        <i class="fa-solid fa-house-signal fa-xl"></i>
+                        <p>
+                            Work Order Close
+                        </p>
+                    </a>
+                    <a *ngIf="isAccountant"
+                        href="#"
+                        class="nav-link"
+                        routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{ exact: true }"
+                        [routerLink]="['/AccountantDashboard/WorkOrderClose']" >
+                        <i class="fa-solid fa-house-signal fa-xl"></i>
+                        <p>
+                            Work Order Close
+                        </p>
+                    </a>
+                    <a *ngIf="isDispatchManager"
+                        href="#"
+                        class="nav-link"
+                        routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{ exact: true }"
+                        [routerLink]="['/DispatchDashboard/WorkOrderClose']" >
                         <i class="fa-solid fa-house-signal fa-xl"></i>
                         <p>
                             Work Order Close
@@ -354,7 +326,7 @@
                             Machine's
                         </p>
                     </a>
-                    <a *ngIf="isDispatchManager"
+                    <!-- <a *ngIf="isDispatchManager"
                         href="#"
                         class="nav-link"
                         routerLinkActive="active-link"
@@ -365,21 +337,11 @@
                         <p>
                             Machine's
                         </p>
-                    </a>
+                    </a> -->
                 </li>
                 
                 <li class="nav-item menu-open">
-                    <!-- <a  *ngIf="isAdmin || isAccountant || isManager"
-                        href="#"
-                        class="nav-link"
-                        routerLinkActive="active-link"
-                        [routerLinkActiveOptions]="{ exact: true }"
-                        [routerLink]="['/AdminDashboard/Material']">
-                        <i class="fa-solid fa-bowling-ball fa-xl"></i>
-                        <p>
-                            Material's
-                        </p>
-                    </a> -->
+                   
                     <a  *ngIf="isAdmin "
                         href="#"
                         class="nav-link"

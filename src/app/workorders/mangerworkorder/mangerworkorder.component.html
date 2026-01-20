@@ -1,13 +1,7 @@
-<div class="container-fluid"> <br><br><br>
-    <h3 class="text-center" > Work Order</h3>
-<br>
-<br>
-<div class="row">
-    <div class="col-5">
-     <div class="card" >
-         <div class="card-header">Add New Work Order</div>
-        <div class="card-body" >
-            <form [formGroup]="AddWorkorderForm" (submit)="AddWorkOrderData()" >
+<div class="container">
+ <br> <br><br>  
+ 
+    <form [formGroup]="AddWorkorderForm" (submit)="AddWorkOrderData()" >
 
                 <div class="row">
                     <div class="col-6">
@@ -85,7 +79,7 @@
                     </div>
                 </div>
                 
-                <!-- <div class="row">
+                <div class="row">
                     <div class="col-6">
                          <div class="mb-3">
                              <label for="exampleInputEmail1" class="form-label">QC Name : </label>
@@ -106,7 +100,7 @@
                      </div>
                 </div>
 
-                </div> -->
+                </div>
                  <div class="row">
             <div class="col-6"> 
             <div class="mb-3">
@@ -142,15 +136,8 @@
             <button type="submit" class="btn btn-success">Add Work Order</button>
             </div>
             </form>
-        </div>
-     </div>
-    </div>
-
-    <!-- <div class="col-1"></div> -->
-
-    <br><br>    
-    <div class="col-7">
-        <div class="row">
+ 
+ <div class="row">
               <div class="" >
 
                       <table class="table" >
@@ -163,9 +150,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr   *ngFor="let a of AllWorkOrderData | paginate :{itemsPerPage :10 ,currentPage:pro},let i = index">
+                        <tr   *ngFor="let a of AllManagerorders | paginate :{itemsPerPage :10 ,currentPage:pro},let i = index">
                            <td >{{a.Workorder_Id}}</td>
-                          <td><p title="View Work Order Details" ><a href="" [routerLink]="['/AdminDashboard/WorkorderDetails',a.Workorder_Id]">{{a.WO_Number}}</a></p></td>
+                          <td><p title="View Work Order Details" >
+                            <a href="" [routerLink]="['/ManagerDashboard/WorkorderDetails',a.Workorder_Id]">{{a.WO_Number}}</a></p></td>
                             
                             <td>{{a.Client_Name}}</td>
                             <td>
@@ -184,42 +172,7 @@
                 <pagination-controls (pageChange)=" pro = $event "
                     style="background-color: #252847 !important; z-index: -2 !important;"></pagination-controls>
                 </div>
-            <!-- <div class="col-md-6" *ngFor="let a of AllWorkOrderData, let i = index">
-                <div class="card ">
-                    <div class="card-body">
-                      
-                     <div class="text-end"> 
-                         <a type="button" (click)="EditPurchaseOrder(a.Workorder_Id)" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal1" title="Edit a Waiting for Approval">
-                                <i class="fa-solid fa-pen-to-square fa-lg"></i>
-                        </a>
-                        <span style="margin-left:15px;cursor: pointer;"><a (click)="DeletePurchaseOrder(a.Workorder_Id)" title="Delete a Purchase Order"> <i class="fa-solid fa-trash-can"></i></a></span>
-                     </div>
-                     <br>
-                        <p>Work Order Number : <a href="" [routerLink]="['/AdminDashboard/WorkorderDetails',a.Workorder_Id]">{{a.WO_Number}}</a> </p>
-                        <p>Purchase Order Number : {{a.Purchase_Number}}</p>
-                        <p>Requirement Number :  {{a.Requirement_No}}</p>
-                        <p>Manager Name :  {{a.Manager_Name}}</p>
-                        <p>Engineer Name :  {{a.Engineer_Name}}</p>
-                        <p>QC Name :  {{a.QC_Name}}</p>
-                        <p>Client Name :  {{a.Client_Name}}</p>
-                        <p>Product Quantity No :  {{a.Product_Quantity}}</p>
-                        <p>Material Type Used	 :  {{a.Material_Type}}</p>
-                        <p>Days of Payment :  {{a.Days_of_Payment}}</p>
-                        <p>Work Order Status :  {{a.WorkOrder_Status}}</p>
-                        <p>Added Date :  {{a.Added_Date | date}} <br>
-                           <span>Added Time : {{a.Added_Date | date :'hh:mm:ss'}}</span> </p>
-                        <p>Due Date :  {{a.Due_Date | date}} <br>
-                           <span>Due Time : {{a.Due_Date | date :'hh:mm:ss'}}</span> </p>
-                        <p>Updated Date : {{a.Updated_Date | date}} <br> 
-                            <span>Updated Time : </span> {{a.Updated_Date | date :'hh:mm:ss'}}</p>
-                    </div>
-                </div>
-            </div> -->
-        </div>
-    </div>
-
-
+          
  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
@@ -305,9 +258,26 @@
                 </select>  <br>
             </div>
                     </div>
+
+                    
+                    <div class="col-6">                     
+            <div class="mb-3">
+                <label for="Manager_Status" class="form-label">Manager Status : </label>
+              <br>
+                 <select class="form-select form-select-sm" formControlName="Manager_Status" aria-label="select example">
+                                <option value="Assign Task">Assign Task</option>
+                                <option value="Scheduled">Scheduled</option>
+                                <option value="In Progress"> In Progress </option>
+                                <option value="Completed">Completed </option>
+                                <option value="Declined">Declined </option>
+                                <option value="Close">Close </option>
+                </select> 
+            </div>
+                    </div>
+
                 </div>
                 
-                <!-- <div class="row">
+                <div class="row">
                     <div class="col-6">
                          <div class="mb-3">
                              <label for="exampleInputEmail1" class="form-label">QC Name : </label>
@@ -328,7 +298,7 @@
                      </div>
                 </div>
 
-                </div> -->
+                </div>
                  <div class="row">
             <div class="col-6"> 
             <div class="mb-3">
@@ -368,6 +338,6 @@
         </div>
     </div>
 
-</div>
-
+        </div>
+    </div>
 </div>

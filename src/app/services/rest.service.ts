@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { StateService } from './state.service';
 import { tick } from '@angular/core/testing';
@@ -46,7 +46,6 @@ export class RestService {
   //AdminAPi Ends
 
   // Quotation API Start
-
   AddedQuotation(data: any) {
     return this._http.post(this.ApiUrl + '/Addquotation', data);
   }
@@ -92,8 +91,6 @@ export class RestService {
   AllBillbyid(Bill_Id: any) {
     return this._http.get(this.ApiUrl + '/AllBillbyId/' + Bill_Id);
   }
-
-
   //Bill API End
 
   //All Purchase Order Data
@@ -235,8 +232,36 @@ export class RestService {
     return this._http.put(this.ApiUrl + '/UpdateWorkOrder/' + data.Workorder_Id, data);
   }
 
+  UpdateWorkorderbymanager(data: any) {
+    return this._http.put(this.ApiUrl + '/UpdateMangerStatus/' + data.Workorder_Id, data);
+  }
+
   DeleteWorkorder(Workorder_Id: number) {
     return this._http.delete(this.ApiUrl + '/DeleteWorkOrder/' + Workorder_Id);
+  }
+
+  WorkorderforManager() {
+    this._State.checktoken();
+    const headers = new HttpHeaders({ 'x-access-token': this._State.token });
+    return this._http.get(this.ApiUrl + '/WOrkOrderformanager', { headers });
+  }
+
+  WorkorderforEngineer() {
+    this._State.checktoken();
+    const headers = new HttpHeaders({ 'x-access-token': this._State.token });
+    return this._http.get(this.ApiUrl + '/WORKordersForEngineer', { headers });
+  }
+
+  WorkorderforQC() {
+    this._State.checktoken();
+    const headers = new HttpHeaders({ 'x-access-token': this._State.token });
+    return this._http.get(this.ApiUrl + '/WorkOrderForQC', { headers });
+  }
+
+  Workorderfordispatchmanager() {
+    this._State.checktoken();
+    const headers = new HttpHeaders({ 'x-access-token': this._State.token });
+    return this._http.get(this.ApiUrl + '/WorkorderforDispatchmanager', { headers });
   }
 
   //Work Order API Ends
