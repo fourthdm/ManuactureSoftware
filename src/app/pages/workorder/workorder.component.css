@@ -45,3 +45,11 @@ td {
 .btt {
     border: 1px solid white;
 }
+
+a{
+    color: #000;
+}
+
+input{
+    width: 100%;
+}

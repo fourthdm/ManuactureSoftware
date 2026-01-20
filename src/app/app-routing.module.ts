@@ -22,6 +22,7 @@ import { ViewrequirementComponent } from './pages/viewrequirement/viewrequiremen
 import { ViewpurchaseorderComponent } from './pages/viewpurchaseorder/viewpurchaseorder.component';
 import { ViewquotationComponent } from './pages/viewquotation/viewquotation.component';
 import { BillComponent } from './pages/bill/bill.component';
+import { ViewworkorderComponent } from './pages/viewworkorder/viewworkorder.component';
 
 const routes: Routes = [
 
@@ -43,6 +44,7 @@ const routes: Routes = [
       { path: 'RequirementDetails/:Req_id', component: ViewrequirementComponent },
       { path: 'QuotationDetails/:Quotation_Id', component: ViewquotationComponent },
       { path: 'PurchaseOrderDetails/:Id', component: ViewpurchaseorderComponent },
+      { path: 'WorkorderDetails/:Workorder_Id', component: ViewworkorderComponent},
       { path: 'BillDetails/:Bill_Id', component: ViewpurchaseorderComponent },
       { path: '**', redirectTo: 'AdminDashboard' }
     ]

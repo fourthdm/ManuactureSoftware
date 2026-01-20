@@ -14,6 +14,8 @@ export class WorkorderComponent implements OnInit {
   AllPurchaseOrderData: any[] = [];
   AllRequirementData: any[] = [];
 
+  pro:any;
+
   AllManagerdata: any[] = [];
   AllEngineerdata: any[] = [];
   AllQCdata: any[] = [];
@@ -27,30 +29,34 @@ export class WorkorderComponent implements OnInit {
     this.AddWorkorderForm = new FormGroup({
       Requirement_No: new FormControl('', [Validators.required]),
       Purchase_Number: new FormControl('', [Validators.required]),
-      Days_of_Payment: new FormControl('', [Validators.required]),
+      Payment_term: new FormControl('', [Validators.required]),
       Product_Name: new FormControl('', [Validators.required]),
       Product_Quantity: new FormControl('', [Validators.required]),
       Material_Type: new FormControl('', [Validators.required]),
       Manager_Name: new FormControl('', [Validators.required]),
       Engineer_Name: new FormControl(''),
       QC_Name: new FormControl(''),
+      DispatchManager_Name: new FormControl(''),
       Client_Name: new FormControl('', [Validators.required]),
-      WorkOrder_Status: new FormControl('', [Validators.required])
+      WorkOrder_Status: new FormControl('', [Validators.required]),
+      Due_Date: new FormControl('')
     });
 
     this.EditWorkorderForm = new FormGroup({
       Workorder_Id: new FormControl(''),
       Requirement_No: new FormControl('', [Validators.required]),
       Purchase_Number: new FormControl('', [Validators.required]),
-      Days_of_Payment: new FormControl('', [Validators.required]),
+      Payment_term: new FormControl('', [Validators.required]),
       Product_Name: new FormControl('', [Validators.required]),
       Product_Quantity: new FormControl('', [Validators.required]),
       Material_Type: new FormControl('', [Validators.required]),
       Manager_Name: new FormControl('', [Validators.required]),
       Engineer_Name: new FormControl(''),
       QC_Name: new FormControl(''),
+      DispatchManager_Name: new FormControl(''),
       Client_Name: new FormControl('', [Validators.required]),
-      WorkOrder_Status: new FormControl('', [Validators.required])
+      WorkOrder_Status: new FormControl('', [Validators.required]),
+      Due_Date: new FormControl('')
     });
   }
 
@@ -61,6 +67,38 @@ export class WorkorderComponent implements OnInit {
     this.AllEngineer();
     this.AllManager();
     this.AllWorkOrder();
+
+    this.AddWorkorderForm.get('Requirement_No')?.valueChanges
+      .subscribe(reqNo => {
+        if (reqNo) {
+          this.autoFillByRequirement(reqNo);
+        }
+      });
+  }
+
+  autoFillByRequirement(reqNo: string) {
+    const req = this.AllPurchaseOrderData.find(
+      (r: any) => r.Requirement_No === reqNo
+    );
+
+    if (!req) return;
+
+    this.AddWorkorderForm.patchValue({
+      Material_Type: req.Material_Type,
+      Client_Name: req.Client_Name,
+      Purchase_Number: req.Purchase_Number,
+      Product_Name: req.Product_Name,
+      Product_Quantity: req.Product_Quantity,
+      Client_Address: req.Client_Address,
+      Rate: req.Rate,
+      Subtotal: req.Subtotal,
+      CGST_amount: req.CGST_amount,
+      SGST_amount: req.SGST_amount,
+      Total_Amount: req.Total_Amount,
+      Discount_Amount: req.Discount_Amount,
+      Payment_term: req.Payment_term
+    });
+
   }
 
   Allrequirements() {
@@ -92,7 +130,7 @@ export class WorkorderComponent implements OnInit {
 
   AllEngineer() {
     this._rest.Engineerdata().subscribe((data: any) => {
- 
+
       this.AllEngineerdata = data.data;
     }, (err: any) => {
       console.log(err);

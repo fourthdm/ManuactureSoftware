@@ -73,7 +73,7 @@ export class RestService {
     });
   }
   // Quotation API Ends
-  
+
   //Bill API Start
   AddBill(data: any) {
     return this._http.post(this.ApiUrl + '/AddBill', data);
@@ -85,9 +85,14 @@ export class RestService {
     });
   }
 
-  AllBill(){
+  AllBill() {
     return this._http.get(this.ApiUrl + '/AllBills');
   }
+
+  AllBillbyid(Bill_Id: any) {
+    return this._http.get(this.ApiUrl + '/AllBillbyId/' + Bill_Id);
+  }
+
 
   //Bill API End
 
@@ -216,6 +221,10 @@ export class RestService {
 
   AllWorkOrder() {
     return this._http.get(this.ApiUrl + '/AllWorkOrder');
+  }
+
+  WorkorderbyID(Workorder_Id: any) {
+    return this._http.get(this.ApiUrl + '/WorkOrderbyid/' + Workorder_Id);
   }
 
   Allworkorderbyid(Workorder_Id: number) {
