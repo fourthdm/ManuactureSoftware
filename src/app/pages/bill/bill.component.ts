@@ -27,7 +27,7 @@ export class BillComponent implements OnInit {
       Product_Quantity: new FormControl('', [Validators.required]),
       Client_Name: new FormControl('', [Validators.required]),
       Client_Address: new FormControl('', [Validators.required]),
-      HSN_Code: new FormControl('', [Validators.required]),
+      HSN_Code: new FormControl(''),
       Rate: new FormControl('', [Validators.required]),
       Subtotal: new FormControl('', [Validators.required]),
       CGST_amount: new FormControl('', [Validators.required]),
@@ -49,7 +49,7 @@ export class BillComponent implements OnInit {
       Product_Quantity: new FormControl('', [Validators.required]),
       Client_Name: new FormControl('', [Validators.required]),
       Client_Address: new FormControl('', [Validators.required]),
-      HSN_Code: new FormControl('', [Validators.required]),
+      HSN_Code: new FormControl(''),
       Rate: new FormControl('', [Validators.required]),
       Subtotal: new FormControl('', [Validators.required]),
       CGST_amount: new FormControl('', [Validators.required]),
@@ -74,12 +74,15 @@ export class BillComponent implements OnInit {
       });
   }
 
+
+
   autoFillByRequirement(billNo: string) {
     const req = this.AllPurchaseOrderData.find(
       (r: any) => r.Purchase_Number === billNo
     );
 
     if (!req) return;
+    const deliveryDate = req.Delivery_Date ? new Date(req.Delivery_Date).toISOString().split('T')[0] : '';
 
     this.Addbillform.patchValue({
       Product_Name: req.Product_Name,
@@ -94,8 +97,8 @@ export class BillComponent implements OnInit {
       Total_Amount: req.Total_Amount,
       Discount_Amount: req.Discount_Amount,
       Payment_term: req.Payment_term,
-      Delivery_Date: req.Delivery_Date,
-      Bill_Status : req.Bill_Status
+      Delivery_Date: deliveryDate,
+      Bill_Status: req.Bill_Status
     });
   }
 
@@ -127,8 +130,8 @@ export class BillComponent implements OnInit {
     });
   }
 
-   printPdf(Bill_Id : any) {
-    this._rest.GenerateBill(Bill_Id )
+  printPdf(Bill_Id: any) {
+    this._rest.GenerateBill(Bill_Id)
       .subscribe((file: Blob) => {
         const url = window.URL.createObjectURL(file);
         const win = window.open('', '_blank');

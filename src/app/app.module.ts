@@ -34,6 +34,7 @@ import { ViewquotationComponent } from './pages/viewquotation/viewquotation.comp
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BillComponent } from './pages/bill/bill.component';
 import { ViewbillComponent } from './pages/viewbill/viewbill.component';
+import { ViewworkorderComponent } from './pages/viewworkorder/viewworkorder.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { ViewbillComponent } from './pages/viewbill/viewbill.component';
     ViewpurchaseorderComponent,
     ViewquotationComponent,
     BillComponent,
-    ViewbillComponent
+    ViewbillComponent,
+    ViewworkorderComponent
   ],
   imports: [
     BrowserModule,
