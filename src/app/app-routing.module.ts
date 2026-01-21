@@ -58,18 +58,18 @@ const routes: Routes = [
   },
   {
     path: 'EmployeeDashboard', component: EmployeedashboardComponent, children: [
-      { path: '', redirectTo: 'EmployeeDashboard', pathMatch: 'full' },
+      { path: '', redirectTo: 'WorkOrder', pathMatch: 'full' },
       { path: 'WorkOrder', component: EngineerworkorderComponent },
       { path: 'WorkorderDetails/:Workorder_Id', component: ViewworkorderComponent },
       { path: 'WorkOrderClose', component: WorkcloseComponent },
-      { path: 'EmployeeDetails', component: EmployeedetailsComponent },
       { path: '**', redirectTo: 'EmployeeDashboard' }
     ]
   },
   {
     path: 'QCDashboard', component: QcdashboardComponent, children: [
-      { path: '', redirectTo: 'QCDashboard', pathMatch: 'full' },
+      { path: '', redirectTo: 'WorkOrder', pathMatch: 'full' },
       { path: 'WorkOrder', component: QcworkorderComponent },
+      { path: 'WorkorderDetails/:Workorder_Id', component: ViewworkorderComponent },
       { path: 'WorkOrderClose', component: WorkcloseComponent },
       { path: '**', redirectTo: 'QCDashboard' }
     ]
@@ -91,7 +91,7 @@ const routes: Routes = [
   },
   {
     path: 'ManagerDashboard', component: MangerdashboardComponent, children: [
-      { path: '', redirectTo: 'ManagerDashboard', pathMatch: 'full' },
+      { path: '', redirectTo: 'WorkOrder', pathMatch: 'full' },
       { path: 'Machine', component: MachineComponent },
       { path: 'Material', component: MaterialComponent },
       { path: 'DeliveryChallan', component: DeliverychallanComponent },

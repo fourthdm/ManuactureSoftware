@@ -4,8 +4,28 @@
     <br>
     <nav class="navbar navbar-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" > {{employeedata?.Role}}</a>
-                
+            <a class="navbar-brand" >     <img src="assets/logo.png" class="img elevation-2" alt="User Image">
+          <span style="margin-left: 50px;">  {{employeedata?.Role}}</span> </a>
+      
+      <!-- <li class="nav-item"></li>
+      <li class="nav-item"></li>
+      <li class="nav-item"></li>
+      <li class="nav-item"></li>
+      <li class="nav-item"></li>
+      <li class="nav-item"></li>
+      <li class="nav-item"></li>
+      <li class="nav-item"></li>
+      <li class="nav-item"></li>
+      <li class="nav-item"></li>
+      <li class="nav-item"></li>
+      <li class="nav-item"></li>
+      <li class="nav-item">Material</li>
+      <li class="nav-item">Machine</li>
+      <li class="nav-item">Work Order</li>
+      <li class="nav-item">Work Order Close</li>
+      -->
+
+          
         <li class="nav-item dropdown">
           <a class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" title="User Details">
       <i class="fa-regular fa-circle-user fa-xl" style="color: #ffffff;"></i>  {{employeedata?.Name}}  
@@ -55,7 +75,8 @@
                     <p>  Added Date : {{employeedata?.Added_Date | date}}</p>
                     <p>  Updated Date : {{employeedata?.Updated_Date | date}}</p>
                     <p> Employee Status : {{employeedata?.Status}}</p>
-                    <!-- <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+
+      <!-- <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
@@ -80,8 +101,32 @@
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form> -->
+
+
                 </div>
             </div>
         </div>
+
+          <ul class="nav justify-content-center" >
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">Work Order</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Machine</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Material</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Work Order Close</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+ 
+</ul>
     </nav>
+
+
+
     <!-- /.navbar -->

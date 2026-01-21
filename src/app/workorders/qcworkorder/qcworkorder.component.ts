@@ -30,44 +30,30 @@ export class QcworkorderComponent implements OnInit {
 
   constructor(private _rest: RestService, private _state: StateService) {
 
-       this.AddWorkorderForm = new FormGroup({
-          Requirement_No: new FormControl('', [Validators.required]),
-          Purchase_Number: new FormControl('', [Validators.required]),
-          Payment_term: new FormControl('', [Validators.required]),
-          Product_Name: new FormControl('', [Validators.required]),
-          Product_Quantity: new FormControl('', [Validators.required]),
-          Material_Type: new FormControl('', [Validators.required]),
-          Manager_Name: new FormControl('', [Validators.required]),
-          Engineer_Name: new FormControl(''),
-          QC_Name: new FormControl(''),
-          DispatchManager_Name: new FormControl(''),
-          Client_Name: new FormControl('', [Validators.required]),
-          WorkOrder_Status: new FormControl('', [Validators.required]),
-          Due_Date: new FormControl('')
-        });
-    
-        this.EditWorkorderForm = new FormGroup({
-          Workorder_Id: new FormControl(''),
-          Requirement_No: new FormControl('', [Validators.required]),
-          Purchase_Number: new FormControl('', [Validators.required]),
-          Payment_term: new FormControl('', [Validators.required]),
-          Product_Name: new FormControl('', [Validators.required]),
-          Product_Quantity: new FormControl('', [Validators.required]),
-          Material_Type: new FormControl('', [Validators.required]),
-          Manager_Name: new FormControl('', [Validators.required]),
-          Manager_Status: new FormControl(''),
-          Engineer_Name: new FormControl(''),
-          QC_Name: new FormControl(''),
-          QC_Status: new FormControl(''),
-          DispatchManager_Name: new FormControl(''),
-          Client_Name: new FormControl('', [Validators.required]),
-          WorkOrder_Status: new FormControl('', [Validators.required]),
-          Due_Date: new FormControl('')
-        });
-   }
+    this.AddWorkorderForm = new FormGroup({
+      Requirement_No: new FormControl('', [Validators.required]),
+      Purchase_Number: new FormControl('', [Validators.required]),
+      Payment_term: new FormControl('', [Validators.required]),
+      Product_Name: new FormControl('', [Validators.required]),
+      Product_Quantity: new FormControl('', [Validators.required]),
+      Material_Type: new FormControl('', [Validators.required]),
+      Manager_Name: new FormControl('', [Validators.required]),
+      Engineer_Name: new FormControl(''),
+      QC_Name: new FormControl(''),
+      DispatchManager_Name: new FormControl(''),
+      Client_Name: new FormControl('', [Validators.required]),
+      WorkOrder_Status: new FormControl('', [Validators.required]),
+      Due_Date: new FormControl('')
+    });
+
+    this.EditWorkorderForm = new FormGroup({
+      Workorder_Id: new FormControl(''),
+      QC_Status: new FormControl(''),
+    });
+  }
 
   ngOnInit(): void {
-    this.  WorkorderQC();
+    this.WorkorderQC();
 
     this.Allrequirements();
     this.AllPurchaseOrder();
@@ -194,9 +180,10 @@ export class QcworkorderComponent implements OnInit {
   }
 
   UpdatePurchaseOrder() {
-    this._rest.UpdateWorkorderbymanager(this.EditWorkorderForm.value).subscribe((data: any) => {
+    this._rest.UpdateQcStatus(this.EditWorkorderForm.value).subscribe((data: any) => {
       alert(data.message);
       this.AllWorkOrder();
+      this.EditWorkorderForm.reset();
     }, (err: any) => {
       console.log(err);
       alert('Error while updating Purchase Order');

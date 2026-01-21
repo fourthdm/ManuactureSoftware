@@ -3,41 +3,46 @@
     <br>
     <br>
     <div class="row">
-            <div class="col-md-4" *ngFor="let e of AllEngineerorders, let i = index">
+            <div class="col-md-3" *ngFor="let e of AllEngineerorders | paginate:{ itemsPerPage :10 ,currentPage:pro}, let i = index">
                     <div class="card">
                                 <div class="card-body">
                       
                      <div class="text-end"> 
                          <a type="button" (click)="EditPurchaseOrder(e.Workorder_Id)" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal1" title="Edit a Waiting for Approval">
+                                data-bs-target="#exampleModal1" title="Add a Engineer Status">
                                 <i class="fa-solid fa-pen-to-square fa-lg"></i>
                         </a>
                         <!-- <span style="margin-left:15px;cursor: pointer;"><a (click)="DeletePurchaseOrder(a.Workorder_Id)" title="Delete a Purchase Order"> <i class="fa-solid fa-trash-can"></i></a></span> -->
                      </div>
                      <br>
                         <p>Work Order Number : <a href="" title="View Work Order Details" [routerLink]="['/EmployeeDashboard/WorkorderDetails',e.Workorder_Id]">{{e.WO_Number}}</a> </p>
-                        <p>Purchase Order Number : {{e.Purchase_Number}}</p>
-                        <p>Requirement Number :  {{e.Requirement_No}}</p>
+                        <!-- <p>Purchase Order Number : {{e.Purchase_Number}}</p> -->
+                        <!-- <p>Requirement Number :  {{e.Requirement_No}}</p> -->
                         <p>Manager Name :  {{e.Manager_Name}}</p>
                         <p>Engineer Name :  {{e.Engineer_Name}}</p>
                         <p>Engineer Status :  {{e.Engineer_Status}}</p>
                         <p>QC Name :  {{e.QC_Name}}</p>
-                        <p>Client Name :  {{e.Client_Name}}</p>
-                        <p>Product Quantity No :  {{e.Product_Quantity}}</p>
-                        <p>Material Type Used	 :  {{e.Material_Type}}</p>
-                        <p>Days of Payment :  {{e.Days_of_Payment}}</p>
+                        <!-- <p>Client Name :  {{e.Client_Name}}</p> -->
+                        <p>Product Quantity  :  {{e.Product_Quantity}}</p>
+                        <p>Material Type 	 :  {{e.Material_Type}}</p>
+                        <!-- <p>Days of Payment :  {{e.Days_of_Payment}}</p> -->
                         <p>Work Order Status :  {{e.WorkOrder_Status}}</p>
                         <p>Added Date :  {{e.Added_Date | date}} <br>
                            <span>Added Time : {{e.Added_Date | date :'hh:mm:ss'}}</span> </p>
                         <p>Due Date :  {{e.Due_Date | date}} <br>
                            <span>Due Time : {{e.Due_Date | date :'hh:mm:ss'}}</span> </p>
-                        <p>Updated Date : {{e.Updated_Date | date}} <br> 
-                            <span>Updated Time : </span> {{e.Updated_Date | date :'hh:mm:ss'}}</p>
+                        <!-- <p>Updated Date : {{e.Updated_Date | date}} <br> 
+                            <span>Updated Time : </span> {{e.Updated_Date | date :'hh:mm:ss'}}</p> -->
                     </div>
                     </div>
             </div>
-    </div>
 
+            <div class="text-center">
+                <pagination-controls (pageChange)=" pro = $event "
+                    style="background-color: #252847 !important; z-index: -2 !important;"></pagination-controls>
+                </div>
+
+    </div>
 
              <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
