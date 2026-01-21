@@ -240,8 +240,12 @@ export class RestService {
     return this._http.delete(this.ApiUrl + '/DeleteWorkOrder/' + Workorder_Id);
   }
 
-  UpdateEngineeerstatus(data:any){
-      return this._http.put(this.ApiUrl + '/UpdateEngineerStatus/' + data.Workorder_Id, data);
+  UpdateEngineeerstatus(data: any) {
+    return this._http.put(this.ApiUrl + '/UpdateEngineerStatus/' + data.Workorder_Id, data);
+  }
+
+  UpdateQcStatus(data: any) {
+    return this._http.put(this.ApiUrl + '/UpdateQCStatus/' + data.Workorder_Id, data);
   }
 
   WorkorderforManager() {
