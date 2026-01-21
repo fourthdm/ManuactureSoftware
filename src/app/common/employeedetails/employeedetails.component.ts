@@ -4,12 +4,12 @@ import { jwtDecode } from 'jwt-decode';
 import { RestService } from 'src/app/services/rest.service';
 
 @Component({
-  selector: 'app-employeedashboard',
-  templateUrl: './employeedashboard.component.html',
-  styleUrls: ['./employeedashboard.component.css']
+  selector: 'app-employeedetails',
+  templateUrl: './employeedetails.component.html',
+  styleUrls: ['./employeedetails.component.css']
 })
-export class EmployeedashboardComponent implements OnInit {
-  employeedata: any;
+export class EmployeedetailsComponent implements OnInit {
+ employeedata: any;
 
   constructor(private _rest: RestService, private _activatedroute: ActivatedRoute) { }
 

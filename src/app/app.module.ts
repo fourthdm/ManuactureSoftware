@@ -39,6 +39,8 @@ import { MangerworkorderComponent } from './workorders/mangerworkorder/mangerwor
 import { EngineerworkorderComponent } from './workorders/engineerworkorder/engineerworkorder.component';
 import { QcworkorderComponent } from './workorders/qcworkorder/qcworkorder.component';
 import { DispatchmanagerworkorderComponent } from './workorders/dispatchmanagerworkorder/dispatchmanagerworkorder.component';
+import { EmployeedashboardnavbarComponent } from './employeedashboardnavbar/employeedashboardnavbar.component';
+import { EmployeedetailsComponent } from './common/employeedetails/employeedetails.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +76,9 @@ import { DispatchmanagerworkorderComponent } from './workorders/dispatchmanagerw
     MangerworkorderComponent,
     EngineerworkorderComponent,
     QcworkorderComponent,
-    DispatchmanagerworkorderComponent
+    DispatchmanagerworkorderComponent,
+    EmployeedashboardnavbarComponent,
+    EmployeedetailsComponent
   ],
   imports: [
     BrowserModule,

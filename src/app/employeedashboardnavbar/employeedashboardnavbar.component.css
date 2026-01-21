@@ -1,0 +1,26 @@
+nav {
+    background-color: #2E3257;
+    color: white;
+}
+
+.offcanvas{
+    background-color: #2E3257;
+    color: white;
+}
+
+.dropdown-menu{
+    background-color: #2E3257;
+    color: white;
+}
+
+a{
+    color: white;
+}
+
+li{
+    list-style: none;
+}
+
+.container-fluid{
+    padding-right: 5%;
+}

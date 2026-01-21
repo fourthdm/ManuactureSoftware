@@ -11,9 +11,7 @@ import { StateService } from 'src/app/services/state.service';
 export class MangerworkorderComponent implements OnInit {
 
   AllManagerorders: any[] = [];
-
   pro: any;
-
 
   AllWorkOrderData: any[] = [];
   AllPurchaseOrderData: any[] = [];
@@ -67,7 +65,6 @@ export class MangerworkorderComponent implements OnInit {
 
   ngOnInit(): void {
     this.Allworkorderss();
-
     this.Allrequirements();
     this.AllPurchaseOrder();
     this.AllQC();

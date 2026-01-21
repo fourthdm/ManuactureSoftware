@@ -240,6 +240,10 @@ export class RestService {
     return this._http.delete(this.ApiUrl + '/DeleteWorkOrder/' + Workorder_Id);
   }
 
+  UpdateEngineeerstatus(data:any){
+      return this._http.put(this.ApiUrl + '/UpdateEngineerStatus/' + data.Workorder_Id, data);
+  }
+
   WorkorderforManager() {
     this._State.checktoken();
     const headers = new HttpHeaders({ 'x-access-token': this._State.token });
