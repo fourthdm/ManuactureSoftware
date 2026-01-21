@@ -28,6 +28,7 @@ import { MangerworkorderComponent } from './workorders/mangerworkorder/mangerwor
 import { DispatchmanagerworkorderComponent } from './workorders/dispatchmanagerworkorder/dispatchmanagerworkorder.component';
 import { QcworkorderComponent } from './workorders/qcworkorder/qcworkorder.component';
 import { EngineerworkorderComponent } from './workorders/engineerworkorder/engineerworkorder.component';
+import { EmployeedetailsComponent } from './common/employeedetails/employeedetails.component';
 
 const routes: Routes = [
 
@@ -51,6 +52,7 @@ const routes: Routes = [
       { path: 'PurchaseOrderDetails/:Id', component: ViewpurchaseorderComponent },
       { path: 'WorkorderDetails/:Workorder_Id', component: ViewworkorderComponent },
       { path: 'BillDetails/:Bill_Id', component: ViewbillComponent },
+
       { path: '**', redirectTo: 'AdminDashboard' }
     ]
   },
@@ -58,7 +60,9 @@ const routes: Routes = [
     path: 'EmployeeDashboard', component: EmployeedashboardComponent, children: [
       { path: '', redirectTo: 'EmployeeDashboard', pathMatch: 'full' },
       { path: 'WorkOrder', component: EngineerworkorderComponent },
+      { path: 'WorkorderDetails/:Workorder_Id', component: ViewworkorderComponent },
       { path: 'WorkOrderClose', component: WorkcloseComponent },
+      { path: 'EmployeeDetails', component: EmployeedetailsComponent },
       { path: '**', redirectTo: 'EmployeeDashboard' }
     ]
   },

@@ -106,17 +106,17 @@ export class WorkorderComponent implements OnInit {
       }
     }
   
-    getEmployee() {
-      const token = localStorage.getItem('token');
-      if (token) {
-        const decoded: any = jwtDecode(token);
-        if (decoded.Role === 'Employee') {
-          this.isEmployee = true;
-        } else {
-          this.isEmployee = false;
-        }
+   getEmployee() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decoded: any = jwtDecode(token);
+      if (decoded.Role === 'Engineer') {
+        this.isEmployee = true;
+      } else {
+        this.isEmployee = false;
       }
     }
+  }
   
     getDispatchManger() {
       const token = localStorage.getItem('token');
