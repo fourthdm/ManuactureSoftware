@@ -1,13 +1,13 @@
 <!-- Navbar -->
-    <br>
-    <br>
-    <br>
-    <nav class="navbar navbar-dark fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" >     <img src="assets/logo.png" class="img elevation-2" alt="User Image">
-          <span style="margin-left: 50px;">  {{employeedata?.Role}}</span> </a>
-      
-      <!-- <li class="nav-item"></li>
+<br>
+<br>
+<br>
+<nav class="navbar navbar-dark fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand"> <img src="assets/logo.png" class="img elevation-2" alt="User Image">
+      <span style="margin-left: 50px;"> {{employeedata?.Role}}</span> </a>
+
+    <!-- <li class="nav-item"></li>
       <li class="nav-item"></li>
       <li class="nav-item"></li>
       <li class="nav-item"></li>
@@ -25,58 +25,48 @@
       <li class="nav-item">Work Order Close</li>
       -->
 
-          
-        <li class="nav-item dropdown">
-          <a class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" title="User Details">
-      <i class="fa-regular fa-circle-user fa-xl" style="color: #ffffff;"></i>  {{employeedata?.Name}}  
-          </a>
-          <ul class="dropdown-menu dropdown-menu-dark">
-            <li > 
-            <button 
-                class="dropdown-item"
-               title="View Employee Details"
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasNavbar"
-                aria-controls="offcanvasNavbar"
-                aria-label="Toggle navigation"
-            >
-             Details <span class="navbar-toggler-icon"></span>
-            </button>
-        </li>
-            <li><a class="dropdown-item" href="#" (click)=" Logout()">LogOut    <i class="fa-solid fa-power-off fa-xl"></i> </a></li>
-          </ul>
-        </li>
 
-            <div
-                class="offcanvas offcanvas-end"
-                tabindex="-1"
-                id="offcanvasNavbar"
-                aria-labelledby="offcanvasNavbarLabel"
-            >
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Employee Details</h5>
-                    <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="offcanvas"
-                        aria-label="Close"
-                    ></button>
-                </div>
-                <div class="offcanvas-body">
-                    <p> Employee Name : {{employeedata?.Name}}</p>
-                    <p>  Phone No :  {{employeedata?.PhoneNo}}</p>
-                    <p>  Email : {{employeedata?.Email}}</p>
-                    <p>  Username : {{employeedata?.Username}}</p>
-                    <p>  Password : {{employeedata?.Password}}</p>
-                    <p>  Role : {{employeedata?.Role}}</p>
-                    <p>  Address : {{employeedata?.Address}}</p>
-                    <p>  Added Date : {{employeedata?.Added_Date | date}}</p>
-                    <p>  Updated Date : {{employeedata?.Updated_Date | date}}</p>
-                    <p> Employee Status : {{employeedata?.Status}}</p>
+    <li class="nav-item dropdown">
+      <!-- <button class="btn btn-outline-danger position-relative">
+        🔔 Notifications
+        <span class="badge bg-danger position-absolute top-0 start-100">
+          {{ alertCount }}
+        </span>
+      </button> -->
+      <a class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" title="User Details">
+        <i class="fa-regular fa-circle-user fa-xl" style="color: #ffffff;"></i> {{employeedata?.Name}}
+      </a>
+      <ul class="dropdown-menu dropdown-menu-dark">
+        <li>
+          <button class="dropdown-item" title="View Employee Details" class="navbar-toggler" type="button"
+            data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"
+            aria-label="Toggle navigation">
+            Details <span class="navbar-toggler-icon"></span>
+          </button>
+        </li>
+        <li><a class="dropdown-item" href="#" (click)=" Logout()">LogOut <i class="fa-solid fa-power-off fa-xl"></i>
+          </a></li>
+      </ul>
+    </li>
 
-      <!-- <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Employee Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <p> Employee Name : {{employeedata?.Name}}</p>
+        <p> Phone No : {{employeedata?.PhoneNo}}</p>
+        <p> Email : {{employeedata?.Email}}</p>
+        <p> Username : {{employeedata?.Username}}</p>
+        <p> Password : {{employeedata?.Password}}</p>
+        <p> Role : {{employeedata?.Role}}</p>
+        <p> Address : {{employeedata?.Address}}</p>
+        <p> Added Date : {{employeedata?.Added_Date | date}}</p>
+        <p> Updated Date : {{employeedata?.Updated_Date | date}}</p>
+        <p> Employee Status : {{employeedata?.Status}}</p>
+
+        <!-- <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
@@ -103,30 +93,44 @@
         </form> -->
 
 
-                </div>
-            </div>
-        </div>
+      </div>
+    </div>
+  </div>
 
-          <ul class="nav justify-content-center" >
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#">Work Order</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Machine</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Material</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Work Order Close</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
- 
-</ul>
-    </nav>
+  <ul class="nav justify-content-center" *ngIf="isManager">
 
+    <li class="nav-item">
+      <a class="nav-link" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"
+        [routerLink]="['/ManagerDashboard/Machine']">Machine</a>
+    </li>
 
+    <li class="nav-item">
+      <a class="nav-link" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"
+        [routerLink]="['/ManagerDashboard/Material']">Material</a>
+    </li>
 
-    <!-- /.navbar -->
+    <li class="nav-item">
+      <a class="nav-link active" href="#" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"
+        [routerLink]="['/ManagerDashboard/WorkOrder']">Work Order</a>
+    </li>
+
+    <li class="nav-item">
+      <a href="#" class="nav-link" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"
+        [routerLink]="['/ManagerDashboard/WorkOrderClose']">Work Order Close</a>
+    </li>
+
+    <!-- <span *ngIf="alertCount > 0" class="badge bg-danger start-100">
+      {{ alertCount }}
+    </span> -->
+
+    <!-- <button class="btn btn-outline-danger position-relative">
+      🔔 Notifications
+      <span class="badge bg-danger position-absolute top-0 start-100">
+        {{ alertCount }}
+      </span>
+    </button> -->
+
+  </ul>
+</nav>
+
+<!-- /.navbar -->

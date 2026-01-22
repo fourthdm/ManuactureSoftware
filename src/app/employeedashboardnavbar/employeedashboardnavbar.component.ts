@@ -11,14 +11,21 @@ import { jwtDecode } from 'jwt-decode';
 export class EmployeedashboardnavbarComponent implements OnInit {
   employeedata: any;
 
-  constructor(private _rest: RestService, private _activatedroute: ActivatedRoute, private _router:Router) { }
+  isManager: boolean = false;
+
+  notifications: any[] = [];
+  alertCount = 0;
+
+  constructor(private _rest: RestService, private _activatedroute: ActivatedRoute, private _router: Router) { }
 
   ngOnInit(): void {
-
+    this.getManager();
     const token = localStorage.getItem('token');
     if (token) {
       this.employeedata = jwtDecode(token);
     }
+
+    // this.loadNotifications();
   }
 
   Logout() {
@@ -26,5 +33,57 @@ export class EmployeedashboardnavbarComponent implements OnInit {
     this._router.navigate(['login']);
   }
 
+  getManager() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decoded: any = jwtDecode(token);
+      if (decoded.Role == 'Manager') {
+        this.isManager = true;
+      } else {
+        this.isManager = false;
+      }
+    }
+  }
+
+  // isDueSoon(dueDate: string): boolean {
+  //   const today = new Date();
+  //   today.setHours(0, 0, 0, 0);
+
+  //   const due = new Date(dueDate);
+  //   due.setHours(0, 0, 0, 0);
+
+  //   const diffDays = Math.ceil(
+  //     (due.getTime() - today.getTime()) / (1000 * 60 * 60 * 24)
+  //   );
+
+  //   return diffDays >= 0 && diffDays <= 3;
+  // }
+
+  // loadNotifications() {
+  //   this._rest.getNotifications('Manager')
+  //     .subscribe(data => {
+  //       this.notifications = data;
+
+  //       this.alertCount = data.filter(n =>
+  //         n.Status === 'Unread'
+  //       ).length;
+  //     });
+  // }
+  loadNotifications() {
+    this._rest.getNotifications('Manager')
+      .subscribe(data => {
+        this.notifications = data;
+        this.alertCount = data.filter(n => n.Status === 'Unread').length;
+      });
+  }
+  // loadNotifications() {
+  //   this._rest.getNotifications('Manager').subscribe(data => {
+  //     this.notifications = data;
+  //     this.alertCount = this.notifications.filter(n =>
+  //       this.isDueSoon(n.Due_Date) && n.Status === 'Unread'
+  //     ).length;
+  //     // this.alertCount = data.filter(n => n.Status === 'Unread').length;
+  //   });
+  // }
 
 }

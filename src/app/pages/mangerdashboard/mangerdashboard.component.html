@@ -1,8 +1,17 @@
-<app-navbar></app-navbar>
+<!-- <app-navbar></app-navbar>
 <app-sidebar></app-sidebar>
 <div class="content-wrapper">
-    <!-- <app-employee></app-employee> -->
-     <!-- <app-workorder></app-workorder> -->
+    <router-outlet></router-outlet>
+</div><br><br><br><br>
+<app-footer></app-footer> -->
+
+
+<app-employeedashboardnavbar></app-employeedashboardnavbar>
+<div class="">
+   <div class="alert alert-danger" *ngFor="let n of notifications" 
+     [class.alert-warning]="n.Status==='Unread'">
+  🔔 {{ n.Message }}
+</div>
     <router-outlet></router-outlet>
 </div><br><br><br><br>
 <app-footer></app-footer>

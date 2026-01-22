@@ -296,5 +296,19 @@ export class RestService {
   }
   //WorkorderClose API Ends 
 
+  //Notification 
+  getNotifications(role: string) {
+    return this._http.get<any[]>(`${this.ApiUrl}/notifications/${role}`);
+  }
 
+  markAsRead(id: number) {
+    return this._http.put(`${this.ApiUrl}/notifications/read/${id}`, {});
+  }
+
+  createNotification(Workorder_Id: number) {
+    return this._http.post(
+      `${this.ApiUrl}/notifications/create`,
+      { Workorder_Id }
+    );
+  }
 }

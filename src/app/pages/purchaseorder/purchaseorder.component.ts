@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormControlName, FormGroup, Validators } from '@angular/forms';
 import { RestService } from 'src/app/services/rest.service';
 import { StateService } from 'src/app/services/state.service';
 
@@ -14,7 +14,7 @@ export class PurchaseorderComponent implements OnInit {
   AllRequirementData: any[] = [];
 
   pro: any;
-  
+
   Quotations: any[] = [];
 
   AddpurchaseorderForm: FormGroup;
@@ -36,6 +36,7 @@ export class PurchaseorderComponent implements OnInit {
       SGST_amount: new FormControl('', [Validators.required]),
       Total_Amount: new FormControl('', [Validators.required]),
       Discount_Amount: new FormControl('', [Validators.required]),
+      HSN_Code: new FormControl(''),
       Client_Address: new FormControl('', [Validators.required]),
       Purchase_Address: new FormControl('', [Validators.required]),
       Delivery_Date: new FormControl(''),
@@ -56,6 +57,7 @@ export class PurchaseorderComponent implements OnInit {
       SGST_amount: new FormControl('', [Validators.required]),
       Total_Amount: new FormControl('', [Validators.required]),
       Discount_Amount: new FormControl('', [Validators.required]),
+      HSN_Code: new FormControl(''),
       Client_Address: new FormControl('', [Validators.required]),
       Purchase_Address: new FormControl('', [Validators.required]),
       Delivery_Date: new FormControl(''),
@@ -94,6 +96,7 @@ export class PurchaseorderComponent implements OnInit {
       SGST_amount: req.SGST_amount,
       Total_Amount: req.Total_Amount,
       Discount_Amount: req.Discount_Amount,
+      HSN_Code: req.HSN_Code,
       Payment_term: req.Payment_term
     });
 
@@ -170,7 +173,7 @@ export class PurchaseorderComponent implements OnInit {
   }
 
 
-   printPdf(Id: any) {
+  printPdf(Id: any) {
     this._rest.GeneratePurchaseOrder(Id)
       .subscribe((file: Blob) => {
         const url = window.URL.createObjectURL(file);

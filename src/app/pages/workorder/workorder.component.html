@@ -1,91 +1,97 @@
 <div class="container-fluid"> <br><br><br>
-    <h3 class="text-center" > Work Order</h3>
-<br>
-<br>
-<div class="row">
-    <div class="col-5">
-     <div class="card" >
-         <div class="card-header">Add New Work Order</div>
-        <div class="card-body" >
-            <form [formGroup]="AddWorkorderForm" (submit)="AddWorkOrderData()" >
+    <h3 class="text-center"> Work Order</h3>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-5">
+            <div class="card">
+                <div class="card-header">Add New Work Order</div>
+                <div class="card-body">
+                    <form [formGroup]="AddWorkorderForm" (submit)="AddWorkOrderData()">
 
-                <div class="row">
-                    <div class="col-6">
-                          <div class="mb-3">
-                         <label for="Requirement_No">Requirement No</label>
-                            <br>
-                         <select formControlName="Requirement_No" class="Se">
-                            <option *ngFor="let mat of AllPurchaseOrderData" [value]="mat.Requirement_No">{{mat.Requirement_No}}</option>
-                         </select>  <br>
-                         </div>
-                    </div>
-
-
-                    <div class="col-6">
-                         <div class="mb-3">
-                             <label for="Product_Quantity">Product Quantity</label>
-                                 <br>
-                                  <select formControlName="Product_Quantity" class="Se">
-                                      <option *ngFor="let mat of AllPurchaseOrderData" [value]="mat.Product_Quantity">{{mat.Product_Quantity}}({{mat.Requirement_No}})</option>
-                                 </select>  <br>
-                         </div>
-                    </div>
-
-                </div>
-                
-                <div class="row">
-                    <div class="col-6">
-                            <div class="mb-3">
-                             <label for="Product_Name">Product Name </label>
-                                <br>
-                            <select formControlName="Product_Name" class="Se">
-                                <option *ngFor="let mat of AllPurchaseOrderData" [value]="mat.Product_Name">{{mat.Product_Name}} ({{mat.Requirement_No}})</option>
-                            </select>  <br>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="Requirement_No">Requirement No</label>
+                                    <br>
+                                    <select formControlName="Requirement_No" class="Se">
+                                        <option *ngFor="let mat of AllPurchaseOrderData" [value]="mat.Requirement_No">
+                                            {{mat.Requirement_No}}</option>
+                                    </select> <br>
+                                </div>
                             </div>
-                    </div>
-                   
-                    <div class="col-6">
-                          <div class="mb-3">
-                             <label for="Purchase_Number">Purchase Number </label>
-                            <br>
-                                 <select formControlName="Purchase_Number" class="Se">
-                                      <option *ngFor="let mat of AllPurchaseOrderData" [value]="mat.Purchase_Number">{{mat.Purchase_Number}}({{mat.Requirement_No}})</option>
-                                 </select>  <br>
-                         </div>
-                    </div>
-                </div>
 
-                <div class="row">                          
-                                     <label for="Client_Name" class="form-label">Client Name : </label>
-                                        <br>
-                                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                                        formControlName="Client_Name" placeholder="Enter Client Name">
-                                            </div>
-                <br>
-                <div class="row">
-                 
-                      <div class="col-6">
-                          <div class="mb-3">
-                             <label for="Material_Type">Material Type</label>
-                            <br>
-                                 <select formControlName="Material_Type" class="Se">
-                                      <option *ngFor="let mat of AllPurchaseOrderData" [value]="mat.Material_Type">{{mat.Material_Type}}({{mat.Requirement_No}})</option>
-                                 </select>  <br>
-                         </div>
-                    </div>
 
-                    <div class="col-6">                     
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Manager Name : </label>
-              <br>
-                <select formControlName="Manager_Name" class="">
-                    <option *ngFor="let mat of AllManagerdata" [value]="mat.Name">{{mat.Name}}</option>
-                </select>  <br>
-            </div>
-                    </div>
-                </div>
-                
-                <!-- <div class="row">
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="Product_Quantity">Product Quantity</label>
+                                    <br>
+                                    <select formControlName="Product_Quantity" class="Se">
+                                        <option *ngFor="let mat of AllPurchaseOrderData" [value]="mat.Product_Quantity">
+                                            {{mat.Product_Quantity}}({{mat.Requirement_No}})</option>
+                                    </select> <br>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="Product_Name">Product Name </label>
+                                    <br>
+                                    <select formControlName="Product_Name" class="Se">
+                                        <option *ngFor="let mat of AllPurchaseOrderData" [value]="mat.Product_Name">
+                                            {{mat.Product_Name}} ({{mat.Requirement_No}})</option>
+                                    </select> <br>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="Purchase_Number">Purchase Number </label>
+                                    <br>
+                                    <select formControlName="Purchase_Number" class="Se">
+                                        <option *ngFor="let mat of AllPurchaseOrderData" [value]="mat.Purchase_Number">
+                                            {{mat.Purchase_Number}}({{mat.Requirement_No}})</option>
+                                    </select> <br>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <label for="Client_Name" class="form-label">Client Name : </label>
+                            <br>
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                formControlName="Client_Name" placeholder="Enter Client Name">
+                        </div>
+                        <br>
+                        <div class="row">
+
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="Material_Type">Material Type</label>
+                                    <br>
+                                    <select formControlName="Material_Type" class="Se">
+                                        <option *ngFor="let mat of AllPurchaseOrderData" [value]="mat.Material_Type">
+                                            {{mat.Material_Type}}({{mat.Requirement_No}})</option>
+                                    </select> <br>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Manager Name : </label>
+                                    <br>
+                                    <select formControlName="Manager_Name" class="">
+                                        <option *ngFor="let mat of AllManagerdata" [value]="mat.Name">{{mat.Name}}
+                                        </option>
+                                    </select> <br>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="row">
                     <div class="col-6">
                          <div class="mb-3">
                              <label for="exampleInputEmail1" class="form-label">QC Name : </label>
@@ -107,84 +113,94 @@
                 </div>
 
                 </div> -->
-                 <div class="row">
-            <div class="col-6"> 
-            <div class="mb-3">
-                <label for="Payment_term">Day of Payment: </label>
-                   <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                                        formControlName="Payment_term" placeholder="Enter Payment term">
-            </div>
-            </div>
-        
-            <div class="col-6">
-            <div class="mb-3">
-                <label for="WorkOrder_Status">Work Order Status  : </label>
-                <select class="form-select form-select-sm" formControlName="WorkOrder_Status" aria-label="select example">
-                                <option value="Created">Created </option>
-                                <option value="Scheduled">Scheduled</option>
-                                <option value="In Progress"> In Progress </option>
-                                <option value="Completed">Completed </option>
-                                <option value="Declined">Declined </option>
-                                <option value="Close">Close </option>
-                </select>
-            </div>
-            </div>
-        
-            <div class="col-6">
-            <div class="mb-3">
-                <label for="Status">Due Date : </label> <br>
-                 <input type="date" formControlName="Due_Date">
-            </div>
-            </div>
-        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="Payment_term">Day of Payment: </label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" formControlName="Payment_term"
+                                        placeholder="Enter Payment term">
+                                </div>
+                            </div>
 
-            <div class="mb-3">
-            <button type="submit" class="btn btn-success">Add Work Order</button>
-            </div>
-            </form>
-        </div>
-     </div>
-    </div>
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="WorkOrder_Status">Work Order Status : </label>
+                                    <select class="form-select form-select-sm" formControlName="WorkOrder_Status"
+                                        aria-label="select example">
+                                        <option value="Created">Created </option>
+                                        <option value="Scheduled">Scheduled</option>
+                                        <option value="In Progress"> In Progress </option>
+                                        <option value="Completed">Completed </option>
+                                        <option value="Declined">Declined </option>
+                                        <option value="Close">Close </option>
+                                    </select>
+                                </div>
+                            </div>
 
-    <!-- <div class="col-1"></div> -->
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="Status">Due Date : </label> <br>
+                                    <input type="date" formControlName="Due_Date">
+                                </div>
+                            </div>
+                        </div>
 
-    <br><br>    
-    <div class="col-7">
-        <div class="row">
-              <div class="" >
-
-                      <table class="table" >
-                    <thead>
-                        <tr>
-                            <th>Sr No.</th>
-                            <th>Work Order Number</th>
-                            <th>Client Name</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr   *ngFor="let a of AllWorkOrderData | paginate :{itemsPerPage :10 ,currentPage:pro},let i = index">
-                           <td >{{a.Workorder_Id}}</td>
-                          <td><p title="View Work Order Details" ><a href="" [routerLink]="['/AdminDashboard/WorkorderDetails',a.Workorder_Id]">{{a.WO_Number}}</a></p></td>
-                            
-                            <td>{{a.Client_Name}}</td>
-                            <td>
-                                <a type="button" (click)="EditPurchaseOrder(a.Workorder_Id)" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal1" title="Edit a Waiting for Approval">
-                                <i class="fa-solid fa-pen-to-square fa-lg"></i>
-                                </a>
-                        <span style="margin-left:15px;cursor: pointer;"><a (click)="DeletePurchaseOrder(a.Workorder_Id)" title="Delete a Purchase Order"> <i class="fa-solid fa-trash-can"></i></a></span>
-                            </td>
-
-                        </tr>
-                    </tbody>
-                </table>
-
-                  <div class="text-center">
-                <pagination-controls (pageChange)=" pro = $event "
-                    style="background-color: #252847 !important; z-index: -2 !important;"></pagination-controls>
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-success">Add Work Order</button>
+                        </div>
+                    </form>
                 </div>
-            <!-- <div class="col-md-6" *ngFor="let a of AllWorkOrderData, let i = index">
+            </div>
+        </div>
+
+        <!-- <div class="col-1"></div> -->
+
+        <br><br>
+        <div class="col-7">
+            <div class="row">
+                <div class="">
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Sr No.</th>
+                                <th>Work Order Number</th>
+                                <th>Client Name</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                *ngFor="let a of AllWorkOrderData | paginate :{itemsPerPage :10 ,currentPage:pro},let i = index">
+                                <td>{{a.Workorder_Id}}</td>
+                                <td>
+                                    <p title="View Work Order Details"><a href=""
+                                            [routerLink]="['/AdminDashboard/WorkorderDetails',a.Workorder_Id]">{{a.WO_Number}}</a>
+                                    </p>
+                                </td>
+
+                                <td>{{a.Client_Name}}</td>
+                                <td>
+                                    <a type="button" (click)="EditPurchaseOrder(a.Workorder_Id)" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal1" title="Edit a Waiting for Approval">
+                                        <i class="fa-solid fa-pen-to-square fa-lg"></i>
+                                    </a>
+                                    <span style="margin-left:15px;cursor: pointer;"><a
+                                            (click)="DeletePurchaseOrder(a.Workorder_Id)"
+                                            title="Delete a Purchase Order"> <i
+                                                class="fa-solid fa-trash-can"></i></a></span>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="text-center">
+                        <pagination-controls (pageChange)=" pro = $event "
+                            style="background-color: #252847 !important; z-index: -2 !important;"></pagination-controls>
+                    </div>
+                    <!-- <div class="col-md-6" *ngFor="let a of AllWorkOrderData, let i = index">
                 <div class="card ">
                     <div class="card-body">
                       
@@ -216,98 +232,120 @@
                     </div>
                 </div>
             </div> -->
-        </div>
-    </div>
-
-
- <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Waiting for Approval</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                <div class="col-md-12">
-                   
-        <form [formGroup]="EditWorkorderForm">                      
-           
-                <div class="row">
-                    <div class="col-6">
-                          <div class="mb-3">
-                         <label for="Requirement_No">Requirement No</label>
-                            <br>
-                         <select formControlName="Requirement_No" class="Se">
-                            <option *ngFor="let mat of AllPurchaseOrderData" [value]="mat.Requirement_No">{{mat.Requirement_No}}</option>
-                         </select>  <br>
-                         </div>
-                    </div>
-    
-                    <div class="col-6">
-                         <div class="mb-3">
-                             <label for="Product_Quantity">Product Quantity</label>
-                                 <br>
-                                  <select formControlName="Product_Quantity" class="Se">
-                                      <option *ngFor="let mat of AllPurchaseOrderData" [value]="mat.Product_Quantity">{{mat.Product_Quantity}}({{mat.Requirement_No}})</option>
-                                 </select>  <br>
-                         </div>
-                    </div>
-
-                </div>
-                
-                <div class="row">
-                    <div class="col-6">
-                            <div class="mb-3">
-                             <label for="Product_Name">Product Name </label>
-                                <br>
-                            <select formControlName="Product_Name" class="Se">
-                                <option *ngFor="let mat of AllPurchaseOrderData" [value]="mat.Product_Name">{{mat.Product_Name}} ({{mat.Requirement_No}})</option>
-                            </select>  <br>
-                            </div>
-                    </div>
-                   
-                    <div class="col-6">
-                          <div class="mb-3">
-                             <label for="Purchase_Number">Purchase Number </label>
-                            <br>
-                                 <select formControlName="Purchase_Number" class="Se">
-                                      <option *ngFor="let mat of AllPurchaseOrderData" [value]="mat.Purchase_Number">{{mat.Purchase_Number}}({{mat.Requirement_No}})</option>
-                                 </select>  <br>
-                         </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                        <label for="Client_Name" class="form-label">Client Name : </label>
-                             <br>
-                             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                                formControlName="Client_Name" placeholder="Enter Client Name">
-                                            </div>
-                <br>
-                <div class="row">
-                 
-                      <div class="col-6">
-                          <div class="mb-3">
-                             <label for="Material_Type">Material Type</label>
-                            <br>
-                                 <select formControlName="Material_Type" class="Se">
-                                      <option *ngFor="let mat of AllPurchaseOrderData" [value]="mat.Material_Type">{{mat.Material_Type}}({{mat.Requirement_No}})</option>
-                                 </select>  <br>
-                         </div>
-                    </div>
-
-                    <div class="col-6">                     
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Manager Name : </label>
-              <br>
-                <select formControlName="Manager_Name" class="">
-                    <option *ngFor="let mat of AllManagerdata" [value]="mat.Name">{{mat.Name}}</option>
-                </select>  <br>
             </div>
-                    </div>
-                </div>
-                
-                <!-- <div class="row">
+
+
+            <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Edit Waiting for Approval</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="col-md-12">
+
+                                <form [formGroup]="EditWorkorderForm">
+
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="Requirement_No">Requirement No</label>
+                                                <br>
+                                                <select formControlName="Requirement_No" class="Se">
+                                                    <option *ngFor="let mat of AllPurchaseOrderData"
+                                                        [value]="mat.Requirement_No">{{mat.Requirement_No}}</option>
+                                                </select> <br>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="Product_Quantity">Product Quantity</label>
+                                                <br>
+                                                <select formControlName="Product_Quantity" class="Se">
+                                                    <option *ngFor="let mat of AllPurchaseOrderData"
+                                                        [value]="mat.Product_Quantity">
+                                                        {{mat.Product_Quantity}}({{mat.Requirement_No}})</option>
+                                                </select> <br>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="Product_Name">Product Name </label>
+                                                <br>
+                                                <select formControlName="Product_Name" class="Se">
+                                                    <option *ngFor="let mat of AllPurchaseOrderData"
+                                                        [value]="mat.Product_Name">{{mat.Product_Name}}
+                                                        ({{mat.Requirement_No}})</option>
+                                                </select> <br>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="Purchase_Number">Purchase Number </label>
+                                                <br>
+                                                <select formControlName="Purchase_Number" class="Se">
+                                                    <option *ngFor="let mat of AllPurchaseOrderData"
+                                                        [value]="mat.Purchase_Number">
+                                                        {{mat.Purchase_Number}}({{mat.Requirement_No}})</option>
+                                                </select> <br>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label for="Client_Name" class="form-label">Client Name : </label>
+                                        <br>
+                                        <input type="text" class="form-control" id="exampleInputEmail1"
+                                            aria-describedby="emailHelp" formControlName="Client_Name"
+                                            placeholder="Enter Client Name">
+                                    </div>
+                                    <br>
+                                    <div class="row">
+
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="Material_Type">Material Type</label>
+                                                <br>
+                                                <select formControlName="Material_Type" class="Se">
+                                                    <option *ngFor="let mat of AllPurchaseOrderData"
+                                                        [value]="mat.Material_Type">
+                                                        {{mat.Material_Type}}({{mat.Requirement_No}})</option>
+                                                </select> <br>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="exampleInputEmail1" class="form-label">Manager Name :
+                                                </label>
+                                                <br>
+                                                <select formControlName="Manager_Name" class="">
+                                                    <option *ngFor="let mat of AllManagerdata" [value]="mat.Name">
+                                                        {{mat.Name}}</option>
+                                                </select> <br>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="exampleInputEmail1" class="form-label">Manager Status :
+                                                </label>
+                                                <br>
+                                               <input type="text" formControlName="Manager_Status">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- <div class="row">
                     <div class="col-6">
                          <div class="mb-3">
                              <label for="exampleInputEmail1" class="form-label">QC Name : </label>
@@ -329,45 +367,48 @@
                 </div>
 
                 </div> -->
-                 <div class="row">
-            <div class="col-6"> 
-            <div class="mb-3">
-                <label for="Payment_term">Day of Payment: </label>
-                   <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                                        formControlName="Payment_term" placeholder="Enter Payment term">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="Payment_term">Day of Payment: </label>
+                                                <input type="text" class="form-control" id="exampleInputEmail1"
+                                                    aria-describedby="emailHelp" formControlName="Payment_term"
+                                                    placeholder="Enter Payment term">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="WorkOrder_Status">Work Order Status : </label>
+                                                <select class="form-select form-select-sm"
+                                                    formControlName="WorkOrder_Status" aria-label="select example">
+                                                    <option value="Created">Created </option>
+                                                    <option value="Scheduled">Scheduled</option>
+                                                    <option value="In Progress"> In Progress </option>
+                                                    <option value="Completed">Completed </option>
+                                                    <option value="Declined">Declined </option>
+                                                    <option value="Close">Close </option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="Status">Due Date : </label>
+                                                <input type="date" formControlName="Due_Date">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <button class="btn btn-success mb-4" (click)="UpdatePurchaseOrder()">Update Work
+                                        Order</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            </div>
-        
-            <div class="col-6">
-            <div class="mb-3">
-                <label for="WorkOrder_Status">Work Order Status  : </label>
-                <select class="form-select form-select-sm" formControlName="WorkOrder_Status" aria-label="select example">
-                                <option value="Created">Created </option>
-                                <option value="Scheduled">Scheduled</option>
-                                <option value="In Progress"> In Progress </option>
-                                <option value="Completed">Completed </option>
-                                <option value="Declined">Declined </option>
-                                <option value="Close">Close </option>
-                </select>
-            </div>
-            </div>
-        
-            <div class="col-6">
-            <div class="mb-3">
-                <label for="Status">Due Date : </label>
-                 <input type="date" formControlName="Due_Date">
-            </div>
-            </div>  
+
         </div>
-         <br>
-             <button class="btn btn-success mb-4" (click)="UpdatePurchaseOrder()">Update Work Order</button>
-        </form>
-       </div>
-        </div>
-        </div>
-        </div>
+
     </div>
-
-</div>
-
-</div>

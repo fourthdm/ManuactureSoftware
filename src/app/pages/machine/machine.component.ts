@@ -8,7 +8,7 @@ import { RestService } from 'src/app/services/rest.service';
   styleUrls: ['./machine.component.css']
 })
 export class MachineComponent {
-pro: any;
+  pro: any;
   
   isAdmin: boolean = false;
 
