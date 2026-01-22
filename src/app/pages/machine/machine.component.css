@@ -33,14 +33,14 @@ label{
 th {
     background-color: #c4c1cfab !important;
     color: black;
-    font-family: 'newcustomfnts';
+    /* font-family: 'newcustomfnts'; */
         font-weight: bold;
 }
 
 td {
     background-color: #c4c1cfab;
     color: black;
-    font-family: 'newcustomfnts';
+    /* font-family: 'newcustomfnts'; */
 }
 
 .btt {

@@ -235,6 +235,17 @@
                             Work Order Close
                         </p>
                     </a>
+                    <a *ngIf="isManager"
+                        href="#"
+                        class="nav-link"
+                        routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{ exact: true }"
+                        [routerLink]="['/ManagerDashboard/WorkOrderClose']" >
+                        <i class="fa-solid fa-house-signal fa-xl"></i>
+                        <p>
+                            Work Order Close
+                        </p>
+                    </a>
                 </li>                                               
                          
                <li class="nav-item menu-open">

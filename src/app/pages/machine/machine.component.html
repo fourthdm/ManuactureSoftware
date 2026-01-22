@@ -1,7 +1,7 @@
 <div class="container main">
     <br><br><br><br>
     <div class="text-center">
-        <h2>All Machines Information </h2>
+        <h2>All Machine Information </h2>
     </div>
     <br><br>
 
@@ -11,7 +11,7 @@
             Add Machine <i class="fa-solid fa-square-plus"></i>
         </button> <br>
     </div>
- <br>
+    <br>
     <br>
     <table class="table table-striped">
         <thead>
@@ -27,20 +27,19 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let machine of ALLMachine">
-                <td [routerLink]="['/Home/MachinesDetails',machine.Machine_id]" title="View Information" class="info">{{
-                    machine.Machine_id }}</td>
+            <tr *ngFor="let machine of ALLMachine | paginate:{itemsPerPage : 10, currentPage:pro}, let i = index">
+                <td [routerLink]="['/Home/MachinesDetails',machine.Machine_id]" title="View Information" class="info">
+                    {{machine.Machine_id }}</td>
                 <td>{{ machine.Machine_Code }}</td>
                 <td>{{ machine.Machine_Name }}</td>
                 <td>{{ machine.Machine_Number }}</td>
                 <td>{{ machine.Added_Date | date }} <br> {{machine.Added_Date | date:'h:mm a' }}</td>
-
                 <td>
                     <span [ngClass]="{
-      'text-success': machine.Machine_Status == 0,
-      'text-danger': machine.Machine_Status == 1,
-      'text-warning': machine.Machine_Status == 2
-    }">
+                       'text-success': machine.Machine_Status == 0,
+                       'text-danger': machine.Machine_Status == 1,
+                       'text-warning': machine.Machine_Status == 2
+                     }">
                         <i class="fa-solid fa-circle fa-sm"></i> {{
                         machine.Machine_Status == 0
                         ? 'Available'
@@ -61,7 +60,7 @@
                             class="fa-regular fa-trash-can fa-lg"></i></a>
                 </td>
             </tr>
-                   </tbody>
+        </tbody>
     </table>
     <br>
     <br>
@@ -75,14 +74,14 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="col-md-12"> 
+                    <div class="col-md-12">
                         <form [formGroup]="AddMachineForm">
-                            
-                            <label for="Machine_Name">Name</label>
+
+                            <label for="Machine_Name">Machine Name</label>
                             <input type="text" formControlName="Machine_Name" class="form-control"
-                                placeholder="Machine_Name">
+                                placeholder="Enter Machine Name">
                             <br>
-                       
+
                             <div class="mb-3">
                                 <label for="Machine_Status" class="form-label">Machine Status</label>
                                 <select class="form-select" id="Machine_Status" formControlName="Machine_Status"
@@ -113,7 +112,7 @@
                     <div class="col-md-12">
                         <br>
                         <form [formGroup]="EditMachineForm">
-                      
+
                             <label for="Machine_Name">Machine Name</label>
                             <input type="text" formControlName="Machine_Name" class="form-control"
                                 placeholder="Machine_Name">
@@ -128,7 +127,7 @@
                             <input type="text" formControlName="Machine_Number" class="form-control"
                                 placeholder="Machine_Number">
                             <br>
-                   
+
                             <div class="mb-3">
                                 <label for="Machine_Status" class="form-label">Machine Status</label>
                                 <select class="form-select" id="Machine_Status" formControlName="Machine_Status"

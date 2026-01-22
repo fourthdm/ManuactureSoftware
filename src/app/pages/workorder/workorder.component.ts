@@ -60,6 +60,7 @@ export class WorkorderComponent implements OnInit {
       Product_Quantity: new FormControl('', [Validators.required]),
       Material_Type: new FormControl('', [Validators.required]),
       Manager_Name: new FormControl('', [Validators.required]),
+      Manager_Status: new FormControl(''),
       Engineer_Name: new FormControl(''),
       QC_Name: new FormControl(''),
       DispatchManager_Name: new FormControl(''),

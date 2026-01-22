@@ -49,7 +49,7 @@
                         <option *ngFor="let b of MaterialTypes" [value]="b.Material_Type">{{b.Material_Type}}</option>
                     </select>
                 </label>
-                <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i
+                <button class="btn bttns" type="button" id="button-addon2"><i
                         class="fa-solid fa-magnifying-glass" (click)="MaterialByType()"></i></button>
             </div>
         </div><br>
@@ -62,14 +62,14 @@
                         <option *ngFor="let b of MaterialTypes " [value]="b.Material_Size">{{b.Material_Size}}</option>
                     </select>
                 </label>
-                <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i
+                <button class="btn bttns" type="button" id="button-addon2"><i
                         class="fa-solid fa-magnifying-glass" (click)="MaterialBySize()"></i></button>
             </div>
         </div><br>
 
         <div class="col-md-2">
             <br>
-            <a  class="btn btn-outline-secondary" (click)="AllMaterial()" style="color: white;"><i class="fa-solid fa-arrow-rotate-right"></i></a>
+            <a  class="btn bttns" (click)="AllMaterial()" style="color: white;"><i class="fa-solid fa-arrow-rotate-right"></i></a>
         </div>
 
     </div>
@@ -141,24 +141,24 @@
                     <div class="col-md-12">
                      
                         <form [formGroup]="MaterialAddForms">
-                            <label for="Material_Size">Material_Size</label>
+                            <label for="Material_Size">Material Size</label>
                             <input type="text" formControlName="Material_Size" class="form-control"
-                                placeholder="Material_Size">
+                                placeholder="Enter Material Size">
                             <br>
                             <label for="Material_Name">Material Name</label>
                             <input type="text" formControlName="Material_Name" class="form-control"
-                                placeholder="Material_Name">
+                                placeholder="Enter Material Name">
                             <br>
                             <label for="Material_Type">Material Type</label>
                             <input type="text" formControlName="Material_Type" class="form-control"
-                                placeholder="Material_Type">
+                                placeholder="Enter Material Type">
                             <br>
 
                             <div class="mb-3">
                                 <label for="Material_Weight" class="form-label">Material Weight</label>
                                 <input type="text" class="form-control" id="Material_Weight"
                                     formControlName="Material_Weight" (blur)="formatWeight()"
-                                    placeholder="Enter weight (e.g. 500)" />
+                                    placeholder="Enter Weight (e.g. 500)" />
                             </div>
 
                             <!-- <label for="Material_Weight">Material Weight</label>
@@ -197,15 +197,15 @@
                         <form [formGroup]="EditMaterialForms">
                             <label for="Material_Size">Material Size</label>
                             <input type="text" formControlName="Material_Size" class="form-control"
-                                placeholder="Material_Size">
+                                placeholder="Enter Material Size">
                             <br>
                             <label for="Material_Name">Material Name</label>
                             <input type="text" formControlName="Material_Name" class="form-control"
-                                placeholder="Material_Name">
+                                placeholder="Enter Material Name">
                             <br>
                             <label for="Material_Type">Material Type</label>
                             <input type="text" formControlName="Material_Type" class="form-control"
-                                placeholder="Material_Type">
+                                placeholder="Enter Material Type">
                             <br>
 
                             <div class="mb-3">

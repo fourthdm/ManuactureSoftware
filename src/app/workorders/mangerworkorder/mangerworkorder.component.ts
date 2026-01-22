@@ -28,40 +28,40 @@ export class MangerworkorderComponent implements OnInit {
 
   constructor(private _rest: RestService, private _state: StateService) {
 
-       this.AddWorkorderForm = new FormGroup({
-          Requirement_No: new FormControl('', [Validators.required]),
-          Purchase_Number: new FormControl('', [Validators.required]),
-          Payment_term: new FormControl('', [Validators.required]),
-          Product_Name: new FormControl('', [Validators.required]),
-          Product_Quantity: new FormControl('', [Validators.required]),
-          Material_Type: new FormControl('', [Validators.required]),
-          Manager_Name: new FormControl('', [Validators.required]),
-          Engineer_Name: new FormControl(''),
-          QC_Name: new FormControl(''),
-          DispatchManager_Name: new FormControl(''),
-          Client_Name: new FormControl('', [Validators.required]),
-          WorkOrder_Status: new FormControl('', [Validators.required]),
-          Due_Date: new FormControl('')
-        });
-    
-        this.EditWorkorderForm = new FormGroup({
-          Workorder_Id: new FormControl(''),
-          Requirement_No: new FormControl('', [Validators.required]),
-          Purchase_Number: new FormControl('', [Validators.required]),
-          Payment_term: new FormControl('', [Validators.required]),
-          Product_Name: new FormControl('', [Validators.required]),
-          Product_Quantity: new FormControl('', [Validators.required]),
-          Material_Type: new FormControl('', [Validators.required]),
-          Manager_Name: new FormControl('', [Validators.required]),
-          Manager_Status: new FormControl(''),
-          Engineer_Name: new FormControl(''),
-          QC_Name: new FormControl(''),
-          DispatchManager_Name: new FormControl(''),
-          Client_Name: new FormControl('', [Validators.required]),
-          WorkOrder_Status: new FormControl('', [Validators.required]),
-          Due_Date: new FormControl('')
-        });
-   }
+    this.AddWorkorderForm = new FormGroup({
+      Requirement_No: new FormControl('', [Validators.required]),
+      Purchase_Number: new FormControl('', [Validators.required]),
+      Payment_term: new FormControl('', [Validators.required]),
+      Product_Name: new FormControl('', [Validators.required]),
+      Product_Quantity: new FormControl('', [Validators.required]),
+      Material_Type: new FormControl('', [Validators.required]),
+      Manager_Name: new FormControl('', [Validators.required]),
+      Engineer_Name: new FormControl(''),
+      QC_Name: new FormControl(''),
+      DispatchManager_Name: new FormControl(''),
+      Client_Name: new FormControl('', [Validators.required]),
+      WorkOrder_Status: new FormControl('', [Validators.required]),
+      Due_Date: new FormControl('')
+    });
+
+    this.EditWorkorderForm = new FormGroup({
+      Workorder_Id: new FormControl(''),
+      // Requirement_No: new FormControl('', [Validators.required]),
+      // Purchase_Number: new FormControl('', [Validators.required]),
+      // Payment_term: new FormControl('', [Validators.required]),
+      // Product_Name: new FormControl('', [Validators.required]),
+      // Product_Quantity: new FormControl('', [Validators.required]),
+      Material_Type: new FormControl('', [Validators.required]),
+      Manager_Name: new FormControl('', [Validators.required]),
+      Manager_Status: new FormControl(''),
+      Engineer_Name: new FormControl(''),
+      QC_Name: new FormControl(''),
+      DispatchManager_Name: new FormControl(''),
+      // Client_Name: new FormControl('', [Validators.required]),
+      WorkOrder_Status: new FormControl('', [Validators.required]),
+      Due_Date: new FormControl('')
+    });
+  }
 
   ngOnInit(): void {
     this.Allworkorderss();
@@ -151,7 +151,6 @@ export class MangerworkorderComponent implements OnInit {
 
   AllManager() {
     this._rest.Managerdata().subscribe((data: any) => {
-
       this.AllManagerdata = data.data;
     }, (err: any) => {
       console.log(err);
@@ -160,7 +159,6 @@ export class MangerworkorderComponent implements OnInit {
 
   AllQC() {
     this._rest.QCData().subscribe((data: any) => {
-
       this.AllQCdata = data.data;
     }, (err: any) => {
       console.log(err);
@@ -210,5 +208,23 @@ export class MangerworkorderComponent implements OnInit {
     }
   }
 
+  downloadFromUrl(fileUrl: string) {
+    const fileName = fileUrl.split('/').pop();   // extract file name
 
+    const a = document.createElement('a');
+    a.href = fileUrl;
+    a.download = fileName ?? 'file';   // force download
+    a.target = "_blank";
+    a.click();
+  }
+
+  loadWorkOrders() {
+    this._rest.AllWorkOrder().subscribe((workorders: any) => {
+      workorders.forEach((wo:any) => {
+        this._rest
+          .createNotification(wo.Workorder_Id)
+          .subscribe();
+      });
+    });
+  }
 }
