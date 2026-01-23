@@ -12,6 +12,17 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="mb-3">
+                                    <label for="Quotation_Number">Quotation Number</label>
+                                    <br>
+                                    <select formControlName="Quotation_Number" class="Se">
+                                        <option *ngFor="let mat of Quotations" [value]="mat.Quotation_Number">
+                                            {{mat.Quotation_Number}}</option>
+                                    </select> <br>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-3">
                                     <label for="Requirement_No">Requirement No</label>
                                     <br>
                                     <select formControlName="Requirement_No" class="Se">
@@ -161,14 +172,14 @@
                                     <label for="Status">Status : </label>
                                     <select class="form-select form-select-sm" formControlName="Status"
                                         aria-label="select example">
-                                        <option value="Created">Created </option>
+                                        <option value="Create">Create </option>
                                         <option value="Waiting for Approval">Waiting for Approval </option>
                                         <option value="Approved">Approved </option>
                                         <option value="Sent to Vendor">Sent to Vendor </option>
                                         <option value="Partially Received">Partially Received </option>
-                                        <option value="Received">Received </option>
-                                        <option value="Invoiced">Invoiced </option>
-                                        <option value="Completed">Completed </option>
+                                        <option value="Receive">Receive </option>
+                                        <option value="Invoice">Invoice</option>
+                                        <option value="Complete">Complete </option>
                                         <option value="Close">Close </option>
                                     </select>
                                 </div>
@@ -344,14 +355,14 @@
                                             <label for="Status">Status : </label>
                                             <select class="form-select form-select-sm" formControlName="Status"
                                                 aria-label="select example">
-                                                <option value="Created">Created </option>
+                                                <option value="Create">Create </option>
                                                 <option value="Waiting for Approval">Waiting for Approval </option>
-                                                <option value="Approved">Approved </option>
+                                                <option value="Approve">Approve </option>
                                                 <option value="Sent to Vendor">Sent to Vendor </option>
                                                 <option value="Partially Received">Partially Received </option>
-                                                <option value="Received">Received </option>
-                                                <option value="Invoiced">Invoiced </option>
-                                                <option value="Completed">Completed </option>
+                                                <option value="Receive">Receive</option>
+                                                <option value="Invoice">Invoice </option>
+                                                <option value="Complete">Complete </option>
                                                 <option value="Close">Close </option>
                                             </select>
                                         </div>
@@ -368,6 +379,5 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>

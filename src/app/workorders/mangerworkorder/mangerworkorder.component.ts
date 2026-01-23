@@ -89,7 +89,6 @@ export class MangerworkorderComponent implements OnInit {
     });
   }
 
-
   autoFillByRequirement(reqNo: string) {
     const req = this.AllPurchaseOrderData.find(
       (r: any) => r.Requirement_No === reqNo
@@ -172,7 +171,7 @@ export class MangerworkorderComponent implements OnInit {
       this.AddWorkorderForm.reset();
     }, (err: any) => {
       console.log(err);
-      alert('Error while adding work Order');
+      alert('Error while Adding Work Order');
     });
   }
 
@@ -182,7 +181,7 @@ export class MangerworkorderComponent implements OnInit {
       this.SelectedWorkOrderData = 1;
       this.EditWorkorderForm.patchValue(selectworkorder);
     } else {
-      console.log(`Purchase Order with ID ${Workorder_Id} not found.`);
+      console.log(`Work Order with ID ${Workorder_Id} not found.`);
     }
   }
 
@@ -192,7 +191,7 @@ export class MangerworkorderComponent implements OnInit {
       this.AllWorkOrder();
     }, (err: any) => {
       console.log(err);
-      alert('Error while updating Purchase Order');
+      alert('Error while updating Work Order');
     });
   }
 
@@ -203,7 +202,7 @@ export class MangerworkorderComponent implements OnInit {
         this.ngOnInit();
       }, (err: any) => {
         console.log(err);
-        alert('Error while deleting Purchase Order');
+        alert('Error while Deleting Work Order');
       });
     }
   }
@@ -218,13 +217,14 @@ export class MangerworkorderComponent implements OnInit {
     a.click();
   }
 
-  loadWorkOrders() {
-    this._rest.AllWorkOrder().subscribe((workorders: any) => {
-      workorders.forEach((wo:any) => {
-        this._rest
-          .createNotification(wo.Workorder_Id)
-          .subscribe();
-      });
-    });
-  }
+  // loadWorkOrders() {
+  //   this._rest.AllWorkOrder().subscribe((workorders: any) => {
+  //     workorders.forEach((wo:any) => {
+  //       this._rest
+  //         .createNotification(wo.Workorder_Id)
+  //         .subscribe();
+  //     });
+  //   });
+  // }
+
 }

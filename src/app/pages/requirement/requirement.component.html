@@ -6,121 +6,138 @@
     <div class="row">
         <div class="col-6">
             <div class="card">
-                   <div class="card-header">Add New Requirement</div>
+                <div class="card-header">Add New Requirement</div>
                 <div class="card-body">
-                       <form [formGroup]="Requirementform" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
-                                     <div class="">
-                                        <label>Client Name</label>
-                                        <input formControlName="Client_Name" class="form-control" placeholder="Enter Client Name" /> <br>
-                                    </div>
+                    <form [formGroup]="Requirementform" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+                  
+                        <div class="">
+                            <label>Client Name</label>
+                            <input formControlName="Client_Name" class="form-control" placeholder="Enter Client Name" />
+                            <br>
+                        </div>
 
-                                     <div class="">
-                                        <label>Material Type</label>
-                                         <select formControlName="Material_Type" class="Se">
-                                           <option *ngFor="let mat of AllMaterials" [value]="mat.Material_Type">{{mat.Material_Type}} ({{mat.Material_Name}})</option>
-                                         </select>  <br>
-                                    </div>
-                                    <br>
-                                    <div class="">
-                                    <label>Product Name</label>
-                                        <textarea formControlName="Product_Name" class="form-control" placeholder="Enter Product Name"></textarea> <br>
-                                    </div>                                
-                                  
-                                    <div class="">
-                                        <label>Client Address</label>
-                                      <textarea name="Client_Address" id="" formControlName="Client_Address" class="form-control" placeholder="Enter Client Address"></textarea>
-                                    <br>
-                                    </div>
-                                     <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Client Email</label>
-                                        <input formControlName="Client_Email" class="form-control" placeholder="Enter Client Email Address" /> <br>      
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label>Client PhoneNo </label>
-                                        <input formControlName="Client_PhoneNo" class="form-control" placeholder="Enter Client Phone Number"/> <br>
-                                    </div>
-                                </div>
-                                    <div class="row">
-                                        <div class="col-6"> 
-                                        <label>Product Quantity</label>
-                                        <input formControlName="Product_Quantity" class="form-control" placeholder="Enter Product Quantity"/> <br>
-                                        </div>
-                                        <div class="col-6">
-                                             <label>Status</label>  
-                                                 <select class="form-select form-select-sm" formControlName="Status" aria-label="select example">
-                                                    <option value="Created">Created</option>
-                                                    <option value="In Progress">In Progress</option>
-                                                    <option value="Completed">Completed</option>
-                                                    <option value="Cancelled">Cancelled</option>
-                                                 </select>
-                                                <br>
-                                        </div>
-                              
-                                    </div>
-                                 
-                                <div class=" ">
-                                        <label>Design File</label>
-                                        <input type="file" (change)="onFileselectDesignfile($event)" class="form-control" />
-                                    </div>
+                        <div class="">
+                            <label>Material Type</label>
+                            <select formControlName="Material_Type" class="Se">
+                                <option *ngFor="let mat of AllMaterials" [value]="mat.Material_Name">
+                                 {{mat.Material_Name}}   ({{mat.Material_Type}})</option>
+                            </select> <br>
+                        </div>
+                        <br>
+                        
+                        <div class="">
+                            <label>Product Name</label>
+                            <textarea formControlName="Product_Name" class="form-control"
+                                placeholder="Enter Product Name"></textarea> <br>
+                        </div>
+
+                        <div class="">
+                            <label>Client Address</label>
+                            <textarea name="Client_Address" id="" formControlName="Client_Address" class="form-control"
+                                placeholder="Enter Client Address"></textarea>
+                            <br>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Client Email</label>
+                                <input formControlName="Client_Email" class="form-control"
+                                    placeholder="Enter Client Email Address" /> <br>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>Client Phone Number </label>
+                                <input formControlName="Client_PhoneNo" class="form-control"
+                                    placeholder="Enter Client Phone Number" /> <br>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Product Quantity</label>
+                                <input formControlName="Product_Quantity" class="form-control"
+                                    placeholder="Enter Product Quantity" /> <br>
+                            </div>
+                            <div class="col-6">
+                                <label>Status</label>
+                                <select class="form-select form-select-sm" formControlName="Status"
+                                    aria-label="select example">
+                                    <option value="Create">Create</option>
+                                    <option value="In Progress">In Progress</option>
+                                    <option value="Complete">Complete</option>
+                                    <option value="Cancel">Cancel</option>
+                                </select>
                                 <br>
-                                <div class=" ">
-                                        <label>PDF Design File</label>
-                                        <input type="file" (change)="onFileselectPDFfile($event)" class="form-control" />
-                                    </div>
-                           <br>
-                                <div class="text-center">
-                                    <button type="submit" class="btn text-light btt">Add Requirement</button>
-                                </div>
-               </form>
+                            </div>
+
+                        </div>
+
+                        <div class=" ">
+                            <label>Design File (DWG File)</label>
+                            <input type="file" (change)="onFileselectDesignfile($event)" class="form-control" />
+                        </div>
+                        <br>
+                        <div class=" ">
+                            <label>PDF Design File (PDF File)</label>
+                            <input type="file" (change)="onFileselectPDFfile($event)" class="form-control" />
+                        </div>
+                        <br>
+                        <div class="text-center">
+                            <button type="submit" class="btn text-light btt">Add Requirement</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
         <br>
         <div class="col-6">
-        <div class="row">
-            <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
 
-                <table class="table" >
-                    <thead>
-                        <tr>
-                            <td>Sr No.</td>
-                            <th>Requirement No</th>
-                            <th>Client Name</th>
-                            <th>Action</th>
-                        
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr  *ngFor="let a of AllRequirementData | paginate :{itemsPerPage :10 ,currentPage:pro}, let i = index">
-                           <td >{{a.Req_id}}</td>
-                          <td><p title="View Requirement Details" ><a href="" [routerLink]="['/AdminDashboard/RequirementDetails', a.Req_id]">{{a.Requirement_No}}</a></p></td>
-                            
-                            <td>{{a.Client_Name}}</td>
-                            <td>
-                            <p class="">
-                                    <a type="button" (click)="editRequirement(a.Req_id)" data-bs-toggle="modal"
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <td>Sr No.</td>
+                                <th>Requirement No</th>
+                                <th>Client Name</th>
+                                <th>Action</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                *ngFor="let a of AllRequirementData | paginate :{itemsPerPage :10 ,currentPage:pro}, let i = index">
+                                <td>{{a.Req_id}}</td>
+                                <td>
+                                    <p title="View Requirement Details"><a href=""
+                                            [routerLink]="['/AdminDashboard/RequirementDetails', a.Req_id]">{{a.Requirement_No}}</a>
+                                    </p>
+                                </td>
+
+                                <td>{{a.Client_Name}}</td>
+                                <td>
+                                    <p class="">
+                                        <a type="button" (click)="editRequirement(a.Req_id)" data-bs-toggle="modal"
                                             data-bs-target="#exampleModal1" title="Edit a Requirement">
                                             <i class="fa-solid fa-pen-to-square fa-lg"></i>
-                                    </a>
-                                 <span style="margin-left: 5%;">
-                                    <a  type="button" (click)="DeleteRequirement(a.Req_id)" title="Delete a Requirement"> 
-                                        <i class="fa-solid fa-trash-can"></i>
-                                    </a>
-                                </span>
-                            </p>
-                            </td>
+                                        </a>
+                                        <span style="margin-left: 5%;">
+                                            <a type="button" (click)="DeleteRequirement(a.Req_id)"
+                                                title="Delete a Requirement">
+                                                <i class="fa-solid fa-trash-can"></i>
+                                            </a>
+                                        </span>
+                                    </p>
+                                </td>
 
-                        </tr>
-                    </tbody>
-                </table>
-    
-                <div class="text-center">
-                <pagination-controls (pageChange)=" pro = $event "
-                    style="background-color: #252847 !important; z-index: -2 !important;"></pagination-controls>
-                </div>
+                            </tr>
+                        </tbody>
+                    </table>
 
-                <!-- <div class="card">
+                    <div class="text-center">
+                        <pagination-controls (pageChange)=" pro = $event "
+                            style="background-color: #252847 !important; z-index: -2 !important;"></pagination-controls>
+                    </div>
+
+                    <!-- <div class="card">
                     <div class="card-body">
                     <p class="text-end">
                          <a type="button" (click)="editRequirement(a.Req_id)" data-bs-toggle="modal"
@@ -146,13 +163,13 @@
                             <span>Updated Time : </span> {{a.Updated_Date | date :'hh:mm:ss'}}</p>
                     </div>
                 </div> -->
+                </div>
             </div>
         </div>
     </div>
-    </div>
 
 
-     <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -160,67 +177,70 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                         <div class="col-md-12">
-                   
-                                <form [formGroup]="EditRequirementform" (ngSubmit)="UpdateRequirements()">
-                      
-                                    <div class="">
-                                        <label>Client Name</label>
-                                        <input formControlName="Client_Name" class="form-control" /> <br>
-                                    </div>
+                    <div class="col-md-12">
 
-                                    <div class="">
-                                    <label>Product Name</label>
-                                        <textarea formControlName="Product_Name" class="form-control" ></textarea> <br>
-                                    </div>                                
-                                  
-                                    <div class="">
-                                        <label>Client Address</label>
-                                      <textarea name="Client_Address" id="" formControlName="Client_Address" class="form-control"></textarea>
+                        <form [formGroup]="EditRequirementform" (ngSubmit)="UpdateRequirements()">
+
+                            <div class="">
+                                <label>Client Name</label>
+                                <input formControlName="Client_Name" class="form-control" /> <br>
+                            </div>
+
+                            <div class="">
+                                <label>Product Name</label>
+                                <textarea formControlName="Product_Name" class="form-control"></textarea> <br>
+                            </div>
+
+                            <div class="">
+                                <label>Client Address</label>
+                                <textarea name="Client_Address" id="" formControlName="Client_Address"
+                                    class="form-control"></textarea>
+                                <br>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Client Email</label>
+                                    <input formControlName="Client_Email" class="form-control" /> <br>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Client PhoneNo </label>
+                                    <input formControlName="Client_PhoneNo" class="form-control" /> <br>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <label>Product Quantity</label>
+                                    <input formControlName="Product_Quantity" class="form-control" /> <br>
+                                </div>
+                                <div class="col-6">
+                                    <label>Status</label>
+                                    <select class="form-select form-select-sm" formControlName="Status"
+                                        aria-label="select example">
+                                        <option value="Create">Create</option>
+                                        <option value="In Progress">In Progress</option>
+                                        <option value="Complete">Complete</option>
+                                        <option value="Cancel">Cancel</option>
+                                    </select>
                                     <br>
-                                    </div>
-                                     <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Client Email</label>
-                                        <input formControlName="Client_Email" class="form-control" /> <br>      
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label>Client PhoneNo </label>
-                                        <input formControlName="Client_PhoneNo" class="form-control" /> <br>
-                                    </div>
                                 </div>
-                                    <div class="row">
-                                        <div class="col-6"> 
-                                        <label>Product Quantity</label>
-                                        <input formControlName="Product_Quantity" class="form-control" /> <br>
-                                        </div>
-                                        <div class="col-6">
-                                             <label>Status</label>  
-                                                 <select class="form-select form-select-sm" formControlName="Status" aria-label="select example">
-                                                    <option value="Created">Created</option>
-                                                    <option value="In Progress">In Progress</option>
-                                                    <option value="Completed">Completed</option>
-                                                    <option value="Cancelled">Cancelled</option>
-                                                 </select>
-                                                <br>
-                                        </div>
-                              
-                                    </div>
-                                 
-                                    <div class=" ">
-                                        <label>Design File</label>
-                                        <input type="file" (change)="onFileChange($event,'Design_File')" class="form-control" />
-                                    </div>
-                                    <div class=" ">
-                                        <label> PDF Design File</label>
-                                        <input type="file" (change)="onFileChange($event,'PDFDesignfile')" class="form-control" />
-                                    </div>
-                                        <br>
-                                <div class="text-center">
-                                    <button type="submit" class="btn text-light btt">Update Requirement</button>
-                                </div>
-                                </form>
-                         </div>
+
+                            </div>
+
+                            <div class=" ">
+                                <label>Design File</label>
+                                <input type="file" (change)="onFileChange($event,'Design_File')" class="form-control" />
+                            </div>
+                            <div class=" ">
+                                <label> PDF Design File</label>
+                                <input type="file" (change)="onFileChange($event,'PDFDesignfile')"
+                                    class="form-control" />
+                            </div>
+                            <br>
+                            <div class="text-center">
+                                <button type="submit" class="btn text-light btt">Update Requirement</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
 
             </div>

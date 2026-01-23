@@ -24,6 +24,7 @@ export class PurchaseorderComponent implements OnInit {
 
   constructor(private _rest: RestService, private _state: StateService) {
     this.AddpurchaseorderForm = new FormGroup({
+      Quotation_Number: new FormControl('', [Validators.required]),
       Requirement_No: new FormControl('', [Validators.required]),
       Client_Name: new FormControl('', [Validators.required]),
       Material_Type: new FormControl('', [Validators.required]),
@@ -45,6 +46,7 @@ export class PurchaseorderComponent implements OnInit {
 
     this.EditpurchaseorderForm = new FormGroup({
       Id: new FormControl(''),
+      Quotation_Number: new FormControl('', [Validators.required]),
       Requirement_No: new FormControl('', [Validators.required]),
       Client_Name: new FormControl('', [Validators.required]),
       Material_Type: new FormControl('', [Validators.required]),
@@ -69,7 +71,7 @@ export class PurchaseorderComponent implements OnInit {
     this.Allrequirements();
     this.AllPurchaseOrder();
     this.ALLQuotation();
-    this.AddpurchaseorderForm.get('Requirement_No')?.valueChanges
+    this.AddpurchaseorderForm.get('Quotation_Number')?.valueChanges
       .subscribe(reqNo => {
         if (reqNo) {
           this.autoFillByRequirement(reqNo);
@@ -79,12 +81,13 @@ export class PurchaseorderComponent implements OnInit {
 
   autoFillByRequirement(reqNo: string) {
     const req = this.Quotations.find(
-      (r: any) => r.Requirement_No === reqNo
+      (r: any) => r.Quotation_Number === reqNo
     );
 
     if (!req) return;
 
     this.AddpurchaseorderForm.patchValue({
+      Requirement_No: req.Requirement_No,
       Material_Type: req.Material_Type,
       Client_Name: req.Client_Name,
       Product_Name: req.Product_Name,
@@ -99,8 +102,8 @@ export class PurchaseorderComponent implements OnInit {
       HSN_Code: req.HSN_Code,
       Payment_term: req.Payment_term
     });
-
   }
+
   ALLQuotation() {
     this._rest.AllQuotation().subscribe((data: any) => {
       console.log(data);

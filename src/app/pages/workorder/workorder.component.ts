@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
@@ -23,7 +23,7 @@ export class WorkorderComponent implements OnInit {
   AllPurchaseOrderData: any[] = [];
   AllRequirementData: any[] = [];
 
-  pro:any;
+  pro: any;
 
   AllManagerdata: any[] = [];
   AllEngineerdata: any[] = [];
@@ -33,6 +33,8 @@ export class WorkorderComponent implements OnInit {
   EditWorkorderForm: FormGroup;
 
   SelectedWorkOrderData: any;
+
+  @Input() WorkOrder_Status: any;
 
   constructor(private _rest: RestService, private _state: StateService) {
     this.AddWorkorderForm = new FormGroup({
@@ -62,8 +64,11 @@ export class WorkorderComponent implements OnInit {
       Manager_Name: new FormControl('', [Validators.required]),
       Manager_Status: new FormControl(''),
       Engineer_Name: new FormControl(''),
+      Engineer_Status: new FormControl(''),
       QC_Name: new FormControl(''),
+      QC_Status: new FormControl(''),
       DispatchManager_Name: new FormControl(''),
+      Dispatch_Status: new FormControl(''),
       Client_Name: new FormControl('', [Validators.required]),
       WorkOrder_Status: new FormControl('', [Validators.required]),
       Due_Date: new FormControl('')
@@ -95,19 +100,19 @@ export class WorkorderComponent implements OnInit {
   }
 
 
-    getadmintoken() {
-      const token = localStorage.getItem('token');
-      if (token) {
-        const decoded: any = jwtDecode(token);
-        if (decoded.Role === 'SuperAdmin') {
-          this.isAdmin = true;
-        } else {
-          this.isAdmin = false;
-        }
+  getadmintoken() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decoded: any = jwtDecode(token);
+      if (decoded.Role === 'SuperAdmin') {
+        this.isAdmin = true;
+      } else {
+        this.isAdmin = false;
       }
     }
-  
-   getEmployee() {
+  }
+
+  getEmployee() {
     const token = localStorage.getItem('token');
     if (token) {
       const decoded: any = jwtDecode(token);
@@ -118,55 +123,55 @@ export class WorkorderComponent implements OnInit {
       }
     }
   }
-  
-    getDispatchManger() {
-      const token = localStorage.getItem('token');
-      if (token) {
-        const decoded: any = jwtDecode(token);
-        if (decoded.Role === 'Dispatch Manager') {
-          this.isDispatchManager = true;
-        } else {
-          this.isDispatchManager = false;
-        }
+
+  getDispatchManger() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decoded: any = jwtDecode(token);
+      if (decoded.Role === 'Dispatch Manager') {
+        this.isDispatchManager = true;
+      } else {
+        this.isDispatchManager = false;
       }
     }
-  
-    getQC() {
-      const token = localStorage.getItem('token');
-      if (token) {
-        const decoded: any = jwtDecode(token);
-        if (decoded.Role === 'QC') {
-          this.isQC = true;
-        } else {
-          this.isQC = false;
-        }
+  }
+
+  getQC() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decoded: any = jwtDecode(token);
+      if (decoded.Role === 'QC') {
+        this.isQC = true;
+      } else {
+        this.isQC = false;
       }
     }
-  
-    getAccountant() {
-      const token = localStorage.getItem('token');
-      if (token) {
-        const decoded: any = jwtDecode(token);
-        if (decoded.Role === 'Accountant') {
-          this.isAccountant = true;
-        } else {
-          this.isAccountant = false;
-        }
+  }
+
+  getAccountant() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decoded: any = jwtDecode(token);
+      if (decoded.Role === 'Accountant') {
+        this.isAccountant = true;
+      } else {
+        this.isAccountant = false;
       }
     }
-  
-    getInventoryManager() {
-      const token = localStorage.getItem('token');
-      if (token) {
-        const decoded: any = jwtDecode(token);
-        if (decoded.Role === 'Manager') {
-          this.isManager = true;
-        } else {
-          this.isManager = false;
-        }
+  }
+
+  getInventoryManager() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decoded: any = jwtDecode(token);
+      if (decoded.Role === 'Manager') {
+        this.isManager = true;
+      } else {
+        this.isManager = false;
       }
     }
-   
+  }
+
   autoFillByRequirement(reqNo: string) {
     const req = this.AllPurchaseOrderData.find(
       (r: any) => r.Requirement_No === reqNo
@@ -261,7 +266,7 @@ export class WorkorderComponent implements OnInit {
       this.SelectedWorkOrderData = 1;
       this.EditWorkorderForm.patchValue(selectworkorder);
     } else {
-      console.log(`Purchase Order with ID ${Workorder_Id} not found.`);
+      console.log(`Work Order with ID ${Workorder_Id} not found.`);
     }
   }
 
@@ -282,9 +287,20 @@ export class WorkorderComponent implements OnInit {
         this.ngOnInit();
       }, (err: any) => {
         console.log(err);
-        alert('Error while deleting Purchase Order');
+        alert('Error while deleting Work Order');
       });
     }
+  }
+
+  WorkorderByStatus() {
+    this._rest.WorkorderbyStatus({ WorkOrder_Status: this.WorkOrder_Status }).subscribe((data: any) => {
+      if (data && data.data && data.data.length > 0) {
+        console.log(data);
+        this.AllWorkOrderData = data.data;
+      } else {
+        this.AllWorkOrder();
+      }
+    });
   }
 
 

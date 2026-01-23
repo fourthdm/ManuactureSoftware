@@ -69,13 +69,13 @@ export class EmployeedashboardnavbarComponent implements OnInit {
   //       ).length;
   //     });
   // }
-  loadNotifications() {
-    this._rest.getNotifications('Manager')
-      .subscribe(data => {
-        this.notifications = data;
-        this.alertCount = data.filter(n => n.Status === 'Unread').length;
-      });
-  }
+  // loadNotifications() {
+  //   this._rest.getNotifications('Manager')
+  //     .subscribe(data => {
+  //       this.notifications = data;
+  //       this.alertCount = data.filter(n => n.Status === 'Unread').length;
+  //     });
+  // }
   // loadNotifications() {
   //   this._rest.getNotifications('Manager').subscribe(data => {
   //     this.notifications = data;
