@@ -32,7 +32,6 @@
                                     </select> <br>
                                 </div>
                             </div>
-
                         </div>
 
                         <div class="row">
@@ -91,28 +90,29 @@
                             </div>
                         </div>
 
-                        <!-- <div class="row">
-                    <div class="col-6">
-                         <div class="mb-3">
-                             <label for="exampleInputEmail1" class="form-label">QC Name : </label>
-                               <br>
-                           <select formControlName="QC_Name" class="">
-                             <option *ngFor="let mat of AllQCdata" [value]="mat.Name">{{mat.Name}}</option>
-                            </select>  <br>
-                         </div>
-                    </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">QC Name : </label>
+                                    <br>
+                                    <select formControlName="QC_Name" class="">
+                                        <option *ngFor="let mat of AllQCdata" [value]="mat.Name">{{mat.Name}}</option>
+                                    </select> <br>
+                                </div>
+                            </div>
 
-                <div class="col-6">
-                     <div class="mb-3">
-                         <label for="exampleInputEmail1" class="form-label">Engineer Name : </label>
-                         <br>
-                         <select formControlName="Engineer_Name" class="">
-                            <option *ngFor="let mat of AllEngineerdata" [value]="mat.Name">{{mat.Name}}</option>
-                        </select>  <br>
-                     </div>
-                </div>
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Engineer Name : </label>
+                                    <br>
+                                    <select formControlName="Engineer_Name" class="">
+                                        <option *ngFor="let mat of AllEngineerdata" [value]="mat.Name">{{mat.Name}}
+                                        </option>
+                                    </select> <br>
+                                </div>
+                            </div>
 
-                </div> -->
+                        </div>
                         <div class="row">
                             <div class="col-6">
                                 <div class="mb-3">
@@ -128,8 +128,8 @@
                                     <label for="WorkOrder_Status">Work Order Status : </label>
                                     <select class="form-select form-select-sm" formControlName="WorkOrder_Status"
                                         aria-label="select example">
-                                        <option value="Created">Created </option>
-                                        <option value="Scheduled">Scheduled</option>
+                                        <option value="Create">Create </option>
+                                        <option value="Schedule">Schedule</option>
                                         <option value="In Progress"> In Progress </option>
                                         <option value="Completed">Completed </option>
                                         <option value="Declined">Declined </option>
@@ -160,6 +160,19 @@
         <div class="col-7">
             <div class="row">
                 <div class="">
+
+                    <div>
+                        <label for="WorkOrder_Status">Select Work Order Sata.<br>
+                            <select name="WorkOrder_Status" id="WorkOrder_Status" [(ngModel)]="WorkOrder_Status"
+                                class="form-select" placeholder="Select WorkOrder Status"
+                                aria-label="Multiple select example">
+                                <option *ngFor="let b of AllWorkOrderData" [value]="b.WorkOrder_Status">{{b.WorkOrder_Status}}
+                                </option>
+                            </select>
+                        </label>
+                        <button class="btn bttns" type="button" id="button-addon2"><i
+                                class="fa-solid fa-magnifying-glass" (click)="WorkorderByStatus()"></i></button>
+                    </div>
 
                     <table class="table">
                         <thead>
@@ -337,40 +350,87 @@
 
                                         <div class="col-6">
                                             <div class="mb-3">
+                                                <label for="Manager_Status" class="form-label">Manager Status : </label>
+                                                <br>
+                                                <select class="form-select form-select-sm"
+                                                    formControlName="Manager_Status" aria-label="select example">
+                                                    <option value="Assign Task">Assign Task</option>
+                                                    <option value="Scheduled">Scheduled</option>
+                                                    <option value="In Progress"> In Progress </option>
+                                                    <option value="Completed">Completed </option>
+                                                    <option value="Declined">Declined </option>
+                                                    <option value="Close">Close </option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <!-- <div class="col-6">
+                                            <div class="mb-3">
                                                 <label for="exampleInputEmail1" class="form-label">Manager Status :
                                                 </label>
                                                 <br>
-                                               <input type="text" formControlName="Manager_Status">
+                                                <input type="text" formControlName="Manager_Status">
+                                            </div>
+                                        </div> -->
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="exampleInputEmail1" class="form-label">QC Name : </label>
+                                                <br>
+                                                <select formControlName="QC_Name" class="">
+                                                    <option *ngFor="let mat of AllQCdata" [value]="mat.Name">
+                                                        {{mat.Name}}</option>
+                                                </select> <br>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="QC_Status" class="form-label">QC Status : </label>
+                                                <br>
+                                                <select class="form-select form-select-sm" formControlName="QC_Status"
+                                                    aria-label="select example">
+                                                    <option value="Qualified">Qualified</option>
+                                                    <option value="Reject">Reject</option>
+                                                    <option value="Hold">Hold</option>
+                                                    <option value="Damage">Damage </option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="exampleInputEmail1" class="form-label">Engineer Name :
+                                                </label>
+                                                <br>
+                                                <select formControlName="Engineer_Name" class="">
+                                                    <option *ngFor="let mat of AllEngineerdata" [value]="mat.Name">
+                                                        {{mat.Name}}</option>
+                                                </select> <br>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="Engineer_Status">Engineer Status : </label>
+                                                <select class="form-select form-select-sm"
+                                                    formControlName="Engineer_Status" aria-label="select example">
+                                                    <option value="Start">Start</option>
+                                                    <option value="In Progress"> In Progress </option>
+                                                    <option value="Completed">Completed </option>
+                                                    <option value="Declined">Declined </option>
+                                                    <option value="Close">Close </option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <!-- <div class="row">
-                    <div class="col-6">
-                         <div class="mb-3">
-                             <label for="exampleInputEmail1" class="form-label">QC Name : </label>
-                               <br>
-                           <select formControlName="QC_Name" class="">
-                             <option *ngFor="let mat of AllQCdata" [value]="mat.Name">{{mat.Name}}</option>
-                            </select>  <br>
-                         </div>
-                    </div>
-
-                <div class="col-6">
-                     <div class="mb-3">
-                         <label for="exampleInputEmail1" class="form-label">Engineer Name : </label>
-                         <br>
-                         <select formControlName="Engineer_Name" class="">
-                            <option *ngFor="let mat of AllEngineerdata" [value]="mat.Name">{{mat.Name}}</option>
-                        </select>  <br>
-                     </div>
-                </div>
-
-                </div> -->
                                     <div class="row">
                                         <div class="col-6">
                                             <div class="mb-3">
-                                                <label for="Payment_term">Day of Payment: </label>
+                                                <label for="Payment_term">Payment Term: </label>
                                                 <input type="text" class="form-control" id="exampleInputEmail1"
                                                     aria-describedby="emailHelp" formControlName="Payment_term"
                                                     placeholder="Enter Payment term">
@@ -382,8 +442,8 @@
                                                 <label for="WorkOrder_Status">Work Order Status : </label>
                                                 <select class="form-select form-select-sm"
                                                     formControlName="WorkOrder_Status" aria-label="select example">
-                                                    <option value="Created">Created </option>
-                                                    <option value="Scheduled">Scheduled</option>
+                                                    <option value="Create">Create </option>
+                                                    <option value="Schedule">Schedule</option>
                                                     <option value="In Progress"> In Progress </option>
                                                     <option value="Completed">Completed </option>
                                                     <option value="Declined">Declined </option>
@@ -408,7 +468,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
+</div>

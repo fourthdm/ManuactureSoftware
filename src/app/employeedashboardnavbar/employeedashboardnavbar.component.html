@@ -7,25 +7,6 @@
     <a class="navbar-brand"> <img src="assets/logo.png" class="img elevation-2" alt="User Image">
       <span style="margin-left: 50px;"> {{employeedata?.Role}}</span> </a>
 
-    <!-- <li class="nav-item"></li>
-      <li class="nav-item"></li>
-      <li class="nav-item"></li>
-      <li class="nav-item"></li>
-      <li class="nav-item"></li>
-      <li class="nav-item"></li>
-      <li class="nav-item"></li>
-      <li class="nav-item"></li>
-      <li class="nav-item"></li>
-      <li class="nav-item"></li>
-      <li class="nav-item"></li>
-      <li class="nav-item"></li>
-      <li class="nav-item">Material</li>
-      <li class="nav-item">Machine</li>
-      <li class="nav-item">Work Order</li>
-      <li class="nav-item">Work Order Close</li>
-      -->
-
-
     <li class="nav-item dropdown">
       <!-- <button class="btn btn-outline-danger position-relative">
         🔔 Notifications
@@ -99,6 +80,10 @@
 
   <ul class="nav justify-content-center" *ngIf="isManager">
 
+    <li class="nav-item"></li>
+    <li class="nav-item"></li>
+    <li class="nav-item"></li>
+
     <li class="nav-item">
       <a class="nav-link" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"
         [routerLink]="['/ManagerDashboard/Machine']">Machine</a>
@@ -114,10 +99,10 @@
         [routerLink]="['/ManagerDashboard/WorkOrder']">Work Order</a>
     </li>
 
-    <li class="nav-item">
+    <!-- <li class="nav-item">
       <a href="#" class="nav-link" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"
         [routerLink]="['/ManagerDashboard/WorkOrderClose']">Work Order Close</a>
-    </li>
+    </li> -->
 
     <!-- <span *ngIf="alertCount > 0" class="badge bg-danger start-100">
       {{ alertCount }}

@@ -72,7 +72,6 @@ export class BillComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.getadmintoken();
     this.getDispatchManger();
     this.getEmployee();
@@ -89,79 +88,77 @@ export class BillComponent implements OnInit {
         }
       });
   }
+  getadmintoken() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decoded: any = jwtDecode(token);
+      if (decoded.Role === 'SuperAdmin') {
+        this.isAdmin = true;
+      } else {
+        this.isAdmin = false;
+      }
+    }
+  }
 
+  getEmployee() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decoded: any = jwtDecode(token);
+      if (decoded.Role === 'Employee') {
+        this.isEmployee = true;
+      } else {
+        this.isEmployee = false;
+      }
+    }
+  }
 
-    getadmintoken() {
-      const token = localStorage.getItem('token');
-      if (token) {
-        const decoded: any = jwtDecode(token);
-        if (decoded.Role === 'SuperAdmin') {
-          this.isAdmin = true;
-        } else {
-          this.isAdmin = false;
-        }
+  getDispatchManger() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decoded: any = jwtDecode(token);
+      if (decoded.Role === 'Dispatch Manager') {
+        this.isDispatchManager = true;
+      } else {
+        this.isDispatchManager = false;
       }
     }
-  
-    getEmployee() {
-      const token = localStorage.getItem('token');
-      if (token) {
-        const decoded: any = jwtDecode(token);
-        if (decoded.Role === 'Employee') {
-          this.isEmployee = true;
-        } else {
-          this.isEmployee = false;
-        }
+  }
+
+  getQC() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decoded: any = jwtDecode(token);
+      if (decoded.Role === 'QC') {
+        this.isQC = true;
+      } else {
+        this.isQC = false;
       }
     }
-  
-    getDispatchManger() {
-      const token = localStorage.getItem('token');
-      if (token) {
-        const decoded: any = jwtDecode(token);
-        if (decoded.Role === 'Dispatch Manager') {
-          this.isDispatchManager = true;
-        } else {
-          this.isDispatchManager = false;
-        }
+  }
+
+  getAccountant() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decoded: any = jwtDecode(token);
+      if (decoded.Role === 'Accountant') {
+        this.isAccountant = true;
+      } else {
+        this.isAccountant = false;
       }
     }
-  
-    getQC() {
-      const token = localStorage.getItem('token');
-      if (token) {
-        const decoded: any = jwtDecode(token);
-        if (decoded.Role === 'QC') {
-          this.isQC = true;
-        } else {
-          this.isQC = false;
-        }
+  }
+
+  getInventoryManager() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decoded: any = jwtDecode(token);
+      if (decoded.Role === 'Manager') {
+        this.isManager = true;
+      } else {
+        this.isManager = false;
       }
     }
-  
-    getAccountant() {
-      const token = localStorage.getItem('token');
-      if (token) {
-        const decoded: any = jwtDecode(token);
-        if (decoded.Role === 'Accountant') {
-          this.isAccountant = true;
-        } else {
-          this.isAccountant = false;
-        }
-      }
-    }
-  
-    getInventoryManager() {
-      const token = localStorage.getItem('token');
-      if (token) {
-        const decoded: any = jwtDecode(token);
-        if (decoded.Role === 'Manager') {
-          this.isManager = true;
-        } else {
-          this.isManager = false;
-        }
-      }
-    }
+  }
 
   autoFillByRequirement(billNo: string) {
     const req = this.AllPurchaseOrderData.find(
@@ -170,7 +167,7 @@ export class BillComponent implements OnInit {
 
     if (!req) return;
     const deliveryDate = req.Delivery_Date ? new Date(req.Delivery_Date).toISOString().split('T')[0] : '';
-
+    
     this.Addbillform.patchValue({
       Product_Name: req.Product_Name,
       Product_Quantity: req.Product_Quantity,

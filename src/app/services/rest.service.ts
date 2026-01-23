@@ -272,6 +272,10 @@ export class RestService {
     return this._http.get(this.ApiUrl + '/WorkorderforDispatchmanager', { headers });
   }
 
+  WorkorderbyStatus(data: any) {
+    return this._http.post(this.ApiUrl + '/GetWorkorderbyStatus', data);
+  }
+
   //Work Order API Ends
 
   //WorkorderClose API Start
