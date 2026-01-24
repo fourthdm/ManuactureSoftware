@@ -88,6 +88,7 @@ export class BillComponent implements OnInit {
         }
       });
   }
+  
   getadmintoken() {
     const token = localStorage.getItem('token');
     if (token) {
@@ -191,7 +192,7 @@ export class BillComponent implements OnInit {
       this.AllPurchaseOrderData = data.data;
     }, (err: any) => {
       console.log(err);
-      alert('Error while fetching Bill Data');
+      alert('Error while fetching Data');
     });
   }
 

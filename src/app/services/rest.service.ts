@@ -275,7 +275,6 @@ export class RestService {
   WorkorderbyStatus(data: any) {
     return this._http.post(this.ApiUrl + '/GetWorkorderbyStatus', data);
   }
-
   //Work Order API Ends
 
   //WorkorderClose API Start
@@ -311,8 +310,24 @@ export class RestService {
 
   createNotification(Workorder_Id: number) {
     return this._http.post(
-      `${this.ApiUrl}/notifications/create`,
-      { Workorder_Id }
+      `${this.ApiUrl}/notifications/create`, { Workorder_Id }
     );
   }
+
+  //All Challan Start
+  AddChallans(data: any) {
+    return this._http.post(this.ApiUrl + '/AddChallan', data);
+  }
+
+  ChallanData() {
+    return this._http.get(this.ApiUrl + '/AllChallans');
+  }
+
+  GenerateChallan(Challan_id: any) {
+    return this._http.get(`${this.ApiUrl}/GetChallanPDF/${Challan_id}`, {
+      responseType: 'blob'
+    });
+  }
+  //All Challan End
+
 }

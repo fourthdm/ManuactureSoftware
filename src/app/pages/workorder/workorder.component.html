@@ -162,12 +162,18 @@
                 <div class="">
 
                     <div>
-                        <label for="WorkOrder_Status">Select Work Order Sata.<br>
+                        <label for="WorkOrder_Status">Select Work Order Status.<br>
                             <select name="WorkOrder_Status" id="WorkOrder_Status" [(ngModel)]="WorkOrder_Status"
                                 class="form-select" placeholder="Select WorkOrder Status"
                                 aria-label="Multiple select example">
-                                <option *ngFor="let b of AllWorkOrderData" [value]="b.WorkOrder_Status">{{b.WorkOrder_Status}}
-                                </option>
+                                <option value="Create">Create </option>
+                                <option value="Schedule">Schedule</option>
+                                <option value="In Progress"> In Progress </option>
+                                <option value="Completed">Completed </option>
+                                <option value="Declined">Declined </option>
+                                <option value="Close">Close </option>
+                                <!-- <option *ngFor="let b of AllWorkOrderData" [value]="b.WorkOrder_Status">{{b.WorkOrder_Status}}
+                                </option> -->
                             </select>
                         </label>
                         <button class="btn bttns" type="button" id="button-addon2"><i
@@ -192,7 +198,6 @@
                                             [routerLink]="['/AdminDashboard/WorkorderDetails',a.Workorder_Id]">{{a.WO_Number}}</a>
                                     </p>
                                 </td>
-
                                 <td>{{a.Client_Name}}</td>
                                 <td>
                                     <a type="button" (click)="EditPurchaseOrder(a.Workorder_Id)" data-bs-toggle="modal"
