@@ -29,6 +29,7 @@ import { DispatchmanagerworkorderComponent } from './workorders/dispatchmanagerw
 import { QcworkorderComponent } from './workorders/qcworkorder/qcworkorder.component';
 import { EngineerworkorderComponent } from './workorders/engineerworkorder/engineerworkorder.component';
 import { EmployeedetailsComponent } from './common/employeedetails/employeedetails.component';
+import { ChallandetailsComponent } from './pages/challandetails/challandetails.component';
 
 const routes: Routes = [
 
@@ -52,7 +53,7 @@ const routes: Routes = [
       { path: 'PurchaseOrderDetails/:Id', component: ViewpurchaseorderComponent },
       { path: 'WorkorderDetails/:Workorder_Id', component: ViewworkorderComponent },
       { path: 'BillDetails/:Bill_Id', component: ViewbillComponent },
-
+      { path: 'ChallanDetails/:Challan_Id', component: ChallandetailsComponent },
       { path: '**', redirectTo: 'AdminDashboard' }
     ]
   },
@@ -80,6 +81,7 @@ const routes: Routes = [
       { path: 'Machine', component: MachineComponent },
       { path: 'Material', component: MaterialComponent },
       { path: 'DeliveryChallan', component: DeliverychallanComponent },
+      { path: 'ChallanDetails/:Challan_Id', component: ChallandetailsComponent },
       { path: 'Quatation', component: QuatationComponent },
       { path: 'WorkOrder', component: WorkorderComponent },
       { path: 'Bill', component: BillComponent },
@@ -95,6 +97,7 @@ const routes: Routes = [
       { path: 'Machine', component: MachineComponent },
       { path: 'Material', component: MaterialComponent },
       { path: 'DeliveryChallan', component: DeliverychallanComponent },
+      { path: 'ChallanDetails/:Challan_Id', component: ChallandetailsComponent },
       { path: 'Quatation', component: QuatationComponent },
       { path: 'WorkOrder', component: MangerworkorderComponent },
       { path: 'WorkorderDetails/:Workorder_Id', component: ViewworkorderComponent },
@@ -109,6 +112,7 @@ const routes: Routes = [
       { path: 'Machine', component: MachineComponent },
       { path: 'Material', component: MaterialComponent },
       { path: 'DeliveryChallan', component: DeliverychallanComponent },
+      { path: 'ChallanDetails/:Challan_Id', component: ChallandetailsComponent },
       // { path: 'Quatation', component: QuatationComponent },
       { path: 'WorkOrder', component: DispatchmanagerworkorderComponent },
       { path: 'WorkOrderClose', component: WorkcloseComponent },
@@ -149,7 +153,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: false })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
