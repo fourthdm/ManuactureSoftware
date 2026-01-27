@@ -40,6 +40,10 @@ export class RestService {
     return this._http.get(this.ApiUrl + '/AllEngineerData');
   }
 
+  DispatchManagerData() {
+    return this._http.get(this.ApiUrl + '/AllDispatchManager');
+  }
+
   QCData() {
     return this._http.get(this.ApiUrl + '/AllQCData');
   }
@@ -76,6 +80,10 @@ export class RestService {
   //Bill API Start
   AddBill(data: any) {
     return this._http.post(this.ApiUrl + '/AddBill', data);
+  }
+
+  UpdateBills(data: any) {
+    return this._http.put(this.ApiUrl + '/UpdateBill/' + data.Bill_Id, data);
   }
 
   GenerateBill(Bill_Id: any) {
@@ -275,6 +283,15 @@ export class RestService {
   WorkorderbyStatus(data: any) {
     return this._http.post(this.ApiUrl + '/GetWorkorderbyStatus', data);
   }
+
+  getWorkorderStatusByPO(po: string) {
+    return this._http.get<any>(`${this.ApiUrl}/WorkorderStatusByPO/${po}`);
+  }
+
+  // WorkorderbyPurchaseNumber(data: any) {
+  //   return this._http.post(this.ApiUrl + '/WorkorderStatusByPO', data);
+  // }
+
   //Work Order API Ends
 
   //WorkorderClose API Start

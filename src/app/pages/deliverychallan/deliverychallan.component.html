@@ -47,7 +47,7 @@
 
                             <div class="col-6">
                                 <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Quotation Number	: </label>
+                                    <label for="exampleInputEmail1" class="form-label">Quotation Number : </label>
                                     <br>
                                     <input type="text" class="form-control" id="exampleInputEmail1"
                                         aria-describedby="emailHelp" formControlName="Quotation_Number"
@@ -62,9 +62,17 @@
                                     <input type="text" class="form-control" id="exampleInputEmail1"
                                         aria-describedby="emailHelp" formControlName="Client_Name"
                                         placeholder="Enter ClientName">
-                                    <!-- <select formControlName="Client_Name" class="">
-                                        <option *ngFor="let mat of AllRequirementData" [value]="mat.Client_Name">{{mat.Client_Name}}({{mat.Requirement_No}})</option>
-                                    </select>  <br> -->
+
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="Client_Address" class="form-label">Client Address : </label>
+                                    <br>
+                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" formControlName="Client_Address"
+                                        placeholder="Enter Client Address">
+
                                 </div>
                             </div>
 
@@ -194,9 +202,13 @@
                             <div class="col-6">
                                 <div class="mb-3">
                                     <label for="Challan_Status">Challan Status: </label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" formControlName="Challan_Status"
-                                        placeholder="Enter Challan Status">
+                                    <select class="form-select form-select-sm" formControlName="Challan_Status"
+                                        aria-label="select example">
+                                        <option value="Generate">Generate</option>
+                                        <option value="Invoiced">Invoiced </option>
+                                        <option value="Close">Close </option>
+                                    </select>
+
                                 </div>
                             </div>
 

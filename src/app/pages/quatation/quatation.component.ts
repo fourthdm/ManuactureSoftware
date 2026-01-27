@@ -18,7 +18,7 @@ export class QuatationComponent implements OnInit {
   AddQuotationform: FormGroup;
   EditquotationForm: FormGroup;
 
-  SelectedQuotation: any = null;
+  SelectedQuotation: any;
 
   constructor(private _rest: RestService, private fb: FormBuilder, private _router: Router) {
     this.AddQuotationform = new FormGroup({
@@ -136,10 +136,26 @@ export class QuatationComponent implements OnInit {
 
   editQuotation(Quotation_Id: any) {
     const selectQuotation = this.Quotations.find(q => q.Quotation_Id === Quotation_Id);
-    if (selectQuotation) {
-      this.SelectedQuotation = 1;
-      this.EditquotationForm.patchValue(selectQuotation);
+    // if (selectQuotation) {
+    //   this.SelectedQuotation = 1;
+    //   this.EditquotationForm.patchValue(selectQuotation);
+    // }
+
+    if (!selectQuotation) {
+      console.log(`Quotation with ID ${Quotation_Id} not found.`);
+      return;
     }
+    this.SelectedQuotation = 1;
+    // 🔑 Convert Due_Date to yyyy-MM-dd
+    const validityDate = selectQuotation.Validity_Date
+      ? new Date(selectQuotation.Validity_Date).toISOString().split('T')[0]
+      : '';
+
+    // ✅ Patch everything, but override Due_Date
+    this.EditquotationForm.patchValue({
+      ...selectQuotation,
+      Validity_Date: validityDate
+    });
   }
 
   UpdatedQuotation() {

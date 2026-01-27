@@ -327,18 +327,27 @@
                                         aria-describedby="emailHelp" formControlName="Material_Type"
                                         placeholder="Enter  Material_Type">
                                 </div>
-                                <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label"> Product_Quantity : </label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" formControlName="Product_Quantity"
-                                        placeholder="Enter Product_Quantity in number">
-                                </div>
 
                                 <div class="row">
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                            <label for="exampleInputEmail1" class="form-label"> Product_Quantity :
+                                            </label>
+                                            <input type="text" class="form-control" id="exampleInputEmail1"
+                                                aria-describedby="emailHelp" formControlName="Product_Quantity"
+                                                placeholder="Enter Product_Quantity in number">
+                                        </div>
+                                    </div>
 
                                     <div class="col-6">
                                         <div class="mb-3">
-                                            <label for="Payment_term">Payment Method : </label>
+                                            <label for="Status">Delivery Date : </label> <br>
+                                            <input type="date" formControlName="Delivery_Date">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                            <label for="Payment_term">Payment term : </label>
                                             <select class="form-select form-select-sm" formControlName="Payment_term"
                                                 aria-label="select example">
                                                 <option value="Cash Payment">Cash Payment </option>

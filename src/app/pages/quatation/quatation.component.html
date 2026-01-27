@@ -21,12 +21,6 @@
                          </div>
                     </div>
 
-                    <!-- <input class="form-control" formControlName="Material_Type" readonly>
-                    <input class="form-control" formControlName="Client_Name" readonly>
-                    <input class="form-control" formControlName="Product_Name" readonly>
-                    <input class="form-control" formControlName="Product_Quantity" readonly>
-                    <input class="form-control" formControlName="Client_Address" readonly> -->
-
                     <div class="col-6">
                          <div class="mb-3">
                              <label for="Product_Quantity">Product Quantity</label>
@@ -207,7 +201,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr   *ngFor="let q of Quotations  | paginate :{itemsPerPage :10 ,currentPage:pro},let i = index">
+                        <tr   *ngFor="let q of Quotations  | paginate :{itemsPerPage :15 ,currentPage:pro},let i = index">
                            <td >{{q.Quotation_Id}}</td>
                           <td><p title="View Quotation Details" ><a href="" [routerLink]="['/AdminDashboard/QuotationDetails', q.Quotation_Id]">{{q.Quotation_Number}}</a></p></td>
                             

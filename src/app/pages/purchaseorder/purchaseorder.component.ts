@@ -145,12 +145,26 @@ export class PurchaseorderComponent implements OnInit {
 
   EditPurchaseOrder(Id: any) {
     const selectpurchaseorder = this.AllPurchaseOrderData.find(purchaseorder => purchaseorder.Id === Id)
-    if (selectpurchaseorder) {
-      this.SelectedPurchaseOrderData = 1;
-      this.EditpurchaseorderForm.patchValue(selectpurchaseorder);
-    } else {
+    // if (selectpurchaseorder) {
+    //   this.SelectedPurchaseOrderData = 1;
+    //   this.EditpurchaseorderForm.patchValue(selectpurchaseorder);
+    // }
+
+    if (!selectpurchaseorder) {
       console.log(`Purchase Order with ID ${Id} not found.`);
+      return;
     }
+    this.SelectedPurchaseOrderData = 1;
+    // 🔑 Convert Due_Date to yyyy-MM-dd
+    const DeliveryDate = selectpurchaseorder.Delivery_Date
+      ? new Date(selectpurchaseorder.Delivery_Date).toISOString().split('T')[0]
+      : '';
+
+    // ✅ Patch everything, but override Due_Date
+    this.EditpurchaseorderForm.patchValue({
+      ...selectpurchaseorder,
+      Delivery_Date: DeliveryDate
+    });
   }
 
   UpdatePurchaseOrder() {
