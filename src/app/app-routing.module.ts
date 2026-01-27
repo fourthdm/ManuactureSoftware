@@ -37,7 +37,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {
     path: 'AdminDashboard', component: AdmindashboardComponent, title: 'Admin pages', children: [
-      { path: '', redirectTo: 'AdminDashboard', pathMatch: 'full' },
+      { path: '', redirectTo: 'WorkOrder', pathMatch: 'full' },
       { path: 'Employee', component: EmployeeComponent },
       { path: 'Machine', component: MachineComponent },
       { path: 'Material', component: MaterialComponent },

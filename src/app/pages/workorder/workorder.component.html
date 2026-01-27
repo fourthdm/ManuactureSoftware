@@ -112,8 +112,19 @@
                                 </div>
                             </div>
 
-                        </div>
-                        <div class="row">
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="DispatchManager_Name" class="form-label">Dispatch Manager
+                                        Name :
+                                    </label>
+                                    <br>
+                                    <select formControlName="DispatchManager_Name" class="">
+                                        <option *ngFor="let mat of AllDispatchManagerdata" [value]="mat.Name">
+                                            {{mat.Name}}</option>
+                                    </select> <br>
+                                </div>
+                            </div>
+
                             <div class="col-6">
                                 <div class="mb-3">
                                     <label for="Payment_term">Day of Payment: </label>
@@ -259,7 +270,7 @@
                 <div class="modal-dialog modal-lg modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Edit Waiting for Approval</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Edit WorkOrder</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -340,6 +351,15 @@
                                                 </select> <br>
                                             </div>
                                         </div>
+                                        
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="Payment_term">Payment Term: </label>
+                                                <input type="text" class="form-control" id="exampleInputEmail1"
+                                                    aria-describedby="emailHelp" formControlName="Payment_term"
+                                                    placeholder="Enter Payment term">
+                                            </div>
+                                        </div>
 
                                         <div class="col-6">
                                             <div class="mb-3">
@@ -368,15 +388,6 @@
                                                 </select>
                                             </div>
                                         </div>
-
-                                        <!-- <div class="col-6">
-                                            <div class="mb-3">
-                                                <label for="exampleInputEmail1" class="form-label">Manager Status :
-                                                </label>
-                                                <br>
-                                                <input type="text" formControlName="Manager_Status">
-                                            </div>
-                                        </div> -->
 
                                     </div>
                                     <div class="row">
@@ -430,18 +441,38 @@
                                                 </select>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <div class="row">
                                         <div class="col-6">
                                             <div class="mb-3">
-                                                <label for="Payment_term">Payment Term: </label>
-                                                <input type="text" class="form-control" id="exampleInputEmail1"
-                                                    aria-describedby="emailHelp" formControlName="Payment_term"
-                                                    placeholder="Enter Payment term">
+                                                <label for="DispatchManager_Name" class="form-label">Dispatch Manager
+                                                    Name :
+                                                </label>
+                                                <br>
+                                                <select formControlName="DispatchManager_Name" class="">
+                                                    <option *ngFor="let mat of AllEngineerdata" [value]="mat.Name">
+                                                        {{mat.Name}}</option>
+                                                </select> <br>
                                             </div>
                                         </div>
 
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="Dispatch_Status">Dispatch Manager Status : </label>
+                                                <select class="form-select form-select-sm"
+                                                    formControlName="Dispatch_Status" aria-label="select example">
+                                                    <option value="Ready to Dispatch">Ready to Dispatch</option>
+                                                    <option value="Complete"> Completed </option>
+                                                    <option value="Reject">Reject </option>
+                                                    <option value="Damage">Damage </option>
+                                                    <option value="Declined">Declined </option>
+                                                    <option value="Close">Close </option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
                                         <div class="col-6">
                                             <div class="mb-3">
                                                 <label for="WorkOrder_Status">Work Order Status : </label>

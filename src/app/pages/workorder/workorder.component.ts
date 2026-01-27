@@ -28,6 +28,7 @@ export class WorkorderComponent implements OnInit {
   AllManagerdata: any[] = [];
   AllEngineerdata: any[] = [];
   AllQCdata: any[] = [];
+  AllDispatchManagerdata: any[] = [];
 
   AddWorkorderForm: FormGroup;
   EditWorkorderForm: FormGroup;
@@ -89,6 +90,7 @@ export class WorkorderComponent implements OnInit {
     this.AllQC();
     this.AllEngineer();
     this.AllManager();
+    this.AllDispatchManagers();
     this.AllWorkOrder();
 
     this.AddWorkorderForm.get('Requirement_No')?.valueChanges
@@ -249,6 +251,15 @@ export class WorkorderComponent implements OnInit {
     });
   }
 
+  AllDispatchManagers() {
+    this._rest.DispatchManagerData().subscribe((data: any) => {
+      this.AllDispatchManagerdata = data.data;
+      console.log(data);
+    }, (err: any) => {
+      console.log(err);
+    });
+  }
+
   AddWorkOrderData() {
     this._rest.AddWorkOrder(this.AddWorkorderForm.value).subscribe((data: any) => {
       alert(data.message);
@@ -261,14 +272,46 @@ export class WorkorderComponent implements OnInit {
   }
 
   EditPurchaseOrder(Workorder_Id: any) {
-    const selectworkorder = this.AllWorkOrderData.find(purchaseorder => purchaseorder.Workorder_Id === Workorder_Id)
-    if (selectworkorder) {
-      this.SelectedWorkOrderData = 1;
-      this.EditWorkorderForm.patchValue(selectworkorder);
-    } else {
+    const selectworkorder = this.AllWorkOrderData.find(
+      wo => wo.Workorder_Id === Workorder_Id
+    );
+
+    if (!selectworkorder) {
       console.log(`Work Order with ID ${Workorder_Id} not found.`);
+      return;
     }
+    this.SelectedWorkOrderData = 1;
+    // 🔑 Convert Due_Date to yyyy-MM-dd
+    const dueDate = selectworkorder.Due_Date
+      ? new Date(selectworkorder.Due_Date).toISOString().split('T')[0]
+      : '';
+
+    // ✅ Patch everything, but override Due_Date
+    this.EditWorkorderForm.patchValue({
+      ...selectworkorder,
+      Due_Date: dueDate
+    });
   }
+
+  // EditPurchaseOrder(Workorder_Id: any) {
+  //   const selectworkorder = this.AllWorkOrderData.find(purchaseorder => purchaseorder.Workorder_Id === Workorder_Id)
+  //   if (selectworkorder) {
+  //     this.SelectedWorkOrderData = 1;
+  //     this.EditWorkorderForm.patchValue(selectworkorder);
+  //     // 🔑 convert date to YYYY-MM-DD
+  //     // const dueDate = data.Due_Date
+  //     //   ? new Date(data.Due_Date).toISOString().split('T')[0]
+  //     //   : '';
+
+  //     // this.EditWorkorderForm.patchValue({
+  //     //   Workorder_Id: Workorder_Id,
+  //     //   Client_Name: data.Client_Name,
+  //     //   Due_Date: dueDate,
+  //     // });
+  //   } else {
+  //     console.log(`Work Order with ID ${Workorder_Id} not found.`);
+  //   }
+  // }
 
   UpdatePurchaseOrder() {
     this._rest.UpdateWorkorder(this.EditWorkorderForm.value).subscribe((data: any) => {
