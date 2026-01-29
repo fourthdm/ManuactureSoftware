@@ -1,5 +1,6 @@
 import { isPlatformWorkerApp } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { RestService } from 'src/app/services/rest.service';
 
@@ -12,7 +13,7 @@ export class ViewworkorderComponent implements OnInit {
 
   WorkorderData: any[] = [];
 
-  constructor(private _rest: RestService, private _activatedRoute: ActivatedRoute) { }
+  constructor(private _rest: RestService, private _activatedRoute: ActivatedRoute, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     this._activatedRoute.params.subscribe(params => {
@@ -25,6 +26,10 @@ export class ViewworkorderComponent implements OnInit {
         console.log(err);
       });
     })
+  }
+
+  getsafeurl(url: string): SafeResourceUrl {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
 }

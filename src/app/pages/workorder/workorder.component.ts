@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 import { RestService } from 'src/app/services/rest.service';
 import { StateService } from 'src/app/services/state.service';
+import * as XLSX from 'xlsx';
+
 
 @Component({
   selector: 'app-workorder',
@@ -11,6 +13,8 @@ import { StateService } from 'src/app/services/state.service';
   styleUrls: ['./workorder.component.css']
 })
 export class WorkorderComponent implements OnInit {
+
+  fileName = 'Workorder.xlsx';
 
   isAdmin: boolean = false;
   isDispatchManager: boolean = false;
@@ -101,6 +105,63 @@ export class WorkorderComponent implements OnInit {
       });
   }
 
+  exportexcel(): void {
+
+    // STEP 4.1 – Create a new array for Excel
+    const excelData = this.AllWorkOrderData.map((w: any, index: number) => {
+      return {
+        'Sr No': index + 1,
+        'WO_Number': w.WO_Number,
+        'Purchase Number': w.Purchase_Number,
+        'Requirement Number': w.Requirement_No,
+        'Client Name': w.Client_Name,
+        'Address': w.Client_Address,
+        'Payment_term': w.Payment_term,
+        'Product_Name': w.Product_Name,
+        'Product_Quantity': w.Product_Quantity,
+        'Design_File': w.Design_File,
+        'Material_Type': w.Material_Type,
+        'Manager_Name': w.Manager_Name,
+        'Manager_Status': w.Manager_Status,
+        'Engineer_Name': w.Engineer_Name,
+        'QC_Name': w.QC_Name,
+        'QC_Status': w.QC_Status,
+        'Engineer_Status': w.Engineer_Status,
+        'DispatchManager_Name': w.DispatchManager_Name,
+        'Dispatch_Status': w.Dispatch_Status,
+        'Added_Date': w.Added_Date,
+        'Due Date': w.Due_Date,
+        'WorkOrder Status': w.WorkOrder_Status
+      };
+    });
+
+    // STEP 4.2 – Convert JSON data to worksheet
+    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(excelData);
+
+    // STEP 4.3 – Create workbook
+    const workbook: XLSX.WorkBook = XLSX.utils.book_new();
+
+    // STEP 4.4 – Add worksheet to workbook
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'AllWorkOrderData');
+
+    // STEP 4.5 – Download Excel file
+    XLSX.writeFile(workbook, 'Workorder.xlsx');
+
+  }
+
+  // exportexcel(): void {
+  //   /* pass here the table id */
+  //   let element = document.getElementById('excel-table');
+  //   const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+
+  //   /* generate workbook and add the worksheet */
+  //   const wb: XLSX.WorkBook = XLSX.utils.book_new();
+  //   XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+  //   /* save to file */
+  //   XLSX.writeFile(wb, this.fileName);
+
+  // }
 
   getadmintoken() {
     const token = localStorage.getItem('token');
@@ -341,7 +402,8 @@ export class WorkorderComponent implements OnInit {
         console.log(data);
         this.AllWorkOrderData = data.data;
       } else {
-        this.AllWorkOrder();
+        // this.AllWorkOrder();
+        this.AllWorkOrderData = [];
       }
     });
   }

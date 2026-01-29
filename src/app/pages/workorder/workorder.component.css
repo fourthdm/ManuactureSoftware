@@ -1,26 +1,26 @@
-.card{
+.card {
     background-color: #c4c1cfab;
     color: black;
 }
 
-select{
+select {
     background-color: hsla(264, 9%, 89%, 0.671);
     width: 100%;
 }
 
-label{
+label {
     color: black;
 }
 
-.container-fluid{
+.container-fluid {
     padding-left: 2%;
 }
 
-.Se{
+.Se {
     height: 50% !important;
 }
 
-.card-header{
+.card-header {
     color: black;
     font-size: larger;
 }
@@ -33,6 +33,7 @@ label{
 th {
     background-color: #c4c1cfab !important;
     color: black;
+    font-weight: bold;
     /* font-family: 'newcustomfnts'; */
 }
 
@@ -46,10 +47,19 @@ td {
     border: 1px solid white;
 }
 
-a{
+a {
     color: #000;
 }
 
-input{
+input {
     width: 100%;
+}
+
+h2 {
+    color: #000;
+}
+
+.Display {
+    color: white;
+    background-color: green;
 }

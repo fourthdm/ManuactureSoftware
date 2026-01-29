@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RestService } from 'src/app/services/rest.service';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-quatation',
@@ -9,6 +10,8 @@ import { RestService } from 'src/app/services/rest.service';
   styleUrls: ['./quatation.component.css']
 })
 export class QuatationComponent implements OnInit {
+
+  fileName = 'Quotation.xlsx';
 
   AllRequirementData: any[] = [];
   Quotations: any[] = [];
@@ -71,6 +74,52 @@ export class QuatationComponent implements OnInit {
           this.autoFillByRequirement(reqNo);
         }
       });
+  }
+
+  exportexcel(): void {
+
+    // STEP 4.1 – Create a new array for Excel
+    const excelData = this.Quotations.map((q: any, index: number) => {
+      return {
+        'Sr No': index + 1,
+        'Quotation No': q.Quotation_Number,
+        'Client Name': q.Client_Name,
+        'Requirement Number': q.Requirement_No,
+        'Material_Type': q.Material_Type,
+        'Client_Name': q.Client_Name,
+        'Product_Name': q.Product_Name,
+        'Product_Quantity': q.Product_Quantity,
+        'Rate': q.Rate,
+        'Manufacturing_Cost': q.Manufacturing_Cost,
+        'Material_Cost': q.Material_Cost,
+        'Dispatch_Cost': q.Dispatch_Cost,
+        'CGST_amount': q.CGST_amount,
+        'SGST_amount': q.SGST_amount,
+        'Subtotal': q.Subtotal,
+        'Total_Amount': q.Total_Amount,
+        'Discount_Amount': q.Discount_Amount,
+        'Payment_term': q.Payment_term,
+        'Shipping_Method': q.Shipping_Method,
+        'HSN_Code': q.HSN_Code,
+        'Address': q.Client_Address,
+        'Added_Date': q.Added_Date,
+        'Validity_Date': q.Validity_Date,
+        'Quotation_Status': q.Quotation_Status
+      };
+    });
+
+    // STEP 4.2 – Convert JSON data to worksheet
+    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(excelData);
+
+    // STEP 4.3 – Create workbook
+    const workbook: XLSX.WorkBook = XLSX.utils.book_new();
+
+    // STEP 4.4 – Add worksheet to workbook
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Quotations');
+
+    // STEP 4.5 – Download Excel file
+    XLSX.writeFile(workbook, 'Quotation_List.xlsx');
+    
   }
 
   autoFillByRequirement(reqNo: string) {

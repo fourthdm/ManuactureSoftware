@@ -178,13 +178,75 @@
                                 </div>
                             </div>
 
+                            <!-- <div class="col-6">
+  <div class="mb-3">
+    <label>Received Amount</label>
+    <input
+      type="number"
+      class="form-control"
+      formControlName="Received_Amount"
+      placeholder="Enter received amount"
+    />
+  </div>
+</div> -->
+
+
                         </div>
+
+                        <div *ngIf="manualClose" class="border p-3 mt-3 rounded">
+
+                            <h6 class="text-primary">Work Order Close Details</h6>
+
+                            <div class="row">
+
+                                <div class="col-6">
+                                    <label>Payment Status</label>
+                                    <select class="form-select form-select-sm" formControlName="Payment_Status">
+                                        <option value="Partial">Partial</option>
+                                        <option value="Completed">Completed</option>
+                                        <option value="Pending">Pending</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-6">
+                                    <label>Delivery Status</label>
+                                    <select class="form-select form-select-sm" formControlName="Delivery_Status">
+                                        <option value="Dispatch">Dispatch</option>
+                                        <option value="Delivered">Delivered</option>
+                                        <option value="Return">Return</option>
+                                        <option value="Close">Close</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-6 mt-2">
+                                    <label>Work Close Status</label>
+                                    <select class="form-select form-select-sm" formControlName="Work_Close_Status">
+                                        <option value="Open">Open</option>
+                                        <option value="Approved">Approved</option>
+                                        <option value="Rejected">Rejected</option>
+                                        <option value="Close">Close</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-6 mt-2">
+                                    <label>Custom Remark</label>
+                                    <input type="text" class="form-control" formControlName="Custom_Remark"
+                                        placeholder="e.g. Partially received 10000 against Bill_04">
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
                         <div *ngIf="!billAllowed" class="text-danger mt-2">
-                            Bill can be generated only after Engineer, QC & Dispatch completion
+                            Bill can be Generated only after Engineer, QC & Dispatch Status Completion.
                         </div>
                         <button type="submit" class="btn btn-success" [disabled]="!billAllowed">
                             Generate Bill
                         </button>
+
+
 
                         <!-- <div class="mb-3">
                             <button type="submit" class="btn btn-success">Generate Bill</button>
@@ -199,8 +261,11 @@
         <div class="col-7">
             <div class="row">
                 <div class="">
-
-                    <table class="table">
+                    <label for="">Download a Bill Excelsheet</label>
+                    <br> <button class="btn btn-success" (click)="exportexcel()" title="Download excelfile">Download
+                        Excelsheet</button>
+                    <br><br>
+                    <table class="table" id="excel-table">
                         <thead>
                             <tr>
                                 <th>Sr No.</th>
@@ -228,8 +293,9 @@
                                             data-bs-target="#exampleModal1" title="Edit a Bill">
                                             <i class="fa-solid fa-pen-to-square fa-lg"></i>
                                         </a>
-                                        <!-- <span style="margin-left:15px;cursor: pointer;"><a (click)="DeletePurchaseOrder(a.Id)" title="Delete a Purchase Order"> 
-                                <i class="fa-solid fa-trash-can"></i></a></span> -->
+                                        <span style="margin-left:15px;cursor: pointer;"><a (click)="Delete(a.Bill_Id)"
+                                                title="Delete a Bill">
+                                                <i class="fa-solid fa-trash-can"></i></a></span>
                                         <a (click)="printPdf(a.Bill_Id)" title="Print a Receipt"> <span
                                                 style="margin-left:15px;cursor: pointer;"><i
                                                     class="fa-solid fa-print"></i></span></a>
@@ -244,36 +310,6 @@
                         <pagination-controls (pageChange)=" pro = $event "
                             style="background-color: #252847 !important; z-index: -2 !important;"></pagination-controls>
                     </div>
-                    <!--    <div class="card">
-                    <div class="card-body">
-                      
-                     <div class="text-end"> 
-                         <a type="button" (click)="EditPurchaseOrder(a.Id)" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal1" title="Edit a Waiting for Approval">
-                                <i class="fa-solid fa-pen-to-square fa-lg"></i>
-                        </a>
-                        <span style="margin-left:15px;cursor: pointer;"><a (click)="DeletePurchaseOrder(a.Id)" title="Delete a Purchase Order"> <i class="fa-solid fa-trash-can"></i></a></span>
-                    <a (click)="printPdf(a.Id)" title="Print a Receipt"> <span  style="margin-left:15px;cursor: pointer;"><i class="fa-solid fa-print"></i></span></a>
-                  
-                    </div>
-                     <br>
-                       <p title="View Purchase Order Details" >Purchase Order Id : <a href="" [routerLink]="['/AdminDashboard/PurchaseOrderDetails', a.Id]">{{a.Id}}</a></p>
-                        <p>Purchase Order Number : {{a.Purchase_Number}}</p>
-                        <p>Requirement Number :  {{a.Requirement_No}}</p>
-                        <p>Client Name :  {{a.Client_Name}}</p>
-                        <p>Product_Quantity No :  {{a.Product_Quantity}}</p>
-                        <p>Material Type :  {{a.Material_Type}}</p>
-                        <p>Address :  {{a.Purchase_Address}}</p>
-                        <p>Payment Term :  {{a.Payment_term}}</p>
-                        <p>Status :  {{a.Status}}</p>
-                        <p>Order Delivery Date :  {{a.Delivery_Date | date}} <br>
-                           <span>Delivery Time : {{a.Delivery_Date | date :'hh:mm:ss'}}</span> </p>
-                        <p>Added Date :  {{a.Added_Date | date}} <br>
-                           <span>Added Time : {{a.Added_Date | date :'hh:mm:ss'}}</span> </p>
-                        <p>Updated Date : {{a.Updated_Date | date}} <br> 
-                            <span>Updated Time : </span> {{a.Updated_Date | date :'hh:mm:ss'}}</p>
-                    </div>
-                </div> -->
                 </div>
             </div>
         </div>

@@ -13,6 +13,8 @@ export class EmployeedashboardnavbarComponent implements OnInit {
 
   isManager: boolean = false;
 
+  isDispatchManager: boolean = false;
+
   notifications: any[] = [];
   alertCount = 0;
 
@@ -20,11 +22,12 @@ export class EmployeedashboardnavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.getManager();
+    this.Getdispatchmanager();
+
     const token = localStorage.getItem('token');
     if (token) {
       this.employeedata = jwtDecode(token);
     }
-
     // this.loadNotifications();
   }
 
@@ -45,6 +48,17 @@ export class EmployeedashboardnavbarComponent implements OnInit {
     }
   }
 
+  Getdispatchmanager() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decoded: any = jwtDecode(token);
+      if (decoded.Role == 'Dispatch Manager') {
+        this.isDispatchManager = true;
+      } else {
+        this.isDispatchManager = false;
+      }
+    }
+  }
   // isDueSoon(dueDate: string): boolean {
   //   const today = new Date();
   //   today.setHours(0, 0, 0, 0);

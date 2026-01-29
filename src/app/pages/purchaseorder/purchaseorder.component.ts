@@ -3,12 +3,16 @@ import { FormControl, FormControlName, FormGroup, Validators } from '@angular/fo
 import { RestService } from 'src/app/services/rest.service';
 import { StateService } from 'src/app/services/state.service';
 
+import * as XLSX from 'xlsx';
+
 @Component({
   selector: 'app-purchaseorder',
   templateUrl: './purchaseorder.component.html',
   styleUrls: ['./purchaseorder.component.css']
 })
 export class PurchaseorderComponent implements OnInit {
+
+  fileName = 'Purchaseorder.xlsx';
 
   AllPurchaseOrderData: any[] = [];
   AllRequirementData: any[] = [];
@@ -77,6 +81,49 @@ export class PurchaseorderComponent implements OnInit {
           this.autoFillByRequirement(reqNo);
         }
       });
+  }
+
+  exportexcel(): void {
+
+    // STEP 4.1 – Create a new array for Excel
+    const excelData = this.AllPurchaseOrderData.map((q: any, index: number) => {
+      return {
+        'Sr No': index + 1,
+        'Purchase Number': q.Purchase_Number,
+        'Quotation No': q.Quotation_Number,
+        'Requirement Number': q.Requirement_No,
+        'Client Name': q.Client_Name,
+        'Address': q.Client_Address,
+        'Material_Type': q.Material_Type,
+        'Product_Name': q.Product_Name,
+        'Product_Quantity': q.Product_Quantity,
+        'Rate': q.Rate,
+        'CGST_amount': q.CGST_amount,
+        'SGST_amount': q.SGST_amount,
+        'Subtotal': q.Subtotal,
+        'Total_Amount': q.Total_Amount,
+        'Discount_Amount': q.Discount_Amount,
+        'Payment_term': q.Payment_term,
+        'HSN_Code': q.HSN_Code,
+        'Purchase_Address':q.Purchase_Address,	
+        'Added_Date': q.Added_Date,
+        'Delivery Date': q.Delivery_Date,
+        'Status': q.Status
+      };
+    });
+
+    // STEP 4.2 – Convert JSON data to worksheet
+    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(excelData);
+
+    // STEP 4.3 – Create workbook
+    const workbook: XLSX.WorkBook = XLSX.utils.book_new();
+
+    // STEP 4.4 – Add worksheet to workbook
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'AllPurchaseOrderData');
+
+    // STEP 4.5 – Download Excel file
+    XLSX.writeFile(workbook, 'PurchaseOrderData.xlsx');
+
   }
 
   autoFillByRequirement(reqNo: string) {

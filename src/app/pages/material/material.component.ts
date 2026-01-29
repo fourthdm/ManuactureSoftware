@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RestService } from 'src/app/services/rest.service';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-material',
@@ -8,6 +9,9 @@ import { RestService } from 'src/app/services/rest.service';
   styleUrls: ['./material.component.css']
 })
 export class MaterialComponent {
+
+  fileName = 'Material.xlsx';
+
   pro: any;
   AllMAterials: any[] = [];
 
@@ -185,7 +189,6 @@ export class MaterialComponent {
   }
 
   DeleteMaterial(Material_id: number) {
-
     if (confirm('Are you Sure to Delete a Material Record')) {
       this._rest.DeleteMaterial(Material_id).subscribe((data: any) => {
         console.log(data);
@@ -196,4 +199,18 @@ export class MaterialComponent {
       });
     }
   }
+
+  exportexcel(): void {
+    /* pass here the table id */
+    let element = document.getElementById('excel-table');
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    /* save to file */
+    XLSX.writeFile(wb, this.fileName);
+  }
+
 }
