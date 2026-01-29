@@ -78,31 +78,36 @@
     </div>
   </div>
 
-  <ul class="nav justify-content-center" *ngIf="isManager">
+  <ul class="nav justify-content-center" *ngIf="isManager || isDispatchManager">
 
     <li class="nav-item"></li>
     <li class="nav-item"></li>
     <li class="nav-item"></li>
 
-    <li class="nav-item">
+    <li class="nav-item"  *ngIf="isManager">
       <a class="nav-link" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"
         [routerLink]="['/ManagerDashboard/Machine']">Machine</a>
     </li>
 
-    <li class="nav-item">
+    <li class="nav-item"  *ngIf="isManager">
       <a class="nav-link" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"
         [routerLink]="['/ManagerDashboard/Material']">Material</a>
     </li>
 
-    <li class="nav-item">
+    <li class="nav-item"  *ngIf="isManager">
       <a class="nav-link active" href="#" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"
         [routerLink]="['/ManagerDashboard/WorkOrder']">Work Order</a>
     </li>
 
-    <!-- <li class="nav-item">
+    <li class="nav-item" *ngIf="isDispatchManager">
+      <a class="nav-link active" href="#" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"
+        [routerLink]="['/DispatchDashboard/WorkOrder']">Work Order</a>
+    </li>
+
+    <li class="nav-item" *ngIf="isDispatchManager">
       <a href="#" class="nav-link" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"
-        [routerLink]="['/ManagerDashboard/WorkOrderClose']">Work Order Close</a>
-    </li> -->
+        [routerLink]="['/DispatchDashboard/DeliveryChallan']">Challan</a>
+    </li>
 
     <!-- <span *ngIf="alertCount > 0" class="badge bg-danger start-100">
       {{ alertCount }}

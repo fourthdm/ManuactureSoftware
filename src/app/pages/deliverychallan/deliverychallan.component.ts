@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 import { RestService } from 'src/app/services/rest.service';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-deliverychallan',
@@ -9,6 +10,9 @@ import { RestService } from 'src/app/services/rest.service';
   styleUrls: ['./deliverychallan.component.css']
 })
 export class DeliverychallanComponent implements OnInit {
+
+  fileName = 'Challan.xlsx';
+
   pro: any;
   AllChallan: any[] = [];
 
@@ -106,7 +110,6 @@ export class DeliverychallanComponent implements OnInit {
     });
   }
 
-
   showPrint = false;
 
   submitchallan() {
@@ -176,6 +179,50 @@ export class DeliverychallanComponent implements OnInit {
     }, (err: any) => {
       console.log(err);
     });
+  }
+
+  exportexcel(): void {
+      const excelData = this.AllChallan.map((a: any, index: number) => {
+      return {
+        'Sr No': index + 1,
+        'Quotation No': a.Quotation_Number,
+        'Client Name': a.Client_Name,
+        'Requirement Number': a.Requirement_No,
+        'Material_Type': a.Material_Type,
+        'Client_Address': a.Client_Address,
+        'Product_Name': a.Product_Name,
+        'Product_Quantity': a.Product_Quantity,
+        'Rate': a.Rate,
+        'GST_No': a.GST_No,
+        'Mode_of_Transport': a.Mode_of_Transport,
+        'Name_of_Transport': a.Name_of_Transport,
+        'CGST_amount': a.CGST_amount,
+        'SGST_amount': a.SGST_amount,
+        'Subtotal': a.Subtotal,
+        'Total_Amount': a.Total_Amount,
+        'Discount_Amount': a.Discount_Amount,
+        'Payment_term': a.Payment_term,
+        'Vehicle_No': a.Vehicle_No,
+        'HSN_Code': a.HSN_Code,
+        'Address': a.Client_Address,
+        'Remark': a.Remark,
+        'Added_Date': a.Added_Date,
+        'Updated_Date': a.Updated_Date,
+        'Challan_Status': a.Challan_Status
+      };
+    });
+
+    // STEP 4.2 – Convert JSON data to worksheet
+    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(excelData);
+
+    // STEP 4.3 – Create workbook
+    const workbook: XLSX.WorkBook = XLSX.utils.book_new();
+
+    // STEP 4.4 – Add worksheet to workbook
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'AllChallan');
+
+    // STEP 4.5 – Download Excel file
+    XLSX.writeFile(workbook, 'Challan.xlsx');
   }
 
 }

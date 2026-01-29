@@ -2,13 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { jwtDecode } from 'jwt-decode';
 import { RestService } from 'src/app/services/rest.service';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-bill',
   templateUrl: './bill.component.html',
   styleUrls: ['./bill.component.css']
 })
+
 export class BillComponent implements OnInit {
+
+  fileName = 'Bills.xlsx';
 
   isAdmin: boolean = false;
   isDispatchManager: boolean = false;
@@ -27,6 +31,8 @@ export class BillComponent implements OnInit {
   Edittbillform: FormGroup;
 
   SelectedBill: any;
+
+  manualClose = false;
 
   constructor(private _rest: RestService) {
     this.Addbillform = new FormGroup({
@@ -47,7 +53,17 @@ export class BillComponent implements OnInit {
       Payment_term: new FormControl('', [Validators.required]),
       Payment_Method: new FormControl('', [Validators.required]),
       Delivery_Date: new FormControl(''),
-      Bill_Status: new FormControl('', [Validators.required])
+      Bill_Status: new FormControl('', [Validators.required]),
+
+      // // 💰 payment
+      // Received_Amount: new FormControl('', Validators.required),
+
+      // // 🔒 workorder close (manual)
+      // Payment_Status: new FormControl(''),
+      // Delivery_Status: new FormControl(''),
+      // Work_Close_Status: new FormControl(''),
+      // Custom_Remark: new FormControl('')
+
     });
 
     this.Edittbillform = new FormGroup({
@@ -89,6 +105,46 @@ export class BillComponent implements OnInit {
           this.autoFillByRequirement(billNo);
         }
       });
+  }
+  exportexcel(): void {
+    // STEP 4.1 – Create a new array for Excel
+    const excelData = this.AllBill.map((q: any, index: number) => {
+      return {
+        'Sr No': index + 1,
+        'Bill Number': q.Bill_Number,
+        'Purchase Number': q.Purchase_Number,
+        'Client Name': q.Client_Name,
+        'Address': q.Client_Address,
+        'Product_Name': q.Product_Name,
+        'Product_Quantity': q.Product_Quantity,
+        'Rate': q.Rate,
+        'HSN_Code': q.HSN_Code,
+        'CGST_amount': q.CGST_amount,
+        'SGST_amount': q.SGST_amount,
+        'Subtotal': q.Subtotal,
+        'Total_Amount': q.Total_Amount,
+        'Discount_Amount': q.Discount_Amount,
+        'Payment_term': q.Payment_term,
+        'Payment Method': q.Payment_Method,
+        'Added Date': q.Added_Date,
+        'Updated  Date': q.Updated_Date,
+        'Delivery Date': q.Delivery_Date,
+        'Bill Status': q.Bill_Status
+      };
+    });
+
+    // STEP 4.2 – Convert JSON data to worksheet
+    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(excelData);
+
+    // STEP 4.3 – Create workbook
+    const workbook: XLSX.WorkBook = XLSX.utils.book_new();
+
+    // STEP 4.4 – Add worksheet to workbook
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'AllBill');
+
+    // STEP 4.5 – Download Excel file
+    XLSX.writeFile(workbook, 'Bill.xlsx');
+
   }
 
   getadmintoken() {
@@ -190,7 +246,7 @@ export class BillComponent implements OnInit {
       Total_Amount: req.Total_Amount,
       Discount_Amount: req.Discount_Amount,
       Payment_term: req.Payment_term,
-      Delivery_Date:deliveryDate
+      Delivery_Date: deliveryDate
     });
 
     // 🔥 FETCH WORKORDER STATUS
@@ -269,15 +325,28 @@ export class BillComponent implements OnInit {
   }
 
   Createbill() {
-    this._rest.AddBill(this.Addbillform.value).subscribe((data: any) => {
-      console.log(data);
-      this.AllBill = data.data;
+    const payload = {
+      ...this.Addbillform.value,
+      Received_Amount: 10000   // example
+    };
+
+    this._rest.AddBill(payload).subscribe((res: any) => {
+      alert(res.message);
       this.Addbillform.reset();
       this.ngOnInit();
-    }, (err: any) => {
-      console.log(err);
     });
   }
+
+  // Createbill() {
+  //   this._rest.AddBill(this.Addbillform.value).subscribe((data: any) => {
+  //     console.log(data);
+  //     this.AllBill = data.data;
+  //     this.Addbillform.reset();
+  //     this.ngOnInit();
+  //   }, (err: any) => {
+  //     console.log(err);
+  //   });
+  // }
 
   printPdf(Bill_Id: any) {
     this._rest.GenerateBill(Bill_Id)
@@ -328,6 +397,17 @@ export class BillComponent implements OnInit {
     }, (err: any) => {
       console.log(err);
     });
+  }
+
+  Delete(Bill_Id: any) {
+    if (confirm('Are You want to delete a Bill')) {
+      this._rest.DeleteBill(Bill_Id).subscribe((data: any) => {
+        console.log(data);
+        this.ngOnInit();
+      }, (err: any) => {
+        console.log(err);
+      });
+    }
   }
 
 }

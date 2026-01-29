@@ -227,6 +227,11 @@
         <div class="col-7">
             <div class="row">
                 <div class="">
+                    <label for="">Download a Delivery Challan Excelsheet</label>
+                    <br>
+                    <button class="btn btn-success" (click)="exportexcel()" title="Download excelfile">Download Excelsheet</button>
+                    <br> <br>
+
                     <table class="table">
                         <thead>
                             <tr>
@@ -243,7 +248,7 @@
                                 <td>
                                     <p title="View Challan Details">
                                         <a href=""
-                                            [routerLink]="['/AdminDashboard/BillDetails', a.Challan_id]">{{a.Challan_Number}}</a>
+                                            [routerLink]="['/AdminDashboard/ChallanDetails', a.Challan_id]">{{a.Challan_Number}}</a>
                                     </p>
                                 </td>
 

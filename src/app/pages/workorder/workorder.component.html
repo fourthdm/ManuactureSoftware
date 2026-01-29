@@ -1,5 +1,5 @@
 <div class="container-fluid"> <br><br><br>
-    <h3 class="text-center"> Work Order</h3>
+    <h2 class="text-center"> Work Order</h2>
     <br>
     <br>
     <div class="row">
@@ -8,7 +8,6 @@
                 <div class="card-header">Add New Work Order</div>
                 <div class="card-body">
                     <form [formGroup]="AddWorkorderForm" (submit)="AddWorkOrderData()">
-
                         <div class="row">
                             <div class="col-6">
                                 <div class="mb-3">
@@ -20,7 +19,6 @@
                                     </select> <br>
                                 </div>
                             </div>
-
 
                             <div class="col-6">
                                 <div class="mb-3">
@@ -45,7 +43,6 @@
                                     </select> <br>
                                 </div>
                             </div>
-
                             <div class="col-6">
                                 <div class="mb-3">
                                     <label for="Purchase_Number">Purchase Number </label>
@@ -57,7 +54,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="row">
                             <label for="Client_Name" class="form-label">Client Name : </label>
                             <br>
@@ -66,7 +62,6 @@
                         </div>
                         <br>
                         <div class="row">
-
                             <div class="col-6">
                                 <div class="mb-3">
                                     <label for="Material_Type">Material Type</label>
@@ -171,59 +166,77 @@
         <div class="col-7">
             <div class="row">
                 <div class="">
-
-                    <div>
-                        <label for="WorkOrder_Status">Select Work Order Status.<br>
-                            <select name="WorkOrder_Status" id="WorkOrder_Status" [(ngModel)]="WorkOrder_Status"
-                                class="form-select" placeholder="Select WorkOrder Status"
-                                aria-label="Multiple select example">
-                                <option value="Create">Create </option>
-                                <option value="Schedule">Schedule</option>
-                                <option value="In Progress"> In Progress </option>
-                                <option value="Completed">Completed </option>
-                                <option value="Declined">Declined </option>
-                                <option value="Close">Close </option>
-                                <!-- <option *ngFor="let b of AllWorkOrderData" [value]="b.WorkOrder_Status">{{b.WorkOrder_Status}}
+                    <div class="row">
+                        <div class="col-6">
+                            <div>
+                                <label for="WorkOrder_Status">Select Work Order Status.<br>
+                                    <select name="WorkOrder_Status" id="WorkOrder_Status" [(ngModel)]="WorkOrder_Status"
+                                        class="form-select" placeholder="Select WorkOrder Status"
+                                        aria-label="Multiple select example">
+                                        <option value="Create">Create </option>
+                                        <option value="Schedule">Schedule</option>
+                                        <option value="In Progress"> In Progress </option>
+                                        <option value="Completed">Completed </option>
+                                        <option value="Declined">Declined </option>
+                                        <option value="Close">Close </option>
+                                        <!-- <option *ngFor="let b of AllWorkOrderData" [value]="b.WorkOrder_Status">{{b.WorkOrder_Status}}
                                 </option> -->
-                            </select>
-                        </label>
-                        <button class="btn bttns" type="button" id="button-addon2"><i
-                                class="fa-solid fa-magnifying-glass" (click)="WorkorderByStatus()"></i></button>
+                                    </select>
+                                </label>
+                                <button class="btn bttns" type="button" id="button-addon2"><i
+                                        class="fa-solid fa-magnifying-glass" (click)="WorkorderByStatus()"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <label for="">Download A Workorders in Excelsheet </label>
+                            <br> <button class="btn btn-success" (click)="exportexcel()"
+                                title="Download excelfile">Download Excelsheet</button>
+                        </div>
                     </div>
 
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Sr No.</th>
-                                <th>Work Order Number</th>
-                                <th>Client Name</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr
-                                *ngFor="let a of AllWorkOrderData | paginate :{itemsPerPage :10 ,currentPage:pro},let i = index">
-                                <td>{{a.Workorder_Id}}</td>
-                                <td>
-                                    <p title="View Work Order Details"><a href=""
-                                            [routerLink]="['/AdminDashboard/WorkorderDetails',a.Workorder_Id]">{{a.WO_Number}}</a>
-                                    </p>
-                                </td>
-                                <td>{{a.Client_Name}}</td>
-                                <td>
-                                    <a type="button" (click)="EditPurchaseOrder(a.Workorder_Id)" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal1" title="Edit a Waiting for Approval">
-                                        <i class="fa-solid fa-pen-to-square fa-lg"></i>
-                                    </a>
-                                    <span style="margin-left:15px;cursor: pointer;"><a
-                                            (click)="DeletePurchaseOrder(a.Workorder_Id)"
-                                            title="Delete a Purchase Order"> <i
-                                                class="fa-solid fa-trash-can"></i></a></span>
-                                </td>
+                    <br> <br>
 
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="text-center" *ngIf="AllWorkOrderData.length == 0">
+                        <p>Work Order Not Available by WorkOrder Status</p>
+                        <button class="btn btn-success" (click)="AllWorkOrder()">Reset</button>
+                    </div> <br>
+
+                    <div class="div" *ngIf="AllWorkOrderData.length > 0">
+                        <table class="table" id="excel-table">
+                            <thead>
+                                <tr>
+                                    <th>Sr No.</th>
+                                    <th>Work Order Number</th>
+                                    <th>Client Name</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let a of AllWorkOrderData | paginate :{itemsPerPage :10 ,currentPage:pro},let i = index"
+                                    [ngClass]="{'Display': a.WorkOrder_Status === 'Completed'} ">
+                                    <td>{{a.Workorder_Id}}</td>
+                                    <td>
+                                        <p title="View Work Order Details"><a href=""
+                                                [routerLink]="['/AdminDashboard/WorkorderDetails',a.Workorder_Id]">{{a.WO_Number}}</a>
+                                        </p>
+                                    </td>
+                                    <td>{{a.Client_Name}}</td>
+                                    <td>
+                                        <a type="button" (click)="EditPurchaseOrder(a.Workorder_Id)"
+                                            data-bs-toggle="modal" data-bs-target="#exampleModal1"
+                                            title="Edit a Waiting for Approval">
+                                            <i class="fa-solid fa-pen-to-square fa-lg"></i>
+                                        </a>
+                                        <span style="margin-left:15px;cursor: pointer;"><a
+                                                (click)="DeletePurchaseOrder(a.Workorder_Id)"
+                                                title="Delete a Purchase Order"> <i
+                                                    class="fa-solid fa-trash-can"></i></a></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
                     <div class="text-center">
                         <pagination-controls (pageChange)=" pro = $event "
@@ -351,7 +364,7 @@
                                                 </select> <br>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="col-6">
                                             <div class="mb-3">
                                                 <label for="Payment_term">Payment Term: </label>
@@ -388,8 +401,8 @@
                                                 </select>
                                             </div>
                                         </div>
-
                                     </div>
+
                                     <div class="row">
                                         <div class="col-6">
                                             <div class="mb-3">
@@ -449,7 +462,8 @@
                                                 </label>
                                                 <br>
                                                 <select formControlName="DispatchManager_Name" class="">
-                                                    <option *ngFor="let mat of AllEngineerdata" [value]="mat.Name">
+                                                    <option *ngFor="let mat of AllDispatchManagerdata"
+                                                        [value]="mat.Name">
                                                         {{mat.Name}}</option>
                                                 </select> <br>
                                             </div>

@@ -43,3 +43,8 @@ th {
 input {
     width: 100%;
 }
+
+.card-header {
+    color: black;
+    font-size: larger;
+}

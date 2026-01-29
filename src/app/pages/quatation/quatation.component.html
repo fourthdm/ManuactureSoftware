@@ -2,235 +2,261 @@
 <br>
 <br>
 <div class="container-fluid">
-<br><h2 class="text-center">Quotation Informations</h2>
-<br><div class="row">
-    <div class="col-5">
-     <div class="card" >
-         <div class="card-header">Add New Quotation</div>
-        <div class="card-body">
-            <form [formGroup]="AddQuotationform" (submit)="AddQuotations()" >
+    <br>
+    <h2 class="text-center">Quotation Informations</h2>
+    <br>
+    <div class="row">
+        <div class="col-5">
+            <div class="card">
+                <div class="card-header">Add New Quotation</div>
+                <div class="card-body">
+                    <form [formGroup]="AddQuotationform" (submit)="AddQuotations()">
 
-                <div class="row">
-                    <div class="col-6">
-                          <div class="mb-3">
-                         <label for="Requirement_No">Requirement No</label>
-                            <br>
-                         <select formControlName="Requirement_No" class="Se">
-                            <option *ngFor="let mat of AllRequirementData" [value]="mat.Requirement_No">{{mat.Requirement_No}}</option>
-                         </select>  <br>
-                         </div>
-                    </div>
-
-                    <div class="col-6">
-                         <div class="mb-3">
-                             <label for="Product_Quantity">Product Quantity</label>
-                                 <br>
-                                <select formControlName="Product_Quantity" class="Se">
-                                     <option *ngFor="let mat of AllRequirementData"
-                                             [ngValue]="mat.Product_Quantity">
-                                       {{mat.Product_Quantity}} ({{mat.Requirement_No}})
-                                     </option>
-                                </select>
-                         </div>
-                    </div>
-                                        
-                </div>
-                
-                <div class="row">   
-                    <div class="col-6">
-                            <div class="mb-3">
-                             <label for="Product_Name">Product Name </label>
-                                <br>
-                            <select formControlName="Product_Name" class="Se">
-                                <option *ngFor="let mat of AllRequirementData" [value]="mat.Product_Name">{{mat.Product_Name}} ({{mat.Requirement_No}})</option>
-                            </select>  <br>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="Requirement_No">Requirement No</label>
+                                    <br>
+                                    <select formControlName="Requirement_No" class="Se">
+                                        <option *ngFor="let mat of AllRequirementData" [value]="mat.Requirement_No">
+                                            {{mat.Requirement_No}}</option>
+                                    </select> <br>
+                                </div>
                             </div>
-                    </div>
-                   
-                    <div class="col-6">
-                          <div class="mb-3">
-                              <label for="exampleInputEmail1" class="form-label">Client Name : </label>
-                                        <br>
+
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="Product_Quantity">Product Quantity</label>
+                                    <br>
+                                    <select formControlName="Product_Quantity" class="Se">
+                                        <option *ngFor="let mat of AllRequirementData" [ngValue]="mat.Product_Quantity">
+                                            {{mat.Product_Quantity}} ({{mat.Requirement_No}})
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="Product_Name">Product Name </label>
+                                    <br>
+                                    <select formControlName="Product_Name" class="Se">
+                                        <option *ngFor="let mat of AllRequirementData" [value]="mat.Product_Name">
+                                            {{mat.Product_Name}} ({{mat.Requirement_No}})</option>
+                                    </select> <br>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Client Name : </label>
+                                    <br>
                                     <select formControlName="Client_Name" class="">
-                                        <option *ngFor="let mat of AllRequirementData" [value]="mat.Client_Name">{{mat.Client_Name}}({{mat.Requirement_No}})</option>
-                                    </select>  <br>
-                         </div>
-                    </div>
-                   
-                    <div class="col-6">
-                          <div class="mb-3">
-                              <label for="exampleInputEmail1" class="form-label">Material Type : </label>
-                                        <br>
-                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            formControlName="Material_Type" placeholder="Enter Material Type ">
-                         </div>
-                    </div>
+                                        <option *ngFor="let mat of AllRequirementData" [value]="mat.Client_Name">
+                                            {{mat.Client_Name}}({{mat.Requirement_No}})</option>
+                                    </select> <br>
+                                </div>
+                            </div>
 
-                    <div class="col-6">
-                          <div class="mb-3">
-                              <label for="exampleInputEmail1" class="form-label"> HSN Code : </label>
-                                        <br>
-                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            formControlName="HSN_Code" placeholder="Enter HSN Code">
-                         </div>
-                    </div>
-                </div>
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Material Type : </label>
+                                    <br>
+                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" formControlName="Material_Type"
+                                        placeholder="Enter Material Type ">
+                                </div>
+                            </div>
 
-                <div class="row">
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label"> HSN Code : </label>
+                                    <br>
+                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" formControlName="HSN_Code"
+                                        placeholder="Enter HSN Code">
+                                </div>
+                            </div>
+                        </div>
 
-                    <div class="col-6">
-                          <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label"> Rate: </label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    formControlName="Rate" placeholder="Enter Rate">
-                     </div> 
-                    </div>
+                        <div class="row">
 
-                    <div class="col-6">
-                          <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label"> Discount Amount: </label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    formControlName="Discount_Amount" placeholder="Enter Discount Amount">
-                     </div> 
-                    </div>
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label"> Rate: </label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" formControlName="Rate" placeholder="Enter Rate">
+                                </div>
+                            </div>
 
-                    <div class="col-md-6">
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label"> Discount Amount: </label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" formControlName="Discount_Amount"
+                                        placeholder="Enter Discount Amount">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label"> Manufacturing Cost : </label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" formControlName="Manufacturing_Cost"
+                                        placeholder="Enter Manufacturing Cost ">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label"> Material Cost : </label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" formControlName="Material_Cost"
+                                        placeholder="Enter  Material Cost ">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label"> Dispatch_Cost : </label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" formControlName="Dispatch_Cost"
+                                        placeholder="Enter  Dispatch Cost ">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label"> Validity Date : </label>
+                                    <input type="date" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" formControlName="Validity_Date"
+                                        placeholder="Enter Validity Date">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="mb-3">
+                                <label for="Client_Address">Address</label>
+                                <br>
+                                <select formControlName="Client_Address" class="Se">
+                                    <option *ngFor="let mat of AllRequirementData" [value]="mat.Client_Address">
+                                        {{mat.Client_Address}}({{mat.Requirement_No}})</option>
+                                </select> <br>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label"> Shipping Method : </label>
+                                <input type="text" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" formControlName="Shipping_Method"
+                                    placeholder="Enter Shipping_Method ">
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="Payment_term">Payment term: </label>
+                                    <select class="form-select form-select-sm" formControlName="Payment_term"
+                                        aria-label="select example">
+                                        <option value="50% Advance">50% Advance</option>
+                                        <option value="Regular">Regular</option>
+                                        <option value="30 Days">30 Days </option>
+                                        <option value="60 Days">60 Days</option>
+                                        <option value="90 Days">90 Days </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="Quotation_Status">Quotation Status : </label>
+                                    <select class="form-select form-select-sm" formControlName="Quotation_Status"
+                                        aria-label="select example">
+                                        <option value="Create">Create </option>
+                                        <option value="Schedule">Schedule</option>
+                                        <option value="Complete">Complete </option>
+                                        <option value="Decline">Decline </option>
+                                        <option value="Close">Close </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label"> Manufacturing Cost : </label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    formControlName="Manufacturing_Cost" placeholder="Enter Manufacturing Cost ">
-                     </div>
-                    </div>
-                    
-                    <div class="col-md-6">
-                      <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label"> Material Cost : </label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    formControlName="Material_Cost" placeholder="Enter  Material Cost ">
-                     </div>                         
-                    </div>
-                    
-                    <div class="col-md-6">
-                          <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label"> Dispatch_Cost : </label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    formControlName="Dispatch_Cost" placeholder="Enter  Dispatch Cost ">
-                     </div>                         
-                    </div>
-                    
-                    <div class="col-md-6">
-                          <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label"> Validity Date : </label>
-                    <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    formControlName="Validity_Date" placeholder="Enter Validity Date">
-                     </div>                         
-                    </div>
-
-                </div>
-                
-                <div class="row">
-
-                       <div class="mb-3">
-                         <label for="Client_Address">Address</label>
-                            <br>
-                         <select formControlName="Client_Address" class="Se">
-                            <option *ngFor="let mat of AllRequirementData" [value]="mat.Client_Address">{{mat.Client_Address}}({{mat.Requirement_No}})</option>
-                         </select>  <br>
+                            <button type="submit" class="btn btn-success">Add Quotation</button>
                         </div>
-
+                    </form>
                 </div>
-
-                <div class="row">
-                       <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label"> Shipping Method : </label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    formControlName="Shipping_Method" placeholder="Enter Shipping_Method ">
-                     </div>
-                      
-                </div>
-                      
-                 <div class="row">
-                       <div class="col-6"> 
-                       <div class="mb-3">
-                           <label for="Payment_term">Payment term: </label>
-                           <select class="form-select form-select-sm" formControlName="Payment_term" aria-label="select example">
-                                           <option value="50% Advance">50% Advance</option>
-                                           <option value="Regular">Regular</option>
-                                           <option value="30 Days">30 Days </option>
-                                           <option value="60 Days">60 Days</option>
-                                           <option value="90 Days">90 Days </option>
-                           </select>
-                        </div>
-                       </div>
-        
-                        <div class="col-6">
-                             <div class="mb-3">
-                             <label for="Quotation_Status">Quotation Status  : </label>
-                             <select class="form-select form-select-sm" formControlName="Quotation_Status" aria-label="select example">
-                                             <option value="Create">Create </option>
-                                             <option value="Schedule">Schedule</option>
-                                             <option value="Complete">Complete </option>
-                                             <option value="Decline">Decline </option>
-                                             <option value="Close">Close </option>
-                             </select>
-                             </div>
-                        </div>
-                 </div>
-
-                     <div class="mb-3">
-                     <button type="submit" class="btn btn-success">Add Quotation</button>
-                     </div>
-            </form>
+            </div>
         </div>
-     </div>
-    </div>
 
-    <!-- <div class="col-1"></div> -->
-    <br><br>    
-    <div class="col-7">
-        <div class="row">
-            <div class="col-md-12">
-                <table class="table" >
-                    <thead>
-                        <tr>
-                            <th>Sr No.</th>
-                            <th>Quotation No</th>
-                            <th>Client Name</th>
-                            <th>Action</th>
-                        
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr   *ngFor="let q of Quotations  | paginate :{itemsPerPage :15 ,currentPage:pro},let i = index">
-                           <td >{{q.Quotation_Id}}</td>
-                          <td><p title="View Quotation Details" ><a href="" [routerLink]="['/AdminDashboard/QuotationDetails', q.Quotation_Id]">{{q.Quotation_Number}}</a></p></td>
-                            
-                            <td>{{q.Client_Name}}</td>
-                            <td>
-                            <p class="">
+        <!-- <div class="col-1"></div> -->
+        <br><br>
+        <div class="col-7">
+            <div class="row">
+                <div class="col-md-12">
+                    <label for="">Download a Quotation Excelsheet</label>
+                    <br>
+                    <button class="btn btn-success" (click)="exportexcel()"
+                                title="Download excelfile">Download Excelsheet</button> <br> <br>
+                    <table class="table" id="excel-table">
+                        <thead>
+                            <tr>
+                                <th>Sr No.</th>
+                                <th>Quotation No</th>
+                                <th>Client Name</th>
+                                <th>Action</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                *ngFor="let q of Quotations  | paginate :{itemsPerPage :15 ,currentPage:pro},let i = index">
+                                <td>{{q.Quotation_Id}}</td>
+                                <td>
+                                    <p title="View Quotation Details"><a href=""
+                                            [routerLink]="['/AdminDashboard/QuotationDetails', q.Quotation_Id]">{{q.Quotation_Number}}</a>
+                                    </p>
+                                </td>
+
+                                <td>{{q.Client_Name}}</td>
+                                <td>
+                                    <p class="">
                                         <a type="button" (click)="editQuotation(q.Quotation_Id)" data-bs-toggle="modal"
-                                               data-bs-target="#exampleModal1" title="Edit a Quotations">
-                                             <i class="fa-solid fa-pen-to-square fa-lg"></i>
+                                            data-bs-target="#exampleModal1" title="Edit a Quotations">
+                                            <i class="fa-solid fa-pen-to-square fa-lg"></i>
                                         </a>
-                            <span style="margin-left:15px;cursor: pointer;">
-                                <a (click)="DeleteQuotation(q.Quotation_Id)" title="Delete Quotation"> 
-                                <i class="fa-solid fa-trash-can"></i>
-                                </a>
-                            </span>
-                           <a (click)="printPdf(q.Quotation_Id)" title="Print a Receipt"> <span  style="margin-left:15px;cursor: pointer;"><i class="fa-solid fa-print"></i></span></a>
-                            </p>
-                            </td>
+                                        <span style="margin-left:15px;cursor: pointer;">
+                                            <a (click)="DeleteQuotation(q.Quotation_Id)" title="Delete Quotation">
+                                                <i class="fa-solid fa-trash-can"></i>
+                                            </a>
+                                        </span>
+                                        <a (click)="printPdf(q.Quotation_Id)" title="Print a Receipt"> <span
+                                                style="margin-left:15px;cursor: pointer;"><i
+                                                    class="fa-solid fa-print"></i></span></a>
+                                    </p>
+                                </td>
 
-                        </tr>
-                    </tbody>
-                </table>
+                            </tr>
+                        </tbody>
+                    </table>
 
-                  <div class="text-center">
-                <pagination-controls (pageChange)=" pro = $event "
-                    style="background-color: #252847 !important; z-index: -2 !important;"></pagination-controls>
-                </div>
+                    <div class="text-center">
+                        <pagination-controls (pageChange)=" pro = $event "
+                            style="background-color: #252847 !important; z-index: -2 !important;"></pagination-controls>
+                    </div>
 
-<!--       <div class="card">
+                    <!--       <div class="card">
                     <div class="card-body">
                       
                      <div class="text-end"> 
@@ -282,181 +308,199 @@
                                             
                     </div>
                 </div> -->
+                </div>
             </div>
         </div>
-    </div>
 
 
-<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Quotation</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                <div class="col-md-12">
-                   
-        <form [formGroup]="EditquotationForm">
-                        <div class="row">
-                    <div class="col-6">
-                          <div class="mb-3">
-                         <label for="Requirement_No">Requirement No</label>
-                            <br>
-                         <select formControlName="Requirement_No" class="Se">
-                            <option *ngFor="let mat of AllRequirementData" [value]="mat.Requirement_No">{{mat.Requirement_No}}</option>
-                         </select>  <br>
-                         </div>
+        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Quotation</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+                    <div class="modal-body">
+                        <div class="col-md-12">
 
-                    <div class="col-6">
-                         <div class="mb-3">
-                             <label for="Product_Quantity">Product Quantity</label>
-                                 <br>
-                                <select formControlName="Product_Quantity" class="Se">
-                                     <option *ngFor="let mat of AllRequirementData"
-                                             [ngValue]="mat.Product_Quantity">
-                                       {{mat.Product_Quantity}} ({{mat.Requirement_No}})
-                                     </option>
-                                </select>
-                         </div>
-                    </div>
-                    
-                    <div class="col-6">
-                          <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label"> Rate: </label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    formControlName="Rate" placeholder="Enter Rate">
-                     </div> 
-                    </div>
+                            <form [formGroup]="EditquotationForm">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                            <label for="Requirement_No">Requirement No</label>
+                                            <br>
+                                            <select formControlName="Requirement_No" class="Se">
+                                                <option *ngFor="let mat of AllRequirementData"
+                                                    [value]="mat.Requirement_No">{{mat.Requirement_No}}</option>
+                                            </select> <br>
+                                        </div>
+                                    </div>
 
-                    <div class="col-6">
-                          <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label"> Discount Amount: </label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    formControlName="Discount_Amount" placeholder="Enter Discount Amount">
-                     </div> 
-                    </div>
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                            <label for="Product_Quantity">Product Quantity</label>
+                                            <br>
+                                            <select formControlName="Product_Quantity" class="Se">
+                                                <option *ngFor="let mat of AllRequirementData"
+                                                    [ngValue]="mat.Product_Quantity">
+                                                    {{mat.Product_Quantity}} ({{mat.Requirement_No}})
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
 
-                </div>
-                
-                <div class="row">
-                    <div class="col-6">
-                            <div class="mb-3">
-                             <label for="Product_Name">Product Name </label>
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                            <label for="exampleInputEmail1" class="form-label"> Rate: </label>
+                                            <input type="text" class="form-control" id="exampleInputEmail1"
+                                                aria-describedby="emailHelp" formControlName="Rate"
+                                                placeholder="Enter Rate">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                            <label for="exampleInputEmail1" class="form-label"> Discount Amount:
+                                            </label>
+                                            <input type="text" class="form-control" id="exampleInputEmail1"
+                                                aria-describedby="emailHelp" formControlName="Discount_Amount"
+                                                placeholder="Enter Discount Amount">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                            <label for="Product_Name">Product Name </label>
+                                            <br>
+                                            <select formControlName="Product_Name" class="Se">
+                                                <option *ngFor="let mat of AllRequirementData"
+                                                    [value]="mat.Product_Name">{{mat.Product_Name}}
+                                                    ({{mat.Requirement_No}})</option>
+                                            </select> <br>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                            <label for="exampleInputEmail1" class="form-label">Client Name : </label>
+                                            <br>
+                                            <select formControlName="Client_Name" class="">
+                                                <option *ngFor="let mat of AllRequirementData"
+                                                    [value]="mat.Client_Name">
+                                                    {{mat.Client_Name}}({{mat.Requirement_No}})</option>
+                                            </select> <br>
+                                        </div>
+                                    </div>
+                                </div>
                                 <br>
-                            <select formControlName="Product_Name" class="Se">
-                                <option *ngFor="let mat of AllRequirementData" [value]="mat.Product_Name">{{mat.Product_Name}} ({{mat.Requirement_No}})</option>
-                            </select>  <br>
-                            </div>
-                    </div>
-                   
-                    <div class="col-6">
-                          <div class="mb-3">
-                              <label for="exampleInputEmail1" class="form-label">Client Name : </label>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="exampleInputEmail1" class="form-label"> Manufacturing Cost :
+                                            </label>
+                                            <input type="text" class="form-control" id="exampleInputEmail1"
+                                                aria-describedby="emailHelp" formControlName="Manufacturing_Cost"
+                                                placeholder="Enter Manufacturing Cost ">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="exampleInputEmail1" class="form-label"> Material Cost : </label>
+                                            <input type="text" class="form-control" id="exampleInputEmail1"
+                                                aria-describedby="emailHelp" formControlName="Material_Cost"
+                                                placeholder="Enter  Material Cost ">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="exampleInputEmail1" class="form-label"> Dispatch_Cost : </label>
+                                            <input type="text" class="form-control" id="exampleInputEmail1"
+                                                aria-describedby="emailHelp" formControlName="Dispatch_Cost"
+                                                placeholder="Enter  Dispatch Cost ">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="exampleInputEmail1" class="form-label"> Validity Date : </label>
+                                            <input type="date" class="form-control" id="exampleInputEmail1"
+                                                aria-describedby="emailHelp" formControlName="Validity_Date"
+                                                placeholder="Enter Validity Date">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="mb-3">
+                                        <label for="Address">Address</label>
                                         <br>
-                                    <select formControlName="Client_Name" class="">
-                                        <option *ngFor="let mat of AllRequirementData" [value]="mat.Client_Name">{{mat.Client_Name}}({{mat.Requirement_No}})</option>
-                                    </select>  <br>
-                         </div>
-                    </div>
-                </div>
-                <br>
+                                        <select formControlName="Address" class="Se">
+                                            <option *ngFor="let mat of AllRequirementData" [value]="mat.Client_Address">
+                                                {{mat.Client_Address}}({{mat.Requirement_No}})</option>
+                                        </select> <br>
+                                    </div>
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label"> Manufacturing Cost : </label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    formControlName="Manufacturing_Cost" placeholder="Enter Manufacturing Cost ">
-                     </div>
-                    </div>
-                    
-                    <div class="col-md-6">
-                      <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label"> Material Cost : </label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    formControlName="Material_Cost" placeholder="Enter  Material Cost ">
-                     </div>                         
-                    </div>
-                    
-                    <div class="col-md-6">
-                          <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label"> Dispatch_Cost : </label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    formControlName="Dispatch_Cost" placeholder="Enter  Dispatch Cost ">
-                     </div>                         
-                    </div>
-                    
-                    <div class="col-md-6">
-                          <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label"> Validity Date : </label>
-                    <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    formControlName="Validity_Date" placeholder="Enter Validity Date">
-                     </div>                         
-                    </div>
+                                </div>
 
-                </div>
-                
-                <div class="row">
+                                <div class="row">
+                                    <div class="mb-3">
+                                        <label for="exampleInputEmail1" class="form-label"> Shipping Method : </label>
+                                        <input type="text" class="form-control" id="exampleInputEmail1"
+                                            aria-describedby="emailHelp" formControlName="Shipping_Method"
+                                            placeholder="Enter Shipping_Method ">
+                                    </div>
 
-                       <div class="mb-3">
-                         <label for="Address">Address</label>
-                            <br>
-                         <select formControlName="Address" class="Se">
-                            <option *ngFor="let mat of AllRequirementData" [value]="mat.Client_Address">{{mat.Client_Address}}({{mat.Requirement_No}})</option>
-                         </select>  <br>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                            <label for="Payment_term">Payment term: </label>
+                                            <select class="form-select form-select-sm" formControlName="Payment_term"
+                                                aria-label="select example">
+                                                <option value="50% Advance">50% Advance</option>
+                                                <option value="Regular">Regular</option>
+                                                <option value="30 Days">30 Days </option>
+                                                <option value="60 Days">60 Days</option>
+                                                <option value="90 Days">90 Days </option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                            <label for="Quotation_Status">Quotation Status : </label>
+                                            <select class="form-select form-select-sm"
+                                                formControlName="Quotation_Status" aria-label="select example">
+                                                <option value="Create">Create </option>
+                                                <option value="Schedule">Schedule</option>
+                                                <option value="Complete">Complete </option>
+                                                <option value="Decline">Decline </option>
+                                                <option value="Close">Close </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button class="btn btn-success mb-4" (click)="UpdatedQuotation()">Update
+                                    Quotation</button>
+                            </form>
                         </div>
-
-                </div>
-
-                <div class="row">
-                       <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label"> Shipping Method : </label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    formControlName="Shipping_Method" placeholder="Enter Shipping_Method ">
-                     </div>
-                      
-                </div>
-                      
-                 <div class="row">
-                       <div class="col-6"> 
-                       <div class="mb-3">
-                           <label for="Payment_term">Payment term: </label>
-                           <select class="form-select form-select-sm" formControlName="Payment_term" aria-label="select example">
-                                           <option value="50% Advance">50% Advance</option>
-                                           <option value="Regular">Regular</option>
-                                           <option value="30 Days">30 Days </option>
-                                           <option value="60 Days">60 Days</option>
-                                           <option value="90 Days">90 Days </option>
-                           </select>
-                        </div>
-                       </div>
-        
-                        <div class="col-6">
-                             <div class="mb-3">
-                             <label for="Quotation_Status">Quotation Status  : </label>
-                             <select class="form-select form-select-sm" formControlName="Quotation_Status" aria-label="select example">
-                                             <option value="Create">Create </option>
-                                             <option value="Schedule">Schedule</option>
-                                             <option value="Complete">Complete </option>
-                                             <option value="Decline">Decline </option>
-                                             <option value="Close">Close </option>
-                             </select>
-                             </div>
-                        </div>
-                 </div>
-   
-             <button class="btn btn-success mb-4" (click)="UpdatedQuotation()">Update Quotation</button>
-        </form>
                     </div>
-                </div>
 
+                </div>
             </div>
         </div>
-    </div> 
 
-</div>
-<br><br>
+    </div>
+    <br><br>
 
 </div>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RestService } from 'src/app/services/rest.service';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-machine',
@@ -8,8 +9,10 @@ import { RestService } from 'src/app/services/rest.service';
   styleUrls: ['./machine.component.css']
 })
 export class MachineComponent {
+
+  fileName = 'Machine.xlsx';
+
   pro: any;
-  
   isAdmin: boolean = false;
 
   AddMachineForm: FormGroup;
@@ -107,4 +110,18 @@ export class MachineComponent {
       console.log(err);
     });
   }
+
+  exportexcel(): void {
+    /* pass here the table id */
+    let element = document.getElementById('excel-table');
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    /* save to file */
+    XLSX.writeFile(wb, this.fileName);
+  }
+
 }

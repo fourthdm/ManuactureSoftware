@@ -204,8 +204,10 @@
         <div class="col-7">
             <div class="row">
                 <div class="">
-
-                    <table class="table">
+                    <label for="">Download a Purchase Order Excelsheet</label>
+                    <br>
+                    <button class="btn btn-success" (click)="exportexcel()" title="Download excelfile">Download Excelsheet</button> <br> <br>
+                    <table class="table" id="excel-table">
                         <thead>
                             <tr>
                                 <th>Sr No.</th>

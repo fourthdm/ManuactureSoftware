@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RestService } from 'src/app/services/rest.service';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-requirement',
@@ -9,6 +10,8 @@ import { RestService } from 'src/app/services/rest.service';
   styleUrls: ['./requirement.component.css']
 })
 export class RequirementComponent implements OnInit {
+
+  fileName = 'Requirements.xlsx';
 
   AllRequirementData: any[] = [];
   AllMaterials: any[] = [];
@@ -55,6 +58,42 @@ export class RequirementComponent implements OnInit {
   ngOnInit(): void {
     this.Allrequirements();
     this.Allmaterial();
+  }
+
+  exportexcel(): void {
+
+    // STEP 4.1 – Create a new array for Excel
+    const excelData = this.AllRequirementData.map((q: any, index: number) => {
+      return {
+        'Sr No': index + 1,
+        'Requirement Number': q.Requirement_No,
+        'Product_Name': q.Product_Name,
+        'Design_File': q.Design_File,
+        'PDFDesignfile': q.PDFDesignfile,
+        'Client_Name': q.Client_Name,
+        'Address': q.Client_Address,
+        'Client_PhoneNo': q.Client_PhoneNo,
+        'Client_Email': q.Client_Email,
+        'Material_Type': q.Material_Type,
+        'Product_Quantity': q.Product_Quantity,
+        'Added_Date': q.Added_Date,
+        'Updated_Date': q.Updated_Date,
+        'Status': q.Status
+      };
+    });
+
+    // STEP 4.2 – Convert JSON data to worksheet
+    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(excelData);
+
+    // STEP 4.3 – Create workbook
+    const workbook: XLSX.WorkBook = XLSX.utils.book_new();
+
+    // STEP 4.4 – Add worksheet to workbook
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'AllRequirementData');
+
+    // STEP 4.5 – Download Excel file
+    XLSX.writeFile(workbook, 'Requirement.xlsx');
+
   }
 
   Allmaterial() {

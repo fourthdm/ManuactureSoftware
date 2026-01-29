@@ -99,6 +99,11 @@ export class RestService {
   AllBillbyid(Bill_Id: any) {
     return this._http.get(this.ApiUrl + '/AllBillbyId/' + Bill_Id);
   }
+
+  DeleteBill(Bill_Id: any) {
+    return this._http.delete(this.ApiUrl + '/DeleteBill/' + Bill_Id);
+  }
+
   //Bill API End
 
   //All Purchase Order Data
@@ -256,6 +261,10 @@ export class RestService {
     return this._http.put(this.ApiUrl + '/UpdateQCStatus/' + data.Workorder_Id, data);
   }
 
+  UpdateDispatchManagerStatus(data: any) {
+    return this._http.put(this.ApiUrl + '/UpateDispatchmangerstatus/' + data.Workorder_Id, data);
+  }
+
   WorkorderforManager() {
     this._State.checktoken();
     const headers = new HttpHeaders({ 'x-access-token': this._State.token });
@@ -345,6 +354,11 @@ export class RestService {
       responseType: 'blob'
     });
   }
+
+  ChallanbyId(Challan_id: any) {
+    return this._http.get(this.ApiUrl + '/ChallanbyID/' + Challan_id);
+  }
+
   //All Challan End
 
 }

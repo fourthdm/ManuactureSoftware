@@ -53,7 +53,7 @@ label {
 select {
     background-color: #c4c1cfab;
     color: black;
-    width: 400px;
+    /* width: 400px; */
 }
 
 .modal-content {

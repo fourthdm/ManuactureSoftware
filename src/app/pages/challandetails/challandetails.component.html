@@ -1,1 +1,47 @@
-<p>challandetails works!</p>
+<div class="container"> <br><br><br>
+    <div class="row">
+
+        <div class="text-center">
+            <h2>Challan Details</h2>
+            <br>
+        </div>
+        <div class="card" *ngFor="let a of Allchallan, let i= index">
+            <div class="text-end">
+                <p> <b>Added Date : </b> {{ a.Added_Date | date }} <br> {{a.Added_Date | date:'h:mm a' }}</p>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p> <b>Challan Number :</b> {{a.Challan_Number}}</p>
+                    <p> <b>Quotation Number :</b> {{a.Quotation_Number}}</p>
+                    <p> <b>Purchase Number :</b> {{a.Purchase_Number}}</p>
+                    <p> <b>Requirement Number :</b> {{a.Requirement_No}}</p>
+                    <p> <b>Product Name :</b> {{a.Product_Name}}</p>
+                    <p> <b>Product Quantity : </b>{{a.Product_Quantity}}</p>
+                    <p> <b>Rate :</b>{{a.Rate}}</p>
+                    <p> <b>Sub Total :</b> {{a.Subtotal}}</p>
+                    <p> <b>CGST Amount :</b> {{a.CGST_amount}}</p>
+                    <p> <b>SGST Amount :</b> {{a.SGST_amount}}</p>
+                    <p> <b>Total Amount :</b> {{a.Total_Amount}}</p>
+                    <p> <b>Discount Amount :</b> {{a.Discount_Amount}}</p>
+                </div><br>
+                <div class="col">
+                    <p> <b>Requirement Number :</b> {{a.Requirement_No}}</p>
+                    <p> <b>Client Name :</b> {{a.Client_Name}}</p>
+                    <p> <b>Client Address :</b> {{a.Client_Address}}</p>
+                    <p> <b>Vehicle_No :</b> {{a.Vehicle_No}}</p>
+                    <p> <b>Name of Transport :</b> {{a.Name_of_Transport}}</p>
+                    <p> <b>Mode of Transport :</b> {{a.Mode_of_Transport}}</p>
+                    <p> <b>Remark :</b> {{a.Remark}}</p>
+                    <p> <b>HSN Code :</b> {{a.HSN_Code}}</p>
+                    <p> <b>Added Date :</b> {{a.Added_Date | date}} <br>
+                        <span><b>Added Time :</b> {{a.Added_Date | date :'hh:mm:a'}}</span>
+                    </p>
+                    <p> <b>Updated Date :</b> {{a.Updated_Date | date}} <br>
+                        <span> <b>Updated Time : </b></span> {{a.Updated_Date | date :'hh:mm:a'}}
+                    </p>
+                    <p> <b> Challan Status :</b> {{a.Challan_Status}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
