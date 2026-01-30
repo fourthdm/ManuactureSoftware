@@ -29,6 +29,8 @@ export class EmployeedashboardnavbarComponent implements OnInit {
       this.employeedata = jwtDecode(token);
     }
     // this.loadNotifications();
+
+    this.billstatus();
   }
 
   Logout() {
@@ -59,6 +61,25 @@ export class EmployeedashboardnavbarComponent implements OnInit {
       }
     }
   }
+
+  billStatus: any;
+  challanAllowed = false;
+  PurchaseNumber: string = '';
+
+  billstatus() {
+    this._rest.getBillStatusByPO(this.PurchaseNumber).subscribe((res: any) => {
+      if (res.success) {
+        this.billStatus = res.data;
+
+        this.challanAllowed =
+          res.data.Bill_Status === 'Generate'
+      } else {
+        this.challanAllowed = false;
+      }
+    });
+  }
+
+
   // isDueSoon(dueDate: string): boolean {
   //   const today = new Date();
   //   today.setHours(0, 0, 0, 0);

@@ -3,6 +3,12 @@
     <br>
     <br>
     <div class="row">
+        <div>
+            <label for="">Download A Workorders in Excelsheet </label>
+            <br> <button class="btn btn-success" (click)="exportexcel()" title="Download excelfile">Download
+                Excelsheet</button>
+        </div>
+        <br><br><br>
         <div class="col-md-3"
             *ngFor="let e of AllDispatchWorkorders | paginate:{ itemsPerPage :10 ,currentPage:pro}, let i = index">
             <div class="card">
@@ -49,7 +55,7 @@
                             (click)="downloadFromUrl(e.Design_File)">Download DWG File</a>
                     </button>
                     <!-- PDF Designfile -->
-                        
+
                     <!-- DWG -->
                     <!-- <a (click)="downloadFromUrl(e.Design_File)">Download DWG</a> -->
                     <!-- <p>Updated Date : {{e.Updated_Date | date}} <br> 

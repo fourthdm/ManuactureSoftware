@@ -39,11 +39,20 @@
                         <p> <b>Updated Date :</b> {{a.Updated_Date | date}} <br>
                             <span> <b>Updated Time : </b></span> {{a.Updated_Date | date :'hh:mm:ss'}}
                         </p>
-                        <button class="btn btn-secondary"> <a (click)="downloadFromUrl(a.Design_File)">Download DWG File</a>
+                        <button class="btn btn-secondary" title="Download a PDFDesignfile">
+                            <a (click)="downloadFromUrl(a.PDFDesignfile)">Download PDFDesignfile</a>
+                        </button>
+                        <br> <br>
+                        <button class="btn btn-secondary" title="Download a DWG File"> <a
+                                (click)="downloadFromUrl(a.Design_File)">Download DWG File</a>
                         </button>
 
-                        <!-- <iframe *ngIf="a.PDFDesignfile" [src]="getsafeurl(a.PDFDesignfile)" width="100%" height="600">
-                        </iframe> -->
+                        <!-- <button class="btn btn-secondary"> <a (click)="downloadFromUrl(a.Design_File)">Download DWG
+                                File</a>
+                        </button> -->
+
+                        <iframe *ngIf="a.PDFDesignfile" [src]="getsafeurl(a.PDFDesignfile)" width="100%" height="600">
+                        </iframe>
 
                         <!-- DWG -->
 

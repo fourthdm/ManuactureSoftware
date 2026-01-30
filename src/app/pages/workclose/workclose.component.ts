@@ -55,7 +55,7 @@ export class WorkcloseComponent implements OnInit {
     this._Rest.Allworkorderclose().subscribe((data: any) => {
       console.log(data);
       this.AllorderClose = data.data;
-      alert(data.message);
+      // alert(data.message);
     }, (err: any) => {
       console.log(err);
     });

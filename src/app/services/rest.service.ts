@@ -359,6 +359,10 @@ export class RestService {
     return this._http.get(this.ApiUrl + '/ChallanbyID/' + Challan_id);
   }
 
+  getBillStatusByPO(po: string) {
+    return this._http.get<any>(`${this.ApiUrl}/BillstatusbyPO/${po}`);
+  }
+
   //All Challan End
 
 }
