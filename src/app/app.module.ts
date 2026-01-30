@@ -42,6 +42,7 @@ import { DispatchmanagerworkorderComponent } from './workorders/dispatchmanagerw
 import { EmployeedashboardnavbarComponent } from './employeedashboardnavbar/employeedashboardnavbar.component';
 import { EmployeedetailsComponent } from './common/employeedetails/employeedetails.component';
 import { ChallandetailsComponent } from './pages/challandetails/challandetails.component';
+// import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 @NgModule({
   declarations: [
@@ -88,7 +89,7 @@ import { ChallandetailsComponent } from './pages/challandetails/challandetails.c
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

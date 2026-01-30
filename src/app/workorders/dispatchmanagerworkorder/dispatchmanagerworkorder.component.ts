@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { RestService } from 'src/app/services/rest.service';
 import { StateService } from 'src/app/services/state.service';
 
@@ -25,7 +26,7 @@ export class DispatchmanagerworkorderComponent implements OnInit {
 
   SelectedWorkOrderData: any;
 
-  constructor(private _rest: RestService, private _state: StateService) {
+  constructor(private _rest: RestService, private _state: StateService, private sanitizer: DomSanitizer) {
     this.AddWorkorderForm = new FormGroup({
       Dispatch_Status: new FormControl('')
     });
@@ -49,7 +50,6 @@ export class DispatchmanagerworkorderComponent implements OnInit {
     });
   }
 
-
   AddWorkOrderData() {
     this._rest.AddWorkOrder(this.AddWorkorderForm.value).subscribe((data: any) => {
       alert(data.message);
@@ -68,7 +68,7 @@ export class DispatchmanagerworkorderComponent implements OnInit {
       this.EditWorkorderForm.patchValue(selectworkorder);
     } else {
       console.log(`Workorder Order with ID ${Workorder_Id} not found.`);
-    } 
+    }
   }
 
   UpdatePurchaseOrder() {
@@ -81,4 +81,19 @@ export class DispatchmanagerworkorderComponent implements OnInit {
       alert('Error while Updating Engineer Status');
     });
   }
+
+  getsafeurl(url: string): SafeResourceUrl {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+
+  downloadFromUrl(fileUrl: string) {
+    const fileName = fileUrl.split('/').pop();   // extract file name
+
+    const a = document.createElement('a');
+    a.href = fileUrl;
+    a.download = fileName ?? 'file';   // force download
+    a.target = "_blank";
+    a.click();
+  }
+
 }
