@@ -96,17 +96,17 @@
                             <p>Requirement Number : {{a.Requirement_No}}</p>
                             <p>Manager Name : {{a.Manager_Name}}</p>
                             <p>Engineer Name : {{a.Engineer_Name}}</p>
-                            <p>QC Name : {{a.QC_Name}}</p>
                             <p>Client Name : {{a.Client_Name}}</p>
                             <p>Product Quantity No : {{a.Product_Quantity}}</p>
                             <p>Material Type Used : {{a.Material_Type}}</p>
-                            <p>Days of Payment : {{a.Days_of_Payment}}</p>
-                            <p>Work Order Status : {{a.WorkOrder_Status}}</p>
+                            <p>Payment Status: {{a.Payment_Status}}</p>
+                            <p>Delivery Status: {{a.Delivery_Status}}</p>
+                            <p>Work Order Close Status : {{a.Work_Close_Status}}</p>
                             <p>Added Date : {{a.Added_Date | date}} <br>
-                                <span>Added Time : {{a.Added_Date | date :'hh:mm:ss'}}</span>
+                                <span>Added Time : {{a.Added_Date | date :'hh:mm:ss:a'}}</span>
                             </p>
                             <p>Due Date : {{a.Due_Date | date}} <br>
-                                <span>Due Time : {{a.Due_Date | date :'hh:mm:ss'}}</span>
+                                <span>Due Time : {{a.Due_Date | date :'hh:mm:ss:a'}}</span>
                             </p>
 
                         </div>

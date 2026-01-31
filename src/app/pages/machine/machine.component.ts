@@ -54,6 +54,7 @@ export class MachineComponent {
   AllMachines() {
     this._rest.AllMachine().subscribe((data: any) => {
       this.ALLMachine = data.data;
+      this.ngOnInit();
     }, (err: any) => {
       console.error("Error fetching machines", err);
     });

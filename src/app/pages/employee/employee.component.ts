@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RestService } from 'src/app/services/rest.service';
 import { StateService } from 'src/app/services/state.service';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-employee',
@@ -97,6 +98,38 @@ export class EmployeeComponent implements OnInit {
         console.log(err);
       });
     }
+  }
+
+
+  exportexcel(): void {
+
+    // STEP 4.1 – Create a new array for Excel
+    const excelData = this.AllData.map((w: any, index: number) => {
+      return {
+        'Sr No': index + 1,
+        'Employee Name': w.Name,
+        'Phone No': w.PhoneNo,
+        'Email': w.Email,
+        'Address': w.Address,
+        'Role': w.Role,
+        'Status': w.Status,
+        'Added_Date': w.Added_Date,
+        'Updated Date': w.Updated_Date
+      };
+    });
+
+    // STEP 4.2 – Convert JSON data to worksheet
+    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(excelData);
+
+    // STEP 4.3 – Create workbook
+    const workbook: XLSX.WorkBook = XLSX.utils.book_new();
+
+    // STEP 4.4 – Add worksheet to workbook
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'AllWorkOrderData');
+
+    // STEP 4.5 – Download Excel file
+    XLSX.writeFile(workbook, 'Workorder.xlsx');
+
   }
 
 }

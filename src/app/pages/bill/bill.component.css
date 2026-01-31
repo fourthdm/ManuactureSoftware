@@ -42,9 +42,14 @@ th {
 
 input {
     width: 100%;
+    color: #000;
 }
 
 .card-header {
     color: black;
     font-size: larger;
+}
+
+.form-check-input{
+    width: 20px;
 }

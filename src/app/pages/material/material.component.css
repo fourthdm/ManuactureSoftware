@@ -32,8 +32,9 @@ span {
     font-weight: 700;
 }
 
-h5,h2 {
-   color: black;
+h5,
+h2 {
+    color: black;
 }
 
 .btt {
@@ -78,6 +79,10 @@ select {
     margin-right: 5%;
 }
 
-.bttns{
+.bttns {
     border: 2px solid white;
+}
+
+::placeholder {
+    color: #000;
 }

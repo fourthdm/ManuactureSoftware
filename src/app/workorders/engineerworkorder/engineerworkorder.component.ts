@@ -82,4 +82,14 @@ export class EngineerworkorderComponent implements OnInit {
     });
   }
 
+  downloadFromUrl(fileUrl: string) {
+    const fileName = fileUrl.split('/').pop();   // extract file name
+
+    const a = document.createElement('a');
+    a.href = fileUrl;
+    a.download = fileName ?? 'file';   // force download
+    a.target = "_blank";
+    a.click();
+  }
+
 }
