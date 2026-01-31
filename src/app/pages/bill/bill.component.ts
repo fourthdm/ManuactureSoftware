@@ -54,15 +54,13 @@ export class BillComponent implements OnInit {
       Payment_Method: new FormControl('', [Validators.required]),
       Delivery_Date: new FormControl(''),
       Bill_Status: new FormControl('', [Validators.required]),
-
-      // // 💰 payment
-      // Received_Amount: new FormControl('', Validators.required),
-
-      // // 🔒 workorder close (manual)
-      // Payment_Status: new FormControl(''),
-      // Delivery_Status: new FormControl(''),
-      // Work_Close_Status: new FormControl(''),
-      // Custom_Remark: new FormControl('')
+      // 🔒 workorder close (manual)
+      manualClose: new FormControl(false),
+      Received_Amount: new FormControl(''),
+      Payment_Status: new FormControl(''),
+      Delivery_Status: new FormControl(''),
+      Work_Close_Status: new FormControl(''),
+      Custom_Remark: new FormControl('')
 
     });
 
@@ -219,8 +217,6 @@ export class BillComponent implements OnInit {
     }
   }
 
-
-
   workOrderStatus: any;
   billAllowed = false;
 
@@ -249,7 +245,7 @@ export class BillComponent implements OnInit {
       Delivery_Date: deliveryDate
     });
 
-    // 🔥 FETCH WORKORDER STATUS
+    // FETCH WORKORDER STATUS
     this._rest.getWorkorderStatusByPO(billNo).subscribe((res: any) => {
       if (res.success) {
         this.workOrderStatus = res.data;
@@ -325,10 +321,12 @@ export class BillComponent implements OnInit {
   }
 
   Createbill() {
-    const payload = {
-      ...this.Addbillform.value,
-      Received_Amount: 10000   // example
-    };
+    // const payload = {
+    //   ...this.Addbillform.value,
+    //   Received_Amount: 10000   // example
+    // };
+
+    const payload = this.Addbillform.value;
 
     this._rest.AddBill(payload).subscribe((res: any) => {
       alert(res.message);

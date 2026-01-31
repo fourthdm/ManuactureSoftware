@@ -8,7 +8,8 @@ import { tick } from '@angular/core/testing';
 })
 export class RestService {
 
-  ApiUrl = 'http://localhost:3000';
+  // ApiUrl = 'http://localhost:3000';
+  ApiUrl = 'https://ysurveillance.com/Software';
 
   constructor(private _http: HttpClient, private _State: StateService) { }
 
@@ -357,6 +358,10 @@ export class RestService {
 
   ChallanbyId(Challan_id: any) {
     return this._http.get(this.ApiUrl + '/ChallanbyID/' + Challan_id);
+  }
+
+  getBillStatusByPO(po: string) {
+    return this._http.get<any>(`${this.ApiUrl}/BillstatusbyPO/${po}`);
   }
 
   //All Challan End

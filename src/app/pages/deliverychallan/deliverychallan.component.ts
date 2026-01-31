@@ -85,6 +85,9 @@ export class DeliverychallanComponent implements OnInit {
       });
   }
 
+  billStatus: any;
+  challanAllowed = false;
+
   autoFillByRequirement(PurchaseNumber: string) {
     const req = this.AllPurchaseOrderData.find(
       (r: any) => r.Purchase_Number === PurchaseNumber
@@ -108,7 +111,22 @@ export class DeliverychallanComponent implements OnInit {
       Total_Amount: req.Total_Amount,
       Discount_Amount: req.Discount_Amount
     });
+
+
+    // FETCH Bill STATUS
+    this._rest.getBillStatusByPO(PurchaseNumber).subscribe((res: any) => {
+      if (res.success) {
+        this.billStatus = res.data;
+
+        this.challanAllowed =
+          res.data.Bill_Status === 'Generate'
+      } else {
+        this.challanAllowed = false;
+      }
+    });
+
   }
+
 
   showPrint = false;
 
@@ -182,7 +200,7 @@ export class DeliverychallanComponent implements OnInit {
   }
 
   exportexcel(): void {
-      const excelData = this.AllChallan.map((a: any, index: number) => {
+    const excelData = this.AllChallan.map((a: any, index: number) => {
       return {
         'Sr No': index + 1,
         'Quotation No': a.Quotation_Number,

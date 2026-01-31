@@ -8,7 +8,7 @@
                 <br>
                 <div class="text-end">
                     <p> <b>Added Date :</b> {{a.Added_Date | date}} <br>
-                        <span> <b>Added Time :</b> {{a.Added_Date | date :'hh:mm:ss'}}</span>
+                        <span> <b>Added Time :</b> {{a.Added_Date | date :'hh:mm:ss:a'}}</span>
                     </p>
                 </div>
                 <div class="row">
@@ -34,15 +34,36 @@
                         <p> <b>Work Order Status :</b> {{a.WorkOrder_Status}}</p>
 
                         <p> <b>Due Date :</b> {{a.Due_Date | date}} <br>
-                            <span> <b>Due Time :</b> {{a.Due_Date | date :'hh:mm:ss'}}</span>
+                            <span> <b>Due Time :</b> {{a.Due_Date | date :'hh:mm:ss:a'}}</span>
                         </p>
                         <p> <b>Updated Date :</b> {{a.Updated_Date | date}} <br>
-                            <span> <b>Updated Time : </b></span> {{a.Updated_Date | date :'hh:mm:ss'}}
+                            <span> <b>Updated Time : </b></span> {{a.Updated_Date | date :'hh:mm:ss:a'}}
                         </p>
-                        <iframe [src]="getsafeurl(a.PDFDesignfile)" width="100%" height="600">
-                        </iframe>
-                        <embed [src]="getsafeurl(a.PDFDesignfile)" type="application/pdf" width="100%" height="600">
-                        <!-- <a [href]="a.PDFDesignfile" target="_blank">Download PDF</a> -->
+                        <button class="btn btn-secondary" title="Download a PDFDesignfile">
+                            <a (click)="downloadFromUrl(a.PDFDesignfile)">Download PDFDesignfile</a>
+                        </button>
+                        <br> <br>
+                        <button class="btn btn-secondary" title="Download a DWG File"> <a
+                                (click)="downloadFromUrl(a.Design_File)">Download DWG File</a>
+                        </button>
+
+                        <!-- <button class="btn btn-secondary"> <a (click)="downloadFromUrl(a.Design_File)">Download DWG
+                                File</a>
+                        </button> -->
+
+                        <!-- <iframe *ngIf="a.PDFDesignfile" [src]="getsafeurl(a.PDFDesignfile)" width="100%" height="600">
+                        </iframe> -->
+
+                        <!-- DWG -->
+
+
+                        <!--   <iframe [src]="getsafeurl(a.PDFDesignfile)" width="100%" height="600">
+                        </iframe> -->
+                        <!-- <embed [src]="getsafeurl(a.PDFDesignfile)" type="application/pdf" width="100%" height="600"> -->
+
+                        <!-- <a (click)="downloadFromUrl(a.Design_File)">Download DWG File</a>
+                        <a (click)="downloadFromUrl(a.PDFDesignfile)" target="_blank">Download PDF</a> -->
+
                     </div>
                 </div>
 

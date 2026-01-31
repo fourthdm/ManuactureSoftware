@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RestService } from 'src/app/services/rest.service';
 import { StateService } from 'src/app/services/state.service';
+import * as XLSX from 'xlsx';
+
 
 @Component({
   selector: 'app-mangerworkorder',
@@ -20,6 +22,7 @@ export class MangerworkorderComponent implements OnInit {
   AllManagerdata: any[] = [];
   AllEngineerdata: any[] = [];
   AllQCdata: any[] = [];
+  AllDispatchManagerdata: any[] = [];
 
   AddWorkorderForm: FormGroup;
   EditWorkorderForm: FormGroup;
@@ -70,6 +73,7 @@ export class MangerworkorderComponent implements OnInit {
     this.AllQC();
     this.AllEngineer();
     this.AllManager();
+    this.AllDispatchManagers();
     this.AllWorkOrder();
 
     this.AddWorkorderForm.get('Requirement_No')?.valueChanges
@@ -156,6 +160,16 @@ export class MangerworkorderComponent implements OnInit {
     });
   }
 
+  AllDispatchManagers() {
+    this._rest.DispatchManagerData().subscribe((data: any) => {
+      this.AllDispatchManagerdata = data.data;
+      console.log(data);
+    }, (err: any) => {
+      console.log(err);
+    });
+  }
+
+
   AllQC() {
     this._rest.QCData().subscribe((data: any) => {
       this.AllQCdata = data.data;
@@ -226,5 +240,49 @@ export class MangerworkorderComponent implements OnInit {
   //     });
   //   });
   // }
+
+  exportexcel(): void {
+
+    // STEP 4.1 – Create a new array for Excel
+    const excelData = this.AllWorkOrderData.map((w: any, index: number) => {
+      return {
+        'Sr No': index + 1,
+        'WO_Number': w.WO_Number,
+        'Purchase Number': w.Purchase_Number,
+        'Requirement Number': w.Requirement_No,
+        'Client Name': w.Client_Name,
+        'Address': w.Client_Address,
+        'Payment_term': w.Payment_term,
+        'Product_Name': w.Product_Name,
+        'Product_Quantity': w.Product_Quantity,
+        'Design_File': w.Design_File,
+        'Material_Type': w.Material_Type,
+        'Manager_Name': w.Manager_Name,
+        'Manager_Status': w.Manager_Status,
+        'Engineer_Name': w.Engineer_Name,
+        'QC_Name': w.QC_Name,
+        'QC_Status': w.QC_Status,
+        'Engineer_Status': w.Engineer_Status,
+        'DispatchManager_Name': w.DispatchManager_Name,
+        'Dispatch_Status': w.Dispatch_Status,
+        'Added_Date': w.Added_Date,
+        'Due Date': w.Due_Date,
+        'WorkOrder Status': w.WorkOrder_Status
+      };
+    });
+
+    // STEP 4.2 – Convert JSON data to worksheet
+    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(excelData);
+
+    // STEP 4.3 – Create workbook
+    const workbook: XLSX.WorkBook = XLSX.utils.book_new();
+
+    // STEP 4.4 – Add worksheet to workbook
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'AllWorkOrderData');
+
+    // STEP 4.5 – Download Excel file
+    XLSX.writeFile(workbook, 'Workorder.xlsx');
+
+  }
 
 }

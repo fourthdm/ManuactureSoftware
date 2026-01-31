@@ -213,9 +213,13 @@
                             </div>
 
                         </div>
+                        <div *ngIf="!challanAllowed" class="text-danger mt-2">
+                            Challan can be Generated only after Bill Status is 'Generate'.
+                        </div>
 
                         <div class="mb-3">
-                            <button type="submit" class="btn btn-success">Generate Challan</button>
+                            <button type="submit" class="btn btn-success" [disabled]="!challanAllowed">Generate
+                                Challan</button>
                         </div>
                     </form>
                 </div>
@@ -229,7 +233,8 @@
                 <div class="">
                     <label for="">Download a Delivery Challan Excelsheet</label>
                     <br>
-                    <button class="btn btn-success" (click)="exportexcel()" title="Download excelfile">Download Excelsheet</button>
+                    <button class="btn btn-success" (click)="exportexcel()" title="Download excelfile">Download
+                        Excelsheet</button>
                     <br> <br>
 
                     <table class="table">

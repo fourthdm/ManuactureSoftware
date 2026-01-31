@@ -39,9 +39,7 @@
                                     <input type="text" class="form-control" id="exampleInputEmail1"
                                         aria-describedby="emailHelp" formControlName="Client_Name"
                                         placeholder="Enter ClientName">
-                                    <!-- <select formControlName="Client_Name" class="">
-                                        <option *ngFor="let mat of AllRequirementData" [value]="mat.Client_Name">{{mat.Client_Name}}({{mat.Requirement_No}})</option>
-                                    </select>  <br> -->
+
                                 </div>
                             </div>
 
@@ -177,27 +175,35 @@
                                     <input type="date" formControlName="Delivery_Date">
                                 </div>
                             </div>
-
-                            <!-- <div class="col-6">
-  <div class="mb-3">
-    <label>Received Amount</label>
-    <input
-      type="number"
-      class="form-control"
-      formControlName="Received_Amount"
-      placeholder="Enter received amount"
-    />
-  </div>
-</div> -->
-
-
                         </div>
 
-                        <div *ngIf="manualClose" class="border p-3 mt-3 rounded">
+                        <!-- <div class="form-check mt-3">
+                            <input class="form-check-input" type="checkbox" [(ngModel)]="manualClose">
+                            <label class="form-check-label">
+                                Manually Close Work Order
+                            </label>
+                        </div> -->
+
+
+                        <div class="form-check mt-3">
+                            <input class="form-check-input" type="checkbox" formControlName="manualClose">
+                            <label class="form-check-label">
+                                Manually Close Work Order
+                            </label>
+                        </div>
+
+                        <div *ngIf="Addbillform.get('manualClose')?.value" class="border p-3 mt-3 rounded">
 
                             <h6 class="text-primary">Work Order Close Details</h6>
 
                             <div class="row">
+                                <div class="col-6">
+                                    <div class="mb-3">
+                                        <label>Received Amount</label>
+                                        <input type="number" class="form-control" formControlName="Received_Amount"
+                                            placeholder="Enter received amount" />
+                                    </div>
+                                </div>
 
                                 <div class="col-6">
                                     <label>Payment Status</label>

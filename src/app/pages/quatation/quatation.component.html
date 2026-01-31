@@ -154,10 +154,21 @@
 
                         <div class="row">
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label"> Shipping Method : </label>
-                                <input type="text" class="form-control" id="exampleInputEmail1"
+                                <label for="Shipping_Method" class="form-label"> Shipping Method : </label>
+                                <select class="form-select form-select-sm" formControlName="Shipping_Method"
+                                    aria-label="select example">
+                                    <option value="Standard Ground Shipping">Standard Ground Shipping</option>
+                                    <option value="Expedited Shipping">Expedited Shipping</option>
+                                    <option value="Overnight Shipping">Overnight Shipping</option>
+                                    <option value="Same-Day Delivery">Same-Day Delivery</option>
+                                    <option value="Two-Day Shipping">Two-Day Shipping</option>
+                                    <option value="Freight Shipping">Freight Shipping</option>
+                                    <option value="International Shipping">International Shipping</option>
+                                </select>
+
+                                <!-- <input type="text" class="form-control" id="exampleInputEmail1"
                                     aria-describedby="emailHelp" formControlName="Shipping_Method"
-                                    placeholder="Enter Shipping_Method ">
+                                    placeholder="Enter Shipping_Method "> -->
                             </div>
 
                         </div>
@@ -207,8 +218,8 @@
                 <div class="col-md-12">
                     <label for="">Download a Quotation Excelsheet</label>
                     <br>
-                    <button class="btn btn-success" (click)="exportexcel()"
-                                title="Download excelfile">Download Excelsheet</button> <br> <br>
+                    <button class="btn btn-success" (click)="exportexcel()" title="Download excelfile">Download
+                        Excelsheet</button> <br> <br>
                     <table class="table" id="excel-table">
                         <thead>
                             <tr>

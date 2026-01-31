@@ -23,3 +23,8 @@ label {
 .modal-content {
     background-color: #2E3257;
 }
+
+input {
+    width: 100%;
+    color: #000;
+}

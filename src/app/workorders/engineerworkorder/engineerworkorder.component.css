@@ -3,6 +3,15 @@
     color: black;
 }
 
-a{
+a {
     color: black;
+}
+
+.modal-content {
+    background-color: #c4c1cfab;
+    color: #000;
+}
+
+option {
+    background-color: #c4c1cfab;
 }

@@ -33,3 +33,8 @@ label {
     color: black;
     text-align: center !important;
 }
+
+input{
+    width: 100%;
+    color: #000;
+}
