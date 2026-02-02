@@ -3,7 +3,7 @@
     color: black;
 }
 
-a{
+a {
     color: black;
 }
 
@@ -14,4 +14,29 @@ a{
 
 option {
     background-color: #c4c1cfab;
+}
+
+.Display {
+    color: green;
+}
+
+
+.status-completed {
+    color: blue ;
+}
+
+.status-ready {
+    color: green;
+}
+
+.status-inprogress {
+    color: orange;
+}
+
+.status-pending {
+    color: red;
+}
+
+.status-hold {
+    color: gray;
 }

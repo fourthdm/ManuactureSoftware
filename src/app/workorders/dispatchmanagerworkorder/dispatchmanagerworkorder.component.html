@@ -7,25 +7,67 @@
             <label for="">Download A Workorders in Excelsheet </label>
             <br> <button class="btn btn-success" (click)="exportexcel()" title="Download excelfile">Download
                 Excelsheet</button>
-        </div>
+        </div><br>
         <br><br><br>
         <div class="col-md-3"
             *ngFor="let e of AllDispatchWorkorders | paginate:{ itemsPerPage :10 ,currentPage:pro}, let i = index">
             <div class="card">
                 <div class="card-body">
+                    <div class="row">
+                        <div class="col-6 text-start" *ngIf="e.Dispatch_Status">
 
-                    <div class="text-end">
-                        <a type="button" (click)="EditPurchaseOrder(e.Workorder_Id)" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal1" title="Add a Dispatch Manager Status">
-                            <i class="fa-solid fa-pen-to-square fa-lg"></i>
-                        </a>
-                        <!-- <span style="margin-left:15px;cursor: pointer;">
+                            <i *ngIf="e.Dispatch_Status === 'Complete'"
+                                class="fa-solid fa-circle-check fa-lg status-completed"></i>
+
+                            <i *ngIf="e.Dispatch_Status === 'Ready to Dispatch'"
+                                class="fa-solid fa-truck fa-lg status-ready"></i>
+
+                            <i *ngIf="e.Dispatch_Status === 'Damage'"
+                                class="fa-solid fa-spinner fa-lg status-inprogress"></i>
+
+                            <i *ngIf="e.Dispatch_Status === 'Reject'"
+                                class="fa-solid fa-circle-pause fa-lg status-hold"></i>
+
+                            <i *ngIf="e.Dispatch_Status === 'Close'"
+                                class="fa-solid fa-circle-exclamation fa-lg status-pending"></i>
+
+                        </div>
+
+                        <!-- <div class="col-6"
+                            *ngIf="e.Dispatch_Status === 'Completed' || e.Dispatch_Status ==='Ready to Dispatch' ">
+                            <div class="text-start Display">
+                                <i class="fa-solid fa-circle-check fa-lg"></i>
+                            </div>
+                        </div> -->
+
+                        <!--   <div class="col-6 text-start" *ngIf="e.Dispatch_Status" [ngClass]="{
+        'status-completed': e.Dispatch_Status === 'Completed',
+        'status-ready': e.Dispatch_Status === 'Ready to Dispatch',
+        'status-inprogress': e.Dispatch_Status === 'Reject',
+        'status-pending': e.Dispatch_Status === 'Damage',
+        'status-hold': e.Dispatch_Status === 'Declined' || e.Dispatch_Status === 'Close',
+     }">
+
+                            <i class="fa-solid fa-circle-check fa-lg"></i>
+                        </div> -->
+
+                        <div class="col-6">
+                            <div class="text-end">
+                                <a type="button" (click)="EditPurchaseOrder(e.Workorder_Id)" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal1" title="Add a Dispatch Manager Status">
+                                    <i class="fa-solid fa-pen-to-square fa-lg"></i>
+                                </a>
+                                <!-- <span style="margin-left:15px;cursor: pointer;">
                             <a (click)="DeletePurchaseOrder(a.Workorder_Id)" title="Delete a Purchase Order">
                                  <i class="fa-solid fa-trash-can"></i></a>
                             </span> -->
+                            </div>
+                        </div>
+
                     </div>
                     <br>
-                    <p>Work Order Number : <a href="" title="View Work Order Details"
+                    <p>
+                        Work Order Number : <a href="" title="View Work Order Details"
                             [routerLink]="['/DispatchDashboard/WorkorderDetails',e.Workorder_Id]">{{e.WO_Number}}</a>
                     </p>
                     <!-- <p>Purchase Order Number : {{e.Purchase_Number}}</p> -->
@@ -33,10 +75,13 @@
                     <p>Manager Name : {{e.Manager_Name}}</p>
                     <p>Engineer Name : {{e.Engineer_Name}}</p>
                     <p>Engineer Status : {{e.Engineer_Status}}</p>
+                    <p>Engineer Status Time : {{e.Engineer_Status_Time | date:'dd-MM-yyyy, hh:mm a'}}</p>
                     <p>QC Name : {{e.QC_Name}}</p>
                     <p>QC Status : {{e.QC_Status}}</p>
+                    <p>QC Status Time : {{e.QC_Status_Time | date:'dd-MM-yyyy, hh:mm a'}}</p>
                     <p>Dispatch Manager Name : {{e.DispatchManager_Name}}</p>
                     <p>Dispatch Manager Status : {{e.Dispatch_Status}}</p>
+                    <p>Dispatch Manager Status Time : {{e.Dispatchmanager_Status_Time | date:'dd-MM-yyyy, hh:mm a'}}</p>
                     <p>Product Quantity : {{e.Product_Quantity}}</p>
                     <p>Material Type : {{e.Material_Type}}</p>
                     <!-- <p>Days of Payment :  {{e.Days_of_Payment}}</p> -->
@@ -88,7 +133,7 @@
                                         <select class="form-select form-select-sm" formControlName="Dispatch_Status"
                                             aria-label="select example">
                                             <option value="Ready to Dispatch">Ready to Dispatch</option>
-                                            <option value="Complete"> Completed </option>
+                                            <option value="Complete"> Complete </option>
                                             <option value="Reject">Reject </option>
                                             <option value="Damage">Damage </option>
                                             <option value="Declined">Declined </option>

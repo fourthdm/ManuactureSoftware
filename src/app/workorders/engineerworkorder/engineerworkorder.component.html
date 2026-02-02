@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <br>
-    <br>
+    <h2 class="text-center">All Work Orders For Engineer</h2>
     <br>
     <div class="row">
         <div class="col-md-3"
@@ -24,6 +24,7 @@
                     <p>Manager Name : {{e.Manager_Name}}</p>
                     <p>Engineer Name : {{e.Engineer_Name}}</p>
                     <p>Engineer Status : {{e.Engineer_Status}}</p>
+                    <p>Engineer Time : {{e.Engineer_Status_Time | date:'dd-MM-yyyy, hh:mm a'}}</p>
                     <p>QC Name : {{e.QC_Name}}</p>
                     <!-- <p>Client Name :  {{e.Client_Name}}</p> -->
                     <p>Product Quantity : {{e.Product_Quantity}}</p>
@@ -31,10 +32,10 @@
                     <!-- <p>Days of Payment :  {{e.Days_of_Payment}}</p> -->
                     <p>Work Order Status : {{e.WorkOrder_Status}}</p>
                     <p>Added Date : {{e.Added_Date | date}} <br>
-                        <span>Added Time : {{e.Added_Date | date :'hh:mm:ss'}}</span>
+                        <span>Added Time : {{e.Added_Date | date :'hh:mm:ss:a'}}</span>
                     </p>
                     <p>Due Date : {{e.Due_Date | date}} <br>
-                        <span>Due Time : {{e.Due_Date | date :'hh:mm:ss'}}</span>
+                        <span>Due Time : {{e.Due_Date | date :'hh:mm:ss:a'}}</span>
                     </p>
 
                     <p><a (click)="downloadFromUrl(e.Design_File)" title="Download a Design File">

@@ -184,6 +184,7 @@ export class QcworkorderComponent implements OnInit {
       alert(data.message);
       this.AllWorkOrder();
       this.EditWorkorderForm.reset();
+      this.ngOnInit();
     }, (err: any) => {
       console.log(err);
       alert('Error while updating Purchase Order');

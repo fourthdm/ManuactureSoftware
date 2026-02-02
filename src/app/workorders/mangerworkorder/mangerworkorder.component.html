@@ -155,13 +155,14 @@
                         <th>Material Type</th>
                         <th>Client Name</th>
                         <th>Added Date</th>
+                        <th>Status Updated Time</th>
                         <th>Due Date</th>
                         <th>Add a Engineer, QC, Status </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr
-                        *ngFor="let a of AllManagerorders | paginate :{itemsPerPage :10 ,currentPage:pro},let i = index">
+                    <tr *ngFor="let a of AllManagerorders | paginate :{itemsPerPage :10 ,currentPage:pro},let i = index"
+                        [ngClass]="{'Display':a.WorkOrder_Status === 'Completed'}">
                         <td>{{i+1}}</td>
                         <!-- <td> {{a.Workorder_Id}}</td> -->
                         <td>
@@ -181,12 +182,40 @@
                         <td>{{a.Material_Type}}</td>
                         <td>{{a.Client_Name}}</td>
                         <td>{{a.Added_Date | date}} <br> {{a.Added_Date | date : 'h:mm:a'}} </td>
+                        <td>{{a.Manager_Status_Time | date}} <br> {{a.Manager_Status_Time | date : 'h:mm:a'}} </td>
                         <td>{{a.Due_Date | date }} <br> {{a.Due_Date | date :'h:mm:a'}}</td>
                         <td>
                             <a type="button" (click)="EditPurchaseOrder(a.Workorder_Id)" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal1" title="Update a Engineer Name,QC Name, Manager Status">
                                 <i class="fa-solid fa-pen-to-square fa-lg"></i>
                             </a>
+
+                            <span style="margin-left:15px;cursor: pointer;" *ngIf="a.Manager_Status">
+
+                                <i *ngIf="a.Manager_Status === 'Completed'"
+                                    class="fa-solid fa-circle-check fa-lg status-completed"></i>
+
+                                <i *ngIf="a.Manager_Status === 'Assign Task'"
+                                    class="fa-solid fa-chalkboard-user fa-lg status-Assigned"></i>
+
+
+                                <i *ngIf="a.Manager_Status === 'In Progress'"
+                                    class="fa-solid fa-people-arrows fa-lg status-inprogress"></i>
+
+                                <i *ngIf="a.Manager_Status === 'Create'"
+                                    class="fa-solid fa-circle-check fa-lg status-Create"></i>
+
+                                <span *ngIf="a.Manager_Status === 'Schedule'">
+                                    Schedule
+                                    <i class="fa-solid fa-clipboard-check fa-lg status-schedule"></i>
+                                </span>
+
+
+                                <i *ngIf="a.Manager_Status === 'Close'"
+                                    class="fa-solid fa-circle-exclamation fa-lg status-close"></i>
+
+                            </span>
+
                             <!-- <span style="margin-left:15px;cursor: pointer;"><a
                                     (click)="DeletePurchaseOrder(a.Workorder_Id)" title="Delete a Work Order"> <i
                                         class="fa-solid fa-trash-can"></i></a></span> -->
@@ -234,7 +263,7 @@
                                                 <select class="form-select form-select-sm"
                                                     formControlName="Manager_Status" aria-label="select example">
                                                     <option value="Assign Task">Assign Task</option>
-                                                    <option value="Scheduled">Scheduled</option>
+                                                    <option value="Schedule">Schedule</option>
                                                     <option value="In Progress"> In Progress </option>
                                                     <option value="Completed">Completed </option>
                                                     <option value="Declined">Declined </option>
@@ -290,8 +319,8 @@
                                                 <label for="WorkOrder_Status">Work Order Status : </label>
                                                 <select class="form-select form-select-sm"
                                                     formControlName="WorkOrder_Status" aria-label="select example">
-                                                    <option value="Created">Created </option>
-                                                    <option value="Scheduled">Scheduled</option>
+                                                    <option value="Create">Create </option>
+                                                    <option value="Schedule">Schedule</option>
                                                     <option value="In Progress"> In Progress </option>
                                                     <option value="Completed">Completed </option>
                                                     <option value="Declined">Declined </option>
@@ -306,6 +335,7 @@
                                                 <input type="date" formControlName="Due_Date">
                                             </div>
                                         </div>
+
                                     </div>
                                     <br>
                                     <button class="btn btn-success mb-4" (click)="UpdatePurchaseOrder()">Update Work

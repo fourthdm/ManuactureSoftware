@@ -104,6 +104,7 @@ export class DeliverychallanComponent implements OnInit {
       Client_Name: req.Client_Name,
       Client_Address: req.Client_Address,
       HSN_Code: req.HSN_Code,
+      GST_No: req.GST_No,
       Rate: req.Rate,
       Subtotal: req.Subtotal,
       CGST_amount: req.CGST_amount,
@@ -124,9 +125,7 @@ export class DeliverychallanComponent implements OnInit {
         this.challanAllowed = false;
       }
     });
-
   }
-
 
   showPrint = false;
 

@@ -76,6 +76,7 @@ export class EngineerworkorderComponent implements OnInit {
       alert(data.message);
       this.AllEngineerworkorder();
       this.EditWorkorderForm.reset();
+      this.ngOnInit();
     }, (err: any) => {
       console.log(err);
       alert('Error while Updating Engineer Status');
