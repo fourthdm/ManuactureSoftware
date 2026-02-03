@@ -20,7 +20,7 @@ a {
     background-color: #c4c1cfab;
     color: #000;
 
-    label {
+    :is(label) {
         color: #000;
     }
 }

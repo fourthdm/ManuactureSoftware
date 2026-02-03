@@ -14,6 +14,7 @@ export class DeliverychallanComponent implements OnInit {
 
   isdispatchmanager: boolean = false;
   isAdmin: boolean = false;
+  isAccountant: boolean = false;
 
   fileName = 'Challan.xlsx';
 
@@ -79,6 +80,7 @@ export class DeliverychallanComponent implements OnInit {
   ngOnInit(): void {
     this.DispatchmanagerRoleCheck();
     this.Superadmintoken();
+    this.Accountanttoken();
     this.Challan();
     this.Bills();
     this.AllPurchaseOrder();
@@ -112,6 +114,19 @@ export class DeliverychallanComponent implements OnInit {
       }
       else {
         this.isAdmin = false;
+      }
+    }
+  }
+
+  Accountanttoken() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decoded: any = jwtDecode(token);
+      if (decoded.Role === 'Accountant') {
+        this.isAccountant = true;
+      }
+      else {
+        this.isAccountant = false;
       }
     }
   }

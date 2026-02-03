@@ -186,6 +186,7 @@ export class RequirementComponent implements OnInit {
   Allrequirements() {
     this._rest.AllRequirement().subscribe((res: any) => {
       this.AllRequirementData = res.data;
+      this.ngOnInit();
     }, (err: any) => {
       console.error('Error fetching requirements:', err);
       console.log(err);

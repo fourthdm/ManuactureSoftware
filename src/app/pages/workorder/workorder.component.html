@@ -213,7 +213,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let a of AllWorkOrderData | paginate :{itemsPerPage :10 ,currentPage:pro},let i = index"
+                                <tr *ngFor="let a of AllWorkOrderData | paginate :{itemsPerPage :7 ,currentPage:pro},let i = index"
                                     [ngClass]="{'Display': a.WorkOrder_Status === 'Completed'} ">
                                     <td>{{a.Workorder_Id}}</td>
                                     <td>

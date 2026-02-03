@@ -255,6 +255,10 @@
                                         <a href=""
                                             [routerLink]="['/AdminDashboard/ChallanDetails', a.Challan_id]">{{a.Challan_Number}}</a>
                                     </p>
+                                    <p title="View Challan Details" *ngIf="isAccountant">
+                                        <a href=""
+                                            [routerLink]="['/AccountantDashboard/ChallanDetails', a.Challan_id]">{{a.Challan_Number}}</a>
+                                    </p>
                                     <p title="View Challan Details" *ngIf="isdispatchmanager">
                                         <a href=""
                                             [routerLink]="['/DispatchDashboard/ChallanDetails', a.Challan_id]">{{a.Challan_Number}}</a>
