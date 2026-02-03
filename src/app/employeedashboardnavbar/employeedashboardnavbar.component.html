@@ -43,16 +43,25 @@
           aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
-        <p> Employee Name : <b>{{employeedata?.Name}}</b> </p>
+
+        <div class="text-center mb-3">
+          <!-- <i class="fa-regular fa-circle-user fa-4x"></i> -->
+          <h5 class="mt-2">{{ employeedata?.Name }}</h5>
+          <span class="badge bg-primary"> <b>{{ employeedata?.Role }}</b> </span>
+        </div>
+
+        <!-- <p> Employee Name : <b>{{employeedata?.Name}}</b> </p> -->
         <p> Phone No : <b>{{employeedata?.PhoneNo}}</b> </p>
         <p> Email : <b>{{employeedata?.Email}}</b> </p>
         <p> Username : <b>{{employeedata?.Username}}</b> </p>
         <p> Password : <b>{{employeedata?.Password}}</b> </p>
-        <p> Role : <b>{{employeedata?.Role}}</b> </p>
+        <!-- <p> Role : <b>{{employeedata?.Role}}</b> </p> -->
         <p> Address : <b>{{employeedata?.Address}}</b> </p>
-        <p> Added Date : <b>{{employeedata?.Added_Date | date}}</b> <br> {{employeedata?.Added_Date | date :'hh:mm:ss a'}}
+        <p> Added Date : <b>{{employeedata?.Added_Date | date}}</b> <br> {{employeedata?.Added_Date | date :'hh:mm:ss
+          a'}}
         </p>
-        <p> Updated Date : <b>{{employeedata?.Updated_Date | date}}</b> <br> {{employeedata?.Updated_Date | date :'hh:mm:ss a'}}</p>
+        <p> Updated Date : <b>{{employeedata?.Updated_Date | date}}</b> <br> {{employeedata?.Updated_Date | date
+          :'hh:mm:ss a'}}</p>
         <p> Employee Status : <b>{{employeedata?.Status}}</b> </p>
 
         <!-- <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
