@@ -7,6 +7,11 @@
     <a class="navbar-brand"> <img src="assets/logo.png" class="img elevation-2" alt="User Image">
       <span style="margin-left: 50px;"> {{employeedata?.Role}}</span> </a>
 
+    <h3 *ngIf="isManager">Manager Dashboard</h3>
+    <h3 *ngIf="isQC">QC Dashboard</h3>
+    <h3 *ngIf="isEngineer">Engineer Dashboard</h3>
+    <h3 *ngIf="isDispatchManager">Dispatch Manager Dashboard</h3>
+
     <li class="nav-item dropdown">
       <!-- <button class="btn btn-outline-danger position-relative">
         🔔 Notifications
@@ -14,6 +19,7 @@
           {{ alertCount }}
         </span>
       </button> -->
+
       <a class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" title="User Details">
         <i class="fa-regular fa-circle-user fa-xl" style="color: #ffffff;"></i> {{employeedata?.Name}}
       </a>
@@ -44,8 +50,9 @@
         <p> Password : <b>{{employeedata?.Password}}</b> </p>
         <p> Role : <b>{{employeedata?.Role}}</b> </p>
         <p> Address : <b>{{employeedata?.Address}}</b> </p>
-        <p> Added Date : <b>{{employeedata?.Added_Date | date}}</b>,  {{employeedata?.Added_Date | date :'hh:mm:ss a'}}</p>
-        <p> Updated Date : <b>{{employeedata?.Updated_Date | date}}</b>, {{employeedata?.Updated_Date | date :'hh:mm:ss a'}}</p>
+        <p> Added Date : <b>{{employeedata?.Added_Date | date}}</b> <br> {{employeedata?.Added_Date | date :'hh:mm:ss a'}}
+        </p>
+        <p> Updated Date : <b>{{employeedata?.Updated_Date | date}}</b> <br> {{employeedata?.Updated_Date | date :'hh:mm:ss a'}}</p>
         <p> Employee Status : <b>{{employeedata?.Status}}</b> </p>
 
         <!-- <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
