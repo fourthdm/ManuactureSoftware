@@ -33,19 +33,20 @@
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Employee Details</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-theme="dark" data-bs-dismiss="offcanvas"
+          aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
-        <p> Employee Name : {{employeedata?.Name}}</p>
-        <p> Phone No : {{employeedata?.PhoneNo}}</p>
-        <p> Email : {{employeedata?.Email}}</p>
-        <p> Username : {{employeedata?.Username}}</p>
-        <p> Password : {{employeedata?.Password}}</p>
-        <p> Role : {{employeedata?.Role}}</p>
-        <p> Address : {{employeedata?.Address}}</p>
-        <p> Added Date : {{employeedata?.Added_Date | date}}</p>
-        <p> Updated Date : {{employeedata?.Updated_Date | date}}</p>
-        <p> Employee Status : {{employeedata?.Status}}</p>
+        <p> Employee Name : <b>{{employeedata?.Name}}</b> </p>
+        <p> Phone No : <b>{{employeedata?.PhoneNo}}</b> </p>
+        <p> Email : <b>{{employeedata?.Email}}</b> </p>
+        <p> Username : <b>{{employeedata?.Username}}</b> </p>
+        <p> Password : <b>{{employeedata?.Password}}</b> </p>
+        <p> Role : <b>{{employeedata?.Role}}</b> </p>
+        <p> Address : <b>{{employeedata?.Address}}</b> </p>
+        <p> Added Date : <b>{{employeedata?.Added_Date | date}}</b>,  {{employeedata?.Added_Date | date :'hh:mm:ss a'}}</p>
+        <p> Updated Date : <b>{{employeedata?.Updated_Date | date}}</b>, {{employeedata?.Updated_Date | date :'hh:mm:ss a'}}</p>
+        <p> Employee Status : <b>{{employeedata?.Status}}</b> </p>
 
         <!-- <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">

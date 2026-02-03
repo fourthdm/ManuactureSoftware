@@ -157,7 +157,8 @@
                         <th>Added Date</th>
                         <th>Status Updated Time</th>
                         <th>Due Date</th>
-                        <th>Add a Engineer, QC, Status </th>
+                        <th>Manager Status</th>
+                        <th>Assign task to </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -184,29 +185,43 @@
                         <td>{{a.Added_Date | date}} <br> {{a.Added_Date | date : 'h:mm:a'}} </td>
                         <td>{{a.Manager_Status_Time | date}} <br> {{a.Manager_Status_Time | date : 'h:mm:a'}} </td>
                         <td>{{a.Due_Date | date }} <br> {{a.Due_Date | date :'h:mm:a'}}</td>
-                        <td>
-                            <a type="button" (click)="EditPurchaseOrder(a.Workorder_Id)" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal1" title="Update a Engineer Name,QC Name, Manager Status">
-                                <i class="fa-solid fa-pen-to-square fa-lg"></i>
-                            </a>
 
+                        <td>
                             <span style="margin-left:15px;cursor: pointer;" *ngIf="a.Manager_Status">
 
-                                <i *ngIf="a.Manager_Status === 'Completed'"
-                                    class="fa-solid fa-circle-check fa-lg status-completed"></i>
+                                <span *ngIf="a.Manager_Status === 'Completed'">
+                                    <b>Completed </b>
+                                    <i class="fa-solid fa-circle-check fa-lg status-completed"></i>
+                                </span>
 
-                                <i *ngIf="a.Manager_Status === 'Assign Task'"
-                                    class="fa-solid fa-chalkboard-user fa-lg status-Assigned"></i>
+                                <!-- <i *ngIf="a.Manager_Status === 'Completed'"
+                                    class="fa-solid fa-circle-check fa-lg status-completed"></i> -->
+                                <span *ngIf="a.Manager_Status === 'Declined'">
+                                    <b>Declined </b>
+                                    <i class="fa-solid fa-circle-xmark fa-lg status-declined"></i>
+                                </span>
 
+                                <span *ngIf="a.Manager_Status === 'Assign Task'">
+                                    <b>Assign Task </b>
+                                    <i class="fa-solid fa-chalkboard-user fa-lg status-Assigned"></i>
+                                </span>
 
-                                <i *ngIf="a.Manager_Status === 'In Progress'"
-                                    class="fa-solid fa-people-arrows fa-lg status-inprogress"></i>
+                                <!-- <i *ngIf="a.Manager_Status === 'Assign Task'"
+                                    class="fa-solid fa-chalkboard-user fa-lg status-Assigned"></i> -->
+
+                                <span *ngIf="a.Manager_Status === 'In Progress'">
+                                    <b>In Progress </b>
+                                    <i class="fa-solid fa-people-arrows fa-lg status-inprogress"></i>
+                                </span>
+
+                                <!-- <i *ngIf="a.Manager_Status === 'In Progress'"
+                                    class="fa-solid fa-people-arrows fa-lg status-inprogress"></i> -->
 
                                 <i *ngIf="a.Manager_Status === 'Create'"
                                     class="fa-solid fa-circle-check fa-lg status-Create"></i>
 
                                 <span *ngIf="a.Manager_Status === 'Schedule'">
-                                    Schedule
+                                    <b>Schedule </b>
                                     <i class="fa-solid fa-clipboard-check fa-lg status-schedule"></i>
                                 </span>
 
@@ -216,11 +231,13 @@
 
                             </span>
 
-                            <!-- <span style="margin-left:15px;cursor: pointer;"><a
-                                    (click)="DeletePurchaseOrder(a.Workorder_Id)" title="Delete a Work Order"> <i
-                                        class="fa-solid fa-trash-can"></i></a></span> -->
                         </td>
-
+                        <td>
+                            <a type="button" (click)="EditPurchaseOrder(a.Workorder_Id)" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal1" title="Update a Engineer Name,QC Name, Manager Status">
+                                <i class="fa-solid fa-pen-to-square fa-lg"></i>
+                            </a>
+                        </td>
                     </tr>
                 </tbody>
             </table>

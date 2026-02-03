@@ -78,6 +78,7 @@ const routes: Routes = [
   {
     path: 'AccountantDashboard', component: AccountantdashboardComponent, children: [
       { path: '', redirectTo: 'WorkOrder', pathMatch: 'full' },
+      { path: 'Requirement', component: RequirementComponent },
       { path: 'Machine', component: MachineComponent },
       { path: 'Material', component: MaterialComponent },
       { path: 'DeliveryChallan', component: DeliverychallanComponent },

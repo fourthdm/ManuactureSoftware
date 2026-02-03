@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { jwtDecode } from 'jwt-decode';
 import { RestService } from 'src/app/services/rest.service';
 import * as XLSX from 'xlsx';
 
@@ -12,6 +13,9 @@ import * as XLSX from 'xlsx';
 export class RequirementComponent implements OnInit {
 
   fileName = 'Requirements.xlsx';
+
+  isaccountant: boolean = false;
+  isAdmin: boolean = false;
 
   AllRequirementData: any[] = [];
   AllMaterials: any[] = [];
@@ -56,12 +60,37 @@ export class RequirementComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getadmintoken();
+    this.getAccountant();
     this.Allrequirements();
     this.Allmaterial();
   }
 
-  exportexcel(): void {
+  getAccountant() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decoded: any = jwtDecode(token);
+      if (decoded.Role === 'Accountant') {
+        this.isaccountant = true;
+      } else {
+        this.isaccountant = false;
+      }
+    }
+  }
 
+  getadmintoken() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decoded: any = jwtDecode(token);
+      if (decoded.Role === 'SuperAdmin') {
+        this.isAdmin = true;
+      } else {
+        this.isAdmin = false;
+      }
+    }
+  }
+
+  exportexcel(): void {
     // STEP 4.1 – Create a new array for Excel
     const excelData = this.AllRequirementData.map((q: any, index: number) => {
       return {

@@ -3,29 +3,29 @@ nav {
     color: white;
 }
 
-.offcanvas{
+.offcanvas {
     background-color: #2E3257;
     color: white;
 }
 
-.dropdown-menu{
+.dropdown-menu {
     background-color: #2E3257;
     color: white;
 }
 
-a{
+a {
     color: white;
 }
 
-li{
+li {
     list-style: none;
 }
 
-.container-fluid{
+.container-fluid {
     padding-right: 5%;
 }
 
-.justify-content-center{
+.justify-content-center {
     /* border-top: 2px solid white; */
     margin-left: 35%;
 }
@@ -35,4 +35,12 @@ li{
     /* Active clicked color */
     color: white !important;
     border-bottom: 2px solid white;
+}
+
+b{
+    font-size: large;
+}
+
+h5{
+    text-decoration: underline;
 }

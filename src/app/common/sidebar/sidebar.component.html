@@ -42,6 +42,13 @@
                             Requirement
                         </p>
                     </a>
+                    <a *ngIf="isAccountant" href="#" class="nav-link" routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/AccountantDashboard/Requirement']">
+                        <i class="fa-solid fa-file-invoice  fa-xl"></i>
+                        <p>
+                            Requirement
+                        </p>
+                    </a>
                 </li>
 
                 <li class="nav-item menu-open">
@@ -54,7 +61,7 @@
                     </a>
 
                     <a *ngIf="isAccountant" href="#" class="nav-link" routerLinkActive="active-link"
-                        [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/AdminDashboard/Quatation']">
+                        [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/AccountantDashboard/Quatation']">
                         <i class="fa-solid fa-bowling-ball fa-xl"></i>
                         <p>
                             Quatation
