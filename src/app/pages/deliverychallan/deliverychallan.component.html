@@ -251,9 +251,13 @@
                                 *ngFor="let a of AllChallan | paginate :{itemsPerPage :10 ,currentPage:pro},let i = index">
                                 <td>{{a.Challan_id}}</td>
                                 <td>
-                                    <p title="View Challan Details">
+                                    <p title="View Challan Details" *ngIf="isAdmin">
                                         <a href=""
                                             [routerLink]="['/AdminDashboard/ChallanDetails', a.Challan_id]">{{a.Challan_Number}}</a>
+                                    </p>
+                                    <p title="View Challan Details" *ngIf="isdispatchmanager">
+                                        <a href=""
+                                            [routerLink]="['/DispatchDashboard/ChallanDetails', a.Challan_id]">{{a.Challan_Number}}</a>
                                     </p>
                                 </td>
 

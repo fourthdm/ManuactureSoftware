@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
+import { jwtDecode } from 'jwt-decode';
 import { RestService } from 'src/app/services/rest.service';
 import * as XLSX from 'xlsx';
 
@@ -10,6 +11,9 @@ import * as XLSX from 'xlsx';
   styleUrls: ['./deliverychallan.component.css']
 })
 export class DeliverychallanComponent implements OnInit {
+
+  isdispatchmanager: boolean = false;
+  isAdmin: boolean = false;
 
   fileName = 'Challan.xlsx';
 
@@ -73,6 +77,8 @@ export class DeliverychallanComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.DispatchmanagerRoleCheck();
+    this.Superadmintoken();
     this.Challan();
     this.Bills();
     this.AllPurchaseOrder();
@@ -83,6 +89,31 @@ export class DeliverychallanComponent implements OnInit {
           this.autoFillByRequirement(PurchaseNumber);
         }
       });
+  }
+
+  DispatchmanagerRoleCheck() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decoded: any = jwtDecode(token);
+      if (decoded.Role === 'Dispatch Manager') {
+        this.isdispatchmanager = true;
+      } else {
+        this.isdispatchmanager = false;
+      }
+    }
+  }
+
+  Superadmintoken() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decoded: any = jwtDecode(token);
+      if (decoded.Role === 'SuperAdmin') {
+        this.isAdmin = true;
+      }
+      else {
+        this.isAdmin = false;
+      }
+    }
   }
 
   billStatus: any;
