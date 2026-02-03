@@ -23,3 +23,31 @@ label{
 h2{
     color: black;
 }
+
+
+.status-Create {
+    color: blue;
+}
+
+.status-Assigned {
+    color: blue;
+}
+
+.status-completed {
+    color: green;
+}
+
+.status-inprogress {
+    color: orangered;
+}
+
+.status-close {
+    color: red;
+}
+
+.status-declined {
+    color: red;
+}
+.status-new{
+    color: gray;
+}

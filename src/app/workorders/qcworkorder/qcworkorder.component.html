@@ -148,10 +148,45 @@
 
                     <div class="text-end">
                         <a type="button" (click)="EditPurchaseOrder(e.Workorder_Id)" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal1" title="Add a Engineer Status">
+                            data-bs-target="#exampleModal1" title="Add a QC Status">
                             <i class="fa-solid fa-pen-to-square fa-lg"></i>
                         </a>
-                        <!-- <span style="margin-left:15px;cursor: pointer;"><a (click)="DeletePurchaseOrder(a.Workorder_Id)" title="Delete a Purchase Order"> <i class="fa-solid fa-trash-can"></i></a></span> -->
+
+                        <span style="margin-left:15px;cursor: pointer;" *ngIf="e.QC_Status">
+
+                            <span *ngIf="!e.QC_Status || e.QC_Status.trim() === ''">
+                                <b> {{e.QC_Status}} </b>
+                                <i class="fa-solid fa-circle-check fa-lg status-New"></i>
+                            </span>
+
+                            <span *ngIf="e.QC_Status === 'Qualified'">
+                                <b>{{e.QC_Status}} </b>
+                                <i class="fa-solid fa-circle-check fa-lg status-completed"></i>
+                            </span>
+
+                            <!-- <i *ngIf="a.Manager_Status === 'Completed'"
+                                    class="fa-solid fa-circle-check fa-lg status-completed"></i> -->
+                            <span *ngIf="e.QC_Status === 'Reject'">
+                                <b>{{e.QC_Status}} </b>
+                                <i class="fa-solid fa-circle-xmark fa-lg status-declined"></i>
+                            </span>
+
+                            <span *ngIf="e.QC_Status === 'Hold'">
+                                <b>{{e.QC_Status}} </b>
+                                <i class="fa-solid fa-circle-pause fa-lg status-Assigned"></i>
+                                <!-- <i class="fa-solid  fa-lg status-start"></i> -->
+                            </span>
+
+                            <!-- <i *ngIf="a.Manager_Status === 'Assign Task'"
+                                    class="fa-solid fa-chalkboard-user fa-lg status-Assigned"></i> -->
+
+                            <span *ngIf="e.QC_Status === 'Damage'">
+                                <b>{{e.QC_Status}} </b>
+                                <i class="fa-solid fa-circle-exclamation fa-lg status-inprogress"></i>
+                                <!-- <i class="fa-solid "></i> -->
+                            </span>
+
+                        </span>
                     </div>
                     <br>
                     <p>Work Order Number : <a href="" title="View Work Order Details"
@@ -168,7 +203,7 @@
                     <!-- <p>Client Name :  {{e.Client_Name}}</p> -->
                     <p>Product Quantity : {{e.Product_Quantity}}</p>
                     <p>Material Type : {{e.Material_Type}}</p>
-                    <!-- <p>Days of Payment :  {{e.Days_of_Payment}}</p> -->    
+                    <!-- <p>Days of Payment :  {{e.Days_of_Payment}}</p> -->
                     <p>Work Order Status : {{e.WorkOrder_Status}}</p>
                     <p>Added Date : {{e.Added_Date | date}} <br>
                         <span>Added Time : {{e.Added_Date | date :'hh:mm:ss:a'}}</span>
@@ -188,7 +223,6 @@
         </div>
 
         <div class="">
-
 
             <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
@@ -229,7 +263,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

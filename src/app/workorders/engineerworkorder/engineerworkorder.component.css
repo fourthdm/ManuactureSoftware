@@ -16,6 +16,34 @@ option {
     background-color: #c4c1cfab;
 }
 
-h2{ 
+h2 {
     color: black;
+}
+
+.status-Create {
+    color: blue;
+}
+
+.status-Assigned {
+    color: blue;
+}
+
+.status-completed {
+    color: green;
+}
+
+.status-inprogress {
+    color: orangered;
+}
+
+.status-close {
+    color: red;
+}
+
+.status-declined {
+    color: red;
+}
+
+.status-New {
+    color: gray;
 }
