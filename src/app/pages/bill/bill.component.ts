@@ -264,8 +264,6 @@ export class BillComponent implements OnInit {
     });
   }
 
-
-
   // autoFillByRequirement(billNo: string) {
   //   const req = this.AllPurchaseOrderData.find(
   //     (r: any) => r.Purchase_Number === billNo
@@ -402,7 +400,7 @@ export class BillComponent implements OnInit {
   }
 
   Delete(Bill_Id: any) {
-    if (confirm('Are You want to delete a Bill')) {
+    if (confirm(`Are You want to delete a Bill ${Bill_Id} ?`)) {
       this._rest.DeleteBill(Bill_Id).subscribe((data: any) => {
         console.log(data);
         this.ngOnInit();

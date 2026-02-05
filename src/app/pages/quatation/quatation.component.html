@@ -238,6 +238,7 @@
                             <tr>
                                 <th>Sr No.</th>
                                 <th>Quotation No</th>
+                                <th>Product Name</th>
                                 <th>Client Name</th>
                                 <th>Action</th>
 
@@ -252,7 +253,7 @@
                                             [routerLink]="['/AdminDashboard/QuotationDetails', q.Quotation_Id]">{{q.Quotation_Number}}</a>
                                     </p>
                                 </td>
-
+                                <td>{{q.Product_Name}}</td>
                                 <td>{{q.Client_Name}}</td>
                                 <td>
                                     <p class="">

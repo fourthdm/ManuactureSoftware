@@ -28,6 +28,8 @@ export class DeliverychallanComponent implements OnInit {
   ChallanAddform: FormGroup;
   EditChallanAddform: FormGroup;
 
+  Selectedchallan: any;
+
   constructor(private _rest: RestService, private _route: Router, private fb: FormBuilder) {
     this.ChallanAddform = new FormGroup({
       Quotation_Number: new FormControl(''),
@@ -286,6 +288,52 @@ export class DeliverychallanComponent implements OnInit {
 
     // STEP 4.5 – Download Excel file
     XLSX.writeFile(workbook, 'Challan.xlsx');
+  }
+
+  EditChallan(Challan_id: any) {
+    const selectchallan = this.AllChallan.find(bills => bills.Challan_id == Challan_id);
+
+    if (!selectchallan) {
+      console.log(`Challan with ID ${Challan_id} not found.`);
+      return;
+    }
+    this.Selectedchallan = 1;
+    // 🔑 Convert Due_Date to yyyy-MM-dd
+    const DeliveryDate = selectchallan.Delivery_Date
+      ? new Date(selectchallan.Delivery_Date).toISOString().split('T')[0]
+      : '';
+
+    // ✅ Patch everything, but override Due_Date
+    this.EditChallanAddform.patchValue({
+      ...selectchallan,
+      Delivery_Date: DeliveryDate
+    });
+  }
+
+  UpdateChallan() {
+    this._rest.UpdateChallan(this.EditChallanAddform.value).subscribe((data: any) => {
+      console.log(data);
+      this.AllChallan = data.data;
+      this.EditChallanAddform.reset();
+      this.ngOnInit();
+    }, (err: any) => {
+      console.log(err);
+    });
+  }
+
+  DeleteChallan(Challan_id: any) {
+    if (confirm(`Are You want to delete a Challan ${Challan_id} ?`)) {
+      this._rest.DeleteChallan(Challan_id).subscribe((data: any) => {
+        if (data.success) {
+          alert('Challan Deleted Successfully');
+          this.ngOnInit();
+        } else {
+          alert('Error while deleting Challan');
+        }
+      }, (err: any) => {
+        console.log(err);
+      });
+    }
   }
 
 }
