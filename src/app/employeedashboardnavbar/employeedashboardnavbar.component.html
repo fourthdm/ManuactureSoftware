@@ -57,8 +57,7 @@
         <p> Password : <b>{{employeedata?.Password}}</b> </p>
         <!-- <p> Role : <b>{{employeedata?.Role}}</b> </p> -->
         <p> Address : <b>{{employeedata?.Address}}</b> </p>
-        <p> Added Date : <b>{{employeedata?.Added_Date | date}}</b> <br> {{employeedata?.Added_Date | date :'hh:mm:ss
-          a'}}
+        <p> Added Date : <b>{{employeedata?.Added_Date | date}}</b> <br> {{employeedata?.Added_Date | date :'hh:mm:ss a'}}
         </p>
         <p> Updated Date : <b>{{employeedata?.Updated_Date | date}}</b> <br> {{employeedata?.Updated_Date | date
           :'hh:mm:ss a'}}</p>
@@ -116,16 +115,17 @@
         [routerLink]="['/ManagerDashboard/WorkOrder']">Work Order</a>
     </li>
 
-    <li class="nav-item" *ngIf="isDispatchManager">
+    <!-- <li class="nav-item" *ngIf="isDispatchManager">
       <a class="nav-link active" href="#" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"
         [routerLink]="['/DispatchDashboard/WorkOrder']">Work Order</a>
-    </li>
+    </li> -->
 
     <!-- <li class="nav-item" *ngIf="isDispatchManager && challanAllowed"> -->
-    <li class="nav-item" *ngIf="isDispatchManager">
+
+    <!-- <li class="nav-item" *ngIf="isDispatchManager">
       <a href="#" class="nav-link" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"
-        [routerLink]="['/DispatchDashboard/DeliveryChallan']">Challan</a>
-    </li>
+        [routerLink]="['/DispatchDashboard/DeliveryChallan']"> Challan</a>
+    </li> -->
 
     <!-- <span *ngIf="alertCount > 0" class="badge bg-danger start-100">
       {{ alertCount }}

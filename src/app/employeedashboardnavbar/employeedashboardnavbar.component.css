@@ -44,3 +44,8 @@ b{
 h5{
     text-decoration: underline;
 }
+
+.img{
+    width: 100px;
+    background-color: white;
+}

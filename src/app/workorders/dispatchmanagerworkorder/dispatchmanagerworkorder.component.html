@@ -33,34 +33,13 @@
 
                         </div>
 
-                        <!-- <div class="col-6"
-                            *ngIf="e.Dispatch_Status === 'Completed' || e.Dispatch_Status ==='Ready to Dispatch' ">
-                            <div class="text-start Display">
-                                <i class="fa-solid fa-circle-check fa-lg"></i>
-                            </div>
-                        </div> -->
-
-                        <!--   <div class="col-6 text-start" *ngIf="e.Dispatch_Status" [ngClass]="{
-        'status-completed': e.Dispatch_Status === 'Completed',
-        'status-ready': e.Dispatch_Status === 'Ready to Dispatch',
-        'status-inprogress': e.Dispatch_Status === 'Reject',
-        'status-pending': e.Dispatch_Status === 'Damage',
-        'status-hold': e.Dispatch_Status === 'Declined' || e.Dispatch_Status === 'Close',
-     }">
-
-                            <i class="fa-solid fa-circle-check fa-lg"></i>
-                        </div> -->
-
                         <div class="col-6">
                             <div class="text-end">
                                 <a type="button" (click)="EditPurchaseOrder(e.Workorder_Id)" data-bs-toggle="modal"
                                     data-bs-target="#exampleModal1" title="Add a Dispatch Manager Status">
                                     <i class="fa-solid fa-pen-to-square fa-lg"></i>
                                 </a>
-                                <!-- <span style="margin-left:15px;cursor: pointer;">
-                            <a (click)="DeletePurchaseOrder(a.Workorder_Id)" title="Delete a Purchase Order">
-                                 <i class="fa-solid fa-trash-can"></i></a>
-                            </span> -->
+                           
                             </div>
                         </div>
 
@@ -70,8 +49,6 @@
                         Work Order Number : <a href="" title="View Work Order Details"
                             [routerLink]="['/DispatchDashboard/WorkorderDetails',e.Workorder_Id]">{{e.WO_Number}}</a>
                     </p>
-                    <!-- <p>Purchase Order Number : {{e.Purchase_Number}}</p> -->
-                    <!-- <p>Requirement Number :  {{e.Requirement_No}}</p> -->
                     <p>Manager Name : {{e.Manager_Name}}</p>
                     <p>Engineer Name : {{e.Engineer_Name}}</p>
                     <p>Engineer Status : {{e.Engineer_Status}}</p>
@@ -84,7 +61,6 @@
                     <p>Dispatch Manager Status Time : {{e.Dispatchmanager_Status_Time | date:'dd-MM-yyyy, hh:mm a'}}</p>
                     <p>Product Quantity : {{e.Product_Quantity}}</p>
                     <p>Material Type : {{e.Material_Type}}</p>
-                    <!-- <p>Days of Payment :  {{e.Days_of_Payment}}</p> -->
                     <p>Work Order Status : {{e.WorkOrder_Status}}</p>
                     <p>Added Date : {{e.Added_Date | date}} <br>
                         <span>Added Time : {{e.Added_Date | date :'hh:mm:ss:a'}}</span>
@@ -99,12 +75,7 @@
                     <button class="btn btn-secondary" title="Download a DWG File"> <a
                             (click)="downloadFromUrl(e.Design_File)">Download DWG File</a>
                     </button>
-                    <!-- PDF Designfile -->
-
-                    <!-- DWG -->
-                    <!-- <a (click)="downloadFromUrl(e.Design_File)">Download DWG</a> -->
-                    <!-- <p>Updated Date : {{e.Updated_Date | date}} <br> 
-                            <span>Updated Time : </span> {{e.Updated_Date | date :'hh:mm:ss'}}</p> -->
+            
                 </div>
             </div>
         </div>

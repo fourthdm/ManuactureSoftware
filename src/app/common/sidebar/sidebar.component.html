@@ -36,6 +36,16 @@
 
                 <li class="nav-item menu-open">
                     <a *ngIf="isAdmin" href="#" class="nav-link" routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/AdminDashboard/Client']">
+                        <i class="fa-regular fa-id-card fa-xl"></i>
+                        <p>
+                            Client's
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item menu-open">
+                    <a *ngIf="isAdmin" href="#" class="nav-link" routerLinkActive="active-link"
                         [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/AdminDashboard/Requirement']">
                         <i class="fa-solid fa-file-invoice  fa-xl"></i>
                         <p>

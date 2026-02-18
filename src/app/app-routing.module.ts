@@ -30,14 +30,16 @@ import { QcworkorderComponent } from './workorders/qcworkorder/qcworkorder.compo
 import { EngineerworkorderComponent } from './workorders/engineerworkorder/engineerworkorder.component';
 import { EmployeedetailsComponent } from './common/employeedetails/employeedetails.component';
 import { ChallandetailsComponent } from './pages/challandetails/challandetails.component';
+import { ClientsComponent } from './pages/clients/clients.component';
 
 const routes: Routes = [
 
   { path: '', component: DashboardComponent },
   { path: 'login', component: LoginComponent },
   {
-    path: 'AdminDashboard', component: AdmindashboardComponent, title: 'Admin pages', children: [
+    path: 'AdminDashboard', component: AdmindashboardComponent, title: 'Admin Dashboard', children: [
       { path: '', redirectTo: 'Requirement', pathMatch: 'full' },
+      { path: 'Client', component: ClientsComponent },
       { path: 'Employee', component: EmployeeComponent },
       { path: 'Machine', component: MachineComponent },
       { path: 'Material', component: MaterialComponent },
@@ -58,7 +60,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'EmployeeDashboard', component: EmployeedashboardComponent, children: [
+    path: 'EmployeeDashboard', component: EmployeedashboardComponent, title: 'Employee Dashboard', children: [
       { path: '', redirectTo: 'WorkOrder', pathMatch: 'full' },
       { path: 'WorkOrder', component: EngineerworkorderComponent },
       { path: 'WorkorderDetails/:Workorder_Id', component: ViewworkorderComponent },
@@ -67,7 +69,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'QCDashboard', component: QcdashboardComponent, children: [
+    path: 'QCDashboard', component: QcdashboardComponent, title: 'QC Dashboard', children: [
       { path: '', redirectTo: 'WorkOrder', pathMatch: 'full' },
       { path: 'WorkOrder', component: QcworkorderComponent },
       { path: 'WorkorderDetails/:Workorder_Id', component: ViewworkorderComponent },
@@ -76,7 +78,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'AccountantDashboard', component: AccountantdashboardComponent, children: [
+    path: 'AccountantDashboard', component: AccountantdashboardComponent, title: 'Accountant Dashboard', children: [
       { path: '', redirectTo: 'WorkOrder', pathMatch: 'full' },
       { path: 'Requirement', component: RequirementComponent },
       { path: 'Machine', component: MachineComponent },
@@ -93,7 +95,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'ManagerDashboard', component: MangerdashboardComponent, children: [
+    path: 'ManagerDashboard', component: MangerdashboardComponent, title: 'Manager Dashboard', children: [
       { path: '', redirectTo: 'WorkOrder', pathMatch: 'full' },
       { path: 'Machine', component: MachineComponent },
       { path: 'Material', component: MaterialComponent },
@@ -108,17 +110,11 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'DispatchDashboard', component: DispatchdashboardComponent, children: [
+    path: 'DispatchDashboard', component: DispatchdashboardComponent, title: 'Dispatch Department Dashboard', children: [
       { path: '', redirectTo: 'WorkOrder', pathMatch: 'full' },
-      { path: 'Machine', component: MachineComponent },
-      { path: 'Material', component: MaterialComponent },
-      { path: 'DeliveryChallan', component: DeliverychallanComponent },
-      { path: 'ChallanDetails/:Challan_id', component: ChallandetailsComponent },
-      // { path: 'Quatation', component: QuatationComponent },
       { path: 'WorkOrder', component: DispatchmanagerworkorderComponent },
       { path: 'WorkorderDetails/:Workorder_Id', component: ViewworkorderComponent },
       { path: 'WorkOrderClose', component: WorkcloseComponent },
-      // { path: 'PurchaseOrder', component: PurchaseorderComponent },
       { path: '**', redirectTo: 'DispatchDashboard' }
     ]
   },
