@@ -104,12 +104,13 @@ export class ClientsComponent implements OnInit {
     const excelData = this.AllData.map((w: any, index: number) => {
       return {
         'Sr No': index + 1,
-        'Employee Name': w.Name,
-        'Phone No': w.PhoneNo,
-        'Email': w.Email,
-        'Address': w.Address,
-        'Role': w.Role,
-        'Status': w.Status,
+        'Client Code': w.Client_Code,
+        'Client Name': w.Client_Name,
+        'Phone No': w.Client_PhoneNo,
+        'Client Email': w.Client_Email,
+        'Client Address': w.Client_Address,
+        'GST_No': w.GST_No,
+        'Status': w.Client_Status,
         'Added_Date': w.Added_Date,
         'Updated Date': w.Updated_Date
       };
@@ -125,7 +126,7 @@ export class ClientsComponent implements OnInit {
     XLSX.utils.book_append_sheet(workbook, worksheet, 'AllWorkOrderData');
 
     // STEP 4.5 – Download Excel file
-    XLSX.writeFile(workbook, 'Workorder.xlsx');
+    XLSX.writeFile(workbook, 'Client.xlsx');
 
   }
 

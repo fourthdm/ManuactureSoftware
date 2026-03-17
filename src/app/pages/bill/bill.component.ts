@@ -164,7 +164,7 @@ export class BillComponent implements OnInit {
     const token = localStorage.getItem('token');
     if (token) {
       const decoded: any = jwtDecode(token);
-      if (decoded.Role === 'Employee') {
+      if (decoded.Role === 'Engineer') {
         this.isEmployee = true;
       } else {
         this.isEmployee = false;
