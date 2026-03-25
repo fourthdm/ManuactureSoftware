@@ -44,6 +44,7 @@ export class BillComponent implements OnInit {
       Client_Name: new FormControl('', [Validators.required]),
       Client_Address: new FormControl('', [Validators.required]),
       HSN_Code: new FormControl(''),
+      GST_No: new FormControl(''),
       Rate: new FormControl('', [Validators.required]),
       Subtotal: new FormControl('', [Validators.required]),
       CGST_amount: new FormControl('', [Validators.required]),
@@ -74,6 +75,7 @@ export class BillComponent implements OnInit {
       Client_Name: new FormControl('', [Validators.required]),
       Client_Address: new FormControl('', [Validators.required]),
       HSN_Code: new FormControl(''),
+      GST_No: new FormControl(''),
       Rate: new FormControl('', [Validators.required]),
       Subtotal: new FormControl('', [Validators.required]),
       CGST_amount: new FormControl('', [Validators.required]),
@@ -117,6 +119,7 @@ export class BillComponent implements OnInit {
         'Product_Quantity': q.Product_Quantity,
         'Rate': q.Rate,
         'HSN_Code': q.HSN_Code,
+        'GST_No': q.GST_No,
         'CGST_amount': q.CGST_amount,
         'SGST_amount': q.SGST_amount,
         'Subtotal': q.Subtotal,
@@ -161,7 +164,7 @@ export class BillComponent implements OnInit {
     const token = localStorage.getItem('token');
     if (token) {
       const decoded: any = jwtDecode(token);
-      if (decoded.Role === 'Employee') {
+      if (decoded.Role === 'Engineer') {
         this.isEmployee = true;
       } else {
         this.isEmployee = false;
@@ -235,6 +238,7 @@ export class BillComponent implements OnInit {
       Client_Name: req.Client_Name,
       Client_Address: req.Client_Address,
       HSN_Code: req.HSN_Code,
+      GST_No: req.GST_No,
       Rate: req.Rate,
       Subtotal: req.Subtotal,
       CGST_amount: req.CGST_amount,
@@ -259,8 +263,6 @@ export class BillComponent implements OnInit {
       }
     });
   }
-
-
 
   // autoFillByRequirement(billNo: string) {
   //   const req = this.AllPurchaseOrderData.find(
@@ -398,7 +400,7 @@ export class BillComponent implements OnInit {
   }
 
   Delete(Bill_Id: any) {
-    if (confirm('Are You want to delete a Bill')) {
+    if (confirm(`Are You want to delete a Bill ${Bill_Id} ?`)) {
       this._rest.DeleteBill(Bill_Id).subscribe((data: any) => {
         console.log(data);
         this.ngOnInit();

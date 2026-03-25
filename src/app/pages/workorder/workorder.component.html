@@ -213,7 +213,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let a of AllWorkOrderData | paginate :{itemsPerPage :10 ,currentPage:pro},let i = index"
+                                <tr *ngFor="let a of AllWorkOrderData | paginate :{itemsPerPage :7 ,currentPage:pro},let i = index"
                                     [ngClass]="{'Display': a.WorkOrder_Status === 'Completed'} ">
                                     <td>{{a.Workorder_Id}}</td>
                                     <td>
@@ -475,7 +475,7 @@
                                                 <select class="form-select form-select-sm"
                                                     formControlName="Dispatch_Status" aria-label="select example">
                                                     <option value="Ready to Dispatch">Ready to Dispatch</option>
-                                                    <option value="Complete"> Completed </option>
+                                                    <option value="Complete"> Complete </option>
                                                     <option value="Reject">Reject </option>
                                                     <option value="Damage">Damage </option>
                                                     <option value="Declined">Declined </option>

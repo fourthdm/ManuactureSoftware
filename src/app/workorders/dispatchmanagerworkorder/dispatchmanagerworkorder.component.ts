@@ -77,9 +77,10 @@ export class DispatchmanagerworkorderComponent implements OnInit {
       alert(data.message);
       this.AllDisapatchmanagerworkorder();
       this.EditWorkorderForm.reset();
+      this.ngOnInit();
     }, (err: any) => {
       console.log(err);
-      alert('Error while Updating Engineer Status');
+      alert('Error while Updating Dispatch Manager Status');
     });
   }
 

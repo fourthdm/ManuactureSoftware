@@ -38,6 +38,7 @@ export class QuatationComponent implements OnInit {
       Payment_term: new FormControl('', [Validators.required]),
       Shipping_Method: new FormControl('', [Validators.required]),
       HSN_Code: new FormControl('', [Validators.required]),
+      GST_No: new FormControl('', [Validators.required]),
       Client_Address: new FormControl('', [Validators.required]),
       Validity_Date: new FormControl(''),
       Quotation_Status: new FormControl('', [Validators.required])
@@ -59,6 +60,7 @@ export class QuatationComponent implements OnInit {
       Payment_term: new FormControl('', [Validators.required]),
       Shipping_Method: new FormControl('', [Validators.required]),
       HSN_Code: new FormControl('', [Validators.required]),
+      GST_No: new FormControl('', [Validators.required]),
       Address: new FormControl('', [Validators.required]),
       Validity_Date: new FormControl(''),
       Quotation_Status: new FormControl('', [Validators.required])
@@ -101,6 +103,7 @@ export class QuatationComponent implements OnInit {
         'Payment_term': q.Payment_term,
         'Shipping_Method': q.Shipping_Method,
         'HSN_Code': q.HSN_Code,
+        'GST_No': q.GST_No,
         'Address': q.Client_Address,
         'Added_Date': q.Added_Date,
         'Validity_Date': q.Validity_Date,
@@ -119,7 +122,7 @@ export class QuatationComponent implements OnInit {
 
     // STEP 4.5 – Download Excel file
     XLSX.writeFile(workbook, 'Quotation_List.xlsx');
-    
+
   }
 
   autoFillByRequirement(reqNo: string) {

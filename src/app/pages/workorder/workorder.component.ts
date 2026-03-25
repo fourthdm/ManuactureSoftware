@@ -287,7 +287,6 @@ export class WorkorderComponent implements OnInit {
 
   AllEngineer() {
     this._rest.Engineerdata().subscribe((data: any) => {
-
       this.AllEngineerdata = data.data;
     }, (err: any) => {
       console.log(err);
@@ -296,7 +295,6 @@ export class WorkorderComponent implements OnInit {
 
   AllManager() {
     this._rest.Managerdata().subscribe((data: any) => {
-
       this.AllManagerdata = data.data;
     }, (err: any) => {
       console.log(err);
@@ -305,7 +303,6 @@ export class WorkorderComponent implements OnInit {
 
   AllQC() {
     this._rest.QCData().subscribe((data: any) => {
-
       this.AllQCdata = data.data;
     }, (err: any) => {
       console.log(err);
@@ -342,7 +339,7 @@ export class WorkorderComponent implements OnInit {
       return;
     }
     this.SelectedWorkOrderData = 1;
-    // 🔑 Convert Due_Date to yyyy-MM-dd
+    //  Convert Due_Date to yyyy-MM-dd
     const dueDate = selectworkorder.Due_Date
       ? new Date(selectworkorder.Due_Date).toISOString().split('T')[0]
       : '';

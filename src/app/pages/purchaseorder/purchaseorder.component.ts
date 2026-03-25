@@ -42,6 +42,7 @@ export class PurchaseorderComponent implements OnInit {
       Total_Amount: new FormControl('', [Validators.required]),
       Discount_Amount: new FormControl('', [Validators.required]),
       HSN_Code: new FormControl(''),
+      GST_No: new FormControl(''),
       Client_Address: new FormControl('', [Validators.required]),
       Purchase_Address: new FormControl('', [Validators.required]),
       Delivery_Date: new FormControl(''),
@@ -64,6 +65,7 @@ export class PurchaseorderComponent implements OnInit {
       Total_Amount: new FormControl('', [Validators.required]),
       Discount_Amount: new FormControl('', [Validators.required]),
       HSN_Code: new FormControl(''),
+      GST_No: new FormControl(''),
       Client_Address: new FormControl('', [Validators.required]),
       Purchase_Address: new FormControl('', [Validators.required]),
       Delivery_Date: new FormControl(''),
@@ -105,6 +107,7 @@ export class PurchaseorderComponent implements OnInit {
         'Discount_Amount': q.Discount_Amount,
         'Payment_term': q.Payment_term,
         'HSN_Code': q.HSN_Code,
+        'GST_No': q.GST_No,
         'Purchase_Address':q.Purchase_Address,	
         'Added_Date': q.Added_Date,
         'Delivery Date': q.Delivery_Date,
@@ -147,6 +150,7 @@ export class PurchaseorderComponent implements OnInit {
       Total_Amount: req.Total_Amount,
       Discount_Amount: req.Discount_Amount,
       HSN_Code: req.HSN_Code,
+      GST_No: req.GST_No,
       Payment_term: req.Payment_term
     });
   }

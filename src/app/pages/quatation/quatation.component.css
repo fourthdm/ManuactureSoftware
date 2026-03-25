@@ -1,26 +1,31 @@
-.card{
+.card {
     background-color: #c4c1cfab;
     color: black;
 }
 
-select{
+select {
     background-color: hsla(264, 9%, 89%, 0.671);
     width: 100%;
 }
 
-label{
+option {
+    background-color: hsla(264, 9%, 89%, 0.671);
+    color: #000;
+}
+
+label {
     color: black;
 }
 
-.container-fluid{
+.container-fluid {
     padding-left: 2%;
 }
 
-.Se{
+.Se {
     height: 50% !important;
 }
 
-.card-header{
+.card-header {
     color: black;
     font-size: larger;
 }
@@ -30,14 +35,16 @@ label{
     color: #000;
 }
 
-a{
+a {
     color: #000;
 }
 
-td,th{
-    background-color:  #c4c1cfab;
+td,
+th {
+    background-color: #c4c1cfab;
     color: black;
 }
-th{
-    font-weight: bold;  
+
+th {
+    font-weight: bold;
 }

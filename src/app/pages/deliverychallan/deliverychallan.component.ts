@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
+import { jwtDecode } from 'jwt-decode';
 import { RestService } from 'src/app/services/rest.service';
 import * as XLSX from 'xlsx';
 
@@ -10,6 +11,10 @@ import * as XLSX from 'xlsx';
   styleUrls: ['./deliverychallan.component.css']
 })
 export class DeliverychallanComponent implements OnInit {
+
+  isdispatchmanager: boolean = false;
+  isAdmin: boolean = false;
+  isAccountant: boolean = false;
 
   fileName = 'Challan.xlsx';
 
@@ -22,6 +27,8 @@ export class DeliverychallanComponent implements OnInit {
 
   ChallanAddform: FormGroup;
   EditChallanAddform: FormGroup;
+
+  Selectedchallan: any;
 
   constructor(private _rest: RestService, private _route: Router, private fb: FormBuilder) {
     this.ChallanAddform = new FormGroup({
@@ -73,6 +80,9 @@ export class DeliverychallanComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.DispatchmanagerRoleCheck();
+    this.Superadmintoken();
+    this.Accountanttoken();
     this.Challan();
     this.Bills();
     this.AllPurchaseOrder();
@@ -83,6 +93,44 @@ export class DeliverychallanComponent implements OnInit {
           this.autoFillByRequirement(PurchaseNumber);
         }
       });
+  }
+
+  DispatchmanagerRoleCheck() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decoded: any = jwtDecode(token);
+      if (decoded.Role === 'Dispatch Manager') {
+        this.isdispatchmanager = true;
+      } else {
+        this.isdispatchmanager = false;
+      }
+    }
+  }
+
+  Superadmintoken() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decoded: any = jwtDecode(token);
+      if (decoded.Role === 'SuperAdmin') {
+        this.isAdmin = true;
+      }
+      else {
+        this.isAdmin = false;
+      }
+    }
+  }
+
+  Accountanttoken() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decoded: any = jwtDecode(token);
+      if (decoded.Role === 'Accountant') {
+        this.isAccountant = true;
+      }
+      else {
+        this.isAccountant = false;
+      }
+    }
   }
 
   billStatus: any;
@@ -104,6 +152,7 @@ export class DeliverychallanComponent implements OnInit {
       Client_Name: req.Client_Name,
       Client_Address: req.Client_Address,
       HSN_Code: req.HSN_Code,
+      GST_No: req.GST_No,
       Rate: req.Rate,
       Subtotal: req.Subtotal,
       CGST_amount: req.CGST_amount,
@@ -124,9 +173,7 @@ export class DeliverychallanComponent implements OnInit {
         this.challanAllowed = false;
       }
     });
-
   }
-
 
   showPrint = false;
 
@@ -241,6 +288,52 @@ export class DeliverychallanComponent implements OnInit {
 
     // STEP 4.5 – Download Excel file
     XLSX.writeFile(workbook, 'Challan.xlsx');
+  }
+
+  EditChallan(Challan_id: any) {
+    const selectchallan = this.AllChallan.find(bills => bills.Challan_id == Challan_id);
+
+    if (!selectchallan) {
+      console.log(`Challan with ID ${Challan_id} not found.`);
+      return;
+    }
+    this.Selectedchallan = 1;
+    // 🔑 Convert Due_Date to yyyy-MM-dd
+    const DeliveryDate = selectchallan.Delivery_Date
+      ? new Date(selectchallan.Delivery_Date).toISOString().split('T')[0]
+      : '';
+
+    // ✅ Patch everything, but override Due_Date
+    this.EditChallanAddform.patchValue({
+      ...selectchallan,
+      Delivery_Date: DeliveryDate
+    });
+  }
+
+  UpdateChallan() {
+    this._rest.UpdateChallan(this.EditChallanAddform.value).subscribe((data: any) => {
+      console.log(data);
+      this.AllChallan = data.data;
+      this.EditChallanAddform.reset();
+      this.ngOnInit();
+    }, (err: any) => {
+      console.log(err);
+    });
+  }
+
+  DeleteChallan(Challan_id: any) {
+    if (confirm(`Are You want to delete a Challan ${Challan_id} ?`)) {
+      this._rest.DeleteChallan(Challan_id).subscribe((data: any) => {
+        if (data.success) {
+          alert('Challan Deleted Successfully');
+          this.ngOnInit();
+        } else {
+          alert('Error while deleting Challan');
+        }
+      }, (err: any) => {
+        console.log(err);
+      });
+    }
   }
 
 }

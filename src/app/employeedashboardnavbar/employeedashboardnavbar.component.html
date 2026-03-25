@@ -7,6 +7,11 @@
     <a class="navbar-brand"> <img src="assets/logo.png" class="img elevation-2" alt="User Image">
       <span style="margin-left: 50px;"> {{employeedata?.Role}}</span> </a>
 
+    <h3 *ngIf="isManager">Manager Dashboard</h3>
+    <h3 *ngIf="isQC">QC Dashboard</h3>
+    <h3 *ngIf="isEngineer">Engineer Dashboard</h3>
+    <h3 *ngIf="isDispatchManager">Dispatch Manager Dashboard</h3>
+
     <li class="nav-item dropdown">
       <!-- <button class="btn btn-outline-danger position-relative">
         🔔 Notifications
@@ -14,6 +19,7 @@
           {{ alertCount }}
         </span>
       </button> -->
+
       <a class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" title="User Details">
         <i class="fa-regular fa-circle-user fa-xl" style="color: #ffffff;"></i> {{employeedata?.Name}}
       </a>
@@ -33,19 +39,29 @@
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Employee Details</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-theme="dark" data-bs-dismiss="offcanvas"
+          aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
-        <p> Employee Name : {{employeedata?.Name}}</p>
-        <p> Phone No : {{employeedata?.PhoneNo}}</p>
-        <p> Email : {{employeedata?.Email}}</p>
-        <p> Username : {{employeedata?.Username}}</p>
-        <p> Password : {{employeedata?.Password}}</p>
-        <p> Role : {{employeedata?.Role}}</p>
-        <p> Address : {{employeedata?.Address}}</p>
-        <p> Added Date : {{employeedata?.Added_Date | date}}</p>
-        <p> Updated Date : {{employeedata?.Updated_Date | date}}</p>
-        <p> Employee Status : {{employeedata?.Status}}</p>
+
+        <div class="text-center mb-3">
+          <!-- <i class="fa-regular fa-circle-user fa-4x"></i> -->
+          <h5 class="mt-2">{{ employeedata?.Name }}</h5>
+          <span class="badge bg-primary"> <b>{{ employeedata?.Role }}</b> </span>
+        </div>
+
+        <!-- <p> Employee Name : <b>{{employeedata?.Name}}</b> </p> -->
+        <p> Phone No : <b>{{employeedata?.PhoneNo}}</b> </p>
+        <p> Email : <b>{{employeedata?.Email}}</b> </p>
+        <p> Username : <b>{{employeedata?.Username}}</b> </p>
+        <p> Password : <b>{{employeedata?.Password}}</b> </p>
+        <!-- <p> Role : <b>{{employeedata?.Role}}</b> </p> -->
+        <p> Address : <b>{{employeedata?.Address}}</b> </p>
+        <p> Added Date : <b>{{employeedata?.Added_Date | date}}</b> <br> {{employeedata?.Added_Date | date :'hh:mm:ss a'}}
+        </p>
+        <p> Updated Date : <b>{{employeedata?.Updated_Date | date}}</b> <br> {{employeedata?.Updated_Date | date
+          :'hh:mm:ss a'}}</p>
+        <p> Employee Status : <b>{{employeedata?.Status}}</b> </p>
 
         <!-- <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
@@ -99,16 +115,17 @@
         [routerLink]="['/ManagerDashboard/WorkOrder']">Work Order</a>
     </li>
 
-    <li class="nav-item" *ngIf="isDispatchManager">
+    <!-- <li class="nav-item" *ngIf="isDispatchManager">
       <a class="nav-link active" href="#" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"
         [routerLink]="['/DispatchDashboard/WorkOrder']">Work Order</a>
-    </li>
+    </li> -->
 
     <!-- <li class="nav-item" *ngIf="isDispatchManager && challanAllowed"> -->
-    <li class="nav-item" *ngIf="isDispatchManager">
+
+    <!-- <li class="nav-item" *ngIf="isDispatchManager">
       <a href="#" class="nav-link" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"
-        [routerLink]="['/DispatchDashboard/DeliveryChallan']">Challan</a>
-    </li>
+        [routerLink]="['/DispatchDashboard/DeliveryChallan']"> Challan</a>
+    </li> -->
 
     <!-- <span *ngIf="alertCount > 0" class="badge bg-danger start-100">
       {{ alertCount }}

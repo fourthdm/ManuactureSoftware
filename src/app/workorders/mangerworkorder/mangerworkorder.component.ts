@@ -203,6 +203,8 @@ export class MangerworkorderComponent implements OnInit {
     this._rest.UpdateWorkorderbymanager(this.EditWorkorderForm.value).subscribe((data: any) => {
       alert(data.message);
       this.AllWorkOrder();
+      this.EditWorkorderForm.reset();
+      this.ngOnInit();
     }, (err: any) => {
       console.log(err);
       alert('Error while updating Work Order');

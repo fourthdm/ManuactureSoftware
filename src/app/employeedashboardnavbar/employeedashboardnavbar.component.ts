@@ -12,7 +12,8 @@ export class EmployeedashboardnavbarComponent implements OnInit {
   employeedata: any;
 
   isManager: boolean = false;
-
+  isQC: boolean = false;
+  isEngineer: boolean = false;
   isDispatchManager: boolean = false;
 
   notifications: any[] = [];
@@ -23,6 +24,8 @@ export class EmployeedashboardnavbarComponent implements OnInit {
   ngOnInit(): void {
     this.getManager();
     this.Getdispatchmanager();
+    this.getQC();
+    this.getEngineer();
 
     const token = localStorage.getItem('token');
     if (token) {
@@ -46,6 +49,30 @@ export class EmployeedashboardnavbarComponent implements OnInit {
         this.isManager = true;
       } else {
         this.isManager = false;
+      }
+    }
+  }
+
+  getQC() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decoded: any = jwtDecode(token);
+      if (decoded.Role == 'QC') {
+        this.isQC = true;
+      } else {
+        this.isQC = false;
+      }
+    }
+  }
+
+  getEngineer() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decoded: any = jwtDecode(token);
+      if (decoded.Role == 'Engineer') {
+        this.isEngineer = true;
+      } else {
+        this.isEngineer = false;
       }
     }
   }

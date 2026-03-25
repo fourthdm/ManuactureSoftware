@@ -41,7 +41,20 @@
             </div>
         </div><br> -->
 
-        <div class="col-md-4">
+        <div class="col-md-3">
+            <div>
+                <label for="Material_Name">Select Material Name.<br>
+                    <select name="Material_Name" id="Material_Name" [(ngModel)]="Material_Name" class="form-select"
+                        placeholder="Select Material_Name" aria-label="Multiple select example">
+                        <option *ngFor="let b of MaterialTypes" [value]="b.Material_Name">{{b.Material_Name}}</option>
+                    </select>
+                </label>
+                <button class="btn bttns" type="button" id="button-addon2"><i class="fa-solid fa-magnifying-glass"
+                        (click)="MaterialByName()"></i></button>
+            </div>
+        </div><br>
+
+        <div class="col-md-3">
             <div>
                 <label for="Material_Type">Select Material Type.<br>
                     <select name="Material_Type" id="Material_Type" [(ngModel)]="Material_Type" class="form-select"
@@ -54,7 +67,7 @@
             </div>
         </div><br>
 
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div>
                 <label for="Material_Size">Select Material Size.<br>
                     <select name="Material_Size" id="Material_Size" [(ngModel)]="Material_Size" class="form-select"
@@ -70,14 +83,14 @@
         <div class="col-md-3">
             <label for="">Download a Material Excelsheet</label>
             <br>
-            <button class="btn btn-success" (click)="exportexcel()"
-                                title="Download excelfile">Download Excelsheet</button>
+            <button class="btn btn-success" (click)="exportexcel()" title="Download excelfile">Download
+                Excelsheet</button>
             <br> <br>
         </div>
 
         <div class="col-md-1">
             <br>
-            <a class="btn bttns" (click)="AllMaterial()" style="color: white;"><i
+            <a class="btn bttns" (click)="AllMaterial()" style="color: white;" title="Refresh Materials"><i
                     class="fa-solid fa-arrow-rotate-right"></i></a>
         </div>
 
@@ -100,7 +113,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let Material of AllMAterials, let i = index">
+            <tr *ngFor="let Material of AllMAterials | paginate:{itemsPerPage : 10, currentPage:pro}, let i = index">
                 <td [routerLink]="['/Home/MaterialsDetails',Material.Material_id]" title="View Information"
                     class="info">{{
                     Material.Material_id }}</td>
@@ -131,12 +144,15 @@
                 <td><a type="button" (click)="DeleteMaterial(Material['Material_id'])" title="Delete a Material"><i
                             class="fa-regular fa-trash-can fa-lg"></i></a>
                 </td>
-
             </tr>
-
-
         </tbody>
     </table>
+
+    <div class="text-center">
+        <pagination-controls (pageChange)=" pro = $event "
+            style="background-color: #252847 !important; z-index: -2 !important;"></pagination-controls>
+    </div>
+
     <br>
 
     <br>

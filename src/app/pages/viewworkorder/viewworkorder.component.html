@@ -21,14 +21,24 @@
                         <p> <b>Material Type Used : </b>{{a.Material_Type}}</p>
                         <p> <b>Manager Name :</b> {{a.Manager_Name}}</p>
                         <p> <b>Manager Status :</b> {{a.Manager_Status}}</p>
+                        <p> <b>Manager Status Time :</b> {{a.Manager_Status_Time | date}}, {{a.Manager_Status_Time |
+                            date
+                            :'hh:mm:ss:a'}}</p>
                         <p> <b>Engineer Name :</b> {{a.Engineer_Name}}</p>
                         <p> <b>Engineer Status :</b> {{a.Engineer_Status}}</p>
+                        <p> <b>Engineer Status Time :</b> {{a.Engineer_Status_Time | date}}, {{a.Engineer_Status_Time |
+                            date
+                            :'hh:mm:ss:a'}}</p>
                         <p> <b>QC Name : </b> {{a.QC_Name}}</p>
                         <p> <b>QC Status :</b> {{a.QC_Status}}</p>
+                        <p> <b>QC Status Time :</b> {{a.QC_Status_Time | date}}, {{a.QC_Status_Time | date
+                            :'hh:mm:ss:a'}}</p>
                     </div>
                     <div class="col">
-                        <p> <b>Dispatch Manger Name :</b> {{a.DispatchManager_Name}}</p>
-                        <p> <b>Dispatch Manger Status :</b> {{a.Dispatch_Status}}</p>
+                        <p> <b>Dispatch Manager Name :</b> {{a.DispatchManager_Name}}</p>
+                        <p> <b>Dispatch Manager Status :</b> {{a.Dispatch_Status}}</p>
+                        <p> <b>Dispatch Manager Status Time :</b> {{a.Dispatchmanager_Status_Time | date}}, {{
+                            a.Dispatchmanager_Status_Time | date :'hh:mm:ss:a'}}</p>
                         <p> <b>Client Name :</b> {{a.Client_Name}}</p>
                         <p> <b>Payment Terms :</b> {{a.Payment_term}}</p>
                         <p> <b>Work Order Status :</b> {{a.WorkOrder_Status}}</p>

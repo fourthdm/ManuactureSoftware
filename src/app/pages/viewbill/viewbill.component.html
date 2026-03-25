@@ -10,42 +10,38 @@
             <div class="text-end">
                 <p> <b>Added Date : </b> {{ a.Added_Date | date }} <br> {{a.Added_Date | date:'h:mm a' }}</p>
             </div>
-             <div class="row">
-                        <div class="col">
-                        <p>Purchase Number :  {{a.Purchase_Number}}</p>
-                                 
-                        <p>Product Name :  {{a.Product_Name}}</p>
-                        <p>Product Quantity :  {{a.Product_Quantity}}</p>
-                        <p>Rate :  {{a.Rate}}</p>                       
-                        <p>Manufacturing Cost :  {{a.Manufacturing_Cost	}}</p>
-                        <p>Material Cost :  {{a.Material_Cost}}</p>
-                        <p>Dispatch Cost :  {{a.Dispatch_Cost}}</p>
-                        <p>Sub Total  :  {{a.Subtotal}}</p>
-                        <p>CGST Amount  :  {{a.CGST_amount}}</p>
-                        <p>SGST Amount  :  {{a.SGST_amount}}</p>
-                        <p>Total Amount  :  {{a.Total_Amount}}</p>
-                        <p>Discount Amount  :  {{a.Discount_Amount}}</p>
-                        <p>Payment Term :  {{a.Payment_term}}</p>
-                        </div><br>
-                        <div class="col">
-                        <p>Requirement Number :  {{a.Requirement_No}}</p>  
-                        <p>Material Type :  {{a.Material_Type}}</p>   
-                        <p>Client Name :  {{a.Client_Name}}</p>
-                        <p>Client Address :  {{a.Client_Address}}</p>
-                        <p>Quotation Status :  {{a.Quotation_Status}}</p>
-                        <p>Shipping Method:  {{a.Shipping_Method}}</p>
-                        <p>HSN Code:  {{a.HSN_Code}}</p>
-                        <p>Client Address : {{a.Client_Address}}</p>
-                        <p>Added Date :  {{a.Added_Date | date}} <br>
-                           <span>Added Time : {{a.Added_Date | date :'hh:mm:ss'}}</span> </p>
-                        <p>Validity Date :  {{a.Validity_Date | date}} <br>
-                           <span>Validity Time : {{a.Validity_Date | date :'hh:mm:ss'}}</span> </p>
-                        <p>Updated Date : {{a.Updated_Date | date}} <br> 
-                            <span>Updated Time : </span> {{a.Updated_Date | date :'hh:mm:ss'}}</p>
-                            <p>Status :  {{a.Status}}</p>
+            <div class="row">
+                <div class="col">
 
-                        </div>
-                    </div>      
+                    <p>Bill Number : {{a.Bill_Number}}</p>
+                    <p>Product Name : {{a.Product_Name}}</p>
+                    <p>Product Quantity : {{a.Product_Quantity}}</p>
+                    <p>Rate : {{a.Rate}}</p>
+                    <p>Sub Total : {{a.Subtotal}}</p>
+                    <p>CGST Amount : {{a.CGST_amount}}</p>
+                    <p>SGST Amount : {{a.SGST_amount}}</p>
+                    <p>Total Amount : {{a.Total_Amount}}</p>
+                    <p>Discount Amount : {{a.Discount_Amount}}</p>
+                    <p>Payment Term : {{a.Payment_term}}</p>
+                    <p>Payment Method : {{a.Payment_Method}}</p>
+                </div><br>
+                <div class="col">
+                    <p>Purchase Number : {{a.Purchase_Number}}</p>
+                    <p>Client Name : {{a.Client_Name}}</p>
+                    <p>Client Address : {{a.Client_Address}}</p>
+                    <p>HSN Code: {{a.HSN_Code}}</p>
+                    <p>GST No.: {{a.GST_No}}</p>
+
+                    <p>Delivery Date : {{a.Delivery_Date | date}} <br>
+                        <span>Delivery Time : {{a.Delivery_Date | date :'hh:mm:ss a'}}</span>
+                    </p>
+                    <p>Updated Date : {{a.Updated_Date | date}} <br>
+                        <span>Updated Time : </span> {{a.Updated_Date | date :'hh:mm:ss a'}}
+                    </p>
+                    <p>Bill Status : {{a.Bill_Status}}</p>
+
+                </div>
+            </div>
 
         </div>
     </div>

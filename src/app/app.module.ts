@@ -42,6 +42,7 @@ import { DispatchmanagerworkorderComponent } from './workorders/dispatchmanagerw
 import { EmployeedashboardnavbarComponent } from './employeedashboardnavbar/employeedashboardnavbar.component';
 import { EmployeedetailsComponent } from './common/employeedetails/employeedetails.component';
 import { ChallandetailsComponent } from './pages/challandetails/challandetails.component';
+import { ClientsComponent } from './pages/clients/clients.component';
 // import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 @NgModule({
@@ -81,7 +82,8 @@ import { ChallandetailsComponent } from './pages/challandetails/challandetails.c
     DispatchmanagerworkorderComponent,
     EmployeedashboardnavbarComponent,
     EmployeedetailsComponent,
-    ChallandetailsComponent
+    ChallandetailsComponent,
+    ClientsComponent
   ],
   imports: [
     BrowserModule,
